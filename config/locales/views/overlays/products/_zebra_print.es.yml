@@ -1,0 +1,7 @@
+es:
+  overlays:
+    products:
+      zebra_print:
+        select_qty: "Seleccione Cantidad de Código de Barras"        
+        enter_value: "Ingrese Valor"
+        button: "Imprimir"

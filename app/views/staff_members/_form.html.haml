@@ -1,0 +1,6 @@
+:ruby
+  url = resource.new_record? ? collection_path : staff_member_path
+
+= simple_nested_form_for resource, url: url, html: { multipart: true }, validate: true do |f|
+  = f.error_messages
+  = render 'user_profile_fields', f: f

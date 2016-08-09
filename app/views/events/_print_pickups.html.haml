@@ -1,0 +1,28 @@
+%h2{style: 'font-family: Arial, sans-serif; font-size: 13px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 2%;'}
+  %div.resource_manifest{style: 'float:right; height: 40px;'}
+    = current_company.has_image? ? current_company.image_thumb : current_store.name
+  = t('events.print_pickups.title')
+%table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 2%; width: 96%;'}
+  %thead
+    %tr{style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b #{t('events.print_pickups.name')}
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b #{t('events.print_pickups.current_accommodation')}
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b #{t('events.print_pickups.location')}
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b #{t('events.print_pickups.time')}
+  %tbody
+    - resource.event_customer_participant_transports.active.order_by_time.each do |pickup|
+      %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+        %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = image_tag pickup.event_customer_participant.customer.avatar.image(:large), height: '32px', style: 'float: left; margin-right: 10px; border: 1px solid #B0B0B0; padding: 1px;'
+          #{pickup.event_customer_participant.customer.full_name}
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          #{pickup.event_customer_participant.customer.hotel_name} (#{pickup.event_customer_participant.customer.room_number})
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          #{pickup.information}
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA; width: 120px;', width: '120px'}
+          %span{style: 'padding: 2px 5px 2px; font-size: 12px; font-weight: bold; color: white; text-transform: uppercase; background-color: #999; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;background-color: #F89406;'}
+            = pickup.only_time

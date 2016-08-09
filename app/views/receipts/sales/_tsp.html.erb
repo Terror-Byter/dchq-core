@@ -1,0 +1,120 @@
+<script type="text/javascript">
+
+function sendMessage(request) {
+    var url = "<%= current_store.tsp_url.html_safe %>/StarWebPRNT/SendMessage";
+    var trader = new StarWebPrintTrader({url:url});
+    trader.onReceive = function (response) {
+        var msg = '- Response from Printer -\n\n';
+        msg += 'Receipt has been successfully printed\n';
+        // msg += 'Printer Success : [ ' + response.traderSuccess + ' ]\n';
+        // msg += 'Printer Status : [ ' + response.traderStatus + ',\n';
+        if (trader.isCoverOpen            ({traderStatus:response.traderStatus})) {msg += '\tCoverOpen,\n';}
+        if (trader.isOffLine              ({traderStatus:response.traderStatus})) {msg += '\tOffLine,\n';}
+        if (trader.isCompulsionSwitchClose({traderStatus:response.traderStatus})) {msg += '\tCompulsionSwitchClose,\n';}
+        if (trader.isEtbCommandExecute    ({traderStatus:response.traderStatus})) {msg += '\tEtbCommandExecute,\n';}
+        if (trader.isHighTemperatureStop  ({traderStatus:response.traderStatus})) {msg += '\tHighTemperatureStop,\n';}
+        if (trader.isNonRecoverableError  ({traderStatus:response.traderStatus})) {msg += '\tNonRecoverableError,\n';}
+        if (trader.isAutoCutterError      ({traderStatus:response.traderStatus})) {msg += '\tAutoCutterError,\n';}
+        if (trader.isBlackMarkError       ({traderStatus:response.traderStatus})) {msg += '\tBlackMarkError,\n';}
+        if (trader.isPaperEnd             ({traderStatus:response.traderStatus})) {msg += '\tPaperEnd,\n';}
+        if (trader.isPaperNearEnd         ({traderStatus:response.traderStatus})) {msg += '\tPaperNearEnd,\n';}
+        msg += '\tEtbCounter = ' + trader.extractionEtbCounter({traderStatus:response.traderStatus}).toString() + ' ]\n';
+        alert(msg);
+    }
+    trader.onError = function (response) {
+        var msg = '- There Has Been An Error -\n\n';
+        msg += '\tStatus:' + response.status + '\n';
+        msg += '\tResponseText:' + response.responseText;
+        alert(msg);
+    }
+    trader.sendMessage({request:request});
+}
+
+function onSendMessage() {
+    var builder = new StarWebPrintBuilder();
+    var request = '';
+    var url = "<%= current_store.tsp_url.html_safe %>/StarWebPRNT/SendMessage";
+
+    //var image = new Image();
+    //image.src = "dive centre logo url";
+    //var canvas = document.getElementById('canvas');
+    //if (canvas.getContext) {
+    //    canvas.width  = image.width;
+    //    canvas.height = image.height;
+    //    var context = canvas.getContext('2d');
+    //    context.drawImage(image, 0, 0);
+    //}
+
+    request += builder.createInitializationElement();
+    request += builder.createAlignmentElement({position:'center'});
+
+    /* #TODO: show logo / image */
+    // request += builder.createBitImageElement({context:canvas.getContext('2d'), x:0, y:0, width:200, height:50});
+
+    request += builder.createTextElement({codepage: "cp1252", <%= tsp_international %> data: "<%= current_store.name %>\n"});
+    request += builder.createTextElement({codepage: "cp1252", <%= tsp_international %> data: "<%= current_company.address.first %>, <%= current_company.address.second %>\n"});
+    request += builder.createTextElement({codepage: "cp1252", <%= tsp_international %> data: "<%= current_company.address.city %>, <%= current_company.address.state %>, <%= current_company.address.post_code %>\n"});
+    request += builder.createTextElement({codepage: "cp1252", <%= tsp_international %> data: "<%= current_company.address.country %>\n"});
+    request += builder.createTextElement({data:"<%= t('receipts.tsp.tel') %>: <%= current_company.telephone %>\n"});
+    request += builder.createTextElement({data:"<%= t('receipts.tsp.email') %>: <%= current_company.email %>\n"});
+    <% unless current_company.tax_id.blank? %>
+      request += builder.createTextElement({data: "<%= t('receipts.tsp.vat_no') %>: <%= current_company.tax_id %>\n"});
+    <% end %>
+
+    request += builder.createAlignmentElement({position:'left'});
+    request += builder.createTextElement({data:'\n'});
+    request += builder.createRuledLineElement({thickness:'medium', width:575});
+    request += builder.createTextElement({data:'\n'});
+
+    <%= render partial: 'receipts/sales/tsp/sale_product', collection: @sale.sale_products %>
+
+    request += builder.createTextElement({data:'\n\n'});
+
+    <% unless @sale.calc_discount.zero? %>
+        request += builder.createTextElement({<%= tsp_international %> data:'<%= t("receipts.tsp.discount") %> <%= tsp_formatted_currency(@sale.calc_discount.abs) %>\n'});
+    <% end %>
+    request += builder.createTextElement({<%= tsp_international %> data:'<%= t("receipts.tsp.sub_total") %> <%= tsp_formatted_currency(@sale.sub_total.abs) %>\n'});
+    request += builder.createTextElement({<%= tsp_international %> data:'<%= t("receipts.tsp.tax") %> <%= tsp_formatted_currency(@sale.tax_rate_total.abs) %>\n'});
+    request += builder.createTextElement({emphasis:true});
+    request += builder.createTextElement({<%= tsp_international %> data:'<%= t("receipts.tsp.net_due") %> <%= tsp_formatted_currency(@sale.grand_total) %>\n'});
+    request += builder.createTextElement({emphasis:false});
+
+    request += builder.createAlignmentElement({position:'left'});
+    request += builder.createTextElement({data:'\n'});
+    request += builder.createRuledLineElement({thickness:'medium', width:575});
+    request += builder.createTextElement({data:'\n'});
+    request += builder.createTextElement({underline:true, data:'Tendered\n'});
+    request += builder.createTextElement({underline:false});
+
+    /* For each payment */
+    <%= render partial: 'receipts/sales/tsp/payment', collection: @sale.payments.where{ id.not_eq nil } %>
+
+    request += builder.createTextElement({data:'\n'});
+    request += builder.createAlignmentElement({position:'center'});
+    request += builder.createTextElement({international:'legal', data:'###############################################\n'});
+    request += builder.createTextElement({data:'\n'});
+    request += builder.createTextElement({data:'<%= t("receipts.tsp.thanks", name: current_store.name) %>\n'});
+    request += builder.createTextElement({data:'<%= t("receipts.tsp.retain") %>\n\n'});
+
+    <% unless current_company.website_url.blank? %>
+      request += builder.createTextElement({data:'<%= t("receipts.tsp.check_website") %>:\n'});
+      request += builder.createTextElement({data:'<%= current_company.website_url %>\n'});
+    <% end %>
+
+    request += builder.createTextElement({data:'\n'});
+    request += builder.createTextElement({data:'###############################################\n'});
+    request += builder.createTextElement({data:'\n'});
+    /* sale.id in data element */
+    request += builder.createBarcodeElement({symbology:'Code39', width:'width2', height:80, hri:false, data:'<%= @sale.receipt_id %>'});
+    request += builder.createTextElement({data:'\n'});
+    request += builder.createAlignmentElement({position:'center'});
+    request += builder.createTextElement({data:'<%= @sale.receipt_id %>\n'});
+    request += builder.createTextElement({width:1});
+    request += builder.createTextElement({data:'\n'});
+    /* cut paper */
+    request += builder.createCutPaperElement({feed:true});
+    /* open cash drawer */
+    request += builder.createPeripheralElement({channel:1});
+    sendMessage(request);
+  }
+</script>

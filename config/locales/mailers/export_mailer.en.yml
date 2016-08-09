@@ -1,0 +1,4 @@
+en:
+  mailers:
+    export_mailer:
+      success_subject: Export Successfully Processed

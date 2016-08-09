@@ -1,0 +1,182 @@
+:ruby
+  form ||= nil
+  if @sale.refund?
+    payments = @sale.parent.try(:payment_tendered)
+  else
+    payments = @sale.try(:payment_tendered)
+  end
+  sale = @sale.decorate
+
+%table.table.table-bordered.table-striped.table-vertical-center.table-condensed
+  %thead
+    %tr
+      %th= t('sales.details.t_scu_product')
+      %th.center{style: 'width: 80px;'}= t('sales.details.t_unit_price')
+      %th.center{style: 'width: 80px;'}= t('sales.details.t_tax')
+      %th.center{style: 'width: 80px;'}= t('sales.details.t_quantity')
+      %th.center{style: 'width: 80px;'}= t('sales.details.t_discount')
+      %th.center{style: 'width: 80px;'}= t('sales.details.t_sub_total')
+  %tbody
+    = render partial: 'sales/sale_product', collection: sale.sale_products.sort{ |a ,b| a.id <=> b.id }, locals: { is_editable: is_editable, form: form }
+
+.separator.bottom
+.row-fluid
+  .span6
+    %p
+      - if @sale.active?
+        = link_to empty_sale_path(@sale), method: :delete, remote: true, confirm: t('views.actions.confirm') do
+          %i.icon-eraser
+          = t('sales.details.empty_cart')
+      - if @sale.active? || (@sale.complete? && !current_store.close? && current_user.manager? && @sale.children.blank?) || @sale.refund?
+        = link_to sale_path(@sale), method: :delete, remote: @sale.active?, style: 'color: red; margin-left: 25px;', confirm: t('views.actions.confirm') do
+          %i.icon-ban-circle
+          = t('sales.details.delete_cart')
+      - if @sale.active?
+        = link_to 'javascript:void(0)', class: 'save_as_layby', :"data-status" => "layby", style: 'margin-left: 25px;' do
+          %i.icon-inbox
+          = t('sales.details.save_as_lay_by')
+      - if @sale.note.blank? && @sale.active?
+        %a#add-note{'data-toggle' => 'modal', href: '#add-note-modal', style: 'margin-left: 25px;'}
+          %i.icon-bookmark
+          = t('sales.details.notes.add_note')
+
+    %p#notes
+      - if @sale.note.present?
+        = render 'sales/notes'
+  .span5.pull-right
+    %table.table.table-borderless.table-condensed.cart_total
+      %tbody
+        %tr
+          - if is_editable && !sale.refund? && !@sale.line_items_has_discount
+            %td.right= t('sales.details.overall_discount')
+            %td.right.strong.discount
+              = form.fields_for :discount, @sale.discount.nil? ? @sale.build_discount : @sale.discount
+              .clear
+          - if sale.completed? && !@sale.calc_discount.zero?
+            %td.right= t('sales.details.overall_discount')
+            %td.right.strong.discount
+              = formatted_currency @sale.calc_discount
+              .clear
+        %tr
+          %td.right
+            = t('sales.details.sub_total')
+            = current_store.print_tax
+          %td.right.strong= sale.sub_total_abs
+        - if @sale.customers.first.try(:zero_tax_rate?)
+          %tr
+            %td.right
+              = t('sales.details.tax_exempt')
+            %td.right.strong
+              \- #{sale.tax_rate_total_abs}
+        - else
+          %tr
+            %td.right= t('sales.details.tax')
+            %td.right.strong= sale.tax_rate_total_abs
+        - if @sale.refunded? && @sale.parent && @sale.parent.status == 'layby_refund'
+          %tr
+            %td.right Payments To Date:
+            %td.right.strong= formatted_currency(@sale.grand_total.abs)
+        - if @sale.completed?
+          %tr
+            %td{colspan: '2'}
+              .separator.bottom
+              %span.label.right.label-block.large
+                = t('sales.details.net_due')
+                = sale.grand_total_abs
+          %tr
+            %td{colspan: '2'}
+              .separator.bottom
+              %span.label.right.label-block.large
+                = t('sales.details.less_total_payment')
+                = formatted_currency(sale.payments.sum(:amount))
+        - else
+          %tr
+            %td{colspan: '2'}
+              - unless @sale.can_be_completed?
+                .alert.alert-error{style: 'text-align:center; padding: 8px !important;'}
+                  - if @sale.complete_refund?
+                    %span{style: 'font-size:16px;'} #{t('sales.details.amount_due')}: #{formatted_currency(0)}
+                  - else
+                    %span{style: 'font-size:16px;'} #{t('sales.details.amount_due')}: #{formatted_currency(@sale.change_amount.abs)}
+              - else
+                .alert.alert-info{style: 'text-align:center; padding: 8px !important;'}
+                  %span{style: 'font-size:16px;'} #{t('sales.details.change')}: #{formatted_currency(@sale.change_amount.abs)}
+          %tr
+            %td{colspan: '2'}
+              - if @sale.can_be_completed? || @sale.refund?
+                = finalize_button @sale
+                = render 'overlays/sales/refund_payment_method', f: form if @sale.refund?
+              - else
+                - if !@sale.completed? && !@sale.refunded? && !@sale.complete_refund?
+                  = link_to '#add-payment-modal', class: 'btn btn-primary btn-large input-block-level btn-icon glyphicons coins', :'data-toggle' => :modal, style: 'text-align:center; text-transform:uppercase;' do
+                    %i>
+                    = t('sales.details.add_payment')
+                  = render 'overlays/sales/add_payment_modal', f: form
+        %tr
+          %td{colspan: '2'}
+            .widget-timeline.hidden-print{style: 'margin-top:10px'}
+              %ul.list-timeline
+                - @sale.payments.each do |p|
+                  - next if p.new_record?
+                  %li
+                    %span.date= p.created_at.strftime('%d/%m')
+                    %span.glyphicons.activity-icon.coins
+                      %i
+                    %span.ellipsis
+                      %a{href: 'javascript:void(0)'}= formatted_currency(p.amount)
+                      = p.payment_method.name.upcase
+                    - if !@sale.completed? && !@sale.refunded?
+                      %span.pull-right.hidden-print{style: 'float:right;'}
+                        = link_to p, method: :delete, remote: true, style: 'color:red;', confirm: 'Are you sure?' do
+                          %i.icon-ban-circle
+        - if @sale.completed?
+          %tr
+            %td{colspan: '2'}
+              .separator.bottom
+              %span.label.right.label-block.large{style: 'background: #609450; color: #fff; text-shadow: none !important;'}
+                = @sale.paid? ? t('sales.details.change') : (@sale.refund? ? t('sales.details.amount_to_refund') : t('sales.details.amount_due'))
+                = formatted_currency(@sale.change_amount.abs)
+
+        - if @sale.can_be_refunded? && @sale.completed?
+          %tr.refund-total.hide
+            %td{colspan: '2'}
+              = link_to 'javascript:void(0)', class: 'btn btn-info btn-large input-block-level btn-icon glyphicons history hidden-print', id: 'whole_refund', :'data-toggle' => 'modal', style: 'text-align:center; text-transform:uppercase;' do
+                %i>
+                = t('sales.details.refund_total')
+
+        %tr.hidden-print
+          %td{colspan: '2'}
+            .row-fluid
+              .span6
+                - if current_store.printer_type == 'tsp'
+                  = link_to 'javascript:void(0)', onclick: "onSendMessage()", class: 'btn btn-default btn-default btn-icon glyphicons print input-block-level', style: 'text-align:center; text-transform:uppercase;' do
+                    %i>
+                    = t('sales.show.print_receipt')
+                - else
+                  = link_to '', class: 'btn btn-default btn-default btn-icon glyphicons print print-receipt input-block-level', style: 'text-align:center; text-transform:uppercase;' do
+                    %i>
+                    - unless @sale.active?
+                      = t('sales.show.print_receipt')
+                    - else
+                      = t('sales.show.print_receipt_invoice')
+              .span6
+                = link_to '#email-receipt-modal', class: 'btn btn-default btn-icon glyphicons envelope input-block-level', style: 'text-align:center; text-transform:uppercase;', :'data-toggle' => 'modal' do
+                  %i>
+                  - unless @sale.active?
+                    = t('sales.show.email_receipt')
+                  - else
+                    = t('sales.show.email_receipt_invoice')
+
+- content_for :overlays do
+  = render 'overlays/sales/email_popup'
+
+= render 'overlays/sales/add_note_modal'
+
+.hide
+  #print
+    - if current_store.printer_type.eql?("80mm")
+      = render 'receipts/sales/print', print: true
+    - elsif current_store.printer_type.eql?("70mm")
+      = render 'receipts/sales/print_70'
+    - else
+      = render 'receipts/sales/tsp'

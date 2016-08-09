@@ -1,0 +1,32 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.edit_mailchimp_step_1.home')
+  %li.divider
+  %li= link_to t('settings.edit_mailchimp_step_1.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.edit_mailchimp_step_1.mailchimp_integration')
+= simple_form_for current_user, url: update_user_settings_path,
+                                html: { method: :put}, validate: true do |f|
+  .form_error_margin
+    = f.error_messages
+  = hidden_field_tag :back_url, edit_mailchimp_step_2_settings_path
+  = hidden_field_tag :notice, t('settings.edit_mailchimp_step_1.notice')
+  = hidden_field_tag :back_action, "edit_mailchimp_step_1"
+  .innerLR
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.cardio
+          %i>
+          = t('settings.edit_mailchimp_step_1.account_settings')
+      .widget-body
+        .row-fluid
+          %p= t('settings.edit_mailchimp_step_1.condition')
+          = f.input :mailchimp_api_key, input_html: { class: 'span5' }
+    .heading-buttons
+      %button.btn.btn-primary.btn-icon.glyphicons.ok_2.pull-right{ type: 'submit' }
+        %i
+        = t('views.actions.save')

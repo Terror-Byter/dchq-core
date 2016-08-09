@@ -1,0 +1,92 @@
+:ruby
+  certification_agency_id = resource.new_record? ? CertificationAgency.first.id : resource.certification_level.certification_agency_id
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('course_events.form.home')
+  %li.divider
+  %li= t('course_events.form.events')
+  %li.divider
+  %li= resource.new_record? ? t('course_events.form.create') : t('course_events.form.update')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('course_events.form.create_course')
+= simple_nested_form_for resource, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#eventDetailsTab', class: 'glyphicons calendar', :'data-toggle' => :tab do
+              %i>
+              = t('course_events.form.course_details')
+          %li
+            = link_to '#notificationsTab', class: 'glyphicons adjust_alt', :'data-toggle' => :tab do
+              %i>
+              = t('course_events.form.customer_instructions_note')
+          %li
+            = link_to '#onlineTab', class: 'glyphicons table', :'data-toggle' => :tab do
+              %i>
+              = t('course_events.form.online_visibility')
+      .widget-body
+        .tab-content
+          #eventDetailsTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('course_events.form.course_type')
+                %p.muted= t('course_events.form.course_type_text')
+              .span3
+                = f.input :certification_agency_id, collection: CertificationAgency.all, input_html: { class: 'selectpicker', :'data-size' => '10' }, include_blank: false, selected: certification_agency_id
+              .span3
+                = f.label :certification_level_id
+                = f.grouped_collection_select :certification_level_id, CertificationAgency.all, :certification_levels_with_cost, :name, :id, :name, { include_blank: true }, { class: 'selectpicker', :'data-size' => '10' }
+              .span1
+                = f.label :price
+                .input-prepend
+                  %span.add-on= current_store.currency.unit.html_safe
+                  = f.text_field :price, size: nil, class: 'span8'
+              .span2
+                = f.label :limit_of_registrations
+                .input-prepend
+                  %span.add-on #
+                  = f.text_field :limit_of_registrations, size: nil, class: 'span6'
+            %hr.separator.bottom/
+            = render 'child_fields', { f: f, hide_remove_link: true }
+            = f.simple_fields_for :children, f.object.persisted? ? f.object.children.order(:starts_at) : [] do |form|
+              = render 'child_fields', f: form
+            = f.link_to_add :children, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i
+              = t('course_events.form.add_day')
+          #notificationsTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('course_events.form.customer_instructions')
+                %p.muted= t('course_events.form.customer_instructions_text')
+              .span9
+                = f.input :instructions, input_html: { rows: 2, style: 'width: 96%' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('course_events.form.course_notes')
+                %p.muted= t('course_events.form.course_notes_text')
+              .span9
+                = f.input :notes, input_html: { style: 'width: 96%;', rows: 2 }
+          #onlineTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('course_events.form.online_visibility')
+                %p.muted= t('course_events.form.online_visibility_text')
+              .span3
+                = f.input :private, collection: [[t('course_events.form.show_on_public_calendar'), true], [t('course_events.form.hide_from_public_calendar'), false]], input_html: { class: 'selectpicker' }, include_blank: false
+              .span3
+                = f.input :enable_booking, collection: [[t('course_events.form.enable'), true], [t('course_events.form.disable'), false]], input_html: { class: 'selectpicker' }, include_blank: false
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: :submit }
+          %i
+          = t('views.actions.save')
+      .clearfix

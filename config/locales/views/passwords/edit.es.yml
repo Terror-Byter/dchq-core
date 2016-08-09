@@ -1,0 +1,6 @@
+es:
+  passwords:
+    edit:
+      title: "Ingrese la dirección de correo-e con la cual se inscribió y nosotros le enviaremos un vínculo para restablecer su contraseña."
+      title_reset: "Ingrese y confirme una nueva contraseña para su cuenta."
+      button: "Guardar Constraseña"

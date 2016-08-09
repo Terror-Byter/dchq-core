@@ -1,0 +1,11 @@
+en:
+  events:
+    events_list:
+      no_events: No Events
+      type: Type
+      name: Name
+      locations: Locations
+      boat: Resource
+      start: Start
+      end: End
+      total_entries: 'Total Events: %{count}'

@@ -1,0 +1,11 @@
+.row-fluid
+  .span12
+    .row-fluid
+      .span5
+        = f.text_field :name, placeholder: placeholder, class: 'span12'
+      .span3
+        = f.text_field :cost, class: 'span12'
+      .span2
+        = f.select :tax_rate_id, current_store.tax_rates_list, {}, class: 'selectpicker span12'
+      .span2
+        = f.link_to_remove t('application.additional_fields.delete'), style: 'color:red;'

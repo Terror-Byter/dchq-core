@@ -1,0 +1,16 @@
+en:
+  services:
+    form:
+      service_details: 'Service Details'
+      kit_info: 'Kit Information'
+      kit_info_text: 'Enter the kit information for this service.'
+      people: 'People'
+      people_text: 'Select from the following options.'
+      description: 'Description'
+      description_text: 'Enter detailed information about this service.'
+      price_breakdown: 'Price Breakdown'
+      add_extra_item: 'Add Extra Item'
+      total: 'TOTAL'
+      book_service: 'Book Service'
+      add_kit: 'Add kit'
+

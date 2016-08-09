@@ -1,0 +1,14 @@
+%tr{ id: dom_id(incident) }
+  %td.important
+    = link_to incident.creator_name, incident.creator
+  %td= incident.occurred_on ? l(incident.occurred_on, format: :default) : '-'
+  %td= best_in_place(incident, :description, path: customer_incident_path(customer, incident), activator: "#edit_#{dom_id(incident)}")
+  %td
+    - if incident.has_attachment?
+      = link_to incident.attachment_url, target: '_blank' do
+        %i.icon-file
+        = incident.file_name
+  %td
+    = link_to t('customers.show.edit_incident'), "javascript:void(0);", id: "edit_#{dom_id(incident)}"
+    |
+    = link_to t('customers.show.delete_incident'), customer_incident_path(customer, incident), method: :delete, remote: true, confirm: I18n.t("views.actions.confirm"), :style => "color:red;"

@@ -1,0 +1,10 @@
+en:
+  bookings:
+    price_breakdown:
+      price_breakdown: 'Price Breakdown'
+      event: 'Event'
+      kit_hire: 'Kit Hire'
+      insurance: 'Insurance'
+      transport: 'Transport'
+      equipment: 'Equipment'
+      total: 'TOTAL'

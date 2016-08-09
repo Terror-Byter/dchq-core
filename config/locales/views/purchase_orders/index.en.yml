@@ -1,0 +1,22 @@
+en:
+  purchase_orders:
+    index:
+      overview: 'Overview'
+      pending_po:
+        one: 'Pending PO'
+        many: "Pending PO's"
+      po_sent_to_suppliers:
+        one: 'Purchase Order Sent to Suppliers'
+        many: "Purchase Orders Sent to Suppliers"
+      consignments: 'Consignments'
+      expecting_delivery: 'Expecting Delivery'
+      received: 'Received'
+      total_pos: "Total Purchase Orders:"
+      table_cols:
+        po_number: 'PO #'
+        supplier: 'Supplier'
+        delivery_location: 'Delivery Location'
+        value: 'Value'
+        status: 'Status'
+        last_updated: 'Last Updated'
+        expected_delivery: 'Expected Delivery'

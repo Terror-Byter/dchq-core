@@ -1,0 +1,30 @@
+.widget
+  .widget-head
+    %h4.heading= t('reports.sales_by_day.sales_by_day')
+  .widget-body
+    = form_tag url_for(action: params[:action], controller: params[:controller]), method: :get do |f|
+      .row-fluid
+        .span3
+          #datetimepicker1.input-append.date
+            %input.span11{name: 'date', type: 'text', value: '', class: 'span12 datepicker'}/
+            %span.add-on
+              %i.icon-calendar
+        .span3
+          %button.btn.btn-small.btn-primary.btn-icon.glyphicons.history{ type: 'submit' }
+            %i>
+            = t('reports.sales_by_day.refine_dates')
+    %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+      %thead
+        %tr
+          %th
+          - (@day - @number_of_days.days..@day + @number_of_days.days).each do |current_date|
+            %th{style: current_date.today? ? 'color: yellow;' : ''}
+              = current_date.strftime('%d %b')
+      %tbody
+        = show_table_row_with_currency t('reports.sales_by_day.sales_tax'), @report_by_day[:sales_inc_tax]
+        = show_table_row_with_currency t('reports.sales_by_day.tax'), @report_by_day[:taxes], class: 'color'
+        = show_table_row_with_currency t('reports.sales_by_day.taxable_revenue'), @report_by_day[:taxable_revenue], class: 'color'
+        = show_table_row_with_currency t('reports.sales_by_day.cost_of_goods'), @report_by_day[:cost_of_goods]
+        = show_table_row_with_currency t('reports.sales_by_day.gross_profit'), @report_by_day[:gross_profit], class: 'color'
+        = show_table_row_with_currency t('reports.sales_by_day.refunds'), @report_by_day[:refunds]
+        = show_table_row_with_currency t('reports.sales_by_day.tax_refunds'), @report_by_day[:tax_refunds]

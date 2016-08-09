@@ -1,0 +1,70 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= t('.events')
+  %li.divider
+  %li= t('.cancel')
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic
+        = t('.cancel_event')
+        = resource.name
+= form_tag cancel_event_path(resource) do
+  .innerLR
+    %p
+      %strong= t('.you_are_about')
+    %p= t('.content')
+    %hr/
+    .row-fluid
+      .span3
+        %strong= t('.reason_for_cancellation')
+        %p.muted= t('.reason_for_cancellation_text')
+      .span9
+        = text_area_tag :email_text, '', rows: 2, style: 'width: 97%;'
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.group
+          %i>
+          = t('.customers_booked_on_this_event')
+      .widget-body
+        %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+          %thead
+            %tr
+              %th= t('.t_customer')
+              %th= t('.t_amount_paid')
+              %th= t('.t_refound_required')
+              %th= t('.t_notify_via_email')
+          %tbody
+            - resource.event_customer_participants.decorate.each do |ecp|
+              %tr
+                %td.important
+                  - if ecp.customer
+                    = ecp.customer.full_name
+                  - else
+                    = ecp.group_name
+                    (#{ ecp.quantity} people)
+                %td
+                  - if (ecp.unpaid? && !resource.course?) || ( ecp.unpaid? && resource.course? && resource.parent?  )
+                    = formatted_currency 0
+                  - else
+                    = formatted_currency ecp.price
+                %td
+                  - if (ecp.unpaid? && !resource.course?) || ( ecp.unpaid? && resource.course? && resource.parent?  )
+                    = t('.not_required')
+                  - else
+                    %strong= t('.yess')
+                %td
+                  - if ecp.customer
+                    = check_box_tag 'customer_id[]', ecp.customer.id, true
+                  - else
+                    No email on file
+    = link_to event_path(resource), class: 'btn btn-default btn-icon glyphicons chevron-left' do
+      %i
+      = t('.wait')
+    %button.btn.btn-large.btn-danger.btn-icon.glyphicons.ok_2.pull-right{ type: :submit }
+      %i
+      = t('.yes_cancel')

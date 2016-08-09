@@ -1,0 +1,16 @@
+%div{ id: "delete_#{dom_id(ecp)}", class: 'modal hide fade' }
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('overlays.event_customer_participants.remove_popup.header')
+  = form_tag event_event_customer_participant_path(resource, ecp), method: :delete do
+    .modal-body
+      - if ecp.unpaid?
+        %p= t('overlays.event_customer_participants.remove_popup.content_unpaid', full_name: ecp.customer_name)
+      - else
+        %p
+      %label.uniformjs
+        = check_box_tag :send_email, :send, true
+        = t('overlays.event_customer_participants.remove_popup.checkbox_label')
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.event_customer_participants.remove_popup.cancel')
+      = submit_tag t('overlays.event_customer_participants.remove_popup.remove_button'), class: 'btn btn-danger'

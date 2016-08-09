@@ -1,0 +1,10 @@
+.row-fluid
+  .span12
+    .row-fluid
+      .span6
+        = f.input_field :name, class: 'span11'
+      .span3
+        = f.input_field :color, class: 'color span11', placeholder: t('application.boat_fields.placeholder')
+      .span3
+        = f.link_to_remove t('application.boat_fields.delete'), style: 'color: red'
+

@@ -1,0 +1,5 @@
+es:
+  store_products:
+    tax_and_commission:
+      tax_commissions: Impuestos & Comisiones
+      tax_commissions_text: Seleccione la tasa de impuesto y tasas de comisión adecuadas.

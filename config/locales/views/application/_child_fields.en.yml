@@ -1,0 +1,9 @@
+en:
+  application:
+    child_fields:
+      day: 'Day'
+      remove_day: 'Remove Day'
+      date_and_times: 'Dates & Times'
+      date_and_times_text: 'Enter the start and end date/time and frequency for this event.'
+      dive_info: 'Dive Information'
+      dive_info_text: 'Select the boat/resource, locations, number of dives and max participants.'

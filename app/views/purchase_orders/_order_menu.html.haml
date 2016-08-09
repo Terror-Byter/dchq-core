@@ -1,0 +1,11 @@
+- if purchase_order.pending?
+  = link_to(empty_purchase_order_path(purchase_order, format: :js), {method: :post, remote: true, confirm: t('views.actions.confirm')}) do
+    %i.icon-eraser
+    = t('purchase_orders.form.po_operations.empty')
+  = link_to(purchase_order_path(purchase_order), {method: :delete, confirm: t('views.actions.confirm'), style: 'color:red; margin-left: 25px;'}) do
+    %i.icon-ban-circle
+    = t('purchase_orders.form.po_operations.delete')
+- if purchase_order.note.blank? && !purchase_order.fixed?
+  %a#add-note{'data-toggle' => 'modal', href: '#add-note-modal', style: 'margin-left: 25px;'}
+    %i.icon-bookmark
+    = t('purchase_orders.form.notes.add_note')

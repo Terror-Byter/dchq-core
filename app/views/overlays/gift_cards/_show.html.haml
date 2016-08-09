@@ -1,0 +1,13 @@
+%div{ id: "edit_gift_card_#{record.id}", class: "modal hide fade"}
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.gift_cards.show.header')
+  = form_for resource, remote: true do |f|
+    .modal-body
+      %p= t('overlays.gift_cards.show.content')
+      .row-fluid
+        .span12
+          = f.text_field :uniq_id
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      = f.submit t('views.actions.save'), class: 'btn btn-primary'

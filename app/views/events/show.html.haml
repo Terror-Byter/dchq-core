@@ -1,0 +1,147 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= t('.events')
+  %li.divider
+  %li= t('.details')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        - unless resource.cancel?
+          = t('.event')
+        - if resource.cancel?
+          .red{style: 'color: red;'}= t('.cancelled')
+    .span8.right
+      .buttons.hidden-print
+        - unless resource.course?
+          = link_to '#clone-event-modal', class: 'btn btn-small btn-default btn-icon glyphicons more_windows', :'data-toggle' => :modal  do
+            %i
+            = t '.duplicate'
+        - if resource.can_change?
+          = link_to event.print_event_pickup_event_path, class: 'btn btn-small btn-default btn-icon glyphicons print', target: '_blank' do
+            %i
+            = t('.print_pickups')
+          = link_to event.print_event_manifest_event_path, class: 'btn btn-small btn-default btn-icon glyphicons print', target: '_blank' do
+            %i
+            = t('.print_manifest')
+          = link_to event.edit_path, class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t('.edit_event')
+        - if resource.can_change?
+          = link_to new_event_event_customer_participant_path(event), class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+            %i>
+            = t('.add_customers')
+          = link_to event_user_participants_event_path(event), class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+            %i>
+            = t('.add_staff')
+.innerLR
+  .row-fluid.row-merge
+    .span12
+      .row-fluid
+        .span7
+          %h3= event.name
+          %h5= t('.start', date: l(event.starts_at, format: :default))
+          = content_tag :span, t('.recuring_event'), class: 'label' if resource.recurring? && !resource.course?
+          %span.label.btn-default= "#{t('.boat')} #{til(event.boat)}"
+          %span.label.btn-default= t('.location', location: til(event.location))
+          %span.label.btn-default= t('.dives', dives: til(event.number_of_dives))
+          %p{style: 'margin-top:5px;'}= til(event.notes)
+        .span5
+          %h4
+            %span= t('.event_information')
+          .separator.bottom
+          %ul.unstyled.icons
+            %li.glyphicons.coins
+              %i
+              = t('.price')
+              = til event.price
+            %li.glyphicons.group
+              %i
+              = t('.max_participants')
+              = til event.limit_of_registrations
+
+            - if event.limit_of_registrations
+              %li.glyphicons.thumbs_up
+                %i
+                = t('.spaces_available')
+                = til event.available_places
+
+            %li.glyphicons.scuba_diving
+              %i
+              = t('.additional_equipment')
+              = til event.additional_equipment
+      .row-fluid
+        .widget.widget-tabs
+          .widget-head
+            %ul
+              %li.active
+                = link_to '#tab-1', class: 'glyphicons group', :'data-toggle' => :tab do
+                  %i
+                  = t('.customers')
+              %li
+                = link_to '#tab-2', class: 'glyphicons parents', :'data-toggle' => :tab do
+                  %i
+                  = t('.staff_members')
+          .widget-body
+            .tab-content
+              #tab-1.tab-pane.active
+                .widget
+                  .widget-head
+                    %h4.heading.glyphicons.group
+                      %i>
+                      = t('.customers')
+                  .widget-body
+                    - if event.event_customer_participants.empty?
+                      = t('.no_customers')
+                    - else
+                      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.table-responsive
+                        %thead
+                          %tr
+                            %th= t('.t_customer')
+                            %th= t('.t_assigned_staff')
+                            %th{style: 'width: 15%;'}= t('.t_certification')
+                            %th= t('.t_kit_sizes')
+                            %th{style: 'width: 15%;'}= t('.t_pickup')
+                            %th= t('.t_payment')
+                            %th= t('.t_actions')
+                        %tbody
+                          = render event.event_customer_participants.decorate.select{ |u| u.not_refunded? }
+
+              #tab-2.tab-pane
+                .widget
+                  .widget-head
+                    %h4.heading.glyphicons.parents
+                      %i>
+                      = t('.staff_members')
+                  .widget-body
+                    - if event.event_user_participants.empty?
+                      = t('.no_staff')
+                    - else
+                      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                        %thead
+                          %tr
+                            %th= t('.t_staff')
+                            %th= t('.t_role')
+                            %th= t('.t_assigned_customers')
+                            %th= t('.t_actions')
+                        %tbody
+                          = render partial: 'events/event_user_participant', collection: event.event_user_participants
+
+
+
+%p
+  - if resource.can_change?
+    = link_to cancel_confirmation_link(resource), class: 'btn btn-default btn-mini btn-icon glyphicons power' do
+      %i>
+      = t('.cancel_event')
+  - if resource.can_be_deleted?
+    = link_to event.delete_path, method: :delete, confirm: resource.recurring_parent? ? t('.confirm_delete_parent') : t('.confirm_delete'), class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+      %i>
+      = t('.delete_event')
+
+= content_for :overlays do
+  = render 'overlays/other_events/clone' unless resource.course?

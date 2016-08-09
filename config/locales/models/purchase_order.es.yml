@@ -1,0 +1,10 @@
+es:
+  enumerize:
+    purchase_order:
+      status:
+        pending: 'Pendiente'
+        sent_to_supplier: 'Enviado al proveedor'
+        expecting_delivery: 'Esperando entrega'
+        received_in_part: 'Parcialmente recibido'
+        received_in_full: 'Recibido por completo'
+        received_in_part_amended: 'Parcialmente recibido' # this is correct name for this status

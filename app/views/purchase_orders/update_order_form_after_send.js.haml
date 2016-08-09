@@ -1,0 +1,12 @@
+= render 'update_form'
+= render 'update_status_in_view'
+= render 'update_widgets'
+= render 'update_order_menu'
+
+$('#add-note-modal').after('#{j(render 'overlays/purchase_orders/add_expected_delivery_date_modal').html_safe}')
+$('#add-expected-delivery-date').after('#{j(render 'overlays/purchase_orders/receive_consignment_modal').html_safe}')
+-# TODO: code duplication from Application module, need to refactor
+$('#add-expected-delivery-date .datepicker').datepicker({
+format: I18n.t('date.formats.datepicker_date'),
+autoclose: true
+});

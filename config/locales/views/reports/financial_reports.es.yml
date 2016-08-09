@@ -1,0 +1,9 @@
+es:
+  reports:
+    financial_reports:
+      home: 'Inicio'
+      reports: 'Reportes'
+      finance_reports: 'Reportes Financieros'
+      refine_dates: 'Refinar Fechas'
+      t_total_sales: 'Total de Ventas'
+      t_xero: 'Xero'

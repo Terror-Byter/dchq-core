@@ -1,0 +1,6 @@
+es:
+  suppliers:
+    new:
+      home: 'Inicio'
+      crm: 'CRM'
+      create_supplier: 'Crear Proveedor'

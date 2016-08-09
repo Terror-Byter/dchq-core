@@ -1,0 +1,9 @@
+%tr
+  %td.important
+    = link_to short_sale.receipt_id, sale_path(short_sale)
+  %td= short_sale.created_at
+  %td= short_sale.products
+  %td= short_sale.value
+  %td= short_sale.outstanding
+  %td= short_sale.status_div
+

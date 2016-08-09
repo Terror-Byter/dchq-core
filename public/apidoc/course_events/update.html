@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API documentation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap.min.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/prettify.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap-responsive.min.css'/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/application.css'/>
+  <!-- IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div id='container'>
+        <ul class='breadcrumb'>
+  <li>
+    <a href='../../apidoc.html'>DchqCore 1.0</a>
+    <span class='divider'>/</span>
+  </li>
+  <li>
+    <a href='../../apidoc/course_events.html'>
+      Course events
+      
+    </a>
+    <span class='divider'>/</span>
+  </li>
+  <li class='active'>update</li>
+  
+
+</ul>
+
+  <div class='page-header'>
+    <h1>
+      PUT /api/v1/course_events/:id<br>
+      <small>Update exist course event</small>
+    </h1>
+  </div>
+
+<div>
+
+  
+
+  <h2>Supported Formats</h2>
+  json
+
+
+
+  <h2>Examples</h2>
+    <pre class="prettyprint">
+#URL
+https://app.divecentrehq.com/api/v1/course_events/1
+
+#Request Body
+{
+  id: 1,
+  user_token: &lt;USER_TOKEN&gt;,
+  store_api_key: &lt;STORE_API_KEY&gt;,
+  course_event: {
+    certification_level_id: 205,
+    limit_of_registrations: 21,
+    starts_at: &quot;03-07-2013 06:00&quot;,
+    ends_at: &quot;03-07-2013 07:00&quot;,
+    boat_id: 1,
+    number_of_dives: 12,
+    location: &quot;location&quot;,
+    additional_equipment: &quot;additioan equipment&quot;,
+    children_attributes: {
+      0: {
+        starts_at: &quot;04-07-2013 08:00&quot;,
+        ends_at: &quot;04-07-2013 09:00&quot;,
+        boat_id: 1,
+        number_of_dives: 12,
+        location: &quot;location day 2&quot;,
+        additional_equipment: &quot;additional equipment day 2&quot;,
+        _destroy: 1, #if you want destroy course day
+        id: 14145
+      }
+    },
+    instructions: &quot;instruction&quot;,
+    notes: &quot;some notes&quot;,
+    private: false,
+    enable_booking: true,
+    price: 320.0
+  }
+}
+######### Response Example ################
+#SUCCESS
+no content
+
+#FAILURE
+{
+  starts_at: [
+    &quot;can&#x27;t be blank&quot;,
+    &quot;is not a valid datetime&quot;
+  ],
+  ends_at: [
+    &quot;can&#x27;t be blank&quot;,
+    &quot;is not a valid datetime&quot;
+  ]
+}
+</pre>
+
+  <h2>Params</h2>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>id </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Course Event PARENT ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>store_api_key </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Store API Key</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>course_event </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[certification_level_id] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Certification Level ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[limit_of_registrations] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Limit for registered people in course</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[starts_at] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Course day 1 start date and time</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[ends_at] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Course day 1 end date and time</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[boat_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Boat ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[number_of_dives] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Number of dives for course for day 1</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[additional_equipment] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Additional Equipment for day 1</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[location] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Additional Equipment for day 1</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>course_event[children_attributes] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][starts_at] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Course day 2 start date and time</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][ends_at] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Course day 2 end date and time</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][boat_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Boat ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][number_of_dives] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Number of dives for course for day 2</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][location] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Additional Equipment for day 2</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][additional_equipment] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Additional Equipment for day 2</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][_destroy] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Should be false</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][starts_at] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Course day 3 start date and time</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][ends_at] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Course day 3 end date and time</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][boat_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Boat ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][number_of_dives] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Number of dives for course for day 3</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][location] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Additional Equipment for day 3</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][additional_equipment] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Additional Equipment for day 3</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(240,240,240);'>
+    <td>
+      <strong>course_event[children_attributes][new_{random_number}][_destroy] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Should be false</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+
+
+
+
+    </tbody>
+  </table>
+
+</div>
+
+
+        
+      </div>
+    </div>
+    <hr>
+    <footer>&copy; 2014  Dive Centre HQ API</footer>
+  </div>
+  <script type='text/javascript' src='../../apidoc/javascripts/bundled/jquery-1.7.2.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/bootstrap-collapse.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/prettify.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/apipie.js'></script>
+</body>
+</html>

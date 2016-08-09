@@ -1,0 +1,12 @@
+%label= t('application.attachment_fields.upload_file')
+= f.hidden_field :imageable_type
+.fileupload.fileupload-new{ :'data-provides' => 'fileupload' }
+  .input-append
+    .uneditable-input.span3
+      %i.icon-file.fileupload-exists
+      %span.fileupload-preview
+    %span.btn.btn-default.btn-file
+      %span.fileupload-new= t('application.attachment_fields.select_file')
+      %span.fileupload-exists= t('views.actions.change')
+      = f.file_field :image
+    = link_to  t('views.actions.remove'), '#', class: 'btn fileupload-exists', :'data-dismiss' => 'fileupload'

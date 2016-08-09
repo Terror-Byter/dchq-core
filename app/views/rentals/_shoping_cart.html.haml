@@ -1,0 +1,108 @@
+.shop-client-products.cart
+  %table.table.table-bordered.table-striped.table-vertical-center.table-condensed
+    %thead
+      %tr
+        %th= t '.sku_product'
+        %th.center{style: "width: 80px;"}= t '.price'
+        %th.center{style: "width: 80px;"}= t '.days'
+        %th.center{style: "width: 80px;"}= t '.tax'
+        %th.center{style: "width: 80px;"}= t '.quantity'
+        %th.center{style: "width: 80px;"}= t '.sub-total'
+        %th.center{style: "width: 70px;"}= t '.discount'
+    %tbody
+      = render partial: 'renteds/rented', collection: @rental.renteds, locals: { f: f }
+
+  .separator.bottom
+  .row-fluid
+    .span6
+      %p
+        = link_to resource, method: :delete, style: "color:red;" do
+          %i.icon-ban-circle
+          = t '.delete_rental'
+        %a{"data-toggle" => "modal", href: "#add-note-modal", style: "margin-left: 25px;", class: "#{ 'hide' unless @rental.note.blank? }"}
+          %i.icon-bookmark
+          = t '.add_note'
+      %p{ class: "#{ 'hide' if @rental.note.blank? }" }
+        %strong= t '.rental_note'
+        \-
+        %a{"data-toggle" => "modal", href: "#add-note-modal"}= t '.edit'
+        = succeed @rental.note do
+          %br/
+    .span5.offset1
+      %table.table.table-borderless.table-condensed.cart_total
+        %tbody
+          - if @rental.layby?
+            %tr
+              %td.right= t('.overall_discount')
+              %td.right.strong
+                = f.fields_for :discount, @rental.discount.nil? ? @rental.build_discount : @rental.discount do |df|
+                  = render 'discount_fields', f: df
+                .clear
+          - else
+            %tr
+              %td.right #{ t '.overall_discount' }:
+              %td.right.strong= formatted_currency(@rental.reload.calc_discount)
+          %tr
+            %td.right #{ t ".sub_total_#{ current_store.tax_rate_inclusion? ? 'inc' : 'exc' }" }:
+            %td.right.strong= formatted_currency @rental.reload.renteds.map(&:line_item_price).sum
+          %tr
+            %td.right #{ t '.tax' }:
+            %td.right.strong= formatted_currency @rental.reload.tax_rate_total
+          - if @rental.layby? || @rental.pay_pending?
+            %tr
+              %td{colspan: "2"}
+                .alert.alert-error{style: "text-align:center; padding: 8px !important;"}
+                  %span{style: "font-size:16px;"} #{ t '.amount_due' }: #{ formatted_currency(@rental.rental_payments.blank? ? @rental.grand_total : @rental.reload.change.abs) }
+          - else
+            %tr
+              %td{colspan: 2 }
+                .separator.bottom
+                %span.label.right.label-block.large
+                  #{ t '.net_due' }: #{ formatted_currency(@rental.grand_total) }
+            %tr
+              %td{ colspan: 2 }
+                %span.label.right.label-block.large
+                  %span{ style: 'font-size:16px' }
+                    #{ t '.less_total_payment' }: #{ formatted_currency(@rental.rental_payments.sum(:amount)) }
+          %tr
+            %td{colspan: "2"}
+              - if @rental.layby? || @rental.pay_pending?
+                %a.btn.btn-primary.btn-large.input-block-level.btn-icon.glyphicons.coins{"data-toggle" => "modal", href: "#add-payment-modal", style: "text-align:center; text-transform:uppercase;"}
+                  %i>
+                  #{ t '.add_payment' }
+          %tr
+            %td.center{colspan: "2"}
+              .widget-timeline
+                %ul.list-timeline
+                  - @rental.rental_payments.each do |p|
+                    - next if p.new_record?
+                    %li
+                      %span.date= p.created_at.strftime('%d/%m')
+                      %span.glyphicons.activity-icon.coins
+                        %i
+                      %span.ellipsis
+                        %a{href: 'javascript:void(0)'}= formatted_currency(p.amount)
+                        = p.payment_method.name.upcase
+                      - if @rental.layby? || @rental.pay_pending?
+                        %span.pull-right.hidden-print{style: 'float:right;'}
+                          = link_to remove_payment_rental_path(id: @rental.id, rental_payment_id: p.id), method: :delete, remote: true, style: 'color:red;', confirm: 'Are you sure?' do
+                            %i.icon-ban-circle
+          - unless @rental.layby? || @rental.pay_pending?
+            %tr
+              %td{colspan: '2'}
+                .separator.bottom
+                %span.label.right.label-block.large{style: 'background: #609450; color: #fff; text-shadow: none !important;'}
+                  #{ t '.change' }: #{ formatted_currency @rental.change.abs }
+            %tr.hidden-print
+              %td{ colspan: '2' }
+                .row-fluid
+                  .span6
+                    = link_to '', class: 'btn btn-default btn-default btn-icon glyphicons print print-receipt input-block-level', style: 'text-align:center; text-transform:uppercase;' do
+                      %i>
+                      = t('.print_receipt')
+                  .span6
+                    - unless current_store.email_setting.disable_rental_receipt_email?
+                      = link_to '#email-receipt-modal', class: 'btn btn-default btn-icon glyphicons envelope input-block-level', style: 'text-align:center; text-transform:uppercase;', :'data-toggle' => 'modal' do
+                        %i>
+                        = t('.email_receipt')
+      .clearfix

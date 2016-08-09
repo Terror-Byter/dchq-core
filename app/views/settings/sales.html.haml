@@ -1,0 +1,33 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= link_to t('.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('.settings_sales')
+.innerLR
+  .widget.widget-tabs
+    .widget-head
+      %ul
+        %li.active
+          = link_to '#PaymentsTab', class: 'glyphicons building', :'data-toggle' => :tab do
+            %i>
+            = t('application.sale_fields.payment_methods')
+        %li
+          = link_to '#TaxTab', class: 'glyphicons direction', :'data-toggle' => :tab do
+            %i>
+            = t('application.sale_fields.tax_rates')
+        %li
+          = link_to '#CommissionTab', class: 'glyphicons coins', :'data-toggle' => :tab do
+            %i>
+            = t('application.sale_fields.commission_rates')
+        %li
+          = link_to '#CustomTitles', class: 'glyphicons text_bigger', :'data-toggle' => :tab do
+            %i
+            = 'Custom Titles'
+
+    = render 'application/sale_fields'

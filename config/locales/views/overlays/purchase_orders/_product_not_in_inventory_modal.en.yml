@@ -1,0 +1,5 @@
+en:
+  overlays:
+    purchase_orders:
+      product_not_in_inventory_modal:
+        add_new_product: 'Add New Product'

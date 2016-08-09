@@ -1,0 +1,9 @@
+#add_item_confirmation.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.services.add_item_confirmation.header')
+  .modal-body.center{style: 'overflow-y: visible;'}
+    %p= t('overlays.services.add_item_confirmation.content')
+  .modal-footer
+    %button.btn.btn-danger{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.services.add_item_confirmation.declined')
+    = button_tag t('overlays.services.add_item_confirmation.authorised'), class: 'btn btn-primary add_item_to_service_button'

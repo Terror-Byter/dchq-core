@@ -1,0 +1,4 @@
+en:
+  models:
+    certification_level:
+      should_has_no_events: Should has no events

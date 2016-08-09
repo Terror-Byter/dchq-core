@@ -1,0 +1,15 @@
+es:
+  models:
+    store:
+      printer_types:
+        80mm: Carta / A4
+        70mm: Hasta 70mm Rollo
+        tsp: Estrella TSP650 WebPRNT
+      barcode_printing_types:
+        a4: A4
+        zebra: Zebra Printing Language (ZPL)
+      calendar_type:
+        day: Día
+        week: Semana
+        month: Mes
+      company_error: Empresa obligada tiene una o más tiendas

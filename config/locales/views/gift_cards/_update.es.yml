@@ -1,0 +1,4 @@
+es:
+  gift_cards:
+    update:
+      success: "La Tarjeta de Regalo se actualizo satisfactoriamente."

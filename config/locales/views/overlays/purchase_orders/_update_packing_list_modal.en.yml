@@ -1,0 +1,8 @@
+en:
+  overlays:
+    purchase_orders:
+      update_packing_list_modal:
+        amend_consignment: Amend Consignment
+        will_be_added_to_inventory: Once you mark this consignment as "Received", the items will automatically be added to your available inventory.
+        send_updated_packing_list_to_supplier: Send updated packing list to supplier
+        mark_as_received: Mark As Received

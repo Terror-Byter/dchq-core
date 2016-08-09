@@ -1,0 +1,7 @@
+es:
+  overlays:
+    services:
+      add_item_popup:
+        header: 'Agregar Producto a Servicio'
+        content: 'Agregar un artículo adicional a este servicio, como una manguera nueva o una válvula de inflado.'
+        add_product: 'Agregar Producto a Servicio'

@@ -1,0 +1,17 @@
+es:
+  products:
+    index:
+      home: 'Inicio'
+      sales: 'Ventas'
+      products: 'Productos'
+      download_barcode: 'Exportar Código de Barras CSV'
+      export_all: 'Export Datos de Producto'
+      new_product: 'Nuevo Producto'
+      overview: 'Resumen'
+      total_stock_value: 'Valor total del inventario'
+      all_products: 'Todos los productos'
+      stock_levels: 'Niveles de Inventario'
+      products_in_stock: 'Productos en Inventario'
+      products_out_of_stock: 'Productos agotados'
+      total_products: 'Total de productos:'
+      archived_products: Productos Archivados

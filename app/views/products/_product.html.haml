@@ -1,0 +1,15 @@
+- hide_brand ||= false
+- hide_category ||= false
+
+%tr{ :id => dom_id(product) }
+  %td.important
+    = link_to product.name, product_path(product)
+  %td= product.sku_code
+  - unless hide_brand
+    %td= link_to product.brand_name, brand_path(product.brand)
+  - unless hide_category
+    %td= link_to product.category_name, category_path(product.category)
+  %td= link_to product.supplier_name, supplier_path(product.supplier)
+  %td= formatted_currency(product.retail_price)
+  %td= product.number_in_stock
+  %td= product.status

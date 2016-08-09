@@ -1,0 +1,26 @@
+.alert.alert-danger
+  %button.close{"data-dismiss" => "alert", type: "button"} ×
+  = params[:message]
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= t('.event_registration')
+
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('.event_registration')
+  .row-fluid
+    .span12
+      %p= t('.p')
+      %p= t('.p_1', telephone: @current_store.company.telephone, email: @current_store.company.email)
+
+  .row-fluid
+    .span12
+      - unless @ecp.event.instructions.blank?
+        %h3= t('.instructions')
+        = nl2br @ecp.event.instructions

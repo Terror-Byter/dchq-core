@@ -1,0 +1,14 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('services.edit.home')
+  %li.divider
+  %li= t('services.edit.servicing')
+  %li.divider
+  %li= t('services.edit.edit_service')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('services.edit.edit_service')
+= render 'form'

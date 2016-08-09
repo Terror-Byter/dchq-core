@@ -1,0 +1,12 @@
+#pdf-supplier-mark-sent-modal.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('.send_to_supplier')
+  .modal-body.center
+    %p{align: "center"}
+      = t('.want_to_mark_order_sent')
+    %p{align: "center"}
+      = link_to t('.mark_sent'), download_purchase_order_path(purchase_order), class: 'btn btn-success'
+      = link_to t('.leave_unsent'), download_purchase_order_path(purchase_order), class: 'btn btn-primary'
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('views.actions.cancel')

@@ -1,0 +1,21 @@
+:ruby
+  out_put_radio = [[t('overlays.sales.cash_put_out_modal.take_out'), true], [t('overlays.sales.cash_put_out_modal.put'), false]]
+
+#cash-put-out-modal.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.sales.cash_put_out_modal.header')
+  = simple_form_for current_store, url: cash_put_out_stores_path, method: :post do |f|
+    .modal-body
+      = f.fields_for :tills, current_store.tills.build do |ff|
+        %p{style: 'margin-top:10px;'}= t('overlays.sales.cash_put_out_modal.cash_amount')
+        = ff.number_field :amount, label: false, placeholder: "0.00"
+        .uniformjs
+          = ff.input :take_out, as: :radio_buttons, collection: out_put_radio, label: false, checked: out_put_radio.first
+        .row-fluid
+          .span12
+            = ff.input :notes, as: :text, input_html: { class: 'span12', rows: 2 }
+
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      %button.btn.btn-primary{ type: 'submit' }= t('overlays.sales.cash_put_out_modal.update_till')

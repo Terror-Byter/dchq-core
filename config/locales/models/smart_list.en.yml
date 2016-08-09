@@ -1,0 +1,5 @@
+en:
+  models:
+    smart_list:
+      all: All
+      any: Any

@@ -1,0 +1,179 @@
+.widget-body
+  .tab-content
+    #PaymentsTab.tab-pane.active
+      .row-fluid
+        .span12
+          %p= t('application.sale_fields.payment_methods_text')
+      %hr.separator.bottom/
+      .row-fluid
+        .span3
+          %label= t('application.sale_fields.method')
+        - if current_store.xero_connected?
+          .span3
+            %label= t('application.sale_fields.reference_code')
+      = simple_nested_form_for current_store, url: update_store_settings_path, html: {method: 'put'} do |f|
+        = f.error_messages
+        = hidden_field_tag :back_url, sales_settings_path
+        = hidden_field_tag :back_action, 'sales'
+        = f.simple_fields_for :payment_methods, current_store.payment_methods do |build|
+          = render 'application/payment_method_fields', f: build
+        = f.link_to_add :payment_methods, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+          %i
+          = t('application.sale_fields.add_payment_method')
+        .heading-buttons
+          .buttons.pull-right{style: 'margin: 0;'}
+            %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+              %i
+              = t('views.actions.save')
+          .clearfix
+
+      -  if current_store.payment_methods.only_deleted.any?
+        .row-fluid
+          .span12
+        %hr.separator.bottom/
+        .row-fluid
+        - current_store.payment_methods.only_deleted.each do |pm|
+          .fields
+            .row-fluid
+              .span3
+                .control-group.string.required.readonly.store_payment_methods_name
+                  .controls
+                    = text_field_tag :payment_method, pm.name, class: 'string required readonly', readonly: :readonly, size: 50
+              .span3
+                = link_to restore_sale_settings_path(id: pm.id, type: pm.class.name), class: 'btn btn-small btn-icon glyphicons restart' do
+                  %i
+                  = t '.recover'
+
+    #TaxTab.tab-pane
+      .row-fluid
+        .span12
+          %p
+            = t('application.sale_fields.xero_conditions')
+            = t('application.sale_fields.remove_tax_rate_message')
+      = simple_nested_form_for current_store, url: update_store_settings_path, html: {method: 'put'} do |f|
+        = f.error_messages
+        = hidden_field_tag :back_url, sales_settings_path
+        = hidden_field_tag :back_action, 'sales'
+
+        %hr.separator.bottom/
+        .row-fluid
+          .span3
+            %strong= t('application.sale_fields.tax_options')
+            %p.muted= t('application.sale_fields.tax_options_text')
+          .span6.uniformjs
+            %label= t('application.sale_fields.tax_setup')
+            %label.radio
+              = f.radio_button :tax_rate_inclusion, true, class: 'radio'
+              = t('application.sale_fields.tax_inclusive')
+            %label.radio
+              = f.radio_button :tax_rate_inclusion, false, class: 'radio'
+              = t('application.sale_fields.tax_exclusive')
+        .row-fluid
+          .span3
+            %strong= t('application.sale_fields.tax_rates')
+            %p.muted= t('application.sale_fields.tax_rates_text')
+        .row-fluid
+          .span3
+            %label= t('application.sale_fields.tax_rate_identifier')
+          .span3
+            %label= t('application.sale_fields.tax_rate_percent')
+        = f.simple_fields_for :tax_rates, current_store.tax_rates do |build|
+          = render 'application/tax_rate_fields', f: build
+        = f.link_to_add :tax_rates, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+          %i
+          = t('application.sale_fields.add_tax_rate')
+        .heading-buttons
+          .buttons.pull-right{style: 'margin: 0;'}
+            %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+              %i
+              = t('views.actions.save')
+          .clearfix
+
+
+      - if current_store.tax_rates.only_deleted.any?
+        .row-fluid
+          .span12
+        %hr.separator.bottom/
+        .row-fluid
+        - current_store.tax_rates.only_deleted.each do |pm|
+          .fields
+            .row-fluid
+              .span3
+                .control-group.string.required.readonly.store_payment_methods_name
+                  .controls
+                    = text_field_tag :payment_method, pm.amount, class: 'string required readonly', readonly: :readonly, size: 50
+              .span3
+                = link_to restore_sale_settings_path(id: pm.id, type: pm.class.name), class: 'btn btn-small btn-icon glyphicons restart' do
+                  %i
+                  = t '.recover'
+
+    #CommissionTab.tab-pane
+      .row-fluid
+        .span12
+          %p= t('application.sale_fields.commission_content')
+      = simple_nested_form_for current_store, url: update_store_settings_path, html: {method: 'put'} do |f|
+        = f.error_messages
+        = hidden_field_tag :back_url, sales_settings_path
+        = hidden_field_tag :back_action, 'sales'
+
+        %hr.separator.bottom/
+        %strong= t('application.sale_fields.commission_rates')
+        %p.muted= t('application.sale_fields.commission_rates_text')
+        .row-fluid
+          .span3
+            %label= t('application.sale_fields.commission_rate_percent')
+        = f.simple_fields_for :commission_rates, current_store.commission_rates do |build|
+          = render 'application/commission_rate_fields', f: build
+        = f.link_to_add :commission_rates, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+          %i
+          = t('application.sale_fields.add_commission_rate')
+        .heading-buttons
+          .buttons.pull-right{style: 'margin: 0;'}
+            %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+              %i
+              = t('views.actions.save')
+          .clearfix
+
+
+      - if current_store.commission_rates.only_deleted.any?
+        .row-fluid
+          .span12
+        %hr.separator.bottom/
+        .row-fluid
+        - current_store.commission_rates.only_deleted.each do |pm|
+          .fields
+            .row-fluid
+              .span3
+                .control-group.string.required.readonly.store_payment_methods_name
+                  .controls
+                    = text_field_tag :payment_method, pm.amount, class: 'string required readonly', readonly: :readonly, size: 50
+              .span3
+                = link_to restore_sale_settings_path(id: pm.id, type: pm.class.name), class: 'btn btn-small btn-icon glyphicons restart' do
+                  %i
+                  = t '.recover'
+
+    #CustomTitles.tab-pane
+      .row-fluid
+        .span12
+          %p
+            = t '.custom_title'
+      = simple_nested_form_for current_store, url: update_store_settings_path, html: {method: 'put'} do |f|
+        = f.error_messages
+        = hidden_field_tag :back_url, sales_settings_path
+        = hidden_field_tag :back_action, 'sales'
+
+        %hr.separator.bottom/
+        .row-fluid
+          .span6
+            = f.input :invoice_title
+        .row-fluid
+          .span6
+            = f.input :receipt_title
+
+        .heading-buttons
+          .buttons.pull-right{style: 'margin: 0;'}
+            %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+              %i
+              = t('views.actions.save')
+          .clearfix
+

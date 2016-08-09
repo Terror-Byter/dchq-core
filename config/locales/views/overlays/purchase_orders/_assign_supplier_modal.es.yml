@@ -1,0 +1,8 @@
+es:
+  overlays:
+    purchase_orders:
+      assign_supplier_modal:
+        assign_supplier: 'Asignar Proveedor'
+        supplier_name: 'Nombre del Proveedor'
+        add_supplier_customer: 'agregar un nombre de proveedor'
+        or: 'o'

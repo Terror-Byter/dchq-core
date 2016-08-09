@@ -1,0 +1,47 @@
+= render 'breadcrumbs'
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('purchase_orders.common.new_purchase_order')
+.innerLR
+  .row-fluid
+    .span9#widget-status
+      / Widget
+      -# TODO: move conditional to decorator
+      - case
+      - when purchase_order.pending?
+        = render 'purchase_orders/widgets/add_product'
+      - when purchase_order.received?
+        = render 'purchase_orders/widgets/received'
+      - else
+        = render 'purchase_orders/widgets/awaiting_delivery'
+      / // Widget END
+    .span3#widget-supplier
+      = render 'purchase_orders/widgets/supplier'
+      / Shopping cart
+  .shop-client-products.cart
+    -# TODO: move conditional to decorator
+    - if purchase_order.received?
+      = render 'purchase_order_items_table_received'
+    - else
+      = render 'purchase_order_items_table'
+    / // Cart table END
+    .separator.bottom
+    .row-fluid
+      .span6
+        %p#order-menu
+          = render 'order_menu'
+        / show if note created. Also show on all sales status (including complete, and on receipt page. Also include "add note" link on receipt page)
+        %p#notes
+          - if purchase_order.note.present?
+            = render 'notes'
+      - if purchase_order.amendable?
+        = render 'purchase_orders/widgets/order_operations_amend'
+      - else
+        = render 'purchase_orders/widgets/order_operations'
+.hide
+  -# TODO: move conditional to decorator
+  - if purchase_order.received_in_part?
+    #print= render print_partial_in_part
+  - else
+    #print= render print_partial

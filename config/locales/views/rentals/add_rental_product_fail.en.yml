@@ -1,0 +1,4 @@
+en:
+  rentals:
+    add_rental_product_fail:
+      not_found: Rental Product not found by barcode

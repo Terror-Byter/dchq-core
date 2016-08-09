@@ -1,0 +1,53 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t '.home'
+  %li.divider
+  %li= t '.crm'
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t '.name', name: resource.name
+    .span8
+      .buttons.pull-right.hidden-print
+        - if can? :export, resource
+          %a.btn.btn-small.btn-default.btn-icon.glyphicons.download{"data-toggle" => "modal", href: "#export-customers"}
+            %i
+            = t '.export'
+        - if can? :update, resource
+          = link_to edit_resource_path, class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t '.edit'
+        - if can? :send_email, resource
+          = link_to '#email-list-members', class: 'btn btn-primary btn-icon glyphicons envelope', :'data-toggle' => :modal do
+            %i
+            = t '.email'
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.group
+        %i
+        = t '.my'
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr
+            %th= t '.table_name'
+            %th= t '.table_email'
+        %tbody
+          - if @customers.blank?
+            %tr{ colspan: 2 }
+              %td= t '.no_records'
+          - else
+            = render partial: 'result', collection: @customers
+      .separator.top.form-inline.small
+        = t '.total', total: @customers.total_count
+        = paginate @customers
+
+= content_for :overlays do
+  - if can? :send_email, resource
+    = render 'overlays/smart_lists/send_email'
+
+  - if can? :export, resource
+    = render 'overlays/smart_lists/export'

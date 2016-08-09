@@ -1,0 +1,8 @@
+en:
+  events:
+    print_resource_manifest:
+      print_resource_manifest: 'Print Resource Manifest'
+      select_resource: 'Select Resource'
+      select_day: 'Select Day'
+      from: 'From'
+      to: 'To'

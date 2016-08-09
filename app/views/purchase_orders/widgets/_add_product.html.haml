@@ -1,0 +1,24 @@
+-# need this to enable ClientSideValidations
+= form_for PurchaseOrderItem.new, as: :purchase_order_item,  url: '', validate: true do |f|
+  .widget
+    .widget-head
+      %h4.heading
+        = t('purchase_orders.form.purchase_order_id')
+        = purchase_order.id
+      %span.details{style: 'color:green; font-weight:bold;'}
+        = t('purchase_orders.form.status')
+        %span#status
+          = purchase_order.status
+      %span.details.pull-right{style: 'color:green; font-weight:bold;'}
+        = t('purchase_orders.form.staff')
+        = purchase_order.creator
+    .widget-body.collapse.in.hidden-print
+      .row-fluid
+        .span7
+          %input#search_product.span12{placeholder: t('purchase_orders.form.scan_barcode'), type: 'text'}/
+        .span2
+          = f.number_field :quantity, class: 'span12', placeholder: t('purchase_orders.form.quantity'), min: 1, required: 'required'
+        .span3
+          %a#add-product-link.btn.btn-primary.input-block-level{href: ''}= t('purchase_orders.form.add_product')
+      %a{'data-toggle' => 'modal', href: '#product-not-in-inventory-modal'}
+        = t('purchase_orders.form.add_product_not_in_inventory')

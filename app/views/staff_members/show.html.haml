@@ -1,0 +1,122 @@
+:ruby
+  @notable ||= @staff_member
+  @note ||= @staff_member.notes.new
+  @note.attachment || @note.build_attachment
+
+  staff_member ||= @staff_member.decorate
+
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('staff_members.show.home')
+  %li.divider
+  %li= t('staff_members.show.crm')
+  %li.divider
+  %li= t('staff_members.show.staff')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= staff_member.name
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#new-staff-note', class: 'btn btn-small btn-default btn-icon glyphicons notes', :'data-toggle' => 'modal' do
+          %i
+          = t('staff_members.show.new_note')
+        = link_to edit_staff_member_path, class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+          %i
+          = t('staff_members.show.edit_staff')
+.innerLR
+  .row-fluid
+    .span12
+      .row-fluid
+        .span2
+          .thumbnail{style: 'margin-bottom:10px;'}
+            %img= staff_member.image
+        .span5
+          %h4
+            %span= t('staff_members.show.contact_info')
+          %p
+            %strong= t('staff_members.show.address')
+            = til(staff_member.full_address)
+            %br>/
+            = t('staff_members.show.email')
+            = mail_to til(staff_member.email)
+            = succeed t('staff_members.show.ph') do
+              %br
+            &nbsp;
+            = til(staff_member.telephone)
+          %p.label.btn-success
+            %strong>= t('staff_members.show.emergency_contact')
+            \
+            = til(staff_member.emergency_contact)
+          %p
+            = t('staff_members.show.tags')
+            %span.label= til staff_member.tags
+        .span4.offset1
+          .widget
+            .widget-head
+              %h4.heading= t('staff_members.show.working_details')
+            .widget-body.list
+              %ul
+                %li
+                  %strong= t('staff_members.show.user_level')
+                  = staff_member.role
+                %li
+                  %strong= t('staff_members.show.shop_access')
+                  = til staff_member.shops
+                %li
+                  %strong= t('staff_members.show.availibility')
+                  = til staff_member.available_days
+                %li
+                  %strong= t('staff_members.show.instructor_number')
+                  = til staff_member.instructor_number
+                %li
+                  %strong= t('staff_members.show.contact_hours')
+                  = til staff_member.contracted_hours
+                %li
+                  %strong= t('staff_members.show.sale_target')
+                  = til staff_member.sale_target
+      .row-fluid
+        .widget.widget-tabs
+          .widget-head
+            %ul
+              %li.active
+                = link_to '#tab-1', class: 'glyphicons coins', :'data-toggle' => 'tab' do
+                  %i
+                  = t('staff_members.show.sales')
+              %li
+                %a.glyphicons.notes{'data-toggle' => 'tab', href: '#tab-2'}
+                = link_to '#tab-2', class: 'glyphicons notes', :'data-toggle' => 'tab' do
+                  %i
+                  = t('staff_members.show.notes')
+          .widget-body
+            .tab-content
+              #tab-1.tab-pane.active
+                - if staff_member.no_sales?
+                  = t('staff_members.show.no_sales')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    = render 'sales/table_headers'
+                    %tbody
+                      = render partial: 'sales/short_sale', collection: staff_member.sales
+              #tab-2.tab-pane
+                - if staff_member.no_notes?
+                  = t('staff_members.show.no_notes')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    = render 'notes/table_headers'
+                    %tbody
+                      -#TODO NEED TO FIX
+                      = render @staff_member.notes.decorate
+%p
+
+  = link_to staff_member_path(staff_member), method: :delete,
+    confirm: I18n.t('views.actions.confirm'),
+    class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+    %i>
+    = t('staff_members.show.delete_staff')
+
+= content_for :overlays do
+  = render 'overlays/staff_members/new_staff_note'

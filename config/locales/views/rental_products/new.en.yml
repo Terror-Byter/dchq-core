@@ -1,0 +1,8 @@
+en:
+  rental_products:
+    new:
+      home: Home
+      rentals: Rentals
+      inventory: Inventory
+      add: Add
+      new: Add Rental Inventory Item

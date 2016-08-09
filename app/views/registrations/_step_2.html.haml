@@ -1,0 +1,89 @@
+.widget-body
+= simple_nested_form_for @store, html: { method: :put }, validate: true do |f|
+  = f.error_messages
+  #tab2.tab-pane
+    .innerLR
+      %h4= t('registrations.step_2.sales_settings')
+      %p= t('registrations.step_2.p')
+      .widget.widget-tabs
+        .widget-head
+          %ul
+            %li.active
+              = link_to '#PaymentsTab', :'data-toggle' => :tab, class: 'glyphicons building' do
+                %i>
+                = t('registrations.step_2.payment_methods')
+            %li
+              = link_to '#TaxTab', :'data-toggle' => :tab, class: 'glyphicons direction' do
+                %i>
+                = t('registrations.step_2.tax_rates')
+            %li
+              = link_to '#CommissionTab', :'data-toggle' => :tab, class: 'glyphicons coins' do
+                %i>
+                = t('registrations.step_2.commission_rates')
+        .widget-body
+          .tab-content
+            #PaymentsTab.tab-pane.active
+              %strong= t('registrations.step_2.payment_methods')
+              %p.muted= t('registrations.step_2.p_1')
+              .row-fluid
+                .span3
+                  %label= t('registrations.step_2.method')
+              = f.simple_fields_for :payment_methods do |form|
+                = render 'payment_method_fields', f: form
+              = f.link_to_add :payment_methods, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+                %i
+                = t('registrations.step_2.add_payment_method')
+            #TaxTab.tab-pane
+              .row-fluid
+                .span12
+                  %p= t('registrations.step_2.p_2')
+              %hr.separator.bottom/
+              .row-fluid
+                .span3
+                  %strong= t('registrations.step_2.tax_options')
+                  %p.muted= t('registrations.step_2.p_3')
+                .span6.uniformjs
+                  %label= t('registrations.step_2.tax_setup')
+                  %label.radio
+                    = f.radio_button :tax_rate_inclusion, true, class: 'radio'
+                    = t('registrations.step_2.tax_rate_inclusion')
+                  %label.radio
+                    = f.radio_button :tax_rate_inclusion, false, class: 'radio'
+                    = t('registrations.step_2.tax_rate_exclusive')
+              %strong= t('registrations.step_2.tax_rates')
+              %p.muted= t('registrations.step_2.p_4')
+              .row-fluid
+                .span3
+                  %label= t('registrations.step_2.tax_identifier')
+                .span3
+                  %label= t('registrations.step_2.tax_rate')
+              = f.simple_fields_for :tax_rates do |form|
+                = render 'tax_rate_fields', f: form
+              = f.link_to_add :tax_rates, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+                %i
+                = t('registrations.step_2.add_tax_rate')
+            #CommissionTab.tab-pane
+              .row-fluid
+                .span12
+                  %p= t('registrations.step_2.p_5')
+              %hr.separator.bottom/
+              %strong= t('registrations.step_2.commission_rates')
+              %p.muted= t('registrations.step_2.p_6')
+              .row-fluid
+                .span3
+                  %label= t('registrations.step_2.commission_rate_label')
+              = f.simple_fields_for :commission_rates do |form|
+                = render 'commission_rate_fields', f: form
+              = f.link_to_add :commission_rates, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+                %i
+                = t('registrations.step_2.add_commission_rate')
+      .row-fluid
+        .span12
+          .pull-right
+            = f.button :submit, t('registrations.step_2.next'), class: 'btn btn-large btn-success'
+
+= content_for :js do
+  :javascript
+    $(function(){
+      $('a[href="#tab2"]').click()
+    });

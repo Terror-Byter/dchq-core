@@ -1,0 +1,15 @@
+.modal-header
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+  %h3= t('incidents.form.header')
+= simple_form_for [@customer, @incident], validate: true do |f|
+  .modal-body
+    .row-fluid
+      = f.input :description, input_html: { rows: 2, style: 'width: 96%' }
+    .row-fluid
+      = f.input :occurred_on, as: :string, input_html: { class: 'datepicker', style: 'z-index: 100010;' }
+    .row-fluid
+      = f.simple_fields_for :attachment do |form|
+        = render 'attachment_fields', f: form
+  .modal-footer
+    = link_to t('views.actions.cancel'), '#', class: 'btn btn-default', :'aria-hidden' => true, :'data-dismiss' => :modal
+    = f.button :submit, t('incidents.form.add_button'), class: 'btn btn-primary'

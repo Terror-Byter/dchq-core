@@ -1,0 +1,7 @@
+en:
+  overlays:
+    purchase_orders:
+      add_expected_delivery_date_modal:
+        expected_delivery_date: 'Expected Delivery Date'
+        enter_date: 'Enter the date you expect to receive this consignment on.'
+        add_expected_delivery_date: 'Add Expected Delivery Date'

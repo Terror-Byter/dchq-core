@@ -1,0 +1,10 @@
+en:
+  overlays:
+    event_customer_participants:
+      remove_popup:
+        header: "Remove Customer from Event"
+        content_unpaid: "You are above to remove %{full_name} from this event. No payments were made, therefore no further action is necessary."
+        content_other: "You are about to remove %{full_name} from this event. This customer has made a payment of #{formatted_currency(ecp.price)}. You will be redirected to issue a refund or credit note."
+        checkbox_label: "Send email notification to customer"
+        remove_button: "Remove Customer from Event"
+        cancel: "Close"

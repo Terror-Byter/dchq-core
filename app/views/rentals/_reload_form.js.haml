@@ -1,0 +1,8 @@
+:ruby
+  @rental.reload
+- if @rental.layby? || @rental.pay_pending?
+  $('.modal').modal('hide')
+  $('#form').html("#{ j( render 'form' ) }")
+  Dchq.Rentals.Form.autocomplete()
+- else
+  window.location.href = "#{rental_path(@rental)}"

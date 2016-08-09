@@ -1,0 +1,14 @@
+en:
+  settings:
+    clear_data_page:
+      home: 'Home'
+      settings: 'Settings'
+      settings_clear_test_data: 'Settings: Clear Test Data'
+      content: 'Easily wipe test data from your account. Please note, this action is permanent.'
+      clear_test_data: 'Clear Test Data'
+      select_data_to_clear: 'Select Data to Clear'
+      select_data_to_clear_text: 'Choose from the following options.'
+      clear_data: 'Clear Data'
+      sales: 'Sales'
+      events: 'Events'
+      customers: 'Customers'

@@ -1,0 +1,3 @@
+$('.products-list li.type_of_service').remove()
+$('.products-list').prepend("#{escape_javascript(render 'type_of_service')}")
+Dchq.Services.recalculate_sub_total()

@@ -1,0 +1,8 @@
+%tr{ :id => dom_id(brand) }
+  %td.important
+    = link_to brand.name, brand_path(brand)
+  %td= brand.products_count
+  %td= brand.products_in_stock
+  %td= formatted_currency(brand.products_stock_value)
+  %td= formatted_currency(brand.average_month_sales)
+  %td= brand.last_sale_date

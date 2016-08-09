@@ -1,0 +1,9 @@
+es:
+  sales:
+    close:
+      home: 'inicio'
+      sales: 'Ventas'
+      point_of_sale: 'Punto de Venta'
+      register_is_closed: 'Actualmente la caja registradora está cerrada. Fue cerrada por %{shop} en %{time}'
+      open_register: 'Abrir Caja Registradora'
+      reopen_register: 'Abrir de nuevo Caja Registradora'

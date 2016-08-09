@@ -1,0 +1,10 @@
+en:
+  sales:
+    sale_customer:
+      tel: 'Tel:'
+      email: 'Email:'
+      phone: 'Phone:'
+      mark_customer: '[customer]'
+      mark_merchant: '[merchant]'
+      tax_id: 'Tax ID:'
+

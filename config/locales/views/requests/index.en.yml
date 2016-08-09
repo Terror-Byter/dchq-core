@@ -1,0 +1,7 @@
+en:
+  requests:
+    index:
+      home: 'Home'
+      header: 'Customer Requests'
+      sub_header: 'Request Records'
+      total: 'Total'

@@ -1,0 +1,8 @@
+en:
+  company_mailer:
+    created_new_company:
+      company_name: 'Company Name:'
+      owner_email: 'Owner Email:'
+      fname: 'FName'
+      lname: 'LName'
+      phone: 'Phone'

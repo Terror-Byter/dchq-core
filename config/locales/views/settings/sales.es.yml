@@ -1,0 +1,6 @@
+es:
+  settings:
+    sales:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_sales: 'Ajustes: Ventas'

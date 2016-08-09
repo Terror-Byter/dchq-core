@@ -1,0 +1,43 @@
+:ruby
+  hide_remove_link = false unless hide_remove_link
+
+%h4
+  = t('application.child_fields.day')
+  %span.counter 1
+  = f.link_to_remove "#{content_tag(:i,'')} #{t('application.child_fields.remove_day')}".html_safe, class: 'btn btn-info btn-small btn-icon glyphicons circle_minus' unless hide_remove_link
+.row-fluid
+  .span3
+    %strong= t('application.child_fields.date_and_times')
+    %p.muted= t('application.child_fields.date_and_times_text')
+  .span3
+    = f.label :starts_at
+    .datetimepicker.input-append.date
+      = f.text_field :starts_at, value: f.object.decorate.starts_at_for_form, class: "span11 starts_at #{ 'autoupdate' if f.object.new_record? }", size: false
+      %span.add-on
+        %i.icon-calendar
+    = f.label :all_day do
+      = f.check_box :all_day, class: 'all_day'
+      = t('other_events.form.all_day')
+  .span3
+    = f.label :ends_at
+    .datetimepicker.input-append.date
+      = f.text_field :ends_at, value: f.object.decorate.ends_at_for_form, class: 'span11 ends_at', size: false
+      %span.add-on
+        %i.icon-calendar
+  .span3
+    = f.association :boat, collection: current_store.boats
+.row-fluid
+  .span3
+    %strong= t('application.child_fields.dive_info')
+    %p.muted= t('application.child_fields.dive_info_text')
+  .span3
+    = f.input :location, input_html: { class: 'span11' }
+    .separator
+  .span3
+    = f.input :additional_equipment, input_html: { class: 'span11' }
+  .span1
+    = f.label :number_of_dives
+    .input-prepend
+      %span.add-on #
+      = f.text_field :number_of_dives, class: 'span9', size: nil
+.clear

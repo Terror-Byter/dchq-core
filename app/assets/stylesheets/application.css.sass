@@ -1,0 +1,136 @@
+@import 'bootstrap/bootstrap'
+@import 'bootstrap/responsive'
+@import 'theme/glyphicons'
+@import 'theme/uniform.default'
+@import 'jasny-bootstrap.min'
+@import 'jasny-bootstrap-responsive.min'
+@import 'bootstrap-select'
+@import 'bootstrap-toggle-buttons'
+@import 'datetimepicker'
+@import 'jquery.ui.all'
+@import 'theme/jquery.notyfy'
+@import 'theme/jquery.notyfy_theme_default'
+@import 'jquery.easy-pie-chart'
+@import 'bootstrap/bootstrap-image-gallery'
+@import 'theme/style-light'
+@import 'theme/blue'
+@import 'jquery.tagit'
+@import 'select2'
+@import 'bootstrap-datepicker'
+@import 'pace'
+
+.translation_missing
+  font-size: 30px
+  color: red
+  font-family: Times
+
+.gray_box
+  background: #F6F6F6
+  position: relative
+  padding: 10px
+  border: 1px solid #EEE
+
+//BARCODE
+table.barby_code
+  border: 0 none transparent !important
+  border-collapse: collapse !important
+  margin-left: auto
+  margin-right: auto
+  overflow: hidden
+  table-layout: fixed
+
+  tr.barby_row
+    td.barby_black
+      background-color: #000 !important
+      width: 1px
+      border-spacing: 0px
+      padding: 0
+
+    td.barby_white
+      background-color: #fff !important
+      width: 1px
+      border-spacing: 0px
+      padding: 0
+
+    td
+      width: 1px
+      border: 0 none transparent !important
+      border-spacing: 0px
+      padding: 0
+
+.event_cancel
+  text-decoration: line-through
+
+.event_overview_btn
+  margin-right: 2px
+
+.hide
+  display: none
+
+body .search .search_value
+  background: none repeat scroll 0 0 #FFFFFF
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3)
+  left: 1px
+  position: absolute
+  width: 279px
+  z-index: 10
+  > a
+    background: none repeat scroll 0 0 #FFFFFF
+    color: #555555
+    cursor: pointer
+    display: block
+    font-size: 12px
+    line-height: 25px
+    padding: 0 6px
+    &:hover
+      background: none repeat scroll 0 0 #FFFAC2
+    > span
+      border-radius: 3px 3px 3px 3px
+      color: #FFFFFF
+      display: inline-block
+      float: right
+      font-size: 10px
+      height: 12px
+      line-height: 11px
+      margin: 6px 0 0
+      text-align: center
+      text-transform: capitalize
+      width: 61px
+      &.customer
+        background: none repeat scroll 0 0 #46A546
+      &.supplier
+        background: none repeat scroll 0 0 #F89406
+      &.Courseevent, &.Otherevent
+        background: none repeat scroll 0 0 #62CFFC
+      &.user
+        background: none repeat scroll 0 0 #1800F0
+      &.service
+        background: none repeat scroll 0 0 #FF6600
+      &.product
+        background: none repeat scroll 0 0 red
+
+.select2-container
+  width: 100%
+
+.select2-arrow
+  margin-right: 0px !important
+
+.ransack_links
+  th
+    a
+      color: white
+
+.buttons
+  margin-top: 6px
+  a
+    margin: 2px
+
+.select2-drop
+  z-index: 10001
+
+.span12.error
+  color: red
+  border: 1px solid red
+
+label.error
+  color: red

@@ -1,0 +1,12 @@
+en:
+  overlays:
+    settings:
+      scubatribe_connect:
+        header: Connect to ScubaTribe
+        header_existing_customers: Existing ScubaTribe Customers
+        para_existing_customers: Lets get you connected. Get your API key from the ScubaTribe admin area and enter it below.
+        api_key_existing_customers: ScubaTribe API Key
+        button_connect_existing: Connect Existing Account
+        header_new_customers: No ScubaTribe Account?
+        para_new_customers: Create an account right away. Simply click the button below and we'll get a ScubaTribe account setup for you.
+        button_connect_new: Create New Account

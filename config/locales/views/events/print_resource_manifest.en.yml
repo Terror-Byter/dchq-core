@@ -1,0 +1,26 @@
+en:
+  events:
+    print_resource_manifest:
+      resource_manifest: 'Resource Manifest:'
+      staff: 'Staff'
+      date_time: 'Date / Time:'
+      customer: Customer
+      customers: 'Customers'
+      pickup: Pickup
+      activity: Activity
+      cert: Cert
+      dives: Dives
+      weight: Weight
+      reg: Reg
+      bcd: BCD
+      fins: Fins
+      mask: Mask
+      emergency: Emergency
+      locations: 'Locations:'
+      event_notes: 'Event Notes (internal):'
+      notes_incidents: 'Notes / Incidents:'
+      rental_bcd: Rental BCDs
+      weight_total: Weight Total
+      masks: Masks
+      nitrox: Nitrox
+      wetsuit: Wetsuit

@@ -1,0 +1,25 @@
+en:
+  products:
+    show:
+      home: 'Home'
+      sales: 'Sales'
+      products: 'Products'
+      details: 'Details'
+      edit_product: 'Edit Product'
+      print_barcode: 'Print Barcode'
+      brand: 'Brand:'
+      category: 'Category:'
+      supplier: 'Supplier:'
+      product_information: 'Product Information'
+      commision_rate: 'Commission Rate:'
+      tax_rate: 'Tax Rate:'
+      sku: 'SKU:'
+      sales_history: 'Sales History'
+      inventory_information: 'Inventory Information'
+      retail_price: 'Retail Price'
+      current_inventory_level: 'Current Inventory Level'
+      low_inventory_level: 'Low Inventory Level'
+      delete_btn: 'Delete Product'
+      no_sales: 'No Sales'
+      archived: Archive Product
+      unarchived: Unarchive Product

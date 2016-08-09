@@ -1,0 +1,8 @@
+en:
+  overlays:
+    rentals:
+      add_payment:
+        add_payment: Add Payment
+        enter: "Enter the amount you're receiving:"
+        cancel: Cancel
+        button: Add Payment

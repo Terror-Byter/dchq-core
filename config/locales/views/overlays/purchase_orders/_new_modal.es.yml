@@ -1,0 +1,7 @@
+es:
+  overlays:
+    purchase_orders:
+      new_modal:
+        supplier: 'Proveedor'
+        delivery_location: 'Ubicación de Entrega'
+        select_supplier_and_location: 'Seleccione el proveedor y la ubicación hacia donde se enviarán los artículos.'

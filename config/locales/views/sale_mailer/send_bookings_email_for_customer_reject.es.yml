@@ -1,0 +1,6 @@
+es:
+  sale_mailer:
+    send_bookings_email_for_customer_reject:
+      booking_rejected: 'Reservación Rechazada: %{customer}'
+      your_booking_rejected: 'Su reservación para %{event_name} en %{starts_at} ha sido rechazada. Cualquier pago que haya hecho ha sido reembolsado y dentro de poco será mostrado en su estado de cuenta. No es necesario hacer alguna otra acción.'
+      reason_for_reject: 'Razón del Rechazo'

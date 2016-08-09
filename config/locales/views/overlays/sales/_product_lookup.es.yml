@@ -1,0 +1,8 @@
+es:
+  overlays:
+    sales:
+      product_lookup:
+        header: 'Búsqueda de Producto'
+        brands: 'Marca'
+        categories: 'Categorías'
+        products: 'Productos'

@@ -1,0 +1,88 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('brands.show.home')
+  %li.divider
+  %li= t('brands.show.sales')
+  %li.divider
+  %li= link_to t('brands.show.brands'), brands_path
+  %li.divider
+  %li= t('brands.show.details')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        = t('brands.show.brands')
+        %span
+          |
+          = brand.name
+    .span8.right
+      - if can? :update, resource
+        .buttons.hidden-print
+          = link_to edit_brand_path(brand), class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t('brands.show.edit_brand')
+.innerLR
+  .row-fluid
+    .span3
+      .thumb
+        %img= brand.logo
+      .separator.bottom
+    .span5
+      %h4= brand.name
+      %p= brand.description
+    .span4
+      %h4
+        %span= t('brands.show.brand_information')
+      .separator.bottom
+      = render 'products/group_info', association: brand
+  .row-fluid
+    .span12
+      .widget.widget-tabs
+        .widget-head
+          %ul
+            %li.active
+              = link_to '#tab-1', class: 'glyphicons fins', :'data-toggle' => 'tab' do
+                %i
+                = t('brands.show.skus')
+            %li
+              = link_to '#tab-2', class: 'glyphicons list', :'data-toggle' => 'tab' do
+                %i
+                = t('brands.show.sales_history')
+        .widget-body
+          .tab-content
+            #tab-1.tab-pane.active
+              - if brand.no_products?
+                = t('brands.show.no_products')
+              - else
+                %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                  = render 'products/table_headers', hide_brand: true
+                  %tbody
+                    = render @products.decorate, hide_brand: true
+              .separator.top.form-inline.small
+                = t('brands.show.total_products')
+                = @products.total_count
+                .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+                  = paginate @products, param_name: 'products'
+                .clearfix
+            #tab-2.tab-pane
+              - if brand.no_sales?
+                = t('customer.show.no_sales')
+              - else
+                %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                  = render 'sales/table_headers', for_brand: true
+                  %tbody
+                    = render partial: 'sales/short_sale', collection: brand.sales
+              .separator.top.form-inline.small
+                = t('brands.show.total_sales')
+                = @sales.total_count
+                .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+                  = paginate @sales, param_name: 'sales'
+                .clearfix
+
+%p
+  - if brand.products.empty?
+    = link_to brand, method: :delete, confirm: 'Are you sure?', class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+      %i>
+      = t('brands.show.delete_brand')

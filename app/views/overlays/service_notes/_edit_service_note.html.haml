@@ -1,0 +1,10 @@
+#edit-servicing-note.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'} ×
+    %h3= t('overlays.service_notes.edit_service_note.header')
+  = simple_nested_form_for service_note, url: service_service_note_path(service, service_note),
+                                  html: {multipart: true, method: :put}, validate: true do |f|
+    = render 'application/service_note_fields', f: f
+    .modal-footer
+      = link_to t('views.actions.cancel'), '#', class: 'btn btn-default', :'aria-hidden' => true, :'data-dismiss' => :modal
+      = f.button :submit, t('overlays.service_notes.edit_service_note.add_service_note'), class: 'btn btn-primary'

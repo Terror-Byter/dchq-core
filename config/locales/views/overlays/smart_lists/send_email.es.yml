@@ -1,0 +1,9 @@
+es:
+  overlays:
+    smart_lists:
+      send_email:
+        header: Lista de Correo Miembros
+        email: Asunto del Correo
+        content: Contenido
+        cancel: Cancelar
+        button: Lista de Correo Miembros

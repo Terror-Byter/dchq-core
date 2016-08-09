@@ -1,0 +1,9 @@
+es:
+  notes:
+    table_headers:
+      written_by: 'Escrito por'
+      date: 'Fecha'
+      note: 'Nota'
+      files: 'Archivos'
+      actions: 'Acciones'
+

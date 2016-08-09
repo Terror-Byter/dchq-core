@@ -1,0 +1,46 @@
+:ruby
+  ecp = if event_customer_participant.event.course? && !event_customer_participant.event.parent?
+          event_customer_participant.event.parent.event_customer_participants.select{|e| e.customer_id == event_customer_participant.customer_id}.first || event_customer_participant
+        else
+          event_customer_participant
+        end
+
+%tr
+  %td.important
+    = link_to event_customer_participant.customer_name, event_customer_participant.customer
+  %td
+    = event_customer_participant.link_to_staff
+  %td= til(event_customer_participant.certificate)
+  %td
+    %span.label.btn-default Fins: #{til event_customer_participant.fins_size}
+    %span.label.btn-default BCD: #{til event_customer_participant.bcd_size}
+    %span.label.btn-default Wetsuit: #{til event_customer_participant.wetsuit_size}
+  %td= til(event_customer_participant.assigned_transport)
+  %td
+
+    - unless resource.cancel? && ecp.free?
+      - if (ecp.unpaid? && !resource.course?) || (ecp.unpaid? && resource.course? && resource.parent?) || ecp.sale.nil?
+        = link_to "#pay_for_event_#{ecp.id}", class: "btn btn-small btn-primary btn-icon glyphicons coins", :'data-toggle' => :modal do
+          %i>
+          = t('event_customer_participants.event_customer_participant.pay_for_event')
+        = render 'overlays/event_customer_participants/pay_for_event.html.haml', ecp: ecp
+      - else
+        = link_to ecp.sale, class: 'btn btn-small btn-success btn-icon glyphicons ok_2' do
+          %i>
+          - if ecp.sale.layby?
+            = t('event_customer_participants.event_customer_participant.layby')
+          - elsif ecp.sale.active?
+            = t('event_customer_participants.event_customer_participant.not_paid')
+          - else
+            = t('event_customer_participants.event_customer_participant.paid')
+
+  %td
+    - unless event_customer_participant.note.blank?
+      %a{ href: 'javascript:void(0)', :'data-toggle' => "tooltip", :'data-placement' => "top", title: event_customer_participant.note }
+        = t '.note'
+      |
+    - if event.can_change?
+      = link_to t('views.actions.edit'), edit_event_event_customer_participant_path(event, event_customer_participant)
+      |
+      = link_to t('views.actions.delete'), "#delete_#{dom_id(event_customer_participant)}", style: 'color: red;', :'data-toggle' => :modal
+      = render 'overlays/event_customer_participants/remove_popup', ecp: event_customer_participant

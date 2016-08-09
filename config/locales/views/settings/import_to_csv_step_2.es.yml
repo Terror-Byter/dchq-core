@@ -1,0 +1,13 @@
+es:
+  settings:
+    import_to_csv_step_2:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_import_step_2: 'Ajustes: Importar Dato: Paso 2'
+      content: 'Antes de que podamos importar sus datos, usted necesita hacer coincidir sus nombres de columnas con aquellos en Dive Centre HQ.'
+      match_data: 'Coincidir Datos'
+      data_matching: 'Coincidiendo Datos'
+      data_matching_text: 'Haga que coincidan sus columnas con las nuestras.'
+      your_data: 'Sus Datos'
+      our_data: 'Nuestros Datos'
+      complete_import: 'Importación Completa'

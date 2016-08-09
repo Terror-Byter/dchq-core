@@ -1,0 +1,7 @@
+es:
+  requests:
+    index:
+      home: 'Home'
+      header: 'Las Solicitudes De Los Clientes'
+      sub_header: 'Solicitar Registros'
+      total: 'Total'

@@ -1,0 +1,7 @@
+%tr
+   %td= ecp.sale.status.eql?("complete_refund") ? image_tag("tick.png") : image_tag("warning.png")
+   %td= ecp.customer.full_name
+   %td= ecp.original.created_at.strftime("%B %d, %Y")
+   %td= formatted_currency(ecp.price.abs)
+   %td= ecp.sale.status.eql?("complete_refund") ? formatted_currency(ecp.price.abs) : "-"
+   %td= ecp.sale.status.eql?("complete_refund") ? link_to(t(".view_refund"), ecp.sale) : link_to(t(".issue_refund"), edit_sale_path(ecp.sale))

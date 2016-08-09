@@ -1,0 +1,20 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = show_company_logo(@service.store)
+      %span{style: 'float:right;font-size:12px'}= t('service_mailer.note_added.job_id', id: @service.id)
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('service_mailer.note_added.servicing_update', kit: @service.kit, serial: @service.serial_number)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= @note.description
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%;'}
+      = t('service_mailer.note_added.with_regards')
+      %br
+      = @service.store.name
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag @service.store.avatar.image.url(:original) unless @service.store.avatar.blank?
+      %br
+      = t('service_mailer.note_added.sent_by_centre', company_name: @service.store.company.name)
+      = t('service_mailer.note_added.telephone', tel: @service.store.company.telephone)
+      = t('service_mailer.note_added.registered_address', address: @service.store.company.address.full_address)

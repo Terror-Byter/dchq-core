@@ -1,0 +1,8 @@
+es:
+  events:
+    print_pickups:
+      title: "Recolecciones de Hoy"
+      name: 'Nombre'
+      current_accommodation: 'Hotel / Alojamiento'
+      location: 'Ubicación'
+      time: 'Hora'

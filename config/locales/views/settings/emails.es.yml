@@ -1,0 +1,35 @@
+es:
+  settings:
+    emails:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      email_settings: 'Ajustes: Ajustes de Correo-e'
+      events: 'Eventos'
+      sales: 'Ventas'
+      servicing: 'Servicio'
+      products: 'Productos'
+      footer: 'Pie de Página'
+      booking_confirmed: 'Reservación Confirmada'
+      booking_confirmed_text: 'Enviada inmediatamente después de confirmar la reservación.'
+      view_sample_email: 'Ver Correo-e de Muestra'
+      include_sales_receipt: 'Incluye recibo de ventas'
+      disable_email: 'Desactivar correo-e'
+      event_reminder: 'Recordatorio de Evento'
+      event_reminder_text: 'Enviado 1 día antes del evento.'
+      online_event_booking: 'Reservación En Línea del Evento'
+      online_event_booking_text: 'Enviado cuando un cliente reserva en línea.'
+      sales_recepient: 'Recibo de Ventas'
+      sales_recepient_text: 'Enviado después de que una venta se marca como completa si usted selecciona enviar el recibo por correo-e en lugar de imprimirlo.'
+      service_complete: 'Servicio Completo'
+      service_complete_text: Enviado cuando un servicio es marcado como completo.
+      products_inventory: Recordatorios de Bajo Inventario
+      products_inventory_text: Enviado cuando un producto llega a un nivel de reorden.
+      disable_low_inventory_reminder_mail: Desactivar correo-e de recordatorio de bajo inventario
+      footer_head: Imagen de Pie de Página
+      footer_text: Incluido al final de los correo-e que son enviados a los clientes.
+      show_email_variables: Mostrar Variables de Correo-e
+      save: Guardar
+      notice: Se han actualizado correctamente los Ajustes del Correo-e
+      rentals_recepient: Alquiler de Recibos
+      rentals_recepient_text: Enviado después de un alquiler se marca como reservado si selecciona al email el recibo en lugar de impresión.
+      language: Idioma

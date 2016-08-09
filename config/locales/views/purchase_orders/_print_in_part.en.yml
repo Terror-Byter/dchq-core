@@ -1,0 +1,18 @@
+en:
+  purchase_orders:
+    print_in_part:
+      purchase_order_delivery: 'Delivery Location:'
+      purchase_order_supplier: 'Supplier'
+      purchase_order_number: 'Purchase order #%{number}'
+      purchase_order_date: 'Date: %{date}'
+      sku: 'SKU / PRODUCT'
+      unit_price: 'UNIT PRICE'
+      qty: 'QTY'
+      qty_accepted: 'ACCEPTED'
+      qty_rejected: 'REJECTED'
+      sub_total: 'ITEM TOTAL'
+      total: 'TOTAL'
+      email_sent_by: 'This email was sent by'
+      contact_us_at: 'Please contact us at'
+      purchase_order_summary: 'Purchase Order Summary'
+      notes: 'Notes:'

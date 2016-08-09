@@ -1,0 +1,8 @@
+en:
+  overlays:
+    sales:
+      add_customer_modal:
+        header: 'Assign Customer'
+        customer_name: 'Customer Name'
+        or: 'or'
+        add_new_customer: 'add a new customer'

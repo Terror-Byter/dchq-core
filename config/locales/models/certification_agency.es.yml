@@ -1,0 +1,4 @@
+es:
+  models:
+    certification_agency:
+      should_has_no_certification_levels: En caso de que no tiene los niveles de certificación

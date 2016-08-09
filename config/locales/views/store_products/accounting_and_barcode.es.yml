@@ -1,0 +1,8 @@
+es:
+  store_products:
+    accounting_and_barcode:
+      account_codes: Códigos de Contabilidad
+      account_codes_text: Para permitir una contabilidad precisa, por favor ingrese códigos de contabilidad y códigos de proveedor de este prodcto.
+      barcode: Código de Barras
+      barcode_text: Ingrese o escanee el código de barras asociado con este producto.
+      allow: 'Permitido: A-Z, 0-9, -,.*$/+%'

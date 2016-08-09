@@ -1,0 +1,10 @@
+en:
+  overlays:
+    sales:
+      cash_put_out_modal:
+        header: 'Amend Float: Petty Cash Transaction'
+        cash_amount: "Enter the amount of money you've taken out of, or put into the till:"
+        notes: 'Notes'
+        take_out: 'Take Out'
+        put: 'Put In'
+        update_till: 'Update Float'

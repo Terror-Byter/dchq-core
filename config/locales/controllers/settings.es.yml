@@ -1,0 +1,5 @@
+es:
+  controllers:
+    settings:
+      import_notice: "Importación de %{type} se está ejecutando actualmente. Usted recibirá un correo electrónico una vez finalizado."
+      incorrect_delimiter: Utiliza su importación, el (;) símbolo como un delimitador. Es necesario utilizar una coma (,) como delimitador.

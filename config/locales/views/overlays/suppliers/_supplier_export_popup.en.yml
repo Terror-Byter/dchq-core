@@ -1,0 +1,7 @@
+en:
+  overlays:
+    suppliers:
+      supplier_export_popup:
+        header: 'Export Supplier Data'
+        content: A csv file will be generated containing your suppliers. This action is processed in the background and will be delivered via email once complete.
+        export_data: 'Export Supplier Data'

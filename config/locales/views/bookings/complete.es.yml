@@ -1,0 +1,16 @@
+es:
+  bookings:
+    complete:
+      home: Inicio
+      event_registration: Registro del Evento
+      event_registration_successful: 'Registro del Evento: Satisfactorio'
+      you_have_successfully_booked: Usted ha reservado satisfactoriamente un espacio en %{event_name}. Le hemos enviado un correo-e de confirmación con detalles adicionales. Si usted es un cliente nuevo, nosotros necesitaremos que confirme su  eligibilidad y certificaciones para este evento y nosotros estaremos en contacto en el momento oportuno.
+      copy_of_your_invoice: Se ha enviado vía correo-e una copia del resumen de su factura.
+      close_window: Cerrar Ventana
+      instructions: Further Instructions
+      invoice: Resumen de Facturas
+      item: Artículo
+      quantity: Cantidad
+      price: Precio
+      view_event_calendar: Ver Calendario de Eventos'
+

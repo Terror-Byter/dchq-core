@@ -1,0 +1,15 @@
+en:
+  emails_examples:
+    online_event_booking:
+      hello: 'Hello %{name}'
+      thanks_for_booking: 'Thank you for your booking'
+      with: 'with'
+      booking_details_below: 'Your booking details are below. This is a pre-booking as your diving credentials need to be verified to confirm eligibility to participate.'
+      event: 'EVENT'
+      unit_price: 'UNIT PRICE'
+      qty: 'QTY'
+      sub_total: 'SUB-TOTAL'
+      sub_tot: 'Sub Total:'
+      tax_inc: 'Tax Inc:'
+      net_due: 'NET DUE:'
+      payments: 'Payments:'

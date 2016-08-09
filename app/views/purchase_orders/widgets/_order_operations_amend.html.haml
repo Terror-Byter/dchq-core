@@ -1,0 +1,29 @@
+#order-operations.span5.offset1
+  %table.table.table-borderless.table-condensed.cart_total
+    %tbody
+      %tr
+        %td{colspan: "2"}
+          .alert.alert-error{style: "text-align:center; padding: 8px !important;"}
+            %span.amend-order-total{style: "font-size:16px;"}<
+              = t('purchase_orders.widgets.order_operations.amended_order_total')
+              &nbsp;
+              = purchase_order.grand_total
+      %tr
+        %td{colspan: "2"}
+          .alert.alert-success{style: "text-align:center; padding: 8px !important;"}
+            %span{style: "font-size:16px"}<
+              = t('purchase_orders.widgets.order_operations.original_order_total')
+              &nbsp;
+              = purchase_order.fixed_total
+      %tr
+        %td{colspan: "2"}
+          %a.btn.btn-primary.btn-large.input-block-level.btn-icon.glyphicons.envelope{"data-toggle" => "modal", href: "#update-packing-list-modal", style: "text-align:center; text-transform:uppercase;"}
+            = t('purchase_orders.widgets.order_operations.amend_consignment')
+            %i>
+      %tr
+        %td{colspan: "2"}
+          .row-fluid
+            .span12<
+              %a.btn.btn-default.btn-icon.glyphicons.print.input-block-level{style: "text-align:center; text-transform:uppercase;"}
+                %i>
+                = t('purchase_orders.widgets.order_operations.print_purchase_order')

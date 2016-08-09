@@ -1,0 +1,10 @@
+es:
+  settings:
+    integrations:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_integrations: 'Ajustes: Integración con Terceros'
+      para: 'Conecte Dive Centre HQ para aplicaciones 3ª parte, incluidos los sistemas de contabilidad, plataformas de revisión y los portales de email marketing.'
+      scubatribe: 'ScubaTribe'
+      xero: 'Contabilidad En Línea Xero'
+      mailchimp: 'Mercadeo por Correo-e MailChimp'

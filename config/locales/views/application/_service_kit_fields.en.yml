@@ -1,0 +1,6 @@
+en:
+  application:
+    service_kit_fields:
+      service_kits: 'Service Kits'
+      service_kits_text: 'Enter the service kits you stock.'
+      remove_service_kit: 'Remove Service Kit'

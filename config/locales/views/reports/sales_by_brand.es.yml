@@ -1,0 +1,7 @@
+es:
+  reports:
+    sales_by_brand:
+      home: 'Inicio'
+      reports: 'Reportes'
+      report_sales_by_brand: 'Reporte: Ventas por Marca'
+      sales_by_brand: 'Ventas por Marca'

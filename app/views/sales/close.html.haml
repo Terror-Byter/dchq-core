@@ -1,0 +1,25 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('sales.close.home')
+  %li.divider
+  %li= t('sales.close.sales')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('sales.close.point_of_sale')
+.innerLR
+  %p= t('sales.close.register_is_closed', shop: current_store.closed_info[:user_full_name], time: l(current_store.closed_info[:time], formats: :default))
+  %p
+    = link_to '#cash-put-out-modal', class: 'btn btn-default btn-mini btn-icon glyphicons coins', :'data-toggle' => 'modal' do
+      %i
+      = t('sales.close.open_register')
+    - if current_store.closed_info[:open_time].today?
+      = link_to reopen_stores_path, class: 'btn btn-default btn-mini btn-icon glyphicons coins' do
+        %i
+        = t('sales.close.reopen_register')
+
+
+= content_for :overlays do
+  = render 'overlays/sales/cash_put_out_modal'

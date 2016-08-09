@@ -1,0 +1,129 @@
+= content_for :js do
+  = javascript_include_tag :charts
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('pages.index.home')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('pages.index.dashboard')
+.innerLR
+  - if current_store.products_count.zero? or current_store.no_standard_events? or current_company.customers_count < 2
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.ok_2
+          %i>
+          = t('pages.index.recommended_actions')
+      .widget-body
+        %p= t('pages.index.recommended_actions_msg')
+        .row-fluid
+          - unless current_company.customers_count > 1
+            .span4
+              = link_to new_customer_path, class: 'widget-stats' do
+                %span.glyphicons.user_add
+                  %i
+                %span.txt= t('pages.index.new_customer')
+          - if current_store.products_count.zero?
+            .span4
+              = link_to new_product_path, class: 'widget-stats' do
+                %span.glyphicons.fins
+                  %i
+                %span.txt= t('pages.index.new_product')
+          - if current_store.no_standard_events?
+            .span4
+              = link_to new_other_event_path, class: 'widget-stats' do
+                %span.glyphicons.calendar
+                  %i
+                %span.txt= t('pages.index.new_event')
+  - unless current_store.customer_participants.blank?
+    .widget{"data-toggle" => "collapse-widget"}
+      .widget-head
+        %h4.heading.glyphicons.notes
+          %i>
+          = t('pages.index.new_online_event_reg')
+      .widget-body
+        %p= t('pages.index.new_online_event_reg_msg')
+        %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+          %thead
+            %tr
+              %th= t('pages.index.table_register_name')
+              %th= t('pages.index.table_register_event')
+              %th= t('pages.index.table_register_registered')
+              %th= t('pages.index.table_register_amount_paid')
+              %th= t('pages.index.table_register_actions')
+          %tbody
+            = render partial: 'event_customer_participants/online_ecp', collection: current_store.customer_participants, as: :participant
+  .row-fluid
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.cardio
+            %i>
+            = t('pages.index.sales_trands')
+        .widget-body
+          #chart_lines_fill_nopoints{style: 'height: 250px;'}
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stopwatch
+            %i>
+            = t('pages.index.staff_targets')
+        .widget-body
+          #chart_ordered_bars{style: 'height: 250px;'}
+  .row-fluid
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t('pages.index.quick_stats_for_month', month: l(Time.now, format: :full_month))
+        .widget-body.list
+          %ul
+            %li
+              %span.count= current_store.revenue_this_month
+              = t('pages.index.sales_for_month')
+            %li
+              %span.count= current_store.average_sale_per_customer
+              = t('pages.index.average_sale_per_customer')
+            %li
+              %span.count= current_store.event_registrations_this_month
+              = t('pages.index.event_registrations')
+            - if can? :manage, Service
+              %li
+                %span.count= current_store.services_complete_this_month
+                = t('pages.index.services_complete')
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.pie_chart
+            %i>
+            = t('pages.index.sales_breakdown_for_month', month: l(Time.now, format: :full_month))
+        .widget-body
+          .row-fluid
+            .span3
+              = link_to '', class: 'widget-stats widget-stats-2 widget-stats-easy-pie txt-single' do
+                .easy-pie{ :'data-percent' => current_store.sale_products_for_current_month_in_percentage }
+                %span.value= current_store.sale_products_for_current_month_in_numbers
+                %span.txt= t('pages.index.products_sold')
+                .clearfix
+            .span3
+              = link_to '', class: 'widget-stats widget-stats-2 widget-stats-easy-pie txt-single' do
+                .easy-pie.danger{ :'data-percent' => current_store.sale_services_for_current_month_in_percentage }
+                %span.value= current_store.sale_events_for_current_month_in_numbers
+                %span.txt= t('pages.index.events_sold')
+                .clearfix
+            .span3
+              = link_to '', class: 'widget-stats widget-stats-2 widget-stats-easy-pie txt-single' do
+                .easy-pie.success{ :'data-percent' => current_store.sale_events_for_current_month_in_percentage }
+                %span.value= current_store.sale_events_for_current_month_in_numbers
+                %span.txt= t('pages.index.services_sold')
+                .clearfix
+            .span3
+              = link_to '', class: 'widget-stats widget-stats-2 widget-stats-easy-pie txt-single' do
+                .easy-pie.success{ :'data-percent' => current_store.rentals_for_current_month_in_percentage }
+                %span.value= current_store.rentals_for_current_month_in_numbers
+                %span.txt= t('pages.index.rentals')
+                .clearfix

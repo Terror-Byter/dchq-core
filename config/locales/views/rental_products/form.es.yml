@@ -1,0 +1,17 @@
+es:
+  rental_products:
+    form:
+      rental_item: Alquiler Artículo Detalles
+      photos: Fotos
+      accounting_and_barcode: Contabilidad y Códigos de Barras
+      pricing: Precios
+      product_name: Nombre y SKU de Producto
+      product_name_text: Escriba el nombre completo de este producto y su unidad de mantenimiento de existencias.
+      description: Descripción
+      description_text: La descripción se mostrará en el correo electrónico y los recibos impresos.
+      image: Imagen del Producto
+      image_text: Cargar la imagen del producto vamos a mostrar en los recibos y las listas de venta.
+      pricing_text: Ingrese la tasa por día para este artículo.
+      tax_inc: (Imp. Inc.)
+      tax_exc: (Imp. Exc.)
+      save: Guardar

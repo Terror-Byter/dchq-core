@@ -1,0 +1,24 @@
+es:
+  rentals:
+    shoping_cart:
+      sku_product: SKU / Producto
+      price: Precio/día
+      tax: Impuesto
+      quantity: Cantidad
+      sub-total: Total Parcial
+      discount: Descuento
+      delete_rental: Borrar Alquiler
+      add_note: Agregar Note
+      rental_note: Alquiler Note
+      edit: Editar
+      sub_total_inc: Sub Total (inc. iva)
+      sub_total_exc: Sub Total (exc. tax)
+      overall_discount: Descuento Total
+      amount_due: CANTIDAD DEBIDA
+      change: CAMBIO
+      add_payment: Añadir Pago
+      print_receipt: Imprimir Recibo
+      email_receipt: Correo Electrónico de Recibos
+      net_due: NET DUE
+      less_total_payment: MENOS EL PAGO TOTAL DE
+      days: Días

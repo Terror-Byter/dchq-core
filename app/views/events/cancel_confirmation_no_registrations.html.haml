@@ -1,0 +1,26 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('events.cancel_confirmation_no_registrations.home')
+  %li.divider
+  %li= t('events.cancel_confirmation_no_registrations.events')
+  %li.divider
+  %li= t('events.cancel_confirmation_no_registrations.cancel')
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic
+        = t('events.cancel_confirmation_no_registrations.cancel_event')
+        = resource.name
+= form_tag cancel_event_path(resource) do
+  .innerLR
+    %p
+      %strong= t('events.cancel_confirmation_no_registrations.you_are_about')
+    %p= t('events.cancel_confirmation_no_registrations.content')
+    = link_to event_path(resource), class: 'btn btn-default btn-icon glyphicons chevron-left' do
+      %i
+      = t('events.cancel_confirmation_no_registrations.wait')
+    %button.btn.btn-large.btn-danger.btn-icon.glyphicons.ok_2.pull-right{ type: :submit }
+      %i
+      = t('events.cancel_confirmation_no_registrations.yes_cancel')

@@ -1,0 +1,10 @@
+es:
+  settings:
+    edit_mailchimp_step_1:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_integrations: 'Ajustes: Integraciones con Terceros'
+      mailchimp_integration: 'Integración MailChimp: Paso 1'
+      account_settings: 'Ajustes de Cuenta'
+      condition: "Para poder integrarse con MailChimp, usted necesita ingresar su Llave API Mailchimps y fijar todas las listas con las que se quiere sincronizar. Estos detalles se pueden encontrar en la sección de 'Cuenta' de MailChimp."
+      notice: 'Se actualizó satisfactoriamente la Llave API MailChimp'

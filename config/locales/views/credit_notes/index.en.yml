@@ -1,0 +1,12 @@
+en:
+  credit_notes:
+    index:
+      home: 'Home'
+      sales: 'Sales'
+      credit_notes: 'Credit Notes'
+      no_credit_notes: 'No Credit Notes'
+      t_sale_id: 'Sale ID'
+      t_customer: 'Customer'
+      t_initial_value: 'Initial Value'
+      t_remailing_credit: 'Remaining Credit'
+      total_credit_notes: 'Total credit notes:'

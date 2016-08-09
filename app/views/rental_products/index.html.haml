@@ -1,0 +1,84 @@
+%ul.breadcrumb
+  %li
+    %a.glyphicons.home{ href: root_path }
+      %i
+        = t '.home'
+  %li.divider
+  %li= link_to t('.rentals'), rentals_path
+  %li.divider
+  %li= t '.inventory'
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t '.rental_inventory'
+      .buttons.pull-right.hidden-print{style: "margin-top:-45px; margin-right:10px;"}
+        = link_to '#export-all', class: 'btn btn-small btn-default btn-icon glyphicons download', :'data-toggle' => 'modal' do
+          %i
+          = t('.export_all')
+        = link_to new_resource_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+          %i
+          = t '.new_inventory'
+.innerLR
+  .row-fluid
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t '.available_rental_inventory'
+        .widget-body.list
+          %ul
+            %li
+              %span.count= RentalProduct.available_rental_inventory(current_store)
+              = t '.available_rental_inventory'
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t '.inventory_on_rent'
+        .widget-body.list
+          %ul
+            %li
+              %span.count= RentalProduct.currently_in_rent(current_store)
+              = t '.inventory_on_rent'
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        - if params[:filter] == 'archived'
+          = t '.archived'
+        - else
+          = t '.rental_inventory'
+      %span.details.pull-right
+        - if params[:filter] == 'archived'
+          = link_to t('.rental_inventory'), collection_path
+        - else
+          = link_to t('.archived_rental_inventory'), collection_path(filter: 'archived')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        %thead
+          %tr.ransack_links
+            %th= sort_link @q, :id, t('.id')
+            %th= sort_link @q, :name, t('.item')
+            %th= sort_link @q, :sku_code, t('.sku')
+            %th= sort_link @q, :brand_name, t('.brand')
+            %th= sort_link @q, :category_name, t('.category')
+            %th= sort_link @q, :price_per_day, t('.price_per_day')
+            %th= sort_link @q, :number_in_stock, t('.total')
+            %th= t '.available'
+        %tbody
+          - if collection.blank?
+            %tr
+              %td{ colspan: 7 }= t '.no_available'
+          - else
+            = render collection
+      .separator.top.form-inline.small
+        = t '.total'
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix
+
+= content_for :overlays do
+  = render 'overlays/rental_products/export_all_popup'

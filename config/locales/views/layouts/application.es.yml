@@ -1,0 +1,43 @@
+es:
+  button:
+    upgrade_plan: 'Actualizar Ahora'
+    update_card: 'Actualizar Detalles de Tarjeta'
+    logout: 'Cerrar Sesión'
+  top_menu:
+    quick_search: 'Busca Rápida...'
+    users_block:
+      profile: 'Perfil'
+      edit: 'editar'
+      settings: 'Ajustes'
+      contact_support: 'Contacte al Soporte'
+  sidebar_menu:
+    dashboard: 'Tablero de Control'
+    sales: 'Ventas'
+    events: 'Eventos'
+    crm: 'CRM'
+    servicing: 'Prestación de Servicios'
+  sales_submenu:
+    point_of_sale: 'Punto de Venta'
+    sales_history: 'Historial de Ventas'
+    products: 'Productos'
+    brands: 'Marcas'
+    categories: 'Categorías'
+    purchase_orders: "OCs"
+    gift_cards: 'Tarjetas de Regalo'
+    credit_notes: 'Notas de Crédito'
+    sales_targets: 'Objetivos de Ventas'
+    event_tariffs: 'Tarifas del Evento'
+  events_submenu:
+    calendar: 'Calendario'
+    list: 'Lista'
+  crm_submenu:
+    customers: 'Clientes'
+    suppliers: 'Proveedores'
+    staff: 'Personal'
+    scheduling: 'Programación'
+  servicing_submenu:
+    all_services: 'Todos los Servicios'
+    booked: 'Reservado'
+    in_progress: 'En Curso'
+    to_collect: 'Para Cobrar'
+    complete: 'Completo'

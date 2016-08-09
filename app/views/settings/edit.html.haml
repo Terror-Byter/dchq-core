@@ -1,0 +1,94 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.edit.home')
+  %li.divider
+  %li= link_to t('settings.edit.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.edit.settings_details')
+= simple_form_for resource, url: { action: :update }, html: { method: 'put', multipart: true } do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#DetailsTab', class: 'glyphicons building', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.edit.company_details')
+          %li
+            = link_to '#addressTab', class: 'glyphicons direction', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.edit.address')
+          %li
+            = link_to '#accessTab', class: 'glyphicons coins', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.edit.online_bookings')
+          %li
+            = link_to '#referralTab', class: 'glyphicons retweet', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.edit.referrals')
+      .widget-body
+        .tab-content
+          #DetailsTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('settings.edit.store_details')
+                %p.muted= t('settings.edit.store_details_text')
+              .span3
+                = f.input :name, input_html: { class: 'span11' }
+              .span3
+                = f.input :primary_contact_id, collection: current_company.primary_contact_ids,
+                                               allow_blank: false, input_html: {class: 'selectpicker span11'}
+              .span3
+                = f.input :tax_id, input_html: { class: 'span11' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('settings.edit.contact_details')
+                %p.muted= t('settings.edit.contact_details_text')
+              .span3
+                = f.input :email, input_html: { class: 'span11' }
+              .span3
+                = f.input :telephone, input_html: { class: 'span11' }
+              .span3
+                = f.input :website_url, input_html: { class: 'span11' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('settings.edit.store_logo')
+                %p.muted= t('settings.edit.store_logo_text')
+              .span3
+                = f.simple_fields_for :logo do |form|
+                  = render 'avatar_fields', f: form
+          #addressTab.tab-pane
+            = f.simple_fields_for :address do |form|
+              = render 'address_fields', f: form
+          #accessTab.tab-pane
+            = f.simple_fields_for :payment_credential do |form|
+              = render 'payment_credential', f: form
+          #referralTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('settings.edit.referral_details')
+                %p.muted= t('settings.edit.referral_details_text')
+              .span3
+                = f.input :referral_code, disabled: true, input_html: { class: 'span11' }
+              .span3
+                = label_tag t('settings.edit.your_referrer')
+                = f.text_field :referrer, value: til(f.object.referrer_name), disabled: true, input_html: { class: 'span11' }
+              .span3
+                = label_tag t('settings.edit.stores_you_referred')
+                %ul
+                  - current_company.invited_stores_names do |name|
+                    %li= name
+      / // Widget END
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('views.actions.save')
+      .clearfix

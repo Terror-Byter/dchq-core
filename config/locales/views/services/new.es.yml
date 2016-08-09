@@ -1,0 +1,6 @@
+es:
+  services:
+    new:
+      home: 'Inicio'
+      servicing: 'Servicio'
+      add_service: 'Agregar Servicio'

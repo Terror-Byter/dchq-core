@@ -1,0 +1,9 @@
+es:
+  settings:
+    edit_mailchimp_step_2:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_integrations: 'Ajustes: Integración con Tercero'
+      mailchimp_integration: 'Integración con MailChimp: Paso 2'
+      lists: 'Listas'
+      notice: 'Las listas Mailchimp se han actualizado satisfactoriamente'

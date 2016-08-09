@@ -1,0 +1,22 @@
+en:
+  rental_products:
+    index:
+      home: Home
+      rentals: Rentals
+      inventory: Inventory
+      rental_inventory: Rental Inventory
+      new_inventory: New Rental Inventory Item
+      available_rental_inventory: Available Rental Inventory
+      inventory_on_rent: Inventory Items Currently On Rent
+      item: Item Name
+      sku: 'SKU #'
+      brand: Brand
+      category: Category
+      price_per_day: Price per day
+      total: Total Inventory
+      available: Available
+      no_available: No available inventory
+      archived: Archived
+      archived_rental_inventory: Archived Rental Inventory
+      id: ID
+      export_all: Export Rental Product Data

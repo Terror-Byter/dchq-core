@@ -1,0 +1,8 @@
+es:
+  overlays:
+    purchase_orders:
+      update_packing_list_modal:
+        amend_consignment: "Enmendar Envio"
+        will_be_added_to_inventory: "Una vez que marque este envio como 'Recibido', los artículos serán agregados automáticamente a su inventario disponible."
+        send_updated_packing_list_to_supplier: "Enviar lista de embalaje al proveedor"
+        mark_as_received: "Marcar Como Recibido"

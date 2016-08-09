@@ -1,0 +1,39 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= link_to t('.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('.settings_rentals')
+= simple_nested_form_for current_store, url: update_store_settings_path, html: {method: 'put'} do |f|
+  = f.error_messages
+  = hidden_field_tag :back_url, rentals_settings_path
+  = hidden_field_tag :notice, t('.notice')
+  = hidden_field_tag :back_action, 'rentals'
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#DetailsTab', class: 'glyphicons settings', :'data-toggle' => 'tab' do
+              %i>
+              = t('.terms')
+      .widget-body
+        .tab-content
+          #DetailsTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('.standard_terms_of_rental')
+                %p.muted= t('.standard_terms_of_rental_text')
+              .span9
+                = f.input :standart_rental_term, input_html: { rows: '2', style: 'width:98%'}
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('views.actions.save')
+      .clearfix

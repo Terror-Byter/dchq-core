@@ -1,0 +1,14 @@
+es:
+  reports:
+    sales_by_staff:
+      home: 'Inicio'
+      reports: 'Reportes'
+      report_sales_by_staff: 'Reporte: Ventas por Personal'
+      sales_by_staff: 'Ventas por Personal'
+      totals_and_commissions: "Totales y Comisiones"
+      from_date: "Fecha de Inicio"
+      to_date: "Fecha de Finalización"
+      refine_dates: "Refinar Fechas"
+      total_sale: "Ventas Totales"
+      commission_sale: "Comisiones de Venta"
+      comission_earned: "Comisión Ganada"

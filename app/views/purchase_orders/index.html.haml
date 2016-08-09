@@ -1,0 +1,79 @@
+= render 'breadcrumbs'
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('purchase_orders.common.purchase_orders')
+    .span8.right
+      .buttons.hidden-print
+        %a.btn.btn-primary.btn-icon.glyphicons.circle_plus{"data-toggle" => "modal", href: "#new-purchase-order"}
+          %i
+          = t('purchase_orders.common.new_purchase_order')
+.innerLR
+  .row-fluid
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t('.overview')
+        .widget-body.list
+          %ul
+            %li
+              %span.count
+                = pending_po_cnt
+              = t('.pending_po.many')
+            %li
+              %span.count
+                = sent_po_cnt
+              = t('.po_sent_to_suppliers.many')
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t('.consignments')
+        .widget-body.list
+          %ul
+            %li
+              %span.count
+                = expecting_po_cnt
+              = t('.expecting_delivery')
+            %li
+              %span.count
+                = received_po_cnt
+              = t('.received')
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('purchase_orders.common.purchase_orders')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        %thead
+          %tr.ransack_links
+            %th= sort_link @q, :id, t('.table_cols.po_number')
+            %th= sort_link @q, :supplier_name, t('.table_cols.supplier')
+            %th= sort_link @q, :delivery_location_company_address, t('.table_cols.delivery_location')
+            %th= sort_link @q, :grand_total, t('.table_cols.value')
+            %th= sort_link @q, :status, t('.table_cols.status')
+            %th= sort_link @q, :last_updated, t('.table_cols.last_updated')
+            %th= sort_link @q, :expected_delivery, t('.table_cols.expected_delivery')
+        %tbody
+          - collection.each do |po|
+            %tr
+              %td.important= link_to po.decorate.id, po
+              %td= po.decorate.link_to_supplier
+              %td= po.decorate.delivery_location_address
+              %td= po.decorate.grand_total
+              %td= po.decorate.status
+              %td= po.decorate.last_updated
+              %td= po.decorate.expected_delivery
+      .separator.top.form-inline.small
+        = t('.total_pos')
+        = total_cnt
+        .pagination.pagination-small.pull-right{style: "margin: 0;"}
+          = paginate collection
+        .clearfix
+
+= content_for :overlays do
+  = render 'overlays/purchase_orders/new_modal'

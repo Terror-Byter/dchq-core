@@ -1,0 +1,4 @@
+es:
+  mailers:
+    export_mailer:
+      success_subject: Exportación Procesado Correctamente

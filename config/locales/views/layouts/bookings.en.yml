@@ -1,0 +1,7 @@
+en:
+  layouts:
+    bookings:
+      sidebar_menu:
+        checkout: 'Checkout'
+      checkout_submenu:
+        events: 'Events'

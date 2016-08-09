@@ -1,0 +1,8 @@
+en:
+  smart_lists:
+    form:
+      create_new_smart_list: Create A New Smart List
+      find: Find customers matching
+      following: or the following conditions and name it
+      add_condition: + Add A Condition
+      button: Save Smart List

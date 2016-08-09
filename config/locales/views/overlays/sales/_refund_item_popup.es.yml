@@ -1,0 +1,7 @@
+es:
+  overlays:
+    sales:
+      refund_item_popup:
+        header: 'Reembolso de Artículo de Línea'
+        content: 'Cantidad a reembolsar'
+        refund_item: 'Reembolso de Artículo de Línea'

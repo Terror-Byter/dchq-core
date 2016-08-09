@@ -1,0 +1,12 @@
+es:
+  overlays:
+    event_customer_participants:
+      pay_for_event:
+        header: "Seleccionar Carro para la Venta"
+        header_1: "Agregar a Carro Nuevo"
+        content_1: "Se creará un carro nuevo para este cliente."
+        button_1: "Agregar a Carro Nuevo"
+        header_2: "Agregar a Carro Existente"
+        content_2: "Se agregará un evento nuevo a un carro existente."
+        button_2: "Agregar a Carro Existente"
+        cancel: "Cerrar"

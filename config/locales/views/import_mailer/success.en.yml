@@ -1,0 +1,5 @@
+en:
+  import_mailer:
+    success:
+      message: 'Your %{type} import has been successful. You can now access your imported data by logging in at any time.'
+      sign_in: Sign In

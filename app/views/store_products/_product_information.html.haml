@@ -1,0 +1,19 @@
+.row-fluid
+  .span3
+    %strong= t('.product_info')
+    %p.muted= t('.product_info_text')
+  .span3
+    = f.association :brand, collection: current_store.brands, input_html: { class: 'select2 span11 brand_select' }, include_blank: false
+    = link_to t('.add_new_brand'), '#quick-add-brand', :'data-toggle' => 'modal'
+  .span3
+    = f.association :category, collection: current_store.categories, input_html: { class: 'select2 span11 category_select' }, include_blank: false
+    = link_to t('.add_new_category'), '#quick-add-category', :'data-toggle' => 'modal'
+  .span3
+    = f.association :supplier, collection: current_company.suppliers, input_html: { class: 'select2 span11 supplier_select' }, include_blank: false
+    = link_to t('.add_new_supplier'), '#quick-add-supplier', :'data-toggle' => 'modal'
+
+= content_for :overlays do
+  - %w(brands categories).each do |cur|
+    = render 'overlays/products/add_popup', obj: current_store.send(cur).build
+  = render 'overlays/products/add_popup', obj: current_company.suppliers.build
+

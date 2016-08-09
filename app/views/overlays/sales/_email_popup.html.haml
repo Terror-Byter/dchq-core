@@ -1,0 +1,15 @@
+:ruby
+  sale = @sale.decorate
+
+#email-receipt-modal.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', :type => 'button'} ×
+    %h3= t('overlays.sales.email_popup.header')
+  = form_tag send_receipt_via_email_sales_path, :method => :post do
+    = hidden_field_tag 'id', sale.id
+    .modal-body.center
+      = label_tag t('overlays.sales.email_popup.content')
+      = text_field_tag 'email', sale.mail_to_castomers
+    .modal-footer
+      %button.btn.btn-default{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', :type => 'button'}= t('views.actions.cancel')
+      = submit_tag t('overlays.sales.email_popup.send'), :class => 'btn btn-primary'

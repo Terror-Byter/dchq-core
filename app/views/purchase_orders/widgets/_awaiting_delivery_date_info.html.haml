@@ -1,0 +1,8 @@
+- if purchase_order.has_expected_delivery?
+  = t('purchase_orders.widgets.awaiting_delivery.expected')
+  %a{"data-toggle" => "modal", href: "#add-expected-delivery-date"}= purchase_order.expected_delivery
+  %span#expected-delivery-hidden.hide<
+    = purchase_order.expected_delivery_for_datepicker
+- else
+  %a{"data-toggle" => "modal", href: "#add-expected-delivery-date"}
+    = t('purchase_orders.widgets.awaiting_delivery.add_expected_delivery_date')

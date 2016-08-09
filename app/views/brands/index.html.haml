@@ -1,0 +1,36 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('brands.index.home')
+  %li.divider
+  %li= t('brands.index.sales')
+  %li.divider
+  %li= t('brands.index.brands')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('brands.index.brands')
+    .span8.right
+      - if can?(:manage, Brand)
+        .buttons.hidden-print
+          = link_to new_brand_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+            %i
+            = t('brands.index.new_brand')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('brands.index.brands')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        = render 'brands/table_headers'
+        %tbody
+          = render brands
+      .separator.top.form-inline.small
+        = t('brands.index.total_brands')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix

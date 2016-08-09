@@ -1,0 +1,5 @@
+es:
+  mailers:
+    import_mailer:
+      success_subject: Importación Procesado Correctamente
+      rejected_subject: Error al Importar Datos

@@ -1,0 +1,8 @@
+es:
+  overlays:
+    event_customer_participants:
+      add_customer:
+        header: "Agregár Rápidamente un Cliente"
+        content: "Por favor ingrese la menor cantidad de datos requeriad para crear un perfil de cliente. Si usted quiere agregar información adicional, como la dirección del cliente, por favor hágalo después al visitar la página del perfil del cliente."
+        button: "Agregar Cliente Nuevo"
+        cancel: "Cerrar"

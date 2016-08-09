@@ -1,0 +1,39 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('credit_notes.index.home')
+  %li.divider
+  %li= t('credit_notes.index.sales')
+  %li.divider
+  %li= link_to t('credit_notes.index.credit_notes'), credit_notes_path
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('credit_notes.index.credit_notes')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('credit_notes.index.credit_notes')
+    .widget-body
+      - if credit_notes.blank?
+        = t('credit_notes.index.no_credit_notes')
+      - else
+        %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+          %thead
+            %tr
+              %th= t('credit_notes.index.t_sale_id')
+              %th= t('credit_notes.index.t_customer')
+              %th= t('credit_notes.index.t_initial_value')
+              %th= t('credit_notes.index.t_remailing_credit')
+          %tbody
+            = render partial: 'item', collection: credit_notes, as: :credit_note
+      / Options
+      .separator.top.form-inline.small
+        = t('credit_notes.index.total_credit_notes')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix

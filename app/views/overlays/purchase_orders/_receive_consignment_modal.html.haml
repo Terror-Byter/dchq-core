@@ -1,0 +1,18 @@
+#receive-consignment.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('.receive_consignment')
+  .modal-body.center
+    .row-fluid
+      .span10.offset1
+        %p= t('.will_be_added_to_inventory')
+        %p= t('.question_mark_as_received')
+        = form_tag set_status_purchase_order_path(purchase_order), method: :post, id: 'set-status-received-in-full-form', class: 'hide' do
+          = hidden_field_tag :status, :received_in_full
+        = link_to t('.received_in_full'), '#', id: 'set-status-received-in-full-link', class: 'btn btn-success'
+        %hr/
+        = form_tag set_status_purchase_order_path(purchase_order), method: :post, id: 'set-status-received-in-part-form', class: 'hide' do
+          = hidden_field_tag :status, :received_in_part
+        = link_to t('.received_in_part'), '#', id: 'set-status-received-in-part-link'
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('views.actions.cancel')

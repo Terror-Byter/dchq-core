@@ -1,0 +1,5 @@
+en:
+  application:
+    service_note_fields:
+      add_another: 'Add Attachment'
+      email_note_to_customer: 'Email Note to customer'

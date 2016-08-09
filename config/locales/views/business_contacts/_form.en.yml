@@ -1,0 +1,13 @@
+en:
+  business_contacts:
+    form:
+      individual_details: 'Individual Details'
+      individuals_information: "Individual's Information"
+      individuals_information_text: "Enter the individual's name."
+      contact_details: 'Contact Details'
+      contact_details_text: 'Enter the email address and phone numbers for this customer.'
+      tags_photo: 'Tags & Photo'
+      tags_photo_text: 'Enter tags for this individual and upload their photo.'
+      photo: 'Photo'
+      save: 'Save'
+

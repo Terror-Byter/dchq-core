@@ -1,0 +1,8 @@
+es:
+  overlays:
+    event_customer_participants:
+      reject:
+        h3: Rechazar %{full_name} de %{event}
+        p: '%{full_name} será retirado de la evento. También se enviará un correo electrónico confirmando el rechazo.'
+        reason: MOTIVO DE RECHAZO
+        button: Reembolso y Rechazar Cliente

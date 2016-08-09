@@ -1,0 +1,5 @@
+en:
+  customers:
+    destroy:
+      notice: "Customer was successfully deleted"
+      error: "Customer can't be deleted"

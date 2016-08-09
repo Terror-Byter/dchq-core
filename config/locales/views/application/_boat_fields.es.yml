@@ -1,0 +1,6 @@
+es:
+  application:
+    boat_fields:
+      placeholder: 'Valor RGB de 6 dígitos'
+      edit: 'Editar'
+      delete: 'Eliminar'

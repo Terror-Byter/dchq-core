@@ -1,0 +1,5 @@
+es:
+  customers:
+    destroy:
+      notice: "Se eliminó satisfactoriamente al cliente"
+      error: "No se puede eliminar al cliente"

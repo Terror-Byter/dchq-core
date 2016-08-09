@@ -1,0 +1,20 @@
+#order-operations.span5.offset1
+  %table.table.table-borderless.table-condensed.cart_total
+    %tbody
+      %tr
+        %td{colspan: '2'}
+          .alert.alert-error{style: 'text-align:center; padding: 8px !important;'}
+            %span.purchase-order-total{style: 'font-size:16px;'}= render 'purchase_orders/purchase_order_total'
+      - if purchase_order.pending?
+        %tr
+          %td{colspan: '2'}
+            %a.btn.btn-primary.btn-large.input-block-level.btn-icon.glyphicons.envelope{'data-toggle' => 'modal', href: '#email-supplier-modal', style: 'text-align:center; text-transform:uppercase;'}
+              %i>
+              = t('.send_to_supplier')
+      %tr
+        %td{colspan: '2'}
+          .row-fluid
+            .span12
+              %a.btn.btn-default.btn-icon.glyphicons.print.input-block-level{style: 'text-align:center; text-transform:uppercase;'}
+                %i>
+                = t('.print_purchase_order')

@@ -1,0 +1,12 @@
+es:
+  credit_notes:
+    index:
+      home: 'Inicio'
+      sales: 'Ventas'
+      credit_notes: 'Notas de Crédito'
+      no_credit_notes: 'No Hay Notas de Crédito'
+      t_sale_id: 'ID de la Venta'
+      t_customer: 'Cliente'
+      t_initial_value: 'Valor Inicial'
+      t_remailing_credit: 'Restante de Crédito'
+      total_credit_notes: 'Total de notas de crédito:'

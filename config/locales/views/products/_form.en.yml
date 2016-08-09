@@ -1,0 +1,20 @@
+en:
+  products:
+    form:
+      product_details: 'Product Details'
+      photo: 'Photo'
+      account_barcodes: 'Accounting & Barcodes'
+      pricing: 'Pricing'
+      product_name_sku: 'Product Name & SKU'
+      product_name_sku_text: 'Enter the full retail name for this product and its stock keeping unit.'
+      description: 'Description'
+      description_text: 'The description will be shown on email and printed receipts.'
+      stock_level_reminder: 'Stock Levels & Reminders'
+      stock_level_reminder_text: 'Enter how many units you currently stock and when we should notify you to re-order.'
+      product_image: 'Product Image'
+      product_image_text: 'Upload the product image we will display on receipts and sale lists.'
+      price_calculation: 'Price Calculation'
+      price_calculation_text: 'These fields have auto-calculation enabled.'
+      tax_inc: '(Tax Inc.)'
+      tax_exc: '(Tax Exc.)'
+      save: 'Save'

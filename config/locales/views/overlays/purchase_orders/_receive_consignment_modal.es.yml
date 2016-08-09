@@ -1,0 +1,9 @@
+es:
+  overlays:
+    purchase_orders:
+      receive_consignment_modal:
+        receive_consignment: "Recibir Envio"
+        will_be_added_to_inventory: "Una vez que marque este envio como 'Recibido', los artículos serán agregados automáticamente a su inventario disponible."
+        question_mark_as_received: "¿Quiere marcar esta orden de compra como recibida?"
+        received_in_full: "Envio Recibido por Completo"
+        received_in_part: "Faltaron artículos en el envio"

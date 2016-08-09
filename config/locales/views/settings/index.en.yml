@@ -1,0 +1,18 @@
+en:
+  settings:
+    index:
+      home: Home
+      settings: Settings
+      user_profile: User Profile
+      company_details: Company Details
+      shop_locations: Shop Locations
+      sale_settings: Sale Settings
+      event_settings: Event Settings
+      servicing_settings: Servicing Settings
+      rental_settings: Rental Settings
+      email_settings: Email Settings
+      print_settings: Print Settings
+      import_data: Import Data
+      party_integrations: 3rd Party Integrations
+      billing: Billing
+      clear_test_data: Clear Test Data

@@ -1,0 +1,19 @@
+es:
+  customers:
+    index:
+      home: 'Inicio'
+      crm: 'CRM'
+      customers: 'Clientes'
+      setup_mailchimp: 'Configurar MailChimp'
+      sync_mailchimp: 'Sincronizar a MailChimp'
+      export_records: 'Exportar Registros del Cliente'
+      new_customer: 'Nuevo Cliente'
+      customer_records: 'Registros del Cliente'
+      table_name: 'Nombre'
+      table_phone: 'Teléfono'
+      table_email: 'Correo-e'
+      table_location: 'Ubicación'
+      table_certification: 'Certificación'
+      table_tags: 'Etiquetas'
+      table_sales: 'Ventas'
+      total_customers: 'Total de clientes:'

@@ -1,0 +1,111 @@
+:ruby
+  @current_store = @sale.store
+
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = image_tag 'https://app.divecentrehq.com/assets/email-logo.png', alt: t('sale_mailer.booking_online_for_shop.alt')
+      %span{style: 'float:right;font-size:12px'}= t('views.sale_mailer.receipt', receipt: @sale.receipt_id)
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('sale_mailer.booking_online_for_shop.new_booking_request')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('sale_mailer.booking_online_for_shop.made_an_online_booking', customer: @event_customer_participant.customer.full_name, event_name: @event_customer_participant.event.name, starts_at: @event_customer_participant.event.starts_at.in_time_zone.strftime("%d %B, %Y"))
+    %p.button{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 25px 5%;'}
+      = link_to approve_event_event_customer_participant_url(@event_customer_participant.event, @event_customer_participant), style: 'font-family: Arial, sans-serif; font-size: 14px; color: #fff; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; background-color: #20d23d; padding: 12px 24px;' do
+        = t('sale_mailer.booking_online_for_shop.approve_customer_for_event')
+      = link_to reject_form_event_event_customer_participant_url(@event_customer_participant.event, @event_customer_participant), style: 'font-family: Arial, sans-serif; font-size: 14px; color: #fff; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; background-color: #d22020; padding: 12px 24px; margin-left:20px;' do
+        = t('sale_mailer.booking_online_for_shop.reject_customer')
+      = link_to 'view booking details', edit_event_event_customer_participant_url(@event_customer_participant.event, @event_customer_participant), style: 'margin-left: 20px'
+    - if @sale.payments.first.payment_method.name == 'Paypal'
+      %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= t('sale_mailer.booking_online_for_shop.note_if_reject')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      %strong= t('sale_mailer.booking_online_for_shop.booking_date')
+      \: #{@event_customer_participant.created_at.in_time_zone.strftime('%d %B, %Y at %I:%M%P')}
+    %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;'}
+      %thead
+        %tr{bgcolor: '#EAEAEA', style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('views.sale_mailer.event')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('views.sale_mailer.unit_price')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('views.sale_mailer.qty')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em;'}
+            %b= t('views.sale_mailer.sub_total')
+      %tbody
+        - @sale.event_customer_participants.each do |sale_event|
+          %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              %strong= sale_event.event.name
+              = succeed sale_event.event.starts_at.in_time_zone.strftime('%d') do
+                %br/
+              #{sale_event.event.starts_at.in_time_zone.strftime('%B, %Y at %I:%M%P')} (#{distance_of_time_in_words(sale_event.event.starts_at, sale_event.event.ends_at)})
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = formatted_currency(sale_event.event_unit_price)
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = sale_event.quantity
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = formatted_currency(sale_event.event_line_item_price.abs)
+          - if kit_hire = sale_event.event_customer_participant_kit_hire
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = kit_hire.name
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(kit_hire.unit_price)
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                1
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(kit_hire.line_item_price.abs)
+          - if insurance = sale_event.event_customer_participant_insurance
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = insurance.name
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(insurance.unit_price)
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                1
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(insurance.line_item_price.abs)
+          - sale_event.event_customer_participant_transports.find_all{|u| !u.transport_id.blank?}.each do |transport|
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = transport.name
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(transport.unit_price)
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = transport.quantity
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(transport.line_item_price.abs)
+          - sale_event.event_customer_participant_additionals.find_all{|u| u.number_of_days > 0}.each do |additional|
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = additional.name
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(additional.unit_price)
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = additional.quantity
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = formatted_currency(additional.line_item_price.abs)
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('views.sale_mailer.subtotal')
+      = formatted_currency(@sale.sub_total.abs)
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('views.sale_mailer.tax_inc')
+      = formatted_currency(@sale.tax_rate_total.abs)
+    %p{style: 'float:right; margin: 15px 5%; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('views.sale_mailer.net_due')
+      = formatted_currency(@sale.grand_total)
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; clear:both;'}
+      %strong= t('views.sale_mailer.payments')
+      - @sale.payment_tendered.each do |method, amount|
+        #{formatted_currency(amount)}
+        %em #{method}
+    %div{style: 'clear:both'}
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear: both;'}
+      = t('views.sale_mailer.with_regards')
+      %br
+      = t('sale_mailer.booking_online_for_shop.team')
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = t('sale_mailer.booking_online_for_shop.registered_office')

@@ -1,0 +1,18 @@
+en:
+  settings:
+    events:
+      home: 'Home'
+      settings: 'Settings'
+      settings_events: 'Settings: Events'
+      course_price_list: 'Course Price List'
+      course_price_list_text: 'In order to sell courses, you need to define your course price lists. You can easily setup courses for multiple agencies at any one time.'
+      course_button: 'Setup Course Price List'
+      trip_price_lists: 'Trip Price Lists'
+      trip_price_lists_text: 'When selling regular trips, you need to define a trip price list. Examples of trips include a double dive, a specific location or any combination.'
+      trip_button: 'Setup Trip Price List'
+      price_list_additional: 'Price List for Additional Items'
+      price_list_additional_text: 'When selling trips or courses, you may have additional items that can be sold. These will include insurance, kit hire, camera hire etc.'
+      additionals_button: 'Setup Price List for Additional Items'
+      boats_resources: 'Available Boats & Resources'
+      boats_resources_text: 'You can assign an event to a specific boat or resource, so make sure you add each one here.'
+      boats_button: 'Setup Boats & Resources'

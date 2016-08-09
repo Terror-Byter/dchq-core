@@ -1,0 +1,9 @@
+es:
+  overlays:
+    sales:
+      export_to_qif_popup:
+        header: 'Exportar Datos Financieros'
+        content: 'Seleccione el rago de datos que desea exportar el formato QIF.'
+        export_data: 'Exportar Datos Financieros'
+        date_from: 'Fecha desde'
+        date_to: 'Fecha hasta'

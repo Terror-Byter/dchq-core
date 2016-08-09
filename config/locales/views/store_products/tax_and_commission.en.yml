@@ -1,0 +1,5 @@
+en:
+  store_products:
+    tax_and_commission:
+      tax_commissions: Tax & Commissions
+      tax_commissions_text: Select the appropriate tax rate and commission rates.

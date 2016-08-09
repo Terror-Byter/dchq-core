@@ -1,0 +1,6 @@
+es:
+  customers:
+    new:
+      home: 'Inicio'
+      crm: 'CRM'
+      create_customer: 'Crear Cliente'

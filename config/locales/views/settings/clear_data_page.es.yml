@@ -1,0 +1,14 @@
+es:
+  settings:
+    clear_data_page:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_clear_test_data: 'Ajustes: Borrar Datos de la Prueba'
+      content: 'Borre fácilmente los datos de la prueba de su cuenta. Por favor tenga en cuenta, esta acción es permanente. Esta opción solo está disponible para aquellos clientes que no han mejorado su cuenta a una de nuestro planes pagos.'
+      clear_test_data: 'Borrar Datos de la Prueba'
+      select_data_to_clear: 'Seleccione Datos para Borrar'
+      select_data_to_clear_text: 'Seleccione de las siguientes opciones.'
+      clear_data: 'Borrar Datos'
+      sales: 'Ventas'
+      events: 'Eventos'
+      customers: 'Clientes'

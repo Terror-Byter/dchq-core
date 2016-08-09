@@ -1,0 +1,15 @@
+es:
+  company_mailer:
+    welcome:
+      congratulations: 'Felicidades, ¡su cuenta está activa!'
+      congratulations2: 'Felicidades al tomar la zancada gigante hacia la gestión en línea del centro de buceo - ¡sus clientes y su personal le agradecerán!'
+      able_to_login: '. Usted ahora puede ingresar a cualquier hora, administrar su tienda fácilmente desde cualquier parte. Aquí están los detalles para el ingreso:'
+      login_details: 'Detalles para el ingreso'
+      account_access: 'Cuenta de acceso:'
+      username: 'Nombre de Usuario:'
+      password: 'Contraseña:'
+      set_a_registration: 'Indique un registro'
+      login_to_dchq: 'Ingrese a Dive Centre HQ'
+      check_out: 'Revise el'
+      support_docs: 'support documentation'
+      for_useful: "por consejos útiles y demostraciones acerca de obtener lo máximo de nuestro programa."

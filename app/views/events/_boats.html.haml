@@ -1,0 +1,12 @@
+.filter-bar.margin-bottom-none
+  %form{ action: "#{'javascript.void(0)' if action_name == 'list'}" }
+    .uniformjs
+      %label #{t('events.boats.boats')}:
+      - unless current_store.boats.empty?
+        %label.checkbox
+          = check_box_tag 'boats[all]', true, true, class: 'unassigned'
+          = t('events.boats.unassigned')
+        - current_store.boats.each do |boat|
+          %label.checkbox
+            = check_box_tag 'boats[name]', boat.id, true, class: 'checkbox'
+            = boat.name

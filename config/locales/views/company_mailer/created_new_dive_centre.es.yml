@@ -1,0 +1,8 @@
+es:
+  company_mailer:
+    created_new_company:
+      company_name: 'Nombre de Empresa:'
+      owner_email: 'Dirección de Correo-e del Dueño:'
+      fname: 'PNombre'
+      lname: 'Apellido'
+      phone: 'Teléfono'

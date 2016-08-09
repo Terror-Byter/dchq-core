@@ -1,0 +1,19 @@
+:ruby
+  payment_methods = current_store.payment_methods.map{|pm| [pm.name, pm.id]}
+  payment_methods = payment_methods.find_all{|u| u.first != 'Credit Note'}
+
+#add-payment-modal.modal.hide.fade
+  = f.fields_for :rental_payments, @rental.rental_payments.build do |build|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3= t '.add_payment'
+      = build.hidden_field :cashier_id, value: current_user.id
+    .modal-body.center{style: "overflow:visible;"}
+      %p{style: "margin-top:10px;"} #{ t '.enter' }
+      = build.number_field :amount, step: 'any', placeholder: 0.00, value: nil
+      %br/
+      = build.select :payment_method_id, payment_methods, {}, { class: 'selectpicker' }
+      = build.hidden_field :amount_for_search
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('.cancel')
+      %button.btn.btn-primary{ type: :submit }= t('.button')

@@ -1,0 +1,27 @@
+:ruby
+  hide_for_money_field = hide_for_percent_field = ''
+  if !f.object.errors.include?(:commission_rate_id).blank? and f.object.errors.include?(:commission_rate_money).blank?
+    hide_for_money_field = 'hide'
+    hide_for_percent_field = ''
+  elsif f.object.errors.include?(:commission_rate_id).blank? and !f.object.errors.include?(:commission_rate_money).blank?
+    hide_for_money_field = ''
+    hide_for_percent_field = 'hide'
+  elsif !f.object.commission_rate_id.blank? and f.object.commission_rate_money.blank?
+    hide_for_money_field = 'hide'
+    hide_for_percent_field = ''
+  elsif f.object.commission_rate_id.blank? and !f.object.commission_rate_money.blank?
+    hide_for_money_field = ''
+    hide_for_percent_field = 'hide'
+  elsif f.object.commission_rate_id.blank? and f.object.commission_rate_money.blank?
+    hide_for_money_field = 'hide'
+    hide_for_percent_field = ''
+  elsif !f.object.commission_rate_id.blank? and !f.object.commission_rate_money.blank?
+    hide_for_money_field = 'hide'
+    hide_for_percent_field = ''
+  end
+
+.left-column
+  %div{class: "commission_rate_percent_div commission_rates_div #{hide_for_percent_field}"}
+    = f.select :commission_rate_id, [['  ', '  ']] + current_store.commission_rates_list, {}, {class: 'selectpicker span12'}
+  %div{class: "commission_rate_money_div commission_rates_div #{hide_for_money_field}"}
+    = f.text_field :commission_rate_money, class: 'span12'

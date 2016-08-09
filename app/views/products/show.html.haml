@@ -1,0 +1,141 @@
+:ruby
+  barcode = Barby::Code39.new(resource.barcode, extended: true) unless resource.barcode.blank?
+  product.update_attributes tax_rate_id: current_store.tax_rates.first.id if product.tax_rate.blank?
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('products.show.home')
+  %li.divider
+  %li= t('products.show.sales')
+  %li.divider
+  %li= link_to t('products.show.products'), products_path
+  %li.divider
+  %li= t('products.show.details')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        = t('products.show.products')
+        %span
+          |
+          = product.name
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#numbers-of-copy', :'data-toggle' => 'modal', class: 'btn btn-small btn-default btn-icon glyphicons barcode' do
+          %i
+          = t("products.show.print_barcode")
+        - if can? :update, product
+          = link_to edit_product_path, class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t('products.show.edit_product')
+          - if resource.archived?
+            = link_to unarchived_product_path(resource), class: 'btn btn-small btd-default btn-icon glyphicons database_lock' do
+              %i
+              = t('.unarchived')
+          - else
+            = link_to archived_product_path(resource), class: 'btn btn-small btd-default btn-icon glyphicons database_lock' do
+              %i
+              = t('.archived')
+.innerLR
+  .row-fluid
+    .span3
+      %a.thumb
+        = product.image
+      .separator.bottom
+    .span5
+      %h4= product.name
+      .menubar.links.primary
+        %ul
+          %li= t('products.show.brand')
+          %li
+            = link_to product.brand_name, brand_path(product.brand)
+          %li= t('products.show.category')
+          %li
+            = link_to product.category_name, category_path(product.category)
+          %li= t('products.show.supplier')
+          %li
+            = link_to product.supplier_name, supplier_path(product.supplier)
+      %p= product.description
+    .span4.well
+      - unless product.barcode.blank?
+        = print_barcode_html barcode
+  .row-fluid
+    .span12
+      .widget.widget-tabs
+        .widget-head
+          %ul
+            %li.active
+              = link_to '#tab-1', class: 'glyphicons fins', :"data-toggle" => "tab" do
+                %i
+                = t('products.show.inventory_information')
+            %li
+              = link_to '#tab-2', class: 'glyphicons coins', :"data-toggle" => "tab" do
+                %i
+                = t('products.show.sales_history')
+        .widget-body
+          .tab-content
+            #tab-1.tab-pane.active
+              .row-fluid
+                .span6
+                  .widget
+                    .widget-head
+                      %h4.heading.glyphicons.tags
+                        %i>
+                        = t('products.show.inventory_information')
+                    .widget-body.list
+                      %ul
+                        %li
+                          %span.count
+                            = formatted_currency(product.retail_price)
+                          = t('products.show.retail_price')
+                        %li
+                          %span.count
+                            = product.number_in_stock
+                          = t('products.show.current_inventory_level')
+                        %li
+                          %span.count
+                            = product.low_inventory_reminder
+                          = t('products.show.low_inventory_level')
+                .span6
+                  .widget
+                    .widget-head
+                      %h4.heading.glyphicons.oxygen_bottle
+                        %i>
+                        = t('products.show.product_information')
+                    .widget-body.list
+                      %ul
+                        %li
+                          %span.count
+                            - if product.no_commission_rate?
+                              = formatted_currency(product.commission_rate_money)
+                            - else
+                              = product.commission_rate
+                          = t('products.show.commision_rate')
+                        %li
+                          %span.count
+                            = product.tax_rate
+                          = t('products.show.tax_rate')
+                        %li
+                          %span.count
+                            = product.sku_code
+                          = t('products.show.sku')
+            #tab-2.tab-pane
+              - if product.no_sales?
+                = t('products.show.no_sales')
+              - else
+                %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                  = render 'products/show_table_headers'
+                  %tbody
+                    = render partial: 'sales/history_sale', collection: product.sales, as: :sale
+%p
+  - if (can? :manage, Product) && product.no_sales?
+    = link_to product_path(product), method: :delete,
+      confirm: I18n.t('views.actions.confirm'),
+      class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+      %i>
+      = t('products.show.delete_btn')
+
+= content_for :overlays do
+  = render 'overlays/products/numbers_of_copy'

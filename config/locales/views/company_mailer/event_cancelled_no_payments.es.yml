@@ -1,0 +1,11 @@
+es:
+  company_mailer:
+    event_cancelled_no_payments:
+      event_cancellation: 'Cancelación del Evento'
+      the_event: 'El Evento'
+      cancel_explanation: 'ha sido cancelado. Ya que no tenemos ningún pago de usted registrado para este evento, no es necesesario tomar alguna acción.'
+      more_info: 'Mayor Información'
+      contact_if_questions: 'Si usted tiene cualquier duda, por favor contáctenos en'
+      or_call: 'o llámenos as'
+      regards: 'Saludos,'
+      email_was_sent_to: 'Este correo-e fue enviado a'

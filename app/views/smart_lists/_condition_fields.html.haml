@@ -1,0 +1,26 @@
+.row-fluid
+  .span3
+    = f.select :resource, SmartListCondition.resource, {}, { class: 'span12 resource' }
+  .span3
+    = f.select :which, SmartListCondition.which, {}, { class: 'span12 which' }
+  .item-type
+    - if f.object.which == 'any' || f.object.which.nil?
+      .span2= f.select :how_many, SmartListCondition.how_many, {}, { class: 'span12' }
+      .span1= f.number_field :value, class: 'span12'
+    - else
+      .span3= f.text_field :value, class: 'span12 select2-ajax', :'data-input-type' => f.object.resource
+  .span2
+    = f.select :when, SmartListCondition.when, {}, { class: 'span12' }
+  .span1
+    = f.link_to_remove t('.delete'), class: 'remove_fields', style: 'color:red'
+
+= content_for :overlays do
+  .hide
+    %div{ :'data-id' => 'product_list' }
+      .span3
+        = f.text_field :value, class: 'span12'
+
+    %div{ :'data-id' => 'any_item' }
+      .span2= f.select :how_many, SmartListCondition.how_many, {}, { class: 'span12' }
+      .span1= f.number_field :value, class: 'span12'
+

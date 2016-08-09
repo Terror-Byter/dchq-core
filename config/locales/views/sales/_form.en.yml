@@ -1,0 +1,19 @@
+en:
+  sales:
+    form:
+      home: 'Home'
+      sales: 'Sales'
+      point_of_sale: 'Point of Sale'
+      new_sale: 'New Sale'
+      sale_id: 'Sale ID:'
+      cashier: 'Cashier:'
+      scan_barcode: 'Scan Barcode or Start Typing Product Name...'
+      or_look_product: 'Lookup'
+      miscellaneous: 'Miscellaneous'
+      customer: 'Customer'
+      assign_customer: '+ assign customer'
+      person: 'Person'
+      remove: '[remove]'
+      close_register: 'Close Register'
+      refund_method: 'Refund Method'
+      cash_put_out: 'Amend Float'

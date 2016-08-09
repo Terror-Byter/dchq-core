@@ -1,0 +1,10 @@
+es:
+  overlays:
+    events:
+      resource_utilisation:
+        h3: "Imprimir Reporte de Utilización de Recursos"
+        p: "Seleccione el rango de fechas para las que quiere generar el reporte."
+        date_from: "Fecha Desde"
+        date_to: "Fecha Hasta"
+        cancel: "Cancelar"
+        button: "Imprimir Reporte de Utilización de Recursos"

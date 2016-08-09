@@ -1,0 +1,17 @@
+#product-lookup-modal.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'} ×
+    %h3= t('.header')
+  .modal-body.center{style: 'max-height: 500px; overflow-y: auto;'}
+    #brands
+      %h4= t('.brands')
+      %p{style: 'margin-top:15px;'}
+      %hr{style: 'margin-top: 20px;'}/
+    #categories
+      %h4= t('.categories')
+      %p{style: 'margin-top:15px;'}
+    #products.hide
+      %h4= t('.products')
+      %p{style: 'margin-top:15px;'}
+  .modal-footer
+    %button.btn.btn-default{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'}= t('.cancel')

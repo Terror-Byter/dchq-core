@@ -1,0 +1,42 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('events.event_user_participants.home')
+  %li.divider
+  %li= t('events.event_user_participants.events')
+  %li.divider
+  %li= t('events.event_user_participants.add_staff')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('events.event_user_participants.add_staff_to_event')
+= simple_nested_form_for resource, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.parents
+          %i
+          = t('events.event_user_participants.staff_member')
+      .widget-body
+        = f.simple_fields_for :event_user_participants do |build|
+          .row-fluid
+            .span3
+              %strong= t('events.event_user_participants.staff_role')
+              %p.muted= t('events.event_user_participants.staff_role_text')
+            .span3
+              = build.association :user, collection: resource.available_staffs, include_blank: false, input_html: { class: 'selectpicker' }
+            .span3
+              = build.input :role, input_html: { class: 'span11' }
+            .span3
+              = build.link_to_remove t('application.additional_fields.delete'), style: 'color:red;'
+        = f.link_to_add :event_user_participants, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+          %i
+          = t('events.event_user_participants.add_staff')
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: :submit }
+          %i
+          = t('views.actions.save')
+      .clearfix

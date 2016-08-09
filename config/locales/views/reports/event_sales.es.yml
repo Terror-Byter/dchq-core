@@ -1,0 +1,10 @@
+es:
+  reports:
+    event_sales:
+      home: 'Inicio'
+      reports: 'Reportes'
+      report_event_sales: 'Reporte: Ventas del Evento'
+      event_sales: 'Ventas del Evento'
+      dive_courses: 'Cursos de Buceo'
+      dive_trips: 'Viajes de Buceo'
+      totals: 'Totales'

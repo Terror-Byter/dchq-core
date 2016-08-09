@@ -1,0 +1,21 @@
+en:
+  models:
+    smart_list_condition:
+      more_than: More Than
+      less_than: Less Than
+      any: Any Item
+      specific_item: Specific Item
+      product_purchased: 'Product: Purchased'
+      product_not_purchased: 'Product: Not Purchased'
+      event_completed: 'Event: Completed'
+      event_not_completed: 'Event: Not Completed'
+      courses_completed: 'Course: Completed'
+      courses_not_completed: 'Course: Not Completed'
+      servicing_completed: 'Servicing: Completed'
+      rental_completed: 'Rental: Completed'
+      last_7_days: 'In the last 7 days'
+      last_4_weeks: 'In the last 4 weeks'
+      last_6_months: 'In the last 6 months'
+      last_year: 'In the last year'
+      last_2_years: 'In the last 2 years'
+      ever: 'Ever'

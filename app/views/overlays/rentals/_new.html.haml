@@ -1,0 +1,29 @@
+#create-rental-overlay.modal.hide.fade
+  = form_for Rental.new do |f|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3= t '.create_rental'
+    .modal-body
+      .error-list{style: 'margin-bottom:10px; padding-bottom:0px;'}
+      %p= t '.p'
+      %hr/
+      .row-fluid
+        .span12
+          = f.label :customer_id
+          = f.select :customer_id, current_company.customers.map{ |c| [c.full_name, c.id] }, { include_blank: false }, { class: 'select2'}
+      .row-fluid{style: 'margin-top:10px;'}
+        .span6
+          = f.label :pickup_date
+          .datetimepicker.input-append.date
+            = f.text_field :pickup_date, class: 'span10'
+            %span.add-on
+              %i.icon-calendar
+        .span6
+          = f.label :return_date
+          .datetimepicker.input-append.date
+            = f.text_field :return_date, class: 'span11'
+            %span.add-on
+              %i.icon-calendar
+    .modal-footer
+      %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t '.cancel'
+      = f.submit t('.create_rental'), class: 'btn btn-primary'

@@ -1,0 +1,24 @@
+:ruby
+  credit_note = current_store.payment_methods.find_by_name('Credit Note')
+
+#sales
+  = render 'form'
+
+= content_for :js do
+  :javascript
+    $(function(){
+      $(".refund_type_button").live("change", function(){
+        overlay = $("#refund_payment_method")
+        var text = overlay.find("a.btn.btn-primary").text() == 'Issue Refund' ? 'Issue Credit Note' : 'Issue Refund';
+        overlay.find("a.btn.btn-primary").text(text);
+        if (text == 'Issue Refund') {
+          overlay.find(".new_payment select").find("[value='#{ credit_note.try(:id) }']").remove();
+          overlay.find(".new_payment select").selectpicker('refresh');
+        }
+        else {
+          overlay.find(".new_payment select").append("<option value='#{ credit_note.try(:id) }'>Credit Note</option>").selectpicker('val',"#{ credit_note.try(:id) }").selectpicker('refresh');
+        }
+        $(".new_payment").toggle();
+      });
+    });
+

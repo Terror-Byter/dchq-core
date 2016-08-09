@@ -1,0 +1,9 @@
+en:
+  overlays:
+    sales:
+      refund_total_sale:
+        header: 'Refund Total Sale'
+        content: 'You are about to refund this sale in its entirety. You will now be taken to the refund page with full details of the payment methods used in the original purchase.'
+        refund_total: 'Refund Total Sale'
+
+

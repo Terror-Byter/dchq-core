@@ -1,0 +1,24 @@
+:ruby
+  insurance_price   = @ecp_array.map{ |ecp| ecp.event_customer_participant_insurance.try(:line_item_price).to_f }.sum
+  kit_hire          = @ecp_array.map{ |ecp| ecp.event_customer_participant_kit_hire.try(:line_item_price).to_f }.sum
+  transports_price  = @ecp_array.map{ |ecp| ecp.event_customer_participant_transports }.flatten.sum(&:line_item_price)
+  additionals_price = @ecp_array.map{ |ecp| ecp.event_customer_participant_additionals }.flatten.sum(&:line_item_price)
+  event_price       = @ecp_array.sum(&:event_unit_price)
+
+$('.new_event_customer_participant').removeAttr('data-remote')
+
+- unless @ecp_array.blank?
+  $('#insurance').html("#{ formatted_currency insurance_price }")
+  $('#kit_hire').html("#{formatted_currency kit_hire }")
+  $('#transport').html("#{formatted_currency transports_price}")
+  $('#additionals').html("#{formatted_currency additionals_price}")
+  $('#discount').html("#{escape_javascript(@ecp_array.map(&:show_discount).join(", "))}")
+  $('#event_text_price').html("#{ formatted_currency event_price }")
+  $('#total_price').html("#{formatted_currency @ecp_array.sum(&:grand_total_price_with_default_discount)}")
+
+- if params[:event_customer_participant] && params[:event_customer_participant][:want_pay]
+  :ruby
+    event = Event.find_by_id(params[:event_id])
+    ecp   = event.event_customer_participants.build(params[:event_customer_participant])
+
+  $('#total_price').html("#{ formatted_currency ecp.grand_total_price}")

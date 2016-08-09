@@ -1,0 +1,12 @@
+es:
+  overlays:
+    events:
+      print_resource_manifest:
+        print_resource_manifest: "Imprimir Manifiesto de Recursos"
+        p: "Seleccione el recurso y el rango de fechas para las que quiere generar el manifiesto."
+        resource: "Recurso"
+        date_from: "Fecha Desde"
+        date_to: "Fecha Hasta"
+        cancel: "Cancelar"
+        all: Todos
+        unresourced: Sin relación

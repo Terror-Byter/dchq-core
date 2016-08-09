@@ -1,0 +1,6 @@
+%tr
+  %td.important
+    = link_to formatted_currency(gift_card_type.value), gift_card_type
+  %td= t('gift_card_types.index.month_from_date_of_issue', number: gift_card_type.valid_for)
+  %td= formatted_currency(current_company.count_gift_cards_solded_this_month(gift_card_type) * gift_card_type.value)
+  %td= l(current_company.gift_cards_solded_this_month_at(gift_card_type), format: :default) if current_company.has_cards_sold_this_month?(gift_card_type)

@@ -1,0 +1,10 @@
+en:
+  settings:
+    edit_mailchimp_step_1:
+      home: 'Home'
+      settings: 'Settings'
+      settings_integrations: 'Settings: 3rd Party Integrations'
+      mailchimp_integration: 'MailChimp Integration: Step 1'
+      account_settings: 'Account Settings'
+      condition: "In order to integrate with Mailchimp, you need to provide your Mailchimp API Key and set the lists you want to sync with. These details can be found in the 'Account' section of Mailchimp."
+      notice: 'MailChimp API Key has been updated successfully'

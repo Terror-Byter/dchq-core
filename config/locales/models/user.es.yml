@@ -1,0 +1,4 @@
+es:
+  models:
+    user:
+      manager_error: Empresa necesidad tiene uno o más gerentes

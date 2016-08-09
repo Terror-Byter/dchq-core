@@ -1,0 +1,8 @@
+es:
+  rental_products:
+    new:
+      home: Casa
+      rentals: Alquileres
+      inventory: Inventario
+      add: Añadir
+      new: Agregar Alquiler de Artículos de Inventario

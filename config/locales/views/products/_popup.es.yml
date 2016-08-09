@@ -1,0 +1,12 @@
+es:
+  products:
+    popup:
+      brand_header: 'Agregar Marca Rápidamente'
+      brand_name: 'Nombre de Marca'
+      add_brand: 'Agregar Marca Rápidamente'
+      category_header: 'Agregar Categoría Rápidamente'
+      category_name: 'Nombre de Categoría'
+      add_category: 'Agregar Categoría Rápidamente'
+      supplier_header: 'Agregar Proveedor Rápidamente'
+      supplier_name: 'Nombre del Proveedor'
+      add_supplier: 'Agregar Proveedor Rápidamente'

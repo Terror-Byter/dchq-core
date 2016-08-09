@@ -1,0 +1,9 @@
+en:
+  categories:
+    form:
+      category_details: 'Category Details'
+      category_name: 'Category Name'
+      category_name_text: 'Enter the full category name.'
+      description: 'Description'
+      description_text: 'The description will be shown on the category details page.'
+      save: 'Save'

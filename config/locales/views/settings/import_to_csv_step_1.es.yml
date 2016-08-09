@@ -1,0 +1,25 @@
+es:
+  settings:
+    import_to_csv_step_1:
+      home: Inicio
+      settings: Ajustes
+      settings_import_step_1: 'Ajustes: Importar Datos: Paso 1'
+      content: Por favor seleccione un archivo para importar. Si usted quiere importar un archivo de Excel, por favor guárdelo como .csv antes de cargarlo. Archivos csv de muestra pueden ser
+      download: descargados de GitHub
+      about_importing: Acerca de Importar Datos
+      supported: 'Formatos de archivos aceptados: Excel guardado como .csv'
+      after_upload: Despues de cargarlos, le mostraremos una vista previa de los datos cargados, entonces usted podrá definir cuál columna va dónde y hacer que coincidan sus datos con nuestro sistema.
+      preview: Una vez que esté satisfecho con la vista previa, pueden ingresar sus datos dentro de su cuenta Dice Centre HQ. Usted puede cancelar la importación en cuarquier momento.
+      import_options: Opciones de Importación
+      import_data: Tipo de Importación
+      import_data_text: Seleccione sus opciones de importación y cargue el archivo a importar.
+      import_type: Tipo de Importación
+      start_import: Comenzar a Importar
+      customers: Clientes
+      suppliers: Proveedores
+      business_individuals: Personas de Negocios
+      products: Productos
+      import_file: Importar Archivo
+      msg: La importación de datos se ha completado satisfactoriamente
+      rental_products: Productos de Alquiler
+      eve_import: EVE Importar (Invoice Line Item)

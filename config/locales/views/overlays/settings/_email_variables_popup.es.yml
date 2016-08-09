@@ -1,0 +1,14 @@
+es:
+  overlays:
+    settings:
+      email_variables_popup:
+        header: 'Variables de Correo-e'
+        content: 'Las siguientes variables están disponibles para utilizar en el contenido personaliado del correo-e.'
+        curtomer_full_name: "Nombre Completo del Cliente:"
+        customer_name: '%CUSTOMER_NAME%'
+        name_of_event: 'Nombre del Evento:'
+        event_name: '%EVENT_NAME%'
+        date_of_event: 'Fecha y Hora del Evento:'
+        event_date: '%EVENT_DATE%'
+        total_cost_of_sale: 'Costo Total de la Venta:'
+        sales_total: '%SALES_TOTAL%'

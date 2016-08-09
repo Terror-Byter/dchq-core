@@ -1,0 +1,17 @@
+en:
+  products:
+    table_headers:
+      product_name: 'Product Name'
+      sku: 'SKU'
+      category: 'Category'
+      brand: 'Brand'
+      supplier: 'Supplier'
+      price: 'Price'
+      inventory: 'Inventory'
+      status: 'Status'
+    show_table_headers:
+      order_id: 'Order ID'
+      date: 'Date'
+      to_pay: 'Sale Total'
+      status: 'Status'
+      totals: Product Totals

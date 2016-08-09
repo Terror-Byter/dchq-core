@@ -1,0 +1,16 @@
+en:
+  business_contacts:
+    show:
+      home: 'Home'
+      crm: 'CRM'
+      suppliers: 'Suppliers'
+      new_note: 'New Note'
+      edit_supplier_contact: 'Edit Supplier Contact'
+      contact_info: 'Contact Information'
+      email: 'Email:'
+      ph: 'Ph:'
+      tags: 'Tags:'
+      notes: 'Notes'
+      delete_supplier_contact: 'Delete Supplier Contact'
+      no_notes: 'No Notes'
+

@@ -1,0 +1,18 @@
+:ruby
+  is_default_in_store = f.object.default?
+  xero = @client.Account.all(:where => {:code => f.object.xero_code}) if current_store.xero_connected? and !xero.blank?
+  xero_code_and_name = xero.blank? ? "" : "#{xero.first.code} - #{xero.first.name}"
+
+.row-fluid
+  .span3
+    = f.input :name, readonly: (f.object.name == "Gift Card" or f.object.name == "Credit Note"),
+                     placeholder: t('application.sale_fields.placeholder'),
+                     label: false, readonly: f.object.deleted?
+  - if current_store.xero_connected?
+    .span3
+      = text_field_tag :xero, xero_code_and_name, readonly: true
+  - unless is_default_in_store || f.object.name == "Gift Card" || f.object.name == "Credit Note"
+    .span3
+      = f.link_to_remove class: 'btn btn-small btn-danger btn-icon glyphicons circle_minus' do
+        %i
+        = t('views.actions.remove')

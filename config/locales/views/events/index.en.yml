@@ -1,0 +1,5 @@
+en:
+  events:
+    index:
+      calendar: Calendar
+      event_calendar: Event Calendar

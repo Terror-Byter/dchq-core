@@ -1,0 +1,10 @@
+es:
+  emails_examples:
+    service_ready_for_collection:
+      title: 'Dive Centre HQ'
+      servicing_id: 'Recibo de Venta #%{receipt}'
+      servicing_is_complete: "El servicio de su %{kit} está completo y está listo para su recolección. Si aplica, debajo hemos adjuntado su factura. Si usted tiene cualquier duda acerca de su orden por favor contáctenos en"
+      sku: 'SKU / PRODUCTO'
+      unit_price: 'PRECIO UNITARIO'
+      qty: 'CANT'
+      sub_total: 'SUB-TOTAL'

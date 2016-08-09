@@ -1,0 +1,26 @@
+#quick-add-customer-modal.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.event_customer_participants.add_customer.header')
+  = simple_form_for Customer.new, validate: true, remote: true do |f|
+    .modal-body
+      %p= t('overlays.event_customer_participants.add_customer.content')
+      %hr/
+      .row-fluid
+        .span4
+          = f.label :given_name
+        .span8
+          = f.input :given_name, input_html: { class: 'span12' }, label: false
+      .row-fluid
+        .span4
+          = f.label :family_name
+        .span8
+          = f.input :family_name, input_html: { class: 'span12' }, label: false
+      .row-fluid
+        .span4
+          = f.label :email
+        .span8
+          = f.input :email, input_html: { class: 'span12' }, label: false
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.event_customer_participants.add_customer.cancel')
+      = f.button :submit, t('overlays.event_customer_participants.add_customer.button'), class: 'btn btn-primary'

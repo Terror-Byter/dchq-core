@@ -1,0 +1,6 @@
+- type = financial_report.invoice? ? t('reports.financial_reports.invoice') : t('reports.financial_reports.credit')
+%tr
+  %td.important
+    = link_to "#{t('reports.financial_reports.sales_report', type: type)}: #{l(financial_report.created_at, format: :default)}", edit_finance_report_reports_path(:id => financial_report.id)
+  %td= formatted_currency(financial_report.total_payments)
+  %td= link_to t('reports.financial_reports.view_in_xero'), financial_report.xero_url, target: '_blank' if financial_report.sent?

@@ -1,0 +1,31 @@
+en:
+  bookings:
+    step_1:
+      home: Home
+      event_rigistration: Event Registration
+      registration_step_1: 'Event Registration: Step 1'
+      information_step_1: This event requires information from you to calculate the total cost. Please select from the options below to confirm your booking.
+      customer_information: Customer Information
+      if_new_customer: If you're a new customer and have not booked with us before,
+      registration_firts: please register your details first
+      proceed_to_equipment: Proceed to Equipment
+      equipment: Equipment
+      equipment_text: Select whether you require kit hire and/or insurance.
+      proceed_to_transport: Proceed to Transport
+      transport: Transport
+      day: Day
+      proceed_to_additionals: Proceed to Additionals
+      additionals: Additional Items
+      equipment_camera_hire: 'Equipment: Camera Hire'
+      proceed_to_payment: Proceed to Payment
+      payment: Payment
+      book_event: Book Event
+      email_address: Email Address
+      nope: No
+      card_number: Card Number
+      expiry_month: Expiry Month
+      expiry_year: Expiry Year
+      cv2: CV2 Code
+      submit_payment_details_stripe: Submit Payment Details
+      submit_payment_details_epay: Pay with Credit / Debit Card
+      book_without_payment: Book without Payment

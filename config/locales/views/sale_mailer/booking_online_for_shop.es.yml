@@ -1,0 +1,12 @@
+es:
+  sale_mailer:
+    booking_online_for_shop:
+    alt: 'Dive Centre HQ'
+    new_booking_request: 'Solicitud Nueva de Reservación Recibida'
+    made_an_online_booking: '%{customer} ha hecho una reservación en línea para %{event_name} en %{start_at}. Los detalles de la reservación están a continuación. Esta es una solicitud de reservación ya que se necesita confirmar la eligibilidad para bucear.'
+    approve_customer_for_event: 'Aprobar Cliente para el Evento'
+    reject_customer: 'Rechazar Cliente'
+    note_if_reject: 'Nota: Si usted rechaza a este cliente, nosotros lo redirigiremos a usted a PayPal para emitir un reembolso.'
+    booking_date: 'Fecha de Reservación'
+    team: 'El Equipo Dive Centre HQ'
+    registered_office: ''

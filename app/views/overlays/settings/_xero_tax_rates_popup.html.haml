@@ -1,0 +1,20 @@
+#xero-taxrate-mismatch.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('overlays.settings.xero_tax_rates_popup.header')
+  .modal-body
+    %p= t('overlays.settings.xero_tax_rates_popup.content')
+    %hr/
+    .row-fluid
+      .span4.offset3
+        %h5= t('overlays.settings.xero_tax_rates_popup.company_hq')
+        %ul.disc
+          - current_store.tax_rates.order(:amount).each do |tax_rate|
+            %li #{tax_rate.amount}%
+      .span4
+        %h5= t('overlays.settings.xero_tax_rates_popup.xero')
+        %ul.disc
+          - @xero.tax_rates.sort.each do |tax_rate|
+            %li #{tax_rate}%
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}= t('views.actions.cancel')

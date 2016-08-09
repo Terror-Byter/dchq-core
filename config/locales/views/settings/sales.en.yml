@@ -1,0 +1,6 @@
+en:
+  settings:
+    sales:
+      home: 'Home'
+      settings: 'Settings'
+      settings_sales: 'Settings: Sales'

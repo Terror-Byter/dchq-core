@@ -1,0 +1,9 @@
+:ruby
+  random_string = rand(9999999999999)
+- if @product
+  %li.product.fields
+    %span.count= formatted_currency(@product.retail_price)
+    = truncate @product.name, :length => 15
+    [#{link_to t("views.actions.remove"), "javascript:void(0)", :class => "remove_nested_fields"}]
+    = hidden_field_tag "service[service_items_attributes][new_#{random_string}][product_id]", @product.id
+    = hidden_field_tag "service[service_items_attributes][new_#{random_string}][_destroy]", false

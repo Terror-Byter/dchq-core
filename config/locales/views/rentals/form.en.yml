@@ -1,0 +1,16 @@
+en:
+  rentals:
+    form:
+      rental_id: 'Rental ID: %{id}'
+      cashier: 'Cashier: %{name}'
+      lookup: Lookup Item
+      placeholder: Scan Barcode or Start Typing Rental Product Name...
+      rental_details: Rental Details
+      customer: Customer
+      dates: Dates
+      to: to
+      booked: Booked
+      overdue: Overdue
+      in_progress: In Progress
+      complete: Complete
+      pay_pending: Payment Pending

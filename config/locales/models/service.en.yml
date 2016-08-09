@@ -1,0 +1,6 @@
+en:
+  models:
+    service:
+      servicing: Servicing
+      paid: Paid
+      confirm_term: You should confirm terms and conditions

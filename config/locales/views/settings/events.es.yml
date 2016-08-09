@@ -1,0 +1,18 @@
+es:
+  settings:
+    events:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_events: 'Ajustes: Eventos'
+      course_price_list: 'Lista de Precios de Cursos'
+      course_price_list_text: 'Para poder vender cursos, usted necesita definir su listas de precios de cursos. Ustd puede configurar fácilmente cursos para varias agencias en cualquier ocasión única.'
+      course_button: 'Configurar Lista de Precios de Cursos'
+      trip_price_lists: 'Listas de Precio de Viajes'
+      trip_price_lists_text: 'Cuando vende viajes regulares, usted necedita definir una lista de precios de viajes. Los ejemplos de viajes incluyen una doble inmersión, una ubicación específica o cualquier combinación.'
+      trip_button: 'Configurar Lista de Precios de Viajes'
+      price_list_additional: 'Lista de Precios para Artículos Adicionales'
+      price_list_additional_text: 'Al vender viajes o cursos, es posible que usted teng artículos adicionales que puedan ser vendidos. Estos incluyen sguros, renta de kit, renta de cámara, etc.'
+      additionals_button: 'Configurar Lista de Precios para Artículos Adicionales'
+      boats_resources: 'Barcos & Recursos Disponibles'
+      boats_resources_text: 'Usted puede asignar un evento a un barco o recurso en específico, para asegurarse, agregue aquí cada uno.'
+      boats_button: 'Configurar Barcos & Recursos'

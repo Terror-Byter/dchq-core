@@ -1,0 +1,7 @@
+en:
+  staff_members:
+    schedule:
+      home: 'Home'
+      crm: 'CRM'
+      staff: 'Staff Scheduling'
+      staff_scheduling: 'Staff Availability between %{start_date} and %{end_date}'

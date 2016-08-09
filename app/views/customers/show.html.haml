@@ -1,0 +1,235 @@
+:ruby
+  @notable ||= @customer
+  @note ||= @customer.notes.new
+  @note.attachment || @note.build_attachment
+
+  @incident ||= @customer.incidents.new
+  @incident.attachment || @incident.build_attachment
+
+  customer ||= @customer.decorate
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('customers.show.home')
+  %li.divider
+  %li= t('customers.show.crm')
+  %li.divider
+  %li= t('customers.show.people')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= customer.full_name
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#add-customer-to-event', class: 'btn btn-small btn-default btn-icon glyphicons circle_plus', :'data-toggle' => 'modal' do
+          %i
+          = t('customers.show.add_customer_event')
+        = link_to '#new-customer-note', class: 'btn btn-small btn-default btn-icon glyphicons notes', :'data-toggle' => 'modal' do
+          %i
+          = t('customers.show.new_note')
+        = link_to '#new-customer-incident', class: 'btn btn-small btn-default btn-icon glyphicons electricity', :'data-toggle' => 'modal' do
+          %i
+          = t('customers.show.new_incident')
+        = link_to edit_customer_path(customer), class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+          %i
+          = t('customers.show.edit_customer')
+.innerLR
+  .row-fluid.row-merge
+    .span12
+      .row-fluid
+        .span2
+          .thumbnail{style: 'margin-bottom:10px;'}
+            %img= customer.image
+        .span5
+          %h4
+            %span= t('customers.show.contact_info')
+          %p
+            %strong= t('customers.show.address')
+            = til(customer.address)
+            %br>/
+            = t('customers.show.email')
+            = mail_to til(customer.email)
+            = succeed t('customers.show.ph') do
+              %br/
+            &nbsp;
+            = til(customer.telephone)
+            %br>/
+            = t('customers.show.mob')
+            = til(customer.mobile_phone)
+          %p.label.btn-success
+            %strong>= t('customers.show.emergentcy_contact')
+            \
+            = til(customer.emergency_contact_details)
+        .span5
+          %h4
+            %span= t('customers.show.customer_data')
+          .row-fluid
+            .span6
+              %ul.unstyled.icons
+                %li.glyphicons.scuba_diving
+                  %i
+                  = t('customers.show.last_dive')
+                  = til(customer.last_dive_on)
+                %li.glyphicons.calendar
+                  %i
+                  = t('customers.show.date_of_birth')
+                  = til(customer.born_on)
+                %li.glyphicons.male
+                  %i
+                  = t('customers.show.gender')
+                  = til customer.gender
+                %li.glyphicons.roundabout
+                  %i
+                  = t('customers.show.source')
+                  = til(customer[:source])
+                %li.glyphicons.asterisk
+                  %i
+                  = t('customers.show.discount')
+                  = customer.discount
+            .span6
+              %ul.unstyled.icons
+                %li.glyphicons.home
+                  %i
+                  = t('customers.show.hotel')
+                  = til(customer.hotel_name)
+                %li.glyphicons.sheriffs_star
+                  %i
+                  = t('customers.show.credit')
+                  = formatted_currency(customer.credit_note)
+                %li.glyphicons.vcard
+                  %i
+                  = t('customers.show.created')
+                  = l customer.created_at, format: :default
+                %li.glyphicons.star
+                  %i
+                  = t('customers.show.updated')
+                  = l customer.updated_at, format: :default
+                %li.glyphicons.tag
+                  %i
+                  = t('customers.show.tags')
+                  = til(customer.tag_list)
+      .row-fluid
+        .widget.widget-tabs
+          .widget-head
+            %ul
+              %li.active
+                = link_to '#tab-1', class: 'glyphicons eye_open', :'data-toggle' => 'tab' do
+                  %i
+                  = t('customers.show.overview')
+              %li
+                = link_to '#tab-2', class: 'glyphicons coins', :'data-toggle' => 'tab' do
+                  %i
+                  = t('customers.show.sales')
+              %li
+                = link_to '#tab-3', class: 'glyphicons calendar', :'data-toggle' => 'tab' do
+                  %i
+                  = t('customers.show.events')
+              %li
+                = link_to '#tab-4', class: 'glyphicons log_book', :'data-toggle' => 'tab' do
+                  %i
+                  = t('customers.show.credit_notes')
+              %li
+                = link_to '#tab-5', class: 'glyphicons notes', :'data-toggle' => 'tab' do
+                  %i
+                  = t('customers.show.customer_note')
+              %li
+                = link_to '#tab-6', class: 'glyphicons file', :'data-toggle' => 'tab' do
+                  %i
+                  = t('customers.show.incidents')
+          .widget-body
+            .tab-content
+              #tab-1.tab-pane.active
+                .row-fluid
+                  .span8
+                    .widget
+                      .widget-head
+                        %h4.heading.glyphicons.scuba_diving
+                          %i>
+                          = t('customers.show.dive_credentials')
+                      .widget-body.list
+                        %ul
+                          - if customer.no_certification_level_memberships?
+                            %li= t('customers.show.no_certifications')
+                          = render partial: 'certification_level_memberships/certification_level_membership',
+                            collection: customer.certification_level_memberships,
+                            as: :clm
+                  .span4
+                    .widget
+                      .widget-head
+                        %h4.heading.glyphicons.fins
+                          %i>
+                          = t('customers.show.dive_equipment')
+                      .widget-body.list
+                        %ul
+                          %li
+                            %span.count= customer.fins
+                            = t('customers.show.fins')
+                          %li
+                            %span.count= customer.bcd
+                            = t('customers.show.bcd')
+                          %li
+                            %span.count= customer.wetsuit
+                            = t('customers.show.wetsuit')
+                          %li
+                            %span.count= customer.mask
+                            = t('customers.show.mask')
+                          %li
+                            %span.count= customer.regulator
+                            = t('customers.show.regulator')
+                          %li
+                            %span.count= til(customer.weight)
+                            = t('customers.show.weight')
+              #tab-2.tab-pane
+                Loading sales...
+              #tab-3.tab-pane
+                Loading events...
+              #tab-4.tab-pane
+                - if customer.no_credit_notes?
+                  = t('customers.show.no_credit_notes')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    %thead
+                      %tr
+                        %th= t('customers.show.order_id')
+                        %th= t('customers.show.amount_spent')
+                        %th= t('customers.show.remaining')
+                    %tbody
+                      = render customer.credit_notes
+              #tab-5.tab-pane
+                - if customer.no_notes?
+                  = t('customers.show.no_customer_notes')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    = render 'notes/table_headers'
+                    %tbody
+                      -#TODO NEED TO FIX
+                      = render @customer.notes.includes(:attachment).decorate
+              #tab-6.tab-pane
+                - if customer.no_incidents?
+                  = t('customers.show.no_incidents')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    %thead
+                      %tr
+                        %th= t('customers.show.incident_added_by')
+                        %th= t('customers.show.incident_date')
+                        %th= t('customers.show.incident_description')
+                        %th= t('customers.show.incident_files')
+                        %th= t('customers.show.incident_actions')
+                    %tbody
+                      -#TODO NEED TO FIX
+                      = render @customer.incidents.decorate
+%p
+  - if can? :manage, Customer
+    = link_to customer_path(customer), method: :delete,
+      confirm: I18n.t('views.actions.confirm'),
+      class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+      %i>
+      = t('customers.show.delete_customer')
+
+= content_for :overlays do
+  = render 'overlays/customers/new_customer_note'
+  = render 'overlays/customers/new_customer_incident'
+  = render 'overlays/customers/add_customer_to_event'

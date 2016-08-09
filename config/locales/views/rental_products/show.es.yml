@@ -1,0 +1,22 @@
+es:
+  rental_products:
+    show:
+      home: Casa
+      rentals: Alquileres
+      inventory: Inventario
+      details: Detalles
+      rental_product: Alquiler de Producto
+      edit: Edite Alquiler Producto
+      unarchived: Desarchivar Alquiler Producto
+      archived: Archivo de Alquiler de Productos
+      brand: Marca
+      category: Categoría
+      supplier: Proveedor
+      inventory_information: Información de Inventario
+      price_per_day: Precio Por Día
+      current_inventory_level: Nivel Inventario Actual
+      product_information: Alquiler de Información del Producto
+      commision_rate: Comisión de Tarifas
+      tax_rate: Tasa de Impuesto
+      sku: SKU
+      delete_btn: Eliminar Alquiler Producto

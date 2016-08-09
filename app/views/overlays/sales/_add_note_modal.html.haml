@@ -1,0 +1,11 @@
+#add-note-modal.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('sales.details.notes.add_note')
+  .modal-body
+    .row-fluid
+      .span12
+        %textarea.span12
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('views.actions.cancel')
+    %a.btn.btn-primary{href: ""}= t('sales.details.notes.add_note')

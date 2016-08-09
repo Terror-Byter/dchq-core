@@ -1,0 +1,3 @@
+es:
+  errors:
+    only_distinct_products_allowed: 'Solo los productos diferentes son permitidos por una sola orden de compra'

@@ -1,0 +1,4 @@
+en:
+  models:
+    event_customer_participant:
+      exceeded_limit: Registrations exceeded the limit

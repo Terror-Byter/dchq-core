@@ -1,0 +1,14 @@
+#add-product-to-service.modal.hide.fade
+  .modal-header
+    %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
+    %h3= t('overlays.services.add_item_popup.header')
+  .modal-body.center{style: 'overflow-y: visible;'}
+    %p= t('overlays.services.add_item_popup.content')
+    .row-fluid
+      = select_tag :product_id, options_for_select(current_store.producss_names_and_ids), { class: 'select2' }
+  .modal-footer
+    %button.btn.btn-default{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'}= t('views.actions.cancel')
+    - unless resource.new_record?
+      = link_to t('overlays.services.add_item_popup.add_product'), '#add_item_confirmation', class: 'btn btn-primary', :'data-toggle' => 'modal', :'data-dismiss' => 'modal'
+    - else
+      = submit_tag t('overlays.services.add_item_popup.add_product'), class: 'btn btn-primary add_item_to_service_button'

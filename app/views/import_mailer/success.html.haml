@@ -1,0 +1,8 @@
+!!!5
+%html
+  %head
+  %body
+    %p= t('.message', type: @type.upcase)
+    %br
+    %p
+      = link_to t('.sign_in'), new_user_session_url

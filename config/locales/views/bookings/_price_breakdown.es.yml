@@ -1,0 +1,10 @@
+es:
+  bookings:
+    price_breakdown:
+      price_breakdown: 'Desglose del Precio'
+      event: 'Evento'
+      kit_hire: 'Rentar Kit'
+      insurance: 'Seguro'
+      transport: 'Transporte'
+      equipment: 'Equipo'
+      total: 'TOTAL'

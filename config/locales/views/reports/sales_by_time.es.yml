@@ -1,0 +1,8 @@
+es:
+  reports:
+    sales_by_time:
+      home: 'Inicio'
+      reports: 'Reportes'
+      report_sales_by_time: 'Reporte: Ventas por Tiempo'
+      sales_by_month: 'Ventas por Mes'
+      sales_by_year: 'Ventas por Año'

@@ -1,0 +1,14 @@
+:ruby
+  is_default_in_store = f.object.default?
+  tax_rate = f.object
+
+.row-fluid
+  .span3
+    = f.input :identifier, input_html: { class: 'span11' }, label: false
+  .span3
+    = f.input :amount, input_html: { class: 'span11' }, label: false
+  - if !is_default_in_store && tax_rate.products.blank?
+    .span3
+      = f.link_to_remove class: 'btn btn-small btn-danger btn-icon glyphicons circle_minus' do
+        %i
+        = t('views.actions.remove')

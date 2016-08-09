@@ -1,0 +1,7 @@
+es:
+  brands:
+    edit:
+      home: 'Inicio'
+      sales: 'Ventas'
+      brands: 'Marcas'
+      edit_brand: 'Editar Marca'

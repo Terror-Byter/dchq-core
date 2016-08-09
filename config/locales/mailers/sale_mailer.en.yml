@@ -1,0 +1,5 @@
+en:
+  mailers:
+    sale_mailer:
+      send_receipt_subject: 'Receipt for Sale #%{id}'
+      send_rental_receipt_subject: 'Receipt for Rental #%{id}'

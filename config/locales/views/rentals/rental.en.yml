@@ -1,0 +1,9 @@
+en:
+  rentals:
+    rental:
+      booked: Booked
+      overdue: Overdue
+      in_progress: In Progress
+      complete: Complete
+      pay_pending: Payment Pending
+      paid: PAID

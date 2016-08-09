@@ -1,0 +1,27 @@
+#print-staff-roster.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.events.staff_roster.h3')
+  = form_tag print_staff_roster_events_path, {target: '_blank', style: 'margin:0px;'} do
+    .modal-body
+      %p= t('overlays.events.staff_roster.p')
+      .row-fluid
+        .span6
+          = label_tag :staff_roster_starts_at, t('overlays.events.staff_roster.date_from')
+          .input-append.date
+            = text_field_tag :starts_at, l(Date.today, format: '%F'), class: 'datepicker', id: :staff_roster_starts_at, style: 'z-index:10010;'
+            %span.add-on
+              %i.icon-calendar
+        .span6
+          = label_tag :staff_roster_ends_at, t('overlays.events.staff_roster.date_to')
+          .input-append.date
+            = text_field_tag :ends_at, l(Date.today, format: '%F'), class: 'datepicker', id: :staff_roster_ends_at, style: 'z-index:10011;'
+            %span.add-on
+              %i.icon-calendar
+      .row-fluid
+        .span12
+          = label_tag :staff_member_id, t('overlays.events.staff_roster.staff_member')
+          = select_tag :staff_member_id, options_for_select(current_company.users_names_and_ids), multiple: true, class: 'selectpicker', :"data-selected-text-format" => "count > 3", :"data-actions-box" => 'true', style: 'z-index:10012'
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => :true, :'data-dismiss' => :modal, type: :button }= t('overlays.events.staff_roster.cancel')
+      = submit_tag t('overlays.events.staff_roster.button'), class: 'btn btn-primary'

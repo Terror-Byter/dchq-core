@@ -1,0 +1,14 @@
+es:
+  suppliers:
+    index:
+      suppliers: 'Proveedores'
+      setup_mailchimp: 'Configurar MailChimp'
+      export_records: 'Exportar Historial del Proveedor'
+      new_supplier: 'Nuevo Proveedor'
+      supplier_records: 'Historial del Proveedor'
+      business: 'Negocio'
+      location: 'Ubicación'
+      phone: 'Teléfono'
+      email: 'Correo-e'
+      tags: 'Etiquetas'
+      total_suppliers: 'Total de proveedores:'

@@ -1,0 +1,17 @@
+.row-fluid
+  .span12
+    .row-fluid
+      .span3
+        = f.text_field :name, class: 'span12'
+      .span2
+        = f.text_field :cost, class: 'span12'
+      .span2
+        = f.text_field :local_cost, class: 'span12'
+      .span2
+        = f.select :tax_rate_id, current_store.tax_rates_list, {}, class: 'selectpicker span12'
+      .span1
+        = render 'commission_rate_fields_new_design', f: f
+      .span1
+        = f.input :exclude_tariff_rates, as: :boolean, label_html: { class: 'checkbox' }, label: false, inline_label: t('settings.trips.exclude')
+      .span1
+        = f.link_to_remove t('views.actions.delete'), style: 'color:red;'

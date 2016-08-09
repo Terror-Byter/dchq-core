@@ -1,0 +1,11 @@
+%table
+  - 4.times do
+    %tr
+      - 3.times do
+        %td{:style => "padding: 10px"}
+          = print_barcode_svg barcode
+          %center= resource.barcode
+          %br
+          %center= resource.name
+          %center= formatted_currency(resource.retail_price)
+

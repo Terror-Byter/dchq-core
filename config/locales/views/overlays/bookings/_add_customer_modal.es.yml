@@ -1,0 +1,7 @@
+es:
+  overlays:
+    bookings:
+      add_customer_modal:
+        header: 'Crear Perfil del Cliente'
+        content: 'Por favor ingrese los datos requeridos para crear su perfil de cliente.'
+        create_customer_profile: 'Crear Perfil del Cliente'

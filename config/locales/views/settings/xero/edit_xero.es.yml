@@ -1,0 +1,14 @@
+es:
+  settings:
+    xero:
+      edit_xero:
+        home: 'Inicio'
+        settings: 'Ajustes'
+        xero_integration: 'Integración Xero'
+        account_settings: 'Ajustes de la Cuenta'
+        notice: 'AVISO:'
+        notice_content: 'Usted tiene un número diferente de tasas de impuestos en el Dive Centre HQ en comparación a Xero. Antes de publicar sus ventas a Xero, por favor'
+        routing_error: ' Podrían ocurrir errores de redondeo al calcular los impuestos para las ventas con pequeñas transacciones'
+        for_discrepancies: 'Por diferencias en el recuento hasta el cierre de la cuenta de pago'
+        register_closing_totals: 'Registre los Totales del Cierre'
+        unliked_xero: 'Desvincular Cuenta Xero'

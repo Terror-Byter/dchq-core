@@ -1,0 +1,7 @@
+%strong= t('purchase_orders.form.notes.notes')
+- unless purchase_order.fixed?
+  \-
+  %a#edit-note{'data-toggle' => 'modal', href: '#add-note-modal'}= t('helpers.application.edit')
+%br/
+%span#note-holder<
+  = purchase_order.note

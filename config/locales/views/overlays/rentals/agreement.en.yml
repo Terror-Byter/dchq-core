@@ -1,0 +1,8 @@
+en:
+  overlays:
+    rentals:
+      agreement:
+        header: 'Rental Agreement'
+        content: 'This is the rental agreement as listed in the settings area for this store.'
+        customer_decline: 'Customer Decline'
+        customer_acceped: 'Customer Accepted'

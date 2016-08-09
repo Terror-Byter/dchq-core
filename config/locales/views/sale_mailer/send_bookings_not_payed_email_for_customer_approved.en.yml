@@ -1,0 +1,8 @@
+en:
+  sale_mailer:
+    send_bookings_not_paid_email_for_customer_approved:
+      booking_confirmation: 'Booking Confirmation: %{customer}'
+      you_have_been_confirmed: 'You have been confirmed for the event listed below '
+      payment_outstanding: 'payment outstanding'
+      further_instructions: 'Further Instructions'
+      event_date: 'Event Date'

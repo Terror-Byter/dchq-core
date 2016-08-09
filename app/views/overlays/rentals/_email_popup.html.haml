@@ -1,0 +1,11 @@
+#email-receipt-modal.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', :type => 'button'} ×
+    %h3= t '.header'
+  = form_tag send_receipt_via_email_rental_path(@rental), method: :post do
+    .modal-body.center
+      = label_tag t '.label'
+      = text_field_tag 'email', @rental.customer.email
+    .modal-footer
+      %button.btn.btn-default{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', :type => 'button'}= t '.cancel'
+      = submit_tag t('.button'), :class => 'btn btn-primary'

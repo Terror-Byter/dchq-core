@@ -1,0 +1,13 @@
+.modal-header
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+  %h3= t('notes.form.header')
+= simple_form_for [@notable, @note], validate: true do |f|
+  .modal-body
+    .row-fluid
+      = f.input :description, input_html: { rows: 2, style: 'width: 96%' }
+    .row-fluid
+      = f.simple_fields_for :attachment do |form|
+        = render 'attachment_fields', f: form
+  .modal-footer
+    = link_to t('views.actions.cancel'), '#', class: 'btn btn-default', :'aria-hidden' => true, :'data-dismiss' => :modal
+    = f.button :submit, t('notes.form.add_button'), class: 'btn btn-primary'

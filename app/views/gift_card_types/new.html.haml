@@ -1,0 +1,14 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('gift_card_types.new.home')
+  %li.divider
+  %li= t('gift_card_types.new.sales')
+  %li.divider
+  %li= t('gift_card_types.new.gift_cards')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('gift_card_types.new.add_gift_card_type')
+= render 'form'

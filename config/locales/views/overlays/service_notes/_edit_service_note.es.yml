@@ -1,0 +1,6 @@
+es:
+  overlays:
+    service_notes:
+      edit_service_note:
+        header: 'Editar Nota de Servicio'
+        add_service_note: 'Agregar Nota de Servicio'

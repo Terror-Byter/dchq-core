@@ -1,0 +1,18 @@
+:ruby
+  event_parent_id = resource.recurring_parent? ? resource.id : resource.parent_id
+  event_starts_at = resource.starts_at
+  number_of_recurring_events = [[t('overlays.events.edit_recurring_event.just_this_one'), 0]]
+  current_store.events.where{(parent_id.eq event_parent_id) & (starts_at.gt event_starts_at)}.each_with_index.map{|i, index| number_of_recurring_events.push [index + 1]}
+
+#edit_recurring_event.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.events.edit_recurring_event.header')
+  .modal-body
+    %p= t('overlays.events.edit_recurring_event.content')
+    .row-fluid
+      .span12
+        = select_tag :number_of_recurring_events_for_update, options_for_select(number_of_recurring_events), { class: '', include_blank: false }
+  .modal-footer
+    %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+    = f.button :submit, t('views.actions.save'), class: 'btn btn-primary'

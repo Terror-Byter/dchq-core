@@ -1,0 +1,11 @@
+- if sale_product.sale_productable.class.name.eql?('MiscellaneousProduct')
+  = render partial: 'sales/misc_product_item', locals: {form: form, record: sale_product, is_editable: is_editable}
+- else
+  = render partial: 'products/line_item', locals: {form: form, record: sale_product, is_editable: is_editable}
+
+- if sale_product.service_type?
+  - @zero = sale_product.sale_productable.complimentary_service
+  - sale_product.sale_productable.kits.each do |kit|
+    = render partial: 'services/line_item', locals: {record: kit.type_of_service, kit: kit }
+    = render partial: 'services/line_item', locals: {record: kit.type_of_service.service_kit, kit: kit } if kit.type_of_service.service_kit
+  = render partial: 'services/line_item', collection: sale_product.sale_productable.products.decorate, as: :record

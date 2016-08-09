@@ -1,0 +1,11 @@
+es:
+  overlays:
+    sales:
+      add_payment_modal:
+        header: Agregar Pago
+        content: "Ingrese la cantidad que está recibiendo:"
+        add_payment: Agregar Pago
+        amount_due: A PAGAR
+        please_enter_amount: Por favor, ingrese el monto
+        credit_note: "Este cliente tiene %{price} crédito disponible."
+        apply_credit_note: Aplicar de crédito como pago

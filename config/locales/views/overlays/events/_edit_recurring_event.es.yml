@@ -1,0 +1,7 @@
+es:
+  overlays:
+    events:
+      edit_recurring_event:
+        just_this_one: 'Solo esta vez'
+        header: 'Evento Recurrente Eliminado'
+        content: "Hemos eliminado este evento y es parte de una serie recurrente. ¿Cuántos eventor futuros en esta serie le gustaría actualizar?"

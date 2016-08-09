@@ -1,0 +1,8 @@
+en:
+  store_products:
+    product_information:
+      product_info: Product Information
+      product_info_text: Enter the brand, category and supplier for this product.
+      add_new_brand: Add new brand
+      add_new_category: Add new category
+      add_new_supplier: Add new supplier

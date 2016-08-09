@@ -1,0 +1,10 @@
+es:
+  gift_card_types:
+    form:
+      gift_card_details: 'Detalles de la Tarjeta de Regalo'
+      card_value: 'Valor de la Tarjeta'
+      card_value_text: 'Ingrese el valor de la tarjeta de regalo.'
+      value_is_variable: 'El valor es variable y se ingresará al tiempo del pago'
+      validity: 'Validez'
+      validity_text: 'La validez se vinculará con cada tarjeta de regalo vendida.'
+      save: 'Guardar'

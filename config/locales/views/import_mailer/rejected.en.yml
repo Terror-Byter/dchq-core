@@ -1,0 +1,6 @@
+en:
+  import_mailer:
+    rejected:
+      message: "Your %{type} import was partially successful, however a few %{type} records failed to import. You will need to resolve the errors on the following rows to make sure all data has been imported."
+      message_2: All rows that were valid have been successfully imported and you should be able to see these records in your account.
+      try_again: Import a revised file containing only the rows that failed.

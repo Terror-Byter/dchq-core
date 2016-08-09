@@ -1,0 +1,4 @@
+es:
+  rentals:
+    add_rental_product_fail:
+      not_found: Alquiler No encontrado por código de barras

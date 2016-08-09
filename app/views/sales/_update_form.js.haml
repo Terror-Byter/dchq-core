@@ -1,0 +1,10 @@
+- @sale = @sale.reload if @sale && @sale.errors.empty?
+- form_partial = 'sales/form'
+
+- if @sale.complete?
+  window.location.reload()
+- else
+  $('#misc-product-modal form')[0].reset()
+  $('#email-receipt-modal').replaceWith('#{ j(render partial: 'overlays/sales/email_popup') }')
+  $('#sales').html('#{escape_javascript(render(partial: form_partial)).html_safe}')
+  Dchq.Sale.init()

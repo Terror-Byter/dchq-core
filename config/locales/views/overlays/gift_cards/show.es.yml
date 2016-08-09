@@ -1,0 +1,6 @@
+es:
+  overlays:
+    gift_cards:
+      show:
+        header: "Editar tarjeta de regalo"
+        content: "Ingresar el identificador único (o código de barras) de esta tarjeta de regalo."

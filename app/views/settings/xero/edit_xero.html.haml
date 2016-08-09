@@ -1,0 +1,77 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.xero.edit_xero.home')
+  %li.divider
+  %li= link_to t('settings.xero.edit_xero.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.xero.edit_xero.xero_integration')
+- if current_store.xero_connected?
+  - unless current_store.xero.valid_tax_rate?
+    .refinements
+      %p{style: 'padding: 10px; line-height:16px;'}
+        %strong= t('settings.xero.edit_xero.notice')
+        = t('settings.xero.edit_xero.notice_content')
+        = link_to 'check that your tax rates match in both systems.', '#xero-taxrate-mismatch', style: 'font-weight: bold;', class: 'fancy_link', :'data-toggle' => 'modal'
+  = simple_form_for  current_store, url: update_settings_settings_xero_path,
+                                        html: {method: :put}, validate: true do |f|
+    = f.error_messages
+    .innerLR
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.cardio
+            %i>
+            = t('settings.xero.edit_xero.account_settings')
+        .widget-body
+          = f.simple_fields_for :xero, current_store.xero do |build|
+            .row-fluid
+              .span3
+                = build.input :default_sale_account, collection: @xero.client.Account.all(where: 'Type=="REVENUE" AND Status="ACTIVE"').map{|u| ["#{u.code} - #{u.name}", u.code]}, include_blank: false, input_html: { class: 'selectpicker'}
+              .span3
+                = build.input :cost_of_goods_sold, collection: @xero.client.Account.all(where: 'Type=="DIRECTCOSTS" AND Status="ACTIVE"').map{|u| ["#{u.code} - #{u.name}", u.code]}, include_blank: false, input_html: { class: 'selectpicker'}
+              .span3
+                = build.input :rounding_errors_account, collection: @xero.client.Account.all(where: 'Type=="CURRLIAB" AND Status="ACTIVE"').map{|u| ["#{u.code} - #{u.name}", u.code]}, include_blank: false, input_html: { class: 'selectpicker'}
+                -#%small= t('settings.xero.edit_xero.routing_error')
+              .span3
+                = build.input :till_payment_discrepancies, collection: @xero.client.Account.all(where: 'Type=="CURRLIAB" AND Status="ACTIVE"').map{|u| ["#{u.code} - #{u.name}", u.code]}, include_blank: false, input_html: { class: 'selectpicker'}
+                -#%small= t('settings.xero.edit_xero.for_discrepancies')
+            
+            %hr
+            %h5 Xero Invoice Creation Options
+            %p Based on how you want sales in Dive Centre HQ to be posted to Xero, you can either create a daily invoice with all transactions at the end of the day, or individual invoices when sales are paid.
+            .row-fluid
+              .span4
+                = build.input :integration_type, collection: [['Daily invoice in Xero (Rollup)', 'end_of_day'], ['Individual invoice for each sale in Xero', 'individual']], include_blank: false, label: false, input_html: { class: 'selectpicker'}
+              .span4#xero-individual
+                = build.input :integration_type_individual, collection: [['Auto-create Xero invoice when sale is marked as complete', 'individual'], ['Batch create Xero invoices when I decide', 'batch']], include_blank: false, label: false, input_html: { class: 'selectpicker'}
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.coins
+            %i>
+            = t('settings.xero.edit_xero.register_closing_totals')
+        .widget-body
+          .row-fluid
+            = f.simple_fields_for :payment_methods, current_store.payment_methods do |build|
+              = build.hidden_field :name
+              .span3
+                = build.input :xero_code, collection: @xero.client.Account.all(where: 'EnablePaymentsToAccount=true').map{|u| ["#{u.code} - #{u.name}", u.code]}, include_blank: false, input_html: { class: 'selectpicker'}, label: build.object.name
+      .heading-buttons
+        = link_to disconnect_settings_xero_path, class: 'btn btn-small btn-default btn-icon glyphicons remove' do
+          %i
+          = t('settings.xero.edit_xero.unliked_xero')
+        - if current_store.xero.batch? && current_user.manager?
+          = link_to sync_settings_xero_path, class: 'btn btn-small btn-default btn-icon glyphicons restart' do
+            %i
+            Sync xero
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2.pull-right{ type: 'submit' }
+          %i
+          = t('views.actions.save')
+- else
+  = link_to image_tag("connect_to_xero.png"), connect_to_xero_settings_xero_path
+
+
+- if current_store.xero_connected? and !current_store.xero.valid_tax_rate?
+  = render 'overlays/settings/xero_tax_rates_popup'

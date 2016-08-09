@@ -1,0 +1,7 @@
+en:
+  overlays:
+    bookings:
+      add_customer_modal:
+        header: 'Create Customer Profile'
+        content: 'Please enter the data required to create your customer profile.'
+        create_customer_profile: 'Create Customer Profile'

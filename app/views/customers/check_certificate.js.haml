@@ -1,0 +1,15 @@
+$('.alert.fade.in.alert-error').remove()
+
+- if @customer && !params[:email].blank?
+  $('#collapse-2-1').parent().removeClass('hide')
+
+  - unless @customer.certification_level_memberships.any?
+    $('#certificate').html("#{ j(render 'bookings/certificates') }")
+    $('#collapse-1-1').parent().next().removeAttr('style')
+    $('#collapse-2-1').collapse('show')
+  - else
+    $('#collapse-2-1').parent().find('a:first').click()
+
+- else
+  Dchq.FlashMessages.error(I18n.t('js.booking.wrong_email'))
+  $('#certificate').html('')

@@ -1,0 +1,8 @@
+en:
+  store_products:
+    accounting_and_barcode:
+      barcode: Barcode
+      barcode_text: Enter or scan the barcode associated with this product.
+      allow: 'Allowed: A-Z, 0-9, -,.*$/+%'
+      account_codes: Accounting Codes
+      account_codes_text: To enable accurate accounting, please enter accounting codes and supplier codes for this product.

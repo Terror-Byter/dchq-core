@@ -1,0 +1,4 @@
+en:
+  models:
+    user:
+      manager_error: Company must has one or more managers

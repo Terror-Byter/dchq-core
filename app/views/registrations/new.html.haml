@@ -1,0 +1,66 @@
+.widget-body
+  = simple_form_for @company, url: registration_path(resource_name), html: { multipart: true }, validate: true do |f|
+    = f.error_messages
+    .tab-content
+      #tab1.tab-pane.active
+        %h4= t('registrations.new.store_and_manager')
+        %p= t('registrations.new.p')
+        %hr.separator.bottom/
+        .row-fluid
+          .span3
+            %strong= t('registrations.new.store_details')
+            %p.muted= t('registrations.new.store_info')
+          .span3
+            = f.input :name, input_html: { class: 'span12' }, autofocus: true
+          .span2
+            = f.input :email, input_html: { class: 'span12' }
+          .span2
+            = f.input :telephone, input_html: { class: 'span12' }
+          .span2
+            = f.input :currency_for_store, collection: Currency.all, input_html: { class: 'span12 selectpicker' }, include_blank: false
+        = f.simple_fields_for :address do |form|
+          = render 'address_fields', f: form
+        %hr.separator.bottom/
+        = f.simple_fields_for :users, @user do |form|
+          .row-fluid
+            .span3
+              %strong= t('registrations.new.manager_details')
+              %p.muted= t('registrations.new.p_1')
+            .span3
+              = form.input :given_name, input_html: { class: 'span12' }
+            .span3
+              = form.input :family_name, input_html: { class: 'span12' }
+            .span3
+              = form.input :email, input_html: { class: 'span12' }
+          .row-fluid
+            .span3.offset3
+              = form.input :password, input_html: { class: 'span12' }
+            .span3
+              = form.input :password_confirmation, input_html: { class: 'span12' }
+            .span3
+              = form.input :time_zone, input_html: { class: 'selectpicker span12' }, include_blank: false
+        %hr.separator.bottom
+        .row-fluid
+          .span3
+            %strong= t('registrations.new.invite_code')
+            %p.muted= t('registrations.new.p_2')
+          .span3
+            = f.input :invite_code, input_html: { class: 'span12' }
+          .span3
+            = f.simple_fields_for :logo do |logo_fields|
+              %label= t('registrations.new.upload_logo')
+              = logo_fields.hidden_field :imageable_type
+              .fileupload.fileupload-new{"data-provides" => "fileupload"}
+                .input-append
+                  .uneditable-input.span3
+                    %i.icon-file.fileupload-exists
+                    %span.fileupload-preview
+                  %span.btn.btn-default.btn-file
+                    %span.fileupload-new= t('registrations.new.select_file')
+                    %span.fileupload-exists= t('registrations.new.change')
+                    = logo_fields.file_field :image
+                  = link_to t('registrations.new.remove'), '#', class: 'btn fileupload-exists', :'data-dismiss' => 'fileupload'
+    .row-fluid
+      .span12
+        .pull-right
+          = f.button :submit, t('registrations.new.button'), class: 'btn btn-large btn-success'

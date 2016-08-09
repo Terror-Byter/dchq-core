@@ -1,0 +1,4 @@
+es:
+  smart_lists:
+    condition_fields:
+      delete: Borrar

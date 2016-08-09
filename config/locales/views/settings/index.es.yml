@@ -1,0 +1,18 @@
+es:
+  settings:
+    index:
+      home: Inicio
+      settings: Ajustes
+      user_profile: Perfil del Usuario
+      company_details: Detalles de la Empresa
+      shop_locations: Ubicaciones de las Tiendas
+      sale_settings: Ajustes de Ventas
+      event_settings: Ajustes de Eventos
+      servicing_settings: Ajustes de Servicios
+      rental_settings: Ajustes de Alquiler
+      email_settings: Ajustes de Correo-e
+      print_settings: Ajustes de Impresión
+      import_data: Importar Datos
+      party_integrations: Integración con Terceros
+      billing: 'Facturación'
+      clear_test_data: Borrar Datos de Prueba

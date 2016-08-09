@@ -1,0 +1,4 @@
+es:
+  pages:
+    flash:
+      card_declined: "Su tarjeta ha sido rechazada por su suscripción mensial. Por favor asegúrese de que siga siendo una tarjeta válida <a href='%{url}'>MÁS DETALLES</a>"

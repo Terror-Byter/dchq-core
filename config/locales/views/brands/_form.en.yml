@@ -1,0 +1,9 @@
+en:
+  brands:
+    form:
+      brand_details: 'Brand Details'
+      name_and_image: 'Brand Name & Image'
+      name_and_image_text: 'Enter the full brand name and an associated logo.'
+      description: 'Description'
+      description_text: 'The description will be shown on the brand details page.'
+      save: 'Save'

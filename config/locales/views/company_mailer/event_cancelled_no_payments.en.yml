@@ -1,0 +1,11 @@
+en:
+  company_mailer:
+    event_cancelled_no_payments:
+      event_cancellation: 'Event Cancellation'
+      the_event: 'The Event'
+      cancel_explanation: 'has been cancelled. As we do not have a payment recorded for you against this event, no further action is necessary.'
+      more_info: 'More Information'
+      contact_if_questions: 'If you have any questions, please contact us at'
+      or_call: 'or call us on'
+      regards: 'Regards,'
+      email_was_sent_to: 'The email was sent to'

@@ -1,0 +1,9 @@
+es:
+  brands:
+    index:
+      home: 'Inicio'
+      sales: 'Ventas'
+      brands: 'Marcas'
+      new_brand: 'Marca Nueva'
+      total_brands: 'Total de Marcas:'
+      not_available: 'no disponible'

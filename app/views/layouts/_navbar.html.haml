@@ -1,0 +1,81 @@
+#menu.hidden-phone.hidden-print
+  .slim-scroll
+    %ul
+      %li{ class: "large glyphicons display #{'active' if dashboard_active?}" }
+        = link_to root_path do
+          %i
+          %span= t('sidebar_menu.dashboard')
+      %li{ class: "large hasSubmenu glyphicons shopping_cart #{'active' if sales_active?}" }
+        = link_to '#menu_components_sales', :'data-toggle' => 'collapse' do
+          %i
+          %span= t('sidebar_menu.sales')
+        %ul#menu_components_sales{ class: "collapse #{'in' if sales_active? }" }
+          %li{ class: "#{ 'active' if pos_active?}" }= link_to content_tag(:span, t('sales_submenu.point_of_sale')), sales_path
+          %li{ class: "#{ 'active' if sale_history_active? }" }= link_to content_tag(:span, t('sales_submenu.sales_history')), history_sales_path
+          %li{ class: "#{ 'active' if sale_products_active? }" }= link_to content_tag(:span, t('sales_submenu.products')), products_path
+          %li{ class: "#{ 'active' if sale_brands_active? }" }= link_to content_tag(:span, t('sales_submenu.brands')), brands_path
+          %li{ class: "#{ 'active' if sale_categories_active? }" }= link_to content_tag(:span, t('sales_submenu.categories')), categories_path
+          %li{ class: "#{ 'active' if purchase_orders_active? }" }= link_to content_tag(:span, t('sales_submenu.purchase_orders'), style: 'font-size: 0.85em'), purchase_orders_path
+          %li{ class: "#{ 'active' if sale_gift_card_types_active? }" }= link_to content_tag(:span, t('sales_submenu.gift_cards')), gift_card_types_path
+          %li{ class: "#{ 'active' if sale_credit_notes_active? }" }= link_to content_tag(:span, t('sales_submenu.credit_notes')), credit_notes_path
+          %li{ class: "#{ 'active' if sale_event_tariffs_active? }" }= link_to content_tag(:span, t('sales_submenu.event_tariffs')), event_tariffs_sales_path
+      %li{ class: "large hasSubmenu glyphicons calendar #{ 'active' if events_active? }" }
+        = link_to '#menu_components_events', :'data-toggle' => 'collapse' do
+          %i
+          %span= t('sidebar_menu.events')
+        %ul#menu_components_events{ class: "collapse #{'in' if events_active? }" }
+          %li{ class: "#{ 'active' if event_calendar_active? }" }= link_to content_tag(:span, t('events_submenu.calendar')), events_path
+          %li{ class: "#{ 'active' if event_list_active? }" }= link_to content_tag(:span, t('events_submenu.list')), list_events_path
+      %li{ class: "large hasSubmenu glyphicons user #{ 'active' if crm_active? }" }
+        = link_to '#menu_components_crm', :'data-toggle' => 'collapse' do
+          %i
+          %span= t('sidebar_menu.crm')
+        %ul#menu_components_crm{ class: "collapse #{'in' if crm_active? }" }
+          %li{ class: "#{ 'active' if crm_customers_active? }" }= link_to content_tag(:span, t('crm_submenu.customers')), customers_path
+          %li{ class: "#{ 'active' if crm_suppliers_active? }" }= link_to content_tag(:span, t('crm_submenu.suppliers')), suppliers_path
+          %li{ class: "#{ 'active' if crm_staffs_active? }" }= link_to content_tag(:span, t('crm_submenu.staff')), staff_members_path
+          %li{ class: "#{ 'active' if crm_scheduling_active? }" }= link_to content_tag(:span, t('crm_submenu.scheduling')), schedule_staff_members_path
+          %li{ class: "#{ 'active' if crm_smart_lists_active? }" }= link_to content_tag(:span, t('.smart_lists')), smart_lists_path
+          - if current_store.scubatribe_connected?
+            %li{ class: "#{ 'active' if crm_reviews_active? }" }= link_to content_tag(:span, t('.reviews')), reviews_path
+            %li{ class: "#{ 'active' if crm_requests_active? }" }= link_to content_tag(:span, t('.requests')), requests_path
+      - if can? :manage, Service
+        %li{ class: "large hasSubmenu glyphicons settings #{ 'active' if services_active? }" }
+          = link_to '#menu_components_servicing', :'data-toggle' => 'collapse' do
+            %i
+            %span= t('sidebar_menu.servicing')
+          %ul#menu_components_servicing{ class: "collapse #{'in' if services_active? }" }
+            %li{ class: "#{ 'active' if services_all_active? }" }= link_to content_tag(:span, t('servicing_submenu.all_services')), services_path
+            %li{ class: "#{ 'active' if services_booked_active? }" }= link_to content_tag(:span, t('servicing_submenu.booked')), services_path(filter: :booked)
+            %li{ class: "#{ 'active' if services_in_progress_active? }" }= link_to content_tag(:span, t('servicing_submenu.in_progress')), services_path(filter: :in_progress)
+            %li{ class: "#{ 'active' if services_to_collect_active? }" }= link_to content_tag(:span, t('servicing_submenu.to_collect')), services_path(filter: :awaiting_collection)
+            %li{ class: "#{ 'active' if services_complete_active? }" }= link_to content_tag(:span, t('servicing_submenu.complete')), services_path(filter: :complete)
+      %li{ class: "large hasSubmenu glyphicons tags #{'active' if rentals_active?}" }
+        = link_to '#menu_components_rentals', :'data-toggle' => 'collapse' do
+          %i
+          %span= t('.rent')
+        %ul#menu_components_rentals{ class: "collapse #{'in' if rentals_active? }" }
+          %li{ class: "#{ 'active' if all_rentals_active?}" }= link_to content_tag(:span, t('.all_rentals')), rentals_path
+          %li{ class: "#{ 'active' if pay_pending_rentals_active?}" }= link_to content_tag(:span, t('.pay_pending_rentals')), rentals_path(filter: 'pay_pending')
+          %li{ class: "#{ 'active' if booked_rentals_active?}" }= link_to content_tag(:span, t('.booked_rentals')), rentals_path(filter: 'booked')
+          %li{ class: "#{ 'active' if in_progress_rentals_active?}" }= link_to content_tag(:span, t('.in_progress_rentals')), rentals_path(filter: 'in_progress')
+          %li{ class: "#{ 'active' if overdue_rentals_active?}" }= link_to content_tag(:span, t('.overdue_rentals')), rentals_path(filter: 'overdue')
+          %li{ class: "#{ 'active' if complete_rentals_active?}" }= link_to content_tag(:span, t('.complete_rentals')), rentals_path(filter: 'complete')
+          %li{ class: "#{ 'active' if rental_products_active?}" }= link_to content_tag(:span, t('.rental_products')), rental_products_path
+
+      %li{ class: "large hasSubmenu glyphicons pie_chart #{ 'active' if reports_active? }" }
+        = link_to '#menu_components_reports', :'data-toggle' => 'collapse' do
+          %i
+          %span= t('.reports')
+        %ul#menu_components_reports{ class: "collapse #{'in' if reports_active? }" }
+          %li{ class: "#{ 'active' if report_sales_by_day_active? }" }= link_to content_tag(:span, t('.sales_by_day')), sales_by_day_reports_path
+          %li{ class: "#{ 'active' if report_sales_by_month_active? }" }= link_to content_tag(:span, t('.sales_by_month')), sales_by_month_reports_path
+          %li{ class: "#{ 'active' if report_sales_by_year_active? }" }= link_to content_tag(:span, t('.sales_by_year')), sales_by_year_reports_path
+          %li{ class: "#{ 'active' if report_sales_by_staff_active? }" }= link_to content_tag(:span, t('.sales_by_staff')), sales_by_staff_reports_path
+          %li{ class: "#{ 'active' if report_sales_by_brand_active? }" }= link_to content_tag(:span, t('.sales_by_brand')), sales_by_brand_reports_path
+          %li{ class: "#{ 'active' if report_sales_by_category_active? }" }= link_to content_tag(:span, t('.sales_by_category'), style: 'font-size:0.85em;'), sales_by_category_reports_path
+          %li{ class: "#{ 'active' if report_sales_by_popular_active? }" }= link_to content_tag(:span, t('.popular_products'), style: 'font-size:0.85em;'), sales_by_popular_reports_path
+          %li{ class: "#{ 'active' if report_event_sales_active? }" }= link_to content_tag(:span, t('.event_sales')), event_sales_reports_path
+          %li{ class: "#{ 'active' if report_financial_reports_active? }" }= link_to content_tag(:span, t('.finance_reports')), financial_reports_reports_path
+    .clearfix
+    .separator.bottom

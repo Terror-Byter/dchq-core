@@ -1,0 +1,8 @@
+en:
+  overlays:
+    services:
+      add_item_confirmation:
+        header: 'Service Modification'
+        content: 'You are adding an item to a service that is already underway. To continue, please confirm you have authorisation from the customer to add this item.'
+        declined: 'Declined'
+        authorised: 'Authorised'

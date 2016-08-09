@@ -1,0 +1,8 @@
+$('#notes').empty();
+$('#add-note-modal textarea').val('');
+$('#add-note').show();
+
+- if purchase_order.amendable?
+  = render 'update_print_block_amended'
+- else
+  = render 'update_print_block'

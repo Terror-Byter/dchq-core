@@ -1,0 +1,10 @@
+en:
+  overlays:
+    events:
+      resource_utilisation:
+        h3: Print Resource Utilisation Report
+        p: Select the date range you with to generate a report for.
+        date_from: Date From
+        date_to: Date To
+        cancel: Cancel
+        button: Print Resource Utilisation Report

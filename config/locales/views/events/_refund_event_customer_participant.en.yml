@@ -1,0 +1,5 @@
+en:
+  events:
+    refund_event_customer_participant:
+      view_refund: View Refund
+      issue_refund: Issue Refund

@@ -1,0 +1,27 @@
+:ruby
+  payment_methods = current_store.payment_methods.map{|pm| [pm.name, pm.id]}
+  payment_methods = payment_methods.find_all{|u| u.first != 'Credit Note'} if @sale.refunded? or @sale.has_only_walkin?
+
+#refund_payment_method.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.sales.refund_payment_method.header')
+  .modal-body.center{:style => 'overflow:visible;'}
+    %div{class: @sale.has_only_walkin? ? 'hide' : nil}
+      %label.radio.uniformjs
+        = radio_button_tag 'payment_type', 'refund', true, class: 'refund_type_button'
+        = t('overlays.sales.refund_payment_method.refund')
+      %label.radio.uniformjs
+        = radio_button_tag 'payment_type', 'credit_note', false, class: 'refund_type_button'
+        = t('overlays.sales.refund_payment_method.credit_note')
+    .new_payment
+      = f.fields_for :payments, @sale.payments.build do |build|
+        = build.hidden_field :customer_id, value: @sale.customers.first.id
+        = build.hidden_field :cashier_id, value: current_user.id
+        = build.label :payment_method_id, @sale.refunded? ? t('overlays.sales.refund_payment_method.refund_method') : nil
+        = build.select :payment_method_id, payment_methods, {}, {onchange: @sale.refunded? ? '' : "change_payment_amount_placeholder(this)", class: 'selectpicker'}
+        = build.hidden_field :amount, value: @sale.grand_total.abs, class: 'payment_amount'
+
+  .modal-footer
+    %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+    = link_to_function t('overlays.sales.refund_payment_method.issue_refund'), "$(this).closest('form').removeAttr('data-remote').submit()", class: 'btn btn-primary'

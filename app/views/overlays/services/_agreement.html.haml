@@ -1,0 +1,9 @@
+#service-agreement.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.services.agreement.header')
+  .modal-body{style: 'max-height: 500px; overflow-y: auto;'}
+    %p= current_store.standart_term
+  .modal-footer
+    %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.services.agreement.customer_decline')
+    %button.btn.btn-primary.submit= t('overlays.services.agreement.customer_acceped')

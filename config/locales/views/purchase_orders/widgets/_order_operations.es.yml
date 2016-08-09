@@ -1,0 +1,9 @@
+es:
+  purchase_orders:
+    widgets:
+      order_operations:
+        send_to_supplier: "Enviar a Proveedor"
+        print_purchase_order: "Imprimir Orden de Compra"
+        amend_consignment: "Enmendar Envio"
+        amended_order_total: 'TOTAL DE ORDEN ENMENDADA: '
+        original_order_total: 'TOTAL DE ORDEN ORIGINAL: '

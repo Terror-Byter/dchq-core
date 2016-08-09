@@ -1,0 +1,15 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t '.home'
+  %li.divider
+  %li= t '.crm'
+  %li.divider
+  %li= resource.name
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t '.edit_smart_list'
+.innerLR
+  = render 'form'

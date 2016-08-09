@@ -1,0 +1,19 @@
+es:
+  decorators:
+    smart_list:
+      product_purchased: 'Producto: Comprado'
+      product_not_purchased: 'Producto: No Adquirido'
+      event_completed: 'Evento: Completo'
+      event_not_completed: 'Evento: Desconocido'
+      course_completed: 'Curso: Completo'
+      course_not_completed: 'Curso: Desconocido'
+      servicing_completed: 'Mantenimiento: Completado'
+      rental_completed: 'Alquiler: Completo'
+      and_c: Y
+      or_c: ORE
+      c_7_days: 'En los últimos 7 días'
+      c_4_weeks: 'En las últimas 4 semanas'
+      c_6_months: 'En los últimos 6 meses'
+      c_1_years: 'En el último año'
+      c_2_years: 'En los últimos 2 años'
+      c_ever: 'Nunca'

@@ -1,0 +1,89 @@
+:ruby
+  @current_store = @event_customer_participant.event.store
+
+%table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;'}
+  %thead
+    %tr{bgcolor: '#EAEAEA', style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+        %b= t('views.sale_mailer.event')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+        %b= t('views.sale_mailer.unit_price')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+        %b= t('views.sale_mailer.qty')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em;'}
+        %b= t('views.sale_mailer.sub_total')
+  %tbody
+    %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+      %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+        %strong= @event_customer_participant.event.name
+        %br
+        #{@event_customer_participant.event.starts_at.in_time_zone.strftime('%B, %Y at %I:%M%P')} (#{distance_of_time_in_words(@event_customer_participant.event.starts_at, @event_customer_participant.event.ends_at)})
+      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+        = formatted_currency(@event_customer_participant.event_unit_price)
+      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+        = 1
+      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+        = formatted_currency(@event_customer_participant.event_unit_price.try(:abs))
+    - if @event_customer_participant.event.course?
+      - @event_customer_participant.event.children.each do |event|
+        %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+          %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+            %strong= event.name
+            %br
+            #{event.starts_at.in_time_zone.strftime('%B, %Y at %I:%M%P')} (#{distance_of_time_in_words(event.starts_at, event.ends_at)})
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+            0
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+            = 1
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+            0
+    - if @event_customer_participant.event.material_price > 0
+      %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+        %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          %strong= t('event_customer_participants.form.material')
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(@event_customer_participant.event_material_price)
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = 1
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(@event_customer_participant.event_material_price)
+    - if kit_hire = @event_customer_participant.event_customer_participant_kit_hire
+      %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+        %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = kit_hire.name
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(kit_hire.unit_price)
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          1
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(kit_hire.line_item_price.abs)
+    - if insurance = @event_customer_participant.event_customer_participant_insurance
+      %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+        %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = insurance.name
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(insurance.unit_price)
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          1
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(insurance.line_item_price.abs)
+    - @event_customer_participant.event_customer_participant_transports.find_all{|u| !u.transport_id.blank?}.each do |transport|
+      %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+        %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = transport.name
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(transport.unit_price)
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = transport.quantity
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(transport.line_item_price.abs)
+    - @event_customer_participant.event_customer_participant_additionals.find_all{|u| u.number_of_days > 0}.each do |additional|
+      %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+        %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = additional.name
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(additional.unit_price)
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = additional.quantity
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(additional.line_item_price.abs)

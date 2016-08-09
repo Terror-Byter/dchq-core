@@ -1,0 +1,28 @@
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('reports.event_sales.home')
+  %li.divider
+  %li= t('reports.event_sales.reports')
+.innerLR
+  .row-fluid
+    .span9
+      %h3.heading-mosaic= t('reports.event_sales.report_event_sales')
+    .span3.right
+      .buttons.hidden-print
+        = link_to "javascript:window.print()", class: 'btn btn-small btn-default btn-icon glyphicons print' do
+          %i
+          = t('reports.edit_finance_report.print')
+  .widget
+    .widget-head
+      %h4.heading= t('reports.event_sales.event_sales')
+    .widget-body
+      = render 'period_select_form'
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          = show_months_head
+        %tbody
+          = show_table_row_with_currency t('reports.event_sales.dive_courses'), @report[:dive_courses], class: 'color'
+          = show_table_row_with_currency t('reports.event_sales.dive_trips'), @report[:dive_trips], class: 'color'
+          = show_table_row_with_currency t('reports.event_sales.totals'), @report[:total], class: 'color'

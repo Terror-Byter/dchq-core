@@ -1,0 +1,14 @@
+en:
+  suppliers:
+    index:
+      suppliers: 'Suppliers'
+      setup_mailchimp: 'Setup MailChimp'
+      export_records: 'Export Supplier Records'
+      new_supplier: 'New Supplier'
+      supplier_records: 'Supplier Records'
+      business: 'Business'
+      location: 'Location'
+      phone: 'Phone'
+      email: 'Email'
+      tags: 'Tags'
+      total_suppliers: 'Total suppliers:'

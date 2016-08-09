@@ -1,0 +1,13 @@
+en:
+  sales:
+    show:
+      home: 'Home'
+      sales: 'Sales'
+      sales_receipt: 'Sales Receipt: %{status}'
+      sales_receipt_refund: 'Sale Refund'
+      print_receipt: 'Print Receipt'
+      print_receipt_invoice: 'Print Invoice'
+      email_receipt: 'Email Receipt'
+      email_receipt_invoice: 'Email Invoice'
+      greeting_text: 'Thank you for your order. If you have any questions about your order please contact us at %{email} or call us on %{tel}.'
+      hello_customer: 'Hello %{customer},'

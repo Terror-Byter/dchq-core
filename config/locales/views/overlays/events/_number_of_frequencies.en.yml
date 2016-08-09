@@ -1,0 +1,6 @@
+en:
+  overlays:
+    events:
+      number_of_frequencies:
+        header: 'Recurring Event'
+        content: 'Enter the number of recurrences for this event'

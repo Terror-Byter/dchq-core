@@ -1,0 +1,21 @@
+:ruby
+  embed_calendar_code = capture do
+    "<script type='text/javascript'>
+      var public_key = '#{f.object.public_key}';
+      var width = '100%'; //or set this to width in pixels e.g. '800px'
+      var height = '100%'; //or set this to height in pixels e.g. '800px'
+      var border = 0; // for no border, or 1 for border
+    </script>
+    <script src='#{request.protocol}#{request.subdomain.blank? ? '' : "#{request.subdomain}."}#{request.domain}/assets/widget.js' type='text/javascript'></script>"
+  end
+
+#embed-calendar.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('overlays.store_fields.embed_calendar.head')
+  .modal-body
+    %p= t('overlays.store_fields.embed_calendar.content')
+    = text_area_tag :embed_calendar_code, embed_calendar_code, style: 'width: 96%;', rows: '8'
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}= t('views.actions.cancel')
+    = link_to t('overlays.store_fields.embed_calendar.done'), '', class: 'btn btn-primary', :'aria-hidden' => 'true', :'data-dismiss' => 'modal'

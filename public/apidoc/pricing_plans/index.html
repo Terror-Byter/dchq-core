@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API documentation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap.min.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/prettify.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap-responsive.min.css'/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/application.css'/>
+  <!-- IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div id='container'>
+        <ul class='breadcrumb'>
+  <li>
+    <a href='../../apidoc.html'>DchqCore 1.0</a>
+    <span class='divider'>/</span>
+  </li>
+  <li>
+    <a href='../../apidoc/pricing_plans.html'>
+      Pricing plans
+      
+    </a>
+    <span class='divider'>/</span>
+  </li>
+  <li class='active'>index</li>
+  
+
+</ul>
+
+  <div class='page-header'>
+    <h1>
+      GET /api/v1/pricing_plans<br>
+      <small>List of all available pricing plans</small>
+    </h1>
+  </div>
+
+<div>
+
+  
+
+  <h2>Supported Formats</h2>
+  json
+
+
+
+  <h2>Examples</h2>
+    <pre class="prettyprint">
+########### Request Example #################
+# URL
+https:://app.divecentrehq.com/api/v1/pricing_plans
+
+#Request Body
+{
+  pricing_plans: [
+    {
+      billing_period: 30,
+      description: &quot;&quot;,
+      id: 1,
+      name: &quot;Super Plan 1&quot;,
+      number_of_customers: 10000,
+      number_of_shops: 1,
+      number_of_users: 1,
+      price: 29.0,
+    },
+    {
+      billing_period: 30,
+      description: &quot;&quot;,
+      id: 2,
+      name: &quot;Turtle&quot;,
+      number_of_customers: 10000,
+      number_of_shops: 1,
+      number_of_users: 10,
+      price: 32.0,
+    }
+  ]
+}
+</pre>
+
+
+</div>
+
+
+        
+      </div>
+    </div>
+    <hr>
+    <footer>&copy; 2014  Dive Centre HQ API</footer>
+  </div>
+  <script type='text/javascript' src='../../apidoc/javascripts/bundled/jquery-1.7.2.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/bootstrap-collapse.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/prettify.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/apipie.js'></script>
+</body>
+</html>

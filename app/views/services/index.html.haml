@@ -1,0 +1,83 @@
+:ruby
+  title = t('services.index.servicing')
+  filter = t("services.index.#{params[:filter]}") if params[:filter]
+  title = "#{title}: #{filter}" if params[:filter]
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('services.index.home')
+  %li.divider
+  %li= t('services.index.servicing')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= title
+    .span8.right
+      .buttons.hidden-print
+        = link_to new_resource_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+          %i
+          = t('services.index.book_a_service')
+.innerLR
+  - if params[:filter].blank?
+    .row-fluid
+      .span6
+        .widget
+          .widget-head
+            %h4.heading.glyphicons.stats
+              %i>
+              = t('services.index.pre_service')
+          .widget-body.list
+            %ul
+              %li
+                %span.count= current_store.booked_services
+                = t('services.index.booked')
+              %li
+                %span.count= current_store.in_progress_services
+                = t('services.index.in_progress')
+      .span6
+        .widget
+          .widget-head
+            %h4.heading.glyphicons.stats
+              %i>
+              = t('services.index.post_service')
+          .widget-body.list
+            %ul
+              %li
+                %span.count= current_store.awaiting_collection_services
+                = t('services.index.awaiting_collection')
+              %li
+                %span.count= current_store.complete_services
+                = t('services.index.complete')
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('services.index.servicing')
+    .widget-body
+      - if services.empty?
+        = t('services.index.no_services')
+      - else
+        %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+          %thead
+            %tr
+              %th= t('services.index.t_job')
+              %th= t('services.index.t_serial')
+              %th= t('services.index.t_kit')
+              %th= t('services.index.t_technician')
+              %th= t('services.index.t_customer')
+              %th= t('services.index.t_booked')
+              %th= t('services.index.t_collection')
+              %th= t('services.index.t_time')
+              %th= t('services.index.t_to_pay')
+              %th= t('services.index.t_status')
+          %tbody
+            = render services
+      / Options
+      .separator.top.form-inline.small
+        = t('services.index.total_services')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix

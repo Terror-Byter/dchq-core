@@ -1,0 +1,6 @@
+en:
+  pages:
+    no_access:
+      heading: "Access Denied"
+      content: "Your store staff account has not been given access to any stores. In order to use Dive Centre HQ, your manager needs to enable access. By clicking 'Notify Manager' below, we will send an email to the account owner informing them of your account limitations. Please note, we are unable to enable access to staff without prior written confirmation from a manager."
+      button: "Notify Manager"

@@ -1,0 +1,33 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('events.header.home')
+  %li.divider
+  %li= t('events.header.events')
+.innerLR
+  .row-fluid
+    .span2
+      %h3.heading-mosaic= title
+    .span10.right
+      .buttons.hidden-print
+        = link_to '#print-staff-roster', class: 'btn btn-small btn-default btn-icon glyphicons print event_overview_btn', :'data-toggle' => :modal do
+          %i
+          = t('events.header.staff_roster')
+        = link_to '#print-utilisation-report', class: 'btn btn-small btn-default btn-icon glyphicons print event_overview_btn', :'data-toggle' => :modal do
+          %i
+          = t('events.header.utilisation_report')
+        = link_to '#print-resource-manifest', class: 'btn btn-small btn-default btn-icon glyphicons print event_overview_btn', :'data-toggle' => :modal do
+          %i
+          = t('events.header.resource_manifest')
+        = link_to new_other_event_path, class: 'btn btn-primary btn-icon glyphicons circle_plus event_overview_btn' do
+          %i
+          = t('events.header.new_event')
+        = link_to new_course_event_path, class: 'btn btn-primary btn-icon glyphicons circle_plus event_overview_btn' do
+          %i
+          = t('events.header.new_course')
+
+= content_for :overlays do
+  = render 'overlays/events/print_resource_manifest'
+  = render 'overlays/events/staff_roster'
+  = render 'overlays/events/resource_utilisation'

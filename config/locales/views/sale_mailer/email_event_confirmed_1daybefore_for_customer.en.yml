@@ -1,0 +1,8 @@
+en:
+  sale_mailer:
+    email_event_confirmed_1daybefore_for_customer:
+      booking_confirmation: 'Booking Confirmation Reminder: %{customer}'
+      you_have_been_confirmed: ' You have been confirmed for the event listed below.'
+      event_date: 'Event Date'
+      further_instructions: 'Further Instructions'
+      note_balance: 'Note: Balance for this event will be added to your next invoice.'

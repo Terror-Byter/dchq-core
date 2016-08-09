@@ -1,0 +1,16 @@
+es:
+  brands:
+    show:
+      home: 'Inicio'
+      sales: 'Ventas'
+      brands: 'Marcas'
+      details: "Detalles"
+      edit_brand: 'Editar Marca'
+      brand_information: 'Información de la Marca'
+      skus: 'SKUs'
+      sales_history: 'Historial de Ventas'
+      no_sales: 'No Hay Ventas'
+      no_products: 'No hay productos'
+      total_products: 'Total de productos:'
+      total_sales: 'Total de ventas:'
+      delete_brand: 'Eliminar Marca'

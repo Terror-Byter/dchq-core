@@ -1,0 +1,7 @@
+en:
+  overlays:
+    services:
+      add_item_popup:
+        header: 'Add Product to Service'
+        content: 'Add an additional item to this service such as a new hose or inflator valve.'
+        add_product: 'Add Product to Service'

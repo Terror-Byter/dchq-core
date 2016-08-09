@@ -1,0 +1,4 @@
+en:
+  models:
+    sale:
+      refunded: REFUNDED

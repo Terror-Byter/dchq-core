@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API documentation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap.min.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/prettify.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap-responsive.min.css'/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/application.css'/>
+  <!-- IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div id='container'>
+        <ul class='breadcrumb'>
+  <li>
+    <a href='../../apidoc.html'>DchqCore 1.0</a>
+    <span class='divider'>/</span>
+  </li>
+  <li>
+    <a href='../../apidoc/companies.html'>
+      Companies
+      
+    </a>
+    <span class='divider'>/</span>
+  </li>
+  <li class='active'>create</li>
+  
+
+</ul>
+
+  <div class='page-header'>
+    <h1>
+      POST /api/v1/companies<br>
+      <small>Sign up new company</small>
+    </h1>
+  </div>
+
+<div>
+
+  
+
+  <h2>Supported Formats</h2>
+  json
+
+
+
+  <h2>Examples</h2>
+    <pre class="prettyprint">
+########### Request Example #################
+# URL
+https:://app.divecentrehq.com/api/v1/companies
+
+#Request Body
+{
+  company: {
+    name: &quot;Awesome Company&quot;,
+    email: &quot;company@example.com&quot;,
+    telephone: &quot;7756454564&quot;,
+    currency_for_store: 1,
+    pricing_plan_id: 1,
+    address_attributes: {
+      first: &quot;17th Street&quot;,
+      second: &quot;&quot;,
+      city: &quot;Awesome City&quot;,
+      state: &quot;Awesome State&quot;,
+      country_code: &quot;uk&quot;,
+      post_code: &quot;12355&quot;
+    }
+  },
+  user: {
+    given_name: &quot;John&quot;,
+    family_name: &quot;Doe&quot;,
+    email: &quot;email@example.com&quot;,
+    password: &quot;[FILTERED]&quot;,
+    password_confirmation: &quot;[FILTERED]&quot;,
+    time_zone: &quot;London&quot;
+  },
+  store: {
+    payment_methods_attributes: {
+      0: {
+        name: &quot;Cash&quot;,
+      },
+      1: {
+        name: &quot;Paypal&quot;,
+      },
+      2: {
+        name: &quot;Credit Card&quot;,
+      }
+    },
+    tax_rate_inclusion: true ,
+    tax_rates_attributes: {
+      0: {
+        identifier: &quot;Tax rate 1&quot;,
+        amount: 12,
+      },
+      1400755194464: {
+        identifier: &quot;Tax Rate 2&quot;,
+        amount: 13,
+      }
+    },
+    commission_rates_attributes: {
+      0: {
+        amount: 12,
+      },
+      1400755205266: {
+        amount: 15,
+      }
+    }
+  }
+}
+
+########### Response Example ################
+#SUCCESS
+{
+  success: true,
+  info: &quot;Logged in&quot;,
+  data: {
+    user_token: &lt;USER_TOKEN&gt;
+    store_api_key: &lt;STORE_API_KEY&gt;
+  }
+}
+
+#FAILURE
+{
+  errors: {
+    company: {
+      users.email: [&quot;can&#x27;t be blank&quot;],
+      users.password: [&quot;can&#x27;t be blank&quot;],
+      pricing_plan: [&quot;can&#x27;t be blank&quot;],
+      name: [&quot;can&#x27;t be blank&quot;],
+      telephone: [&quot;can&#x27;t be blank&quot;],
+      email: [&quot;can&#x27;t be blank&quot;, &quot;does not appear to be valid&quot;]
+    }
+  }
+}
+</pre>
+
+  <h2>Params</h2>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>company </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>company[name] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Company name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>company[email] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Company email address</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>company[telephone] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Company phone</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>company[currency_for_store] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Store currency id. By default store currency is USD</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>company[pricing_plan_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Company pricing plan id</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>company[address_attributes] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>company[address_attributes][first] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>First Street of dive centre address</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>company[address_attributes][second] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Second Street of dive centre address</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>company[address_attributes][city] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>City name of dive centre address</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>company[address_attributes][state] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>State of dive centre address</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>company[address_attributes][country_code] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Country Code Street of dive centre address. e.g uk, us, ag, etc…</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>user[given_name] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User given name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>user[family_name] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User family name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>user[email] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User email address</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>user[password] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User password</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>user[password_confirmation] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User password confirmaton</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>user[time_zone] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User timezone</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>store </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>store[tax_rate_inclusion] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Tax Rate Type for store. If tax rate inc then value should be true</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>store[commission_rates_attributes] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>store[commission_rates_attributes][amount] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Commission Rate value. Each store has commission rate with amount 0 by
+default</p>
+
+        <br>
+        Value: Must be Float
+
+
+    </td>
+
+  </tr>
+
+  
+
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>store[tax_rates_attributes] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>store[tax_rates_attributes][amount] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Tax Rate value. Each store has tax rate with amount 0 by default</p>
+
+        <br>
+        Value: Must be Float
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>store[tax_rates_attributes][identifier] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Tax Rate human name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>store[payment_methods_attributes] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>store[payment_methods_attributes][name] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Name of payment method. By default each store has a few payment methods.
+There are Cash, Paypal, Credit Card</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+
+
+    </tbody>
+  </table>
+
+</div>
+
+
+        
+      </div>
+    </div>
+    <hr>
+    <footer>&copy; 2014  Dive Centre HQ API</footer>
+  </div>
+  <script type='text/javascript' src='../../apidoc/javascripts/bundled/jquery-1.7.2.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/bootstrap-collapse.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/prettify.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/apipie.js'></script>
+</body>
+</html>

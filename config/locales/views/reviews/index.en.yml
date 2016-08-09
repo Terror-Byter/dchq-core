@@ -1,0 +1,7 @@
+en:
+  reviews:
+    index:
+      home: 'Home'
+      header: 'Customer Reviews'
+      sub_header: 'Review Records'
+      total: 'Total'

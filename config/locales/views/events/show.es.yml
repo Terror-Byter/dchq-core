@@ -1,0 +1,42 @@
+es:
+  events:
+    show:
+      home: Inicio
+      events: Eventos
+      details: Detalles
+      event: Evento
+      cancelled: Evento Cancelado
+      print_pickups: Imprimir Recolecciones
+      print_manifest: Imprimir Manifiesto
+      edit_event: Editar Evento
+      add_customers: Agregar Clientes
+      add_staff: Agregar Personal
+      start: 'Comienzo: %{date}'
+      recuring_event: Evento Recurrente
+      boat: 'Barco:'
+      location: 'Ubicación: %{location}'
+      dives: 'Buceos: %{dives}'
+      event_information: Información del Evento
+      price: 'Precio:'
+      max_participants: 'Participantes Máximos:'
+      additional_equipment: 'Equipo Adicional:'
+      customers: Clientes
+      staff_members: Miembros del Personal
+      no_customers: No hay Clientes
+      t_customer: Cliente
+      t_assigned_staff: Personal Asignado
+      t_certification: Certificación
+      t_kit_sizes: Tamaños de Kit
+      t_pickup: Recolección
+      t_payment: Pago
+      t_actions: Acciones
+      no_staff: No hay Personal
+      t_staff: Personal
+      t_role: Función
+      t_assigned_customers: Clientes Asignados
+      t_actions: Acciones
+      cancel_event: Cancelar Evento
+      delete_event: Eliminar Evento
+      confirm_delete_parent: '¿Está seguro que desea eliminar este evento y todos los eventos de los niños?'
+      confirm_delete: '¿Está seguro?'
+      duplicate: Duplicar

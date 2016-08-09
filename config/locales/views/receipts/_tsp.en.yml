@@ -1,0 +1,13 @@
+en:
+  receipts:
+    tsp:
+      tel: Tel
+      email: Email
+      vat_no: VAT No
+      discount: Discount
+      sub_total: Sub-Total
+      tax: Tax
+      net_due: NET DUE
+      thanks: Thank you for shopping at %{name}.
+      retain: Please retain for your records.
+      check_website: Check out our website

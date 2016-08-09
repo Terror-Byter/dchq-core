@@ -1,0 +1,100 @@
+:ruby
+  @notable ||= @supplier
+  @note ||= @supplier.notes.new
+  @note.attachment || @note.build_attachment
+
+  supplier ||= @supplier.decorate
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('suppliers.show.home')
+  %li.divider
+  %li= t('suppliers.show.crm')
+  %li.divider
+  %li= t('suppliers.show.suppliers')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= supplier.name
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#new-supplier-note', class: 'btn btn-small btn-default btn-icon glyphicons notes', :'data-toggle' => 'modal' do
+          %i
+          = t('suppliers.show.new_note')
+        = link_to new_supplier_business_contact_path(resource), class: 'btn btn-small btn-default btn-icon glyphicons electricity' do
+          %i
+          = t('suppliers.show.new_supplier_contact')
+        = link_to edit_resource_path, class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+          %i
+          = t('suppliers.show.edit_supplier')
+.innerLR
+  .row-fluid.row-merge
+    .span12
+      .row-fluid
+        .span2
+          .thumbnail{style: 'margin-bottom:10px;'}
+            %img= supplier.image
+        .span5
+          %h4
+            %span= t('suppliers.show.contact_info')
+          %p
+            %strong= t('suppliers.show.address')
+            = til(supplier.address)
+            %br>/
+            = t('suppliers.show.email')
+            = mail_to til(supplier.email)
+            = succeed t('suppliers.show.ph') do
+              %br/
+            &nbsp;
+            = til(supplier.telephone)
+          %p
+            = t('suppliers.show.tags')
+            %span.label= til(supplier.tags)
+      .row-fluid
+        .widget.widget-tabs
+          .widget-head
+            %ul
+              %li.active
+                = link_to '#tab-1', class: 'glyphicons group', :'data-toggle' => 'tab' do
+                  %i
+                  = t('suppliers.show.supplier_contacts')
+              %li
+                = link_to '#tab-2', class: 'glyphicons notes', :'data-toggle' => 'tab' do
+                  %i
+                  = t('suppliers.show.notes')
+          .widget-body
+            .tab-content
+              #tab-1.tab-pane.active
+                - if supplier.no_business_contacts?
+                  = t('suppliers.show.no_contacts')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    %thead
+                      %tr
+                        %th= t('suppliers.show.supplier_contact_name')
+                        %th= t('suppliers.show.supplier_contact_phone')
+                        %th= t('suppliers.show.supplier_contact_email')
+                        %th= t('suppliers.show.supplier_contact_position')
+                        %th= t('suppliers.show.supplier_contact_actions')
+                    %tbody
+                      = render partial: 'business_contacts/business_contact', collection: supplier.business_contacts
+              #tab-2.tab-pane
+                - if supplier.no_notes?
+                  = t('suppliers.show.no_notes')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    = render 'notes/table_headers'
+                    %tbody
+                      -#TODO NEED TO FIX
+                      = render @supplier.notes.decorate
+%p
+  = link_to supplier_path(supplier), method: :delete,
+    confirm: I18n.t('views.actions.confirm'),
+    class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+    %i>
+    = t('suppliers.show.delete_supplier')
+
+= content_for :overlays do
+  = render 'overlays/suppliers/new_supplier_note'

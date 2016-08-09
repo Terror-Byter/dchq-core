@@ -1,0 +1,4 @@
+request += builder.createAlignmentElement({position:'left'});
+request += builder.createTextElement({data:'<%= sale_product.quantity %> x <%= truncate(sale_product.sale_productable.name, length: 38, omission: '') %>\n'});
+request += builder.createAlignmentElement({position:'right'});
+request += builder.createTextElement({<%= tsp_international %> data:'<%= sale_product.decorate.name_for_tsp %>\n'});

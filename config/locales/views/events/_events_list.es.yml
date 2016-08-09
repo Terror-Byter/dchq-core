@@ -1,0 +1,11 @@
+e:
+  events:
+    events_list:
+      no_events: "No Hay Eventos"
+      type: "Tipo"
+      name: "Nombre"
+      locations: "Ubicaciones"
+      boat: "Recurso"
+      start: "Inicio"
+      end: "Fin"
+      total_entries: 'Total de Eventos: %{count}'

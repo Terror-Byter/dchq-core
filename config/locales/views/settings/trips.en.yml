@@ -1,0 +1,16 @@
+en:
+  settings:
+    trips:
+      home: 'Home'
+      settings: 'Settings'
+      settings_trips: 'Settings: Trip Price List'
+      t_trip_name: 'Trip Name'
+      t_standard_price: 'Standard Price'
+      t_local_price: 'Local Price'
+      t_tax_rate: 'Tax Rate'
+      t_commission: 'Commission'
+      t_tafiff_rates: 'Tariff Rates'
+      t_action: 'Action'
+      add_trip: 'Add Trip'
+      exclude: 'Exclude'
+

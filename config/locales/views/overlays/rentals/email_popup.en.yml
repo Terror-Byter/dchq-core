@@ -1,0 +1,8 @@
+en:
+  overlays:
+    rentals:
+      email_popup:
+        header: Email Receipt
+        label: "Enter recipient's email address"
+        cancel: Cancel
+        button: Send Receipt via Email

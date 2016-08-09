@@ -1,0 +1,9 @@
+es:
+  overlays:
+    sales:
+      refund_total_sale:
+        header: 'Reembolsar Total de la Venta'
+        content: 'Usted está a punto de reembolsar por completo esta venta. Usted ahora será llevado a la página de reembolso con los detalles completos del método de pago utilizado en la compra original.'
+        refund_total: 'Reembolsar Total de la Venta'
+
+

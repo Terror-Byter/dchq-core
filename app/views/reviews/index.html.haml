@@ -1,0 +1,36 @@
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('reviews.index.home')
+.innerLR
+  %h3.heading-mosaic= t('reviews.index.header')
+
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('reviews.index.sub_header')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        %thead
+          %tr
+            %th Date
+            %th Person
+            %th Review
+            %th Actions
+        %tbody
+          - @reviews['results'].each do |review|
+            %tr
+              %td= review['review']['date_written'].to_time
+              %td= review['review']['reviewer']['name']
+              %td= review['review']['review']
+              %td
+                = link_to 'View in ScubaTribe', review['review']['resources']['url'], class: 'btn btn-xs btn-primary'
+
+      .separator.top.form-inline.small
+        = t('reviews.index.total')
+        = @reviews['num_records_total']
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate @reviews
+        .clearfix

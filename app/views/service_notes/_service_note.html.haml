@@ -1,0 +1,12 @@
+%tr
+  %td.important= service_note.creator_full_name
+  %td= service_note.description
+  %td= service_note.attachment_links.html_safe
+  %td= l service_note.created_at, format: :default
+  %td
+    = link_to t('views.actions.edit'), '#edit-servicing-note', :'data-toggle' => 'modal'
+    |
+    = link_to t('views.actions.delete'), service_service_note_path(resource, service_note), style: 'color:red;', method: :delete, confirm: t('views.actions.confirm')
+
+= content_for :overlays do
+  = render 'overlays/service_notes/edit_service_note', service_note: service_note

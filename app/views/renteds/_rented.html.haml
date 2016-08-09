@@ -1,0 +1,28 @@
+%tr
+  %td.product
+    .media
+      %span.media-object.pull-left
+        = image_tag rented.rental_product.logo.image.url(:thumb), height: "30px", width: "30px"
+      .media-body
+        %span.heading
+          %h5
+            = rented.rental_product.name
+          %span= rented.rental_product.sku_code
+  %td.center= formatted_currency rented.unit_price / @rental.days
+  %td.center= @rental.days
+  %td.center= formatted_currency rented.tax_rate_amount
+  %td.center
+    .row-fluid
+      - if @rental.layby?
+        = f.fields_for :renteds, rented do |form|
+          = form.select :quantity, (0..(rented.rental_product.number_of_available < 1 ? 1 : rented.rental_product.number_of_available)), {}, { class: 'span8' }
+      - else
+        = rented.quantity
+  %td.center= formatted_currency rented.unit_price * rented.quantity
+  %td.center.discount
+    - if @rental.layby? && !@rental.has_discount?
+      = f.fields_for :renteds, rented do |form|
+        = form.fields_for :prod_discount, rented.prod_discount ? rented.prod_discount : rented.build_prod_discount do |sp_form|
+          = render 'discount_fields', f: sp_form
+    - else
+      = til formatted_discount(rented.prod_discount)

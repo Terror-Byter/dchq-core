@@ -1,0 +1,23 @@
+en:
+  settings:
+    edit:
+      home: 'Home'
+      settings: 'Settings'
+      settings_details: 'Settings: Company Details'
+      company_details: 'Company Details'
+      address: 'Address'
+      online_bookings: 'Online Bookings'
+      referrals: 'Referrals'
+      store_details: 'Store Details'
+      store_details_text: 'Enter your store name & primary contacts.'
+      contact_details: 'Contact Details'
+      contact_details_text: 'Enter your store email address and phone number.'
+      store_logo: 'Store Logo'
+      store_logo_text: 'Upload a photo to show on receipts.'
+      payment_methods: 'Payment Methods'
+      payment_methods_text: 'Setup payment methods for accepting online event bookings.'
+      gateway_credential: 'Payment Gateway'
+      referral_details: 'Referral Details'
+      referral_details_text: 'Full details on your referrals.'
+      your_referrer: 'Your Referrer'
+      stores_you_referred: "Stores You've Referred"

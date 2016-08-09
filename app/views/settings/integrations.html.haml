@@ -1,0 +1,34 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.integrations.home')
+  %li.divider
+  %li= link_to t('settings.integrations.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.integrations.settings_integrations')
+      %p= t('settings.integrations.para')
+.innerLR
+  .row-fluid
+    .span4
+      = link_to '#scubatribe-connect', class: 'widget-stats', :'data-toggle' => 'modal' do
+        %span.glyphicons
+          = image_tag 'settings_integration_scubatribe.gif'
+        %span.txt= t('settings.integrations.scubatribe')
+      .clearfix
+    .span4
+      = link_to edit_xero_settings_xero_path, class: 'widget-stats' do
+        %span.glyphicons
+          = image_tag 'settings_integration_xero.gif'
+        %span.txt= t('settings.integrations.xero')
+      .clearfix
+    .span4
+      = link_to edit_mailchimp_step_1_settings_path, class: 'widget-stats' do
+        %span.glyphicons
+          = image_tag 'settings_integration_mailchimp.gif'
+        %span.txt= t('settings.integrations.mailchimp')
+      .clearfix
+
+= render 'overlays/settings/scubatribe_connect'

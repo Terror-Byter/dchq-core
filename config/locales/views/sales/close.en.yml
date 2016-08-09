@@ -1,0 +1,9 @@
+en:
+  sales:
+    close:
+      home: 'home'
+      sales: 'Sales'
+      point_of_sale: 'Point of Sale'
+      register_is_closed: 'The sales register is currently closed. It was last closed by %{shop} on %{time}'
+      open_register: 'Open Register'
+      reopen_register: "Re-open Today's Till"

@@ -1,0 +1,80 @@
+:ruby
+  barcode = Barby::Code39.new(resource.uniq_id, extended: true)
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('gift_card_types.show.home')
+  %li.divider
+  %li= t('gift_card_types.show.sales')
+  %li.divider
+  %li= link_to t('gift_card_types.show.gift_cards'), gift_card_types_path
+  %li.divider
+  %li= t('gift_card_types.show.details')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        = t('gift_card_types.show.gift_card_type')
+        %span
+          |
+          = formatted_currency(resource.value)
+    .span8.right
+      .buttons.hidden-print
+        - if can? :edit, GiftCardType
+          = link_to edit_resource_path(resource), class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t('gift_card_types.show.edit_gift_card')
+        - if resource.can_sold
+          = link_to pause_gift_card_type_path(resource), class: 'btn btn-small btn-default btn-icon glyphicons pause' do
+            %i
+            = t('gift_card_types.show.pause_gift_card')
+        - else
+          = link_to resume_gift_card_type_path(resource), class: 'btn btn-small btn-default btn-icon glyphicons play' do
+            %i
+            = t('gift_card_types.show.resume_gift_card')
+.innerLR
+  .row-fluid
+    .span8
+      %h4= formatted_currency(resource.value)
+      .row-fluid{style: 'margin-top: 10px;'}
+        .well.span5
+          = print_barcode_html barcode
+    .span4
+      %h4
+        %span= t('gift_card_types.show.gift_card_information')
+      .separator.bottom
+      %ul.unstyled.icons
+        %li.glyphicons.bank
+          %i
+          = t('gift_card_types.show.value')
+          = formatted_currency resource.value
+        %li.glyphicons.history
+          %i
+          = t('gift_card_types.show.valid_for')
+          = t('gift_card_types.show.monthes', number: resource.valid_for)
+        %li.glyphicons.link
+          %i
+          = t('gift_card_types.show.unique_id')
+          = resource.uniq_id
+  .row-fluid{style: 'margin-top:10px;'}
+    .span12
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.credit_card
+            %i>
+            = t('gift_card_types.show.gift_cards')
+        .widget-body
+          %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+            %thead
+              %tr
+                %th= t('gift_card_types.show.t_sales')
+                %th= t('gift_card_types.show.t_unique_id')
+                %th= t('gift_card_types.show.t_availible_balance')
+                %th= t('gift_card_types.show.t_issue_date')
+                %th= t('gift_card_types.show.t_expiry_date')
+                %th= t('gift_card_types.show.t_status')
+                %th= t('gift_card_types.show.t_actions')
+            %tbody
+              = render resource.gift_cards.enable_to_show.decorate

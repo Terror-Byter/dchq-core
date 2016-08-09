@@ -1,0 +1,5 @@
+en:
+  controllers:
+    rental_products:
+      archived: Rental Product has been successfully archived
+      unarchived: Rental Product has been successfully unarchived

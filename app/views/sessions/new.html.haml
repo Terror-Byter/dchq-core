@@ -1,0 +1,18 @@
+.row-fluid.login_form
+  .span4.offset1.center
+    = image_tag('login-image.png')
+  .span6
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name), validate: true do |f|
+      = f.input :email, input_html: { class: 'input-block-level' }, autofocus: true, validate: { uniqueness: false }
+      = f.input :password, input_html: { class: 'input-block-level' }
+      .uniformjs
+        = f.input :remember_me, as: :boolean, label_html: { class: 'checkbox' }, label: false, inline_label: t('sessions.new.remember_me')
+      %button.btn.btn-success.btn-icon.glyphicons.lock{ type: 'submit' }
+        %i
+        = t('sessions.new.button')
+      = link_to t('sessions.new.forgot_pass'), new_password_path(resource_name), style: 'margin-left:15px;'
+  .span12
+    %hr{style: 'margin: 20px 0'}
+    %p.center
+      Looking to setup a new store?
+      = link_to 'Create a new account', new_user_registration_path

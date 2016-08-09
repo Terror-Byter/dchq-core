@@ -1,0 +1,4 @@
+en:
+  js:
+    rental:
+      errors: 'The errors prohibited this rental from being saved:'

@@ -1,0 +1,27 @@
+#print-resource-manifest.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.events.print_resource_manifest.print_resource_manifest')
+  = form_tag print_resource_manifest_events_path, { target: '_blank', style: 'margin:0px;' } do
+    .modal-body
+      %p= t('overlays.events.print_resource_manifest.p')
+      .row-fluid
+        .span6
+          = label_tag :starts_at, t('overlays.events.print_resource_manifest.date_from')
+          .input-append.date
+            = text_field_tag :starts_at, l(Date.today, format: '%F'), class: 'datepicker', id: 'print_resource_manifest_starts_at', style: 'z-index:10010;'
+            %span.add-on
+              %i.icon-calendar
+        .span6
+          = label_tag :ends_at, t('overlays.events.print_resource_manifest.date_to')
+          .input-append.date
+            = text_field_tag :ends_at, l(Date.today, format: '%F'), class: 'datepicker', id: 'print_resource_manifest_ends_at', style: 'z-index:10011;'
+            %span.add-on
+              %i.icon-calendar
+      .row-fluid
+        .span12
+          = label_tag :boat_id, t('overlays.events.print_resource_manifest.resource')
+          = select_tag :boat_id, options_for_select(current_store.boats.inject([[t('overlays.events.print_resource_manifest.all'), 'all'], [t('overlays.events.print_resource_manifest.unresourced'), '']]){|res, b| res << [b.name, b.id]}), { class: 'selectpicker' }
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.events.print_resource_manifest.cancel')
+      = submit_tag t('overlays.events.print_resource_manifest.print_resource_manifest'), class: 'btn btn-primary'

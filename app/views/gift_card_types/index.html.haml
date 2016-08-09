@@ -1,0 +1,43 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('gift_card_types.index.home')
+  %li.divider
+  %li= t('gift_card_types.index.sales')
+  %li.divider
+  %li= t('gift_card_types.index.gift_cards')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('gift_card_types.index.gift_cards')
+    .span8.right
+      .buttons.hidden-print
+        - if can? :create, GiftCardType
+          = link_to new_resource_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+            %i
+            = t('gift_card_types.index.new_gift_card')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('gift_card_types.index.gift_cards')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        %thead
+          %tr
+            %th= t('gift_card_types.index.value')
+            %th= t('gift_card_types.index.valid_for')
+            %th= t('gift_card_types.index.month_sale')
+            %th= t('gift_card_types.index.last_sale')
+        %tbody
+          -#TODO NEED TO FIX DECORATOR
+          = render collection
+      / Options
+      .separator.top.form-inline.small
+        = t('gift_card_types.index.total_gift_cards')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix

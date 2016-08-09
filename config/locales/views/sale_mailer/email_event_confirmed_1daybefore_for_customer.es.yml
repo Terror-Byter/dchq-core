@@ -1,0 +1,8 @@
+es:
+  sale_mailer:
+    email_event_confirmed_1daybefore_for_customer:
+      booking_confirmation: 'Recordatorio de Confirmación de Reservación: %{customer}'
+      you_have_been_confirmed: ' Usted ha sido confirmado para el evento descrito a continuación.'
+      event_date: 'Fecha del Evento'
+      further_instructions: 'Más Instrucciones'
+      note_balance: 'Nota: El saldo de este evento se sumará a su próxima factura.'

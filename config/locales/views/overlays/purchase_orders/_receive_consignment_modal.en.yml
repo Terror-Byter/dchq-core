@@ -1,0 +1,9 @@
+en:
+  overlays:
+    purchase_orders:
+      receive_consignment_modal:
+        receive_consignment: Receive Consignment
+        will_be_added_to_inventory: Once you mark this consignment as "Received", the items will automatically be added to your available inventory.
+        question_mark_as_received: Do you want to mark this purchase order as received?
+        received_in_full: Consignment Received in Full
+        received_in_part: There were items missing from the consignment

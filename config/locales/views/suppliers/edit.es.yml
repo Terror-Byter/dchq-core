@@ -1,0 +1,6 @@
+es:
+  suppliers:
+    edit:
+      home: 'Inicio'
+      crm: 'CRM'
+      edit_supplier: 'Editar Proveedor'

@@ -1,0 +1,6 @@
+es:
+  registrations:
+    step_3:
+      event_settings: "Ajustes del Evento"
+      p: "Para poder vender eventos, tales como cursos y viajes, usted neceistará antes que nada hacer estas configuraciones. Usted lo puede hacer ya sea haciendo clic debajo, o yendo en cualquier momento a área de Ajustes > Eventos."
+      add_event_setting: "Agregar Ajustes de Evento"

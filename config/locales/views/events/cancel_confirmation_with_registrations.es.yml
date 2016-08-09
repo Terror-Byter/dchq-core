@@ -1,0 +1,20 @@
+es:
+  events:
+    cancel_confirmation_with_registrations:
+      home: 'Inicio'
+      events: 'Eventos'
+      cancel: 'Cancelar'
+      cancel_event: 'Cancelar Evento:'
+      you_are_about: 'YUsted está apunto de cancelar este evento. ¿Está seguro que quiere proceder?'
+      content: 'Los siguientes clientes están reservados en este evento y requerirán de una notificación.'
+      reason_for_cancellation: 'Razón de la Cancelación'
+      reason_for_cancellation_text: 'Esto será incluido en el correo-e automático que se le envía al cliente.'
+      customers_booked_on_this_event: 'Clientes Reservados En Este Evento'
+      t_customer: 'Cliente'
+      t_amount_paid: 'Monto Pagado'
+      t_refound_required: 'Reembolso Requerido'
+      t_notify_via_email: 'Notificar vía Correo-e'
+      not_required: 'No requerido'
+      yess: 'Si'
+      wait: 'Espera, Quiero Conservar Este Evento'
+      yes_cancel: 'Si, ¡Cancela Este Evento & Procesa los Reembolsos!'

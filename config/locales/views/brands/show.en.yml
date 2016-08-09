@@ -1,0 +1,16 @@
+en:
+  brands:
+    show:
+      home: 'Home'
+      sales: 'Sales'
+      brands: 'Brands'
+      details: "Details"
+      edit_brand: 'Edit Brand'
+      brand_information: 'Brand Information'
+      skus: 'SKUs'
+      sales_history: 'Sales History'
+      no_sales: 'No Sales'
+      no_products: 'No products'
+      total_products: 'Total products:'
+      total_sales: 'Total sales:'
+      delete_brand: 'Delete Brand'

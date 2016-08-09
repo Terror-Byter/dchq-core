@@ -1,0 +1,5 @@
+es:
+  application:
+    attachment_fields:
+      upload_file: 'Cargar Archivo'
+      select_file: 'Seleccionar Archivo'

@@ -1,0 +1,36 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('categories.index.home')
+  %li.divider
+  %li= t('categories.index.sales')
+  %li.divider
+  %li= t('categories.index.categories')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('categories.index.categories')
+    .span8.right
+      - if can?(:create, Category)
+        .buttons.hidden-print
+          = link_to  new_category_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+            %i
+            = t('categories.index.new_category')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('categories.index.categories')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        = render 'categories/table_headers'
+        %tbody
+          = render categories
+      .separator.top.form-inline.small
+        = t('categories.index.total_categories')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix

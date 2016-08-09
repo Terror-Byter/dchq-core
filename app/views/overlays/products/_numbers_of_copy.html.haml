@@ -1,0 +1,12 @@
+#numbers-of-copy.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.products.zebra_print.select_qty')
+  = form_tag print_barcode_product_path(resource), { target: :'_blank', onsubmit: "$(this).closest('.modal').modal('hide')" } do
+    .modal-body
+      .row-fluid.center
+        %label= t('overlays.products.zebra_print.enter_value')
+        = text_field_tag :quantity, 1, class: "inputLightbox01"
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      = submit_tag t('overlays.products.zebra_print.button'), class: 'btn btn-primary'

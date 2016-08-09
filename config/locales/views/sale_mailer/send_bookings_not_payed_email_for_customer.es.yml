@@ -1,0 +1,7 @@
+es:
+  sale_mailer:
+    send_bookings_not_paid_email_for_customer:
+      hello: 'Hola %{customer}'
+      thanks_for_booking: 'Gracias por su reservación'
+      with: 'con %{shop_name}.'
+      event_date: 'Fecha del Evento'

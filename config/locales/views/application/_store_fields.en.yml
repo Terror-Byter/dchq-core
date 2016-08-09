@@ -1,0 +1,12 @@
+en:
+  application:
+    store_fields:
+      location: 'Location'
+      shop_details: 'Shop Details'
+      shop_details_text: 'Enter your shop name & location information.'
+      currency_calendar: 'Currency & Calendar'
+      currency_calendar_text: 'Select the currency to use in this shop and the default calendar format.'
+      calendar_code_key: 'Calendar Code & Keys'
+      calendar_code_key_text: 'These are the keys to use for publishing a calendar on your website or accessing data via the API.'
+      embeddable_calendar_code: 'Embeddable Calendar Code'
+      show_embed_code: 'Show Embed Code'

@@ -1,0 +1,5 @@
+en:
+  sales:
+    available_limit_exceeded:
+      js:
+        msg: "You've exceeded the limit for open sales carts. Please complete a sale."

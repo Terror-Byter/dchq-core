@@ -1,0 +1,5 @@
+es:
+  incidents:
+    form:
+      header: 'Agregar Incidente'
+      add_button: 'Agregar Incidente'

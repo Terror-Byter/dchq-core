@@ -1,0 +1,6 @@
+es:
+  models:
+    company:
+      email_is_fake: Su dirección de correo electrónico es falso
+      should_be_uniq: debe ser único
+      should_be_present: debe estar presente

@@ -1,0 +1,70 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
+    %title= t('emails_examples.service_ready_for_collection.title')
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = show_company_logo(current_store)
+      %span{style: 'float:right;font-size:12px'}= t('emails_examples.service_ready_for_collection.servicing_id', receipt: '<SALE_ID>')
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('views.service_mailer.service_collection.hi', username: '<CUSTOMER_FULL_NAME>')
+    - unless current_store.email_setting.service_ready_for_collection_content.blank?
+      %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;border-bottom-style: dashed; border-bottom-color: #E8E8E8; border-bottom-width: 1px;padding-bottom:10px;'}
+        = nl2br current_store.email_setting.service_ready_for_collection_content
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;border-bottom-style: dashed; border-bottom-color: #E8E8E8; border-bottom-width: 1px;padding-bottom:10px;'}
+      = t('emails_examples.service_ready_for_collection.servicing_is_complete', kit: '<SERVICE_KIT>')
+      = mail_to current_company.email
+      = t('views.emails_examples.or_call', telephone: current_company.telephone)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= t('views.service_mailer.service_collection.date', date: Date.today)
+    %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;'}
+      %thead
+        %tr{bgcolor: '#EAEAEA', style: 'font-family:Arial, sans-serif;font-size:13px;color:#747a7f;line-height: 1.5;'}
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('emails_examples.service_ready_for_collection.sku')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('emails_examples.service_ready_for_collection.unit_price')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('emails_examples.service_ready_for_collection.qty')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em;'}
+            %b= t('emails_examples.service_ready_for_collection.sub_total')
+      %tbody
+        %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+          %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{t('views.service_mailer.service_collection.servicing')} #{'<SERVICE_KIT>'} #{'SERVICE_SERIAL_NUMBER'}
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= formatted_currency 0
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= 1
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= formatted_currency 0
+        %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+          %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{'<TYPE_OF_SERVICE_NAME>'} (#{t('views.service_mailer.service_collection.hours')})
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<LABOUR_PRICE>'
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<LABOUR PRETTIFY>'
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<TOTAL_PRICE>'
+        %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+          %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<SERVICE_KIT_NAME>'
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<SUB_TOTAL>'
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} 1
+          %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<RETAIL_PRICE>'
+        - 3.times do |item|
+          %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{'PRODUCT_NAME_#{item}'} (#{'<SKU_CODE>'})
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<SUB_TOTAL>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} 1
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= '<RETAIL_PRICE>'
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('views.service_mailer.service_collection.subtotal')
+      = '<SERVICE_SUB_TOTAL>'
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('views.service_mailer.service_collection.tax_inc')
+      = '<SERVICE_TAX_RATE>'
+    %p{style: 'float:right; margin: 15px 5%; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('views.service_mailer.service_collection.net_due')
+      = '<SERVICE_SUB_TOTAL>'
+    %div{style: 'width:100%; clear:both; display: block;'}
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear:both;'}
+      = t('views.service_mailer.service_collection.with_regards')
+      %br
+      #{current_store.name}
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag current_store.avatar.image.url(:original) unless current_store.avatar.blank?
+      = t('views.emails_examples.sent_by_centre', company_name: current_store.company.name)
+      = t('views.emails_examples.telephone', tel: current_store.company.telephone)
+      = t('views.emails_examples.registered_address', address: current_store.company.address.full_address)

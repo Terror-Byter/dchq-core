@@ -1,0 +1,10 @@
+!!!5
+%html
+  %head
+  %body
+    %p= t '.message', type: @type
+    %ul
+      - @errors.each do |e|
+        %li= e
+    %p= t '.message_2'
+    %p= link_to t('.try_again'), import_to_csv_step_1_settings_url

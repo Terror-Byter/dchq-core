@@ -1,0 +1,15 @@
+es:
+  settings:
+    edit_agency:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_edit_agency: 'Ajjustes: Lista de Precios del Curso (%{name})'
+      t_course_name: 'Nombre del Curso'
+      t_course_price: 'Precio del Curso'
+      t_course_tax: 'Impuesto del Curso'
+      t_materials_price: 'Precios de los Materiales'
+      t_materials_tax: 'Impuestos de los Materiales'
+      t_commission: 'Comisión'
+      t_total: 'Total'
+      t_action: 'Acción'
+      new_course_for_agency: 'Nuevo Curso Para Esta Agencia'

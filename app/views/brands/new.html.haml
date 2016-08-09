@@ -1,0 +1,14 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('brands.new.home')
+  %li.divider
+  %li= t('brands.new.sales')
+  %li.divider
+  %li= t('brands.new.brands')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('brands.new.add_brand')
+= render 'form'

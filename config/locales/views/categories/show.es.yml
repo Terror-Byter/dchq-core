@@ -1,0 +1,13 @@
+es:
+  categories:
+    show:
+      home: 'Inicio'
+      sales: 'Ventas'
+      categories: 'Categorías'
+      details: "Detalles"
+      edit_category: 'Editar Categoría'
+      category_information: 'Información de Categoría'
+      skus: 'SKUs'
+      no_products: 'No hay productos'
+      total_products: 'Total de productos:'
+      delete_category: 'Eliminar Categoría'

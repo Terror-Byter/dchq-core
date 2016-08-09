@@ -1,0 +1,9 @@
+es:
+  sale_mailer:
+    send_bookings_email_for_customer:
+      hello: 'Hola %{customer}'
+      thanks_for_booking: 'Gracias por su reservación'
+      with: 'con %{shop_name}.'
+      your_booking_details: 'Sus detalles de la reservación están debajo. Debido a que sus credenciales necesitan ser revisadas para confirmar su eligibilidad para participar esto es una pre-reservación.'
+      event_date: 'Fecha del Evento'
+      further_instructions: 'Más Instrucciones'

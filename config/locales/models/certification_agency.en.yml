@@ -1,0 +1,4 @@
+en:
+  models:
+    certification_agency:
+      should_has_no_certification_levels: Should has no certification levels

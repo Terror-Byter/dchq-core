@@ -1,0 +1,21 @@
+:ruby
+  barcode = Barby::Code39.new(gift_card.uniq_id, extended: true)
+
+%div{id: dom_id(gift_card), class: html_class}
+  %table{width: '100%', cellpadding: '10', cellspacing: '0'}
+    %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+      %td{valign: 'top', align: 'center'}
+        %table{cellpadding: '0', cellspacing: '0', style: 'width: 600px; background-color: #fff;border:1px solid #e0d3d3;'}
+          %tr{valign: 'top', style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+            %td{style: 'width:555px; padding:0px;'}
+              %div{style: 'float:right'}
+                = print_barcode_svg barcode
+                %div{style: 'margin-top: -15px;margin-left: auto;margin-right: auto;width: 25%;'}= gift_card.uniq_id
+              %h2{style: 'font-family:Arial, Helvetica, sans-serif;font-size:30px;font-weight:bold;color:#285c8c; margin-top:10px;margin-left:15px; margin-top:15px; padding: 15px;'} #{formatted_currency(gift_card.gift_card_type.value)} Gift Card
+              %p{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;margin-bottom:20px;margin-left:15px; padding: 15px;'}
+                = t('gift_cards.print.for_use_at')
+                %strong= "#{current_company.name} Company"
+                %br
+                %strong
+                  %em= t('gift_cards.print.valid_until', date: gift_card.expiry_date)
+              = image_tag 'email-giftcard-background.jpg'

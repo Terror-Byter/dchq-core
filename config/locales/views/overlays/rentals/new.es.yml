@@ -1,0 +1,7 @@
+es:
+  overlays:
+    rentals:
+      new:
+        create_rental: Crear Alquiler
+        p: Seleccione un cliente y la configuración de las fechas de recogida / retorno sobre el alquiler. Una vez configurada, usted será capaz de añadir puntos al alquiler.
+        cancel: Cancelar

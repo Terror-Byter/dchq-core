@@ -1,0 +1,19 @@
+!!!5
+%html
+  %head
+  %body
+    - if @purchase_order.received_in_part?
+      = render partial: 'purchase_orders/print_in_part', locals: {purchase_order: @purchase_order}
+    - else
+      = render partial: 'purchase_orders/print', locals: {purchase_order: @purchase_order}
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear: both;'}
+      = t('mailer.purchase_order_mailer.common.with_regards')
+      %br
+      = @current_store.name
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag @current_store.avatar.image.url(:original) unless @current_store.avatar.blank?
+      %br
+      = t('mailer.purchase_order_mailer.common.sent_by_centre', company_name: @current_store.company.name)
+      = t('mailer.purchase_order_mailer.common.telephone', tel: @current_store.company.telephone)
+      %br
+      = t('mailer.purchase_order_mailer.common.registered_address', address: @current_store.company.address.full_address)

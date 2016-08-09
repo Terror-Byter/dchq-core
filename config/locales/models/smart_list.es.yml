@@ -1,0 +1,5 @@
+es:
+  models:
+    smart_list:
+      all: Todo
+      any: Cualquier

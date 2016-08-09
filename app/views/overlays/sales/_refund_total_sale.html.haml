@@ -1,0 +1,9 @@
+#refund-total-sale.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', :type => 'button'} ×
+    %h3= t('overlays.sales.refund_total_sale.header')
+  .modal-body
+    %p= t('overlays.sales.refund_total_sale.content')
+  .modal-footer
+    %button.btn.btn-default{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', :type => 'button'}= t('views.actions.cancel')
+    = link_to t('overlays.sales.refund_total_sale.refund_total'), 'javascript:void(0)', class: 'btn btn-primary' 

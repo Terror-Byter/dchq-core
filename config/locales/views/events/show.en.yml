@@ -1,0 +1,43 @@
+en:
+  events:
+    show:
+      home: Home
+      events: Events
+      details: Details
+      event: Event
+      cancelled: Event Cancelled
+      print_pickups: Print Pickups
+      print_manifest: Print Manifest
+      edit_event: Edit Event
+      add_customers: Add Customers
+      add_staff: Add Staff
+      start: 'Start: %{date}'
+      recuring_event: Recurring Event
+      boat: 'Boat:'
+      location: 'Location: %{location}'
+      dives: 'Dives: %{dives}'
+      event_information: Event Information
+      price: 'Price:'
+      max_participants: 'Max Participants:'
+      spaces_available: 'Spaces Available:'
+      additional_equipment: 'Additional Information:'
+      customers: Customers
+      staff_members: Staff Members
+      no_customers: No Customers
+      t_customer: Customer
+      t_assigned_staff: Assigned Staff
+      t_certification: Certification
+      t_kit_sizes: Kit Sizes
+      t_pickup: Pickup
+      t_payment: Payment
+      t_actions: Actions
+      no_staff: No Staff
+      t_staff: Staff
+      t_role: Role
+      t_assigned_customers: Assigned Customers
+      t_actions: Actions
+      cancel_event: Cancel Event
+      delete_event: Delete Event
+      confirm_delete_parent: Are you sure you want to remove this event and all child events?
+      confirm_delete: Are you sure?
+      duplicate: Duplicate

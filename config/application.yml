@@ -1,0 +1,32 @@
+DCHQ_VERSION: '1.0'
+
+OUTBOUND_DEVISE_EMAIL: 'no-reply@configure.me'
+DEFAULT_PAGINATION: '50'
+
+WALK_IN_EMAIL: 'walkin@emaildomain.com'
+
+XERO_CONSUMER_KEY:    ''
+XERO_CONSUMER_SECRET: ''
+
+STRIPE_PUBLIC_KEY: ''
+STRIPE_API_KEY:    ''
+
+HOST: 'https://demo.divecentrehq.com'
+APP_NAME: dchq_core
+SCUBA_TRIBE_KEY: ''
+
+development:
+  SECRET_KEY: 'Pdm96B2]PX#h49FApaUcPt^Yd8A+8NnPmsJ{cp2A4bWeq3R#'
+  MAILGUN_API_KEY: ''
+  MAILGUN_DOMAIN: ''
+  MAILGUN_PUBLIC_KEY: ''
+  MAILGUN_SMTP_LOGIN: ''
+  MAILGUN_SMTP_PASSWORD: ''
+  MAILGUN_SMTP_PORT: ''
+  MAILGUN_SMTP_SERVER: ''
+
+staging:
+  SECRET_KEY: 'Pdm96B2]PX#h49FApaUcPt^Yd8A+8NnPmsJ{cp2A4bWeq3R#'
+
+production:
+  SECRET_KEY: <%= ENV["SECRET_TOKEN"] %>

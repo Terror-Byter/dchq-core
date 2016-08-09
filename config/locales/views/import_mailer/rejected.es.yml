@@ -1,0 +1,6 @@
+es:
+  import_mailer:
+    rejected:
+      message: "Su importación %{type} tuvo un éxito parcial, sin embargo algunos registros de %{type} no pudieron importar. Usted tendrá que resolver los errores en las líneas siguientes para asegurarse de que todos los datos se ha importado."
+      message_2: Todas las filas vigentes se han importado correctamente y usted debería ser capaz de ver estos registros en su cuenta.
+      try_again: Importar un archivo revisado que contiene sólo las filas que fallaron.

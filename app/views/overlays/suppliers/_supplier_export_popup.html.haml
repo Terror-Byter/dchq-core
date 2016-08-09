@@ -1,0 +1,11 @@
+#export-suppliers.modal.hide.fade
+  = form_tag export_suppliers_path do
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+      %h3= t('overlays.suppliers.supplier_export_popup.header')
+    .modal-body
+      %p= t('overlays.suppliers.supplier_export_popup.content')
+      = select_tag :export_type, options_for_select([['Supplier'], ['Business Contact']]), { class: 'selectpicker' }
+    .modal-footer
+      %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}= t('views.actions.cancel')
+      = submit_tag t('overlays.suppliers.supplier_export_popup.export_data'), class: 'btn btn-primary'

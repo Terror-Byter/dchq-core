@@ -1,0 +1,13 @@
+.widget-body
+  #tab3.tab-pane.active
+    %h4= t('registrations.step_3.event_settings')
+    %p= t('registrations.step_3.p')
+    = link_to complete_setup_pages_path(to_event: true), class: 'btn btn-default btn-icon glyphicons calendar' do
+      %i
+      = t('registrations.step_3.add_event_setting')
+
+= content_for :js do
+  :javascript
+    $(function(){
+      $('a[href="#tab3"]').click()
+    });

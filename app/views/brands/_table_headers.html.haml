@@ -1,0 +1,8 @@
+%thead
+  %tr.ransack_links
+    %th= sort_link @q, :name, t('brands.table_headers.brand')
+    %th= sort_link @q, :products_count, t('brands.table_headers.skus')
+    %th= sort_link @q, :products_in_stock, t('brands.table_headers.units_stock')
+    %th= sort_link @q, :products_stock_value, t('brands.table_headers.stock_value')
+    %th= sort_link @q, :average_month_sales, t('brands.table_headers.average_monthly_sale')
+    %th= sort_link @q, :last_sale_date, t('brands.table_headers.last_sale')

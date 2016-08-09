@@ -1,0 +1,44 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.print.home')
+  %li.divider
+  %li= link_to t('settings.print.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.print.settings_print')
+= simple_form_for current_store, url: update_store_settings_path,
+                                     html: { method: :put }, validate: true do |f|
+  = f.error_messages
+  = hidden_field_tag :back_url, print_settings_path
+  = hidden_field_tag :notice, t('controllers.printer_options_updated')
+  = hidden_field_tag :back_action, 'print'
+  .innerLR
+    %p= t('settings.print.content')
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.print
+          %i>
+          = t('settings.print.printer_options')
+      .widget-body
+        .row-fluid
+          .span3
+            %strong= t('settings.print.print_options')
+            %p.muted= t('settings.print.print_options_text')
+          .span3
+            = f.input :printer_type, collection: Store.printer_types.collect{|u| [u.last, u.first]},
+                                     input_html: { class: 'select2' }, include_blank: false
+          .span3
+            = f.input :barcode_printing_type, collection: Store.barcode_printing_type.map{|u| [u.last, u.first]},
+                                              input_html: { class: 'select2' }, include_blank: false
+        .row-fluid{ class: "#{ 'hide' unless current_store.printer_type.eql?('tsp') }" }
+          .span3
+          .span3
+            = f.input :tsp_url
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('views.actions.save')

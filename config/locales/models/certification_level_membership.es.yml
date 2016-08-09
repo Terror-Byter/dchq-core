@@ -1,0 +1,4 @@
+es:
+  models:
+    certification_level_membership:
+      should_be_one: debe haber una sola

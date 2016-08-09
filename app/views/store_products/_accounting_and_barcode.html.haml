@@ -1,0 +1,16 @@
+.row-fluid
+  .span3
+    %strong= t('.account_codes')
+    %p.muted= t('.account_codes_text')
+  .span3
+    = f.input :accounting_code
+  .span3
+    = f.input :supplier_code
+%hr.separator.bottom/
+.row-fluid
+  .span3
+    %strong= t('.barcode')
+    %p.muted= t('.barcode_text')
+  .span6
+    = f.input :barcode, input_html: { class: 'span12' }
+    %p{style: "margin-top:-8px;"}= t('.allow')

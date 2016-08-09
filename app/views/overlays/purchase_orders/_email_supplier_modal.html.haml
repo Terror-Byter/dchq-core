@@ -1,0 +1,13 @@
+#email-supplier-modal.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('.send_to_supplier')
+  .modal-body.center
+    = form_tag send_email_to_supplier_purchase_order_path, method: :post do
+      %p= t('.enter_suppliers_email')
+      = text_field :purchase_order, :email, value: purchase_order.supplier_email_for_inputs
+      %br/
+      %a{"data-dismiss" => "modal", "data-toggle" => "modal", href: "#pdf-supplier-mark-sent-modal"}= t('.download_purchase_order_pdf')
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('views.actions.cancel')
+    %a.btn.btn-primary{href: ""}= t('.send_purchase_order')

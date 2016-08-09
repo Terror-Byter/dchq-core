@@ -1,0 +1,17 @@
+en:
+  purchase_orders:
+    print:
+      purchase_order_number: 'Purchase order #%{number}'
+      purchase_order_delivery: 'Delivery Location:'
+      purchase_order_supplier: 'Supplier:'
+      purchase_order_date: 'Date: %{date}'
+      sku: 'SKU / PRODUCT'
+      unit_price: 'SUPPLY PRICE'
+      qty: 'QTY'
+      sub_total: 'ITEM TOTAL'
+      total: 'TOTAL'
+      email_sent_by: 'This email was sent by'
+      contact_us_at: 'Please contact us at'
+      purchase_order_summary: 'Purchase Order Summary'
+      check: "Check out our website at %{url}"
+      notes: 'Notes:'

@@ -1,0 +1,11 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('pages.index.home')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('pages.no_access.heading')
+.innerLR
+  %p= t('pages.no_access.content')

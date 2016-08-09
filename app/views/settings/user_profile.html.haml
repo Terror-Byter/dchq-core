@@ -1,0 +1,17 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.user_profile.home')
+  %li.divider
+  %li= link_to t('settings.user_profile.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.user_profile.user_profile')
+= simple_nested_form_for current_user, url: user_registration_path,
+                                html: {method: :put, multipart: true },
+                                validate: true do |f|
+  = f.hidden_field :from_edit_form
+  = f.error_messages
+  = render 'user_profile_fields', f: f

@@ -1,0 +1,5 @@
+es:
+  overlays:
+    purchase_orders:
+      add_note_modal:
+        add_note: 'Agregar Nota'

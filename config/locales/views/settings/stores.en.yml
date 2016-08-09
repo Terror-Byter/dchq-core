@@ -1,0 +1,9 @@
+en:
+  settings:
+    stores:
+      home: 'Home'
+      settings: 'Settings'
+      settings_shop_locations: 'Settings: Shop Locations'
+      content: 'You can add as many shop locations to your account.'
+      locations: 'Locations'
+      add_location: 'Add Location'

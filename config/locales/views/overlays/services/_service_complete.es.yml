@@ -1,0 +1,14 @@
+es:
+  overlays:
+    services:
+      service_complete:
+        header: 'Marcar Servicio como Completo'
+        content1: 'Al marcar este trabajo como completo, se generará una factura para este cliente.'
+        content2: "Si usted ha configurado una entrada del pago, se le dará la opción al cliente de pagar el servicio en línea."
+        send_invoice_via_email: 'ENVIAR FACTURA AL CLIENTE VÍA CORREO-E'
+        complete_service: 'Completar Servicio & Levantar Factura'
+        add_to_existing_sale: "Completar Servicio & Agregar a Venta Existente"
+        add_to_new_sale: "Agregar a Venta Nueva"
+        p: "Marcar esta venta como completa y agregar a una venta nueva."
+        add_to_exist_sale: "Agregar a Venta Existente"
+        p_1: "Marcar esta venta como completa y agregar a una venta existente."

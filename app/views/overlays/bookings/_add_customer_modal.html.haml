@@ -1,0 +1,28 @@
+#booking-add-customer-modal.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('overlays.bookings.add_customer_modal.header')
+  = simple_form_for Customer.new, validate: true, remote: true do |f|
+    .modal-body
+      %p= t('overlays.bookings.add_customer_modal.content')
+      %hr/
+      = f.input :booked, as: :hidden, input_html: { value: true }
+      = f.input :company_id, as: :hidden, input_html: { value: @current_company.id }
+      .row-fluid
+        .span4
+          = f.label :given_name
+        .span8
+          = f.input :given_name, input_html: { class: 'span12' }, label: false
+      .row-fluid
+        .span4
+          = f.label :family_name
+        .span8
+          = f.input :family_name, input_html: { class: 'span12' }, label: false
+        .row-fluid
+          .span4
+            = f.label :email
+          .span8
+            = f.input :email, input_html: { class: 'span12' }, label: false
+        .modal-footer
+          %button.btn.btn-default{:'aria-hidden' => '', :'data-dismiss' => 'modal', type: 'button'}= t('views.actions.cancel')
+          = f.button :submit, t('overlays.bookings.add_customer_modal.create_customer_profile'), class: 'btn btn-primary'

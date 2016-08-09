@@ -1,0 +1,86 @@
+:ruby
+  store = @service.store
+  unless store.email_setting.service_ready_for_collection_content.blank?
+    custom_content = store.email_setting.service_ready_for_collection_content
+    custom_content = custom_content.gsub('%CUSTOMER_NAME%', @service.customer.full_name)
+    custom_content = custom_content.gsub('%EVENT_NAME%', '')
+    custom_content = custom_content.gsub('%EVENT_DATE%', '')
+    custom_content = custom_content.gsub('%SALES_TOTAL%', number_to_currency(@sale.grand_total, unit: @sale.store.currency.unit, precision: @sale.store.currency.precision))
+  end
+
+
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+    %title= t('company_mailer.common.company_hq')
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = show_company_logo(@service.store)
+      %span{style: 'float:right;font-size:12px'}= t('service_mailer.service_collection.sales_receipt_id', receipt: @sale.receipt_id) unless @service.grand_total.zero?
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('company_mailer.commont.hi', full_name: @service.customer.given_name)
+    - unless store.email_setting.service_ready_for_collection_content.blank?
+      %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;border-bottom-style: dashed; border-bottom-color: #E8E8E8; border-bottom-width: 1px;padding-bottom:10px;'}
+        = nl2br custom_content
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;border-bottom-style: dashed; border-bottom-color: #E8E8E8; border-bottom-width: 1px;padding-bottom:10px;'}
+      = t('service_mailer.service_collection.complete_and_ready_for_collection', kit: @service.kit)
+      %a{href: "mailto:#{store.company.email}"} #{store.company.email}
+      = t('service_mailer.service_collection.or_call', telephone: store.company.telephone)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= t('service_mailer.service_collection.date', date: Date.today)
+    - if !@service.grand_total.zero? and store.email_setting.include_sales_receipt_to_service_ready_for_collection?
+      %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;'}
+        %thead
+          %tr{bgcolor: '#EAEAEA', style: 'font-family:Arial, sans-serif;font-size:13px;color:#747a7f;line-height: 1.5;'}
+            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+              %b= t('service_mailer.service_collection.scu_product')
+            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+              %b= t('service_mailer.service_collection.unit_price')
+            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+              %b= t('service_mailer.service_collection.qty')
+            %td{style: 'padding:5px 9px 6px 9px; line-height:1em;'}
+              %b= t('service_mailer.service_collection.sub_total')
+        %tbody
+          %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{t('service_mailer.service_collection.servicing')} #{@service.kit} #{@service.serial_number}
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency(0, unit: store.currency.unit, precision: store.currency.precision)
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= 1
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency 0, precision: store.currency.precision, unit: store.currency.unit
+          - @service.kits.each do |kit|
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{kit.type_of_service.name} (#{t('service_mailer.service_collection.hours')})
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency(kit.type_of_service.unit_price, unit: store.currency.unit, precision: store.currency.precision)
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= kit.type_of_service.labour.prettify
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency kit.type_of_service.line_item_price, precision: store.currency.precision, unit: store.currency.unit
+            - if kit.type_of_service.service_kit.present?
+              %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+                %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= kit.type_of_service.service_kit.try(:name)
+                %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                  = number_to_currency(kit.type_of_service.service_kit.unit_price, unit: store.currency.unit, precision: store.currency.precision)
+                %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} 1
+                %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency(kit.type_of_service.service_kit.line_item_price, unit: store.currency.unit, precision: store.currency.precision)
+          - @service.service_items.each do |item|
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#747a7f;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{item.product.name} (#{item.product.sku_code})
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency(item.product.unit_price, unit: store.currency.unit, precision: store.currency.precision)
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} 1
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency(item.product.line_item_price, unit: store.currency.unit, precision: store.currency.precision)
+      %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+        %strong= t('service_mailer.service_collection.subtotal')
+        = number_to_currency(@service.sub_total_price, unit: store.currency.unit, precision: store.currency.precision)
+      %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+        %strong= t('service_mailer.service_collection.tax_inc')
+        = number_to_currency(@service.full_tax_rate_amount, unit: store.currency.unit, precision: store.currency.precision)
+      %p{style: 'float:right; margin: 15px 5%; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+        %strong= t('service_mailer.service_collection.net_due')
+        = number_to_currency(@service.grand_total, unit: store.currency.unit, precision: store.currency.precision)
+    %div{style: 'width:100%; clear:both; display: block;'}
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear:both;'}
+      = t('service_mailer.service_collection.with_regards')
+      %br
+      #{store.name}
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag @service.store.avatar.image.url(:original) unless @service.store.avatar.blank?
+      %br
+      = t('service_mailer.note_added.sent_by_centre', company_name: store.company.name)
+      = t('service_mailer.note_added.telephone', tel: store.company.telephone)
+      = t('service_mailer.note_added.registered_address', address: store.company.address.full_address)

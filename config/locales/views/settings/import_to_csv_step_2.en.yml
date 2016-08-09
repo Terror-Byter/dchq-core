@@ -1,0 +1,13 @@
+en:
+  settings:
+    import_to_csv_step_2:
+      home: 'Home'
+      settings: 'Settings'
+      settings_import_step_2: 'Settings: Import Data: Step 2'
+      content: 'Before we can import your data, you need to match up your column names with those in Dive Centre HQ.'
+      match_data: 'Match Data'
+      data_matching: 'Data Matching'
+      data_matching_text: 'Match up your data columns with ours.'
+      your_data: 'Your Data'
+      our_data: 'Our Data'
+      complete_import: 'Complete Import'

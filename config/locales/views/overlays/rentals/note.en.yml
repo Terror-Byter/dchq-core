@@ -1,0 +1,7 @@
+en:
+  overlays:
+    rentals:
+      note:
+        add_note: Add Note
+        button: Update Note
+        cancel: Cancel

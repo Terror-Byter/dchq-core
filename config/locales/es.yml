@@ -1,0 +1,783 @@
+es:
+  time:
+    formats:
+      default: '%d %b, %Y %I:%M%P'
+      full_month: '%B'
+      datepicker_default: "dd-mm-yyyy hh:ii"
+      datepicker_default_datejs: 'dd-MM-yyyy HH:mm'
+      event_format: '%d-%m-%Y %H:%M'
+      only_time: "%I:%M%P"
+  date:
+    formats:
+      default: '%d %b, %Y'
+      full_month: '%B'
+      date_only: '%d-%m-%Y'
+      datepicker_date: 'dd-mm-yyyy'
+      birthday: '%d-%m-%Y'
+    day_names: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+    abbr_day_names: ["Lun", "Mar", "Mier", "Jue", "Vie", "Sab", "Dom"]
+    month_names: [nil, "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+    abbr_month_names: [nil, "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec"]
+    order:
+      - :day
+      - :month
+      - :year
+  activerecord:
+    models:
+      address:
+        one: "Dirección"
+        other: "Direcciones"
+      admin_user:
+        one: "Usuario Admin"
+        other: "Usuarios Admin"
+      attachment:
+        one: "Adjunto"
+        other: "Adjuntos"
+      brand:
+        one: "Marca"
+        other: "Marcas"
+      business_contact:
+        one: "Proveedor"
+        other: "Proveedores"
+      category:
+        one: "Categoría"
+        other: "Categorías"
+      certification_agency:
+        one: "Agencia de Certificación"
+        other: "Agencias de Certificación"
+      certification_level:
+        one: "Nivel de Certificación"
+        other: "Niveles de Certificación"
+      certification_level_cost:
+        one: "Costo de Nivel de Certificación"
+        other: "Costos de Nivel de Certificación"
+      certification_level_membership:
+        one: "Membresía de Nivel de Certificación"
+        other: "Membresías de Nivel de Certificación"
+      commission_rate:
+        one: "Tarifas de Comisión"
+        other: "Tarifas de Comisión"
+      currency:
+        one: "Moneda"
+        other: "Monedas"
+      customer:
+        one: "Cliente"
+        other: "Clientes"
+      customer_experience_level:
+        one: "Nivel de Experiencia del Cliente"
+        other: "Niveles de Experiencia del Cliente"
+      customer_source:
+        one: "Fuente del Cliente"
+        other: "Fuentes del Cliente"
+      course_event:
+        one: 'Evento del Curso'
+        other: 'Eventos del Curso'
+      discount:
+        one: "Descuento"
+        other: "Descuentos"
+      company:
+        one: "Centro de Buceo"
+        other: "Centros de Buceo"
+      store:
+        one: "Tienda de Buceo"
+        other: "Tiendas de Buceo"
+      stores/boat:
+        one: "Barco"
+        other: "Barcos"
+      stores/custom_field:
+        one: "Campo Personalizado"
+        other: "Campos Personalizados"
+      stores/event_tariff:
+        one: "Tarifa del Evento"
+        other: "Tarifas del Evento"
+      stores/email_setting:
+        one: "Ajustes de Correo-e"
+        other: "Ajustes de Correo-e"
+      diver_type:
+        one: "Tipo de Buzo"
+        other: "Tipos de Buzo"
+      event:
+        one: "Evento"
+        other: "Eventos"
+      event_customer_participant:
+        one: "Participante al Evento del Cliente"
+        other: "Participantes al Evento del Cliente"
+      event_customer_participant_additional:
+        one: "Participante Adicional al Evento del Cliente"
+        other: "Participantes Adicionales al Evento del Cliente"
+      event_customer_participant_insurance:
+        one: "Seguro del Participante al Evento del Cliente"
+        other: "Seguros de los Participantes al Evento del Cliente"
+      event_customer_participant_kit_hire:
+        one: "Renta de Kit del Participante al Evento del Cliente"
+        other: "Rentas de Kits del Participante al Evento del Cliente"
+      event_customer_participant_transport:
+        one: "Transporte del Participante al Evento del Cliente"
+        other: "Transportes de los Participantes al Evento del Cliente"
+      event_trip:
+        one: "Viaje del Evento"
+        other: "Viajes del Evento"
+      event_type:
+        one: "Tipo de Evento"
+        other: "Tipos de Evento"
+      event_user_participant:
+        one: "Participante al Evento del Usuario"
+        other: "Participantes al Evento del Usuario"
+      frequency:
+        one: "Frecuencia"
+        other: "Frecuencias"
+      gift_card:
+        one: "Tarjeta de Regalo"
+        other: "Tarjetas de Regalo"
+      gift_card_type:
+        one: "Tipo de Tarjeta de Regalo"
+        other: "Tipos de Tarjeta de Regalo"
+      image:
+        one: "Imagen"
+        other: "Imágenes"
+      incident:
+        one: "Incidente"
+        other: "Incidentes"
+      note:
+        one: "Nota"
+        other: "Notas"
+      other_event:
+        one: 'Otro Evento'
+        other: 'Otros Eventos'
+      payment:
+        one: "Pago"
+        other: "Pagos"
+      payment_credential:
+        one: "Credencial de Pago"
+        other: "Credenciales de Pago"
+      payment_method:
+        one: "Método de Pago"
+        other: "Métodos de Pago"
+      product:
+        one: "Producto"
+        other: "Productos"
+      rental:
+        one: Alquiler
+        other: Alquileres
+      rental_product:
+        one: Alquiler de Producto
+        other: Productos de Alquiler
+      role:
+        one: "Rol"
+        other: "Roles"
+      sale:
+        one: "Venta"
+        other: "Ventas"
+      sale_customer:
+        one: "Cliente de Venta"
+        other: "Clientes de Venta"
+      sale_product:
+        one: "Producto en Venta"
+        other: "Productos en Venta"
+      services/service_kit:
+        one: "Kit de Servicio"
+        other: "Kits de Servicio"
+      smart_list:
+        one: Lista Inteligentes
+        other: Listas Inteligentes
+      smart_list_condition:
+        one: Condición Lista Inteligentes
+        other: Condición Listas Inteligentes
+      supplier:
+        one: "Proveedor"
+        other: "Proveedores"
+      store_product:
+        one: Tienda de Producto
+        other: Tienda de Productos
+      tax_rate:
+        one: "Tasa de Impuesto"
+        other: "Tasas de Impuestos"
+      services/service_item:
+        one: "Artículo de Servicio"
+        other: "Artículos de Servicio"
+      services/service_kit:
+        one: "Kit de Servicio"
+        other: "Kits de Servicio"
+      services/service_note:
+        one: "Nota de Servicio"
+        other: "Notas de Servicio"
+      services/time_interval:
+        one: "Intervalo de Tiempo"
+        other: "Intervalos de Tiempo"
+      services/type_of_service:
+        one: "Tipo de Servicio"
+        other: "Tipos de Servicio"
+      service:
+        one: "Servicio"
+        other: "Servicios"
+      staff_member:
+        one: Miembro del Staff
+        other: Miembros del Personal
+      user:
+        one: "Usuario"
+        other: "Usuarios"
+    attributes:
+      active_admin_comment:
+        resource_id: "Identificación de Recursos"
+        resource_type: "Tipo de Recursos"
+        author_id: "Identificación del Autor"
+        body: "Cuerpo"
+        created_at: "Creado En"
+        updated_at: "Actualizado En"
+        namespace: "Namespace"
+      address:
+        first: "Dirección 1"
+        second: "Dirección 2"
+        city: "Ciudad"
+        state: "Estado"
+        country_code: "País"
+        post_code: "Código Postal"
+      brand:
+        name: "Nombre de Marca"
+        description: "Descripción"
+      business_contact:
+        supplier_id: "Asociación Empresarial"
+        given_name: "Primer Nombre"
+        family_name: "Apellido"
+        email: "Correo-e"
+        telephone: "Teléfono"
+        position: "Posición"
+        primary: "Contacto Principal"
+        tag_list: "Etiquetas"
+      category:
+        name: "Nombre de Categoría"
+        description: "Descripción"
+      certification_agency:
+        name: "Nombre"
+      certification_level_cost:
+        cost: "Precio del Curso"
+        tax_rate_id: "Tasa de Impuesto"
+        material_price: "Precios de los Materiales"
+        material_price_tax_rate_id: "Tasa de Impuesto"
+        commission_rate_money: "Comisión"
+      certification_level_membership:
+        certification_agency_id: "Agencia de Certificación"
+        certification_level_id: "Nivel de Certificación"
+        membership_number: "ID de Cert"
+        certification_date: "Fecha de Certificación"
+        primary: "Primario"
+      certification_level:
+        certification_agency_id: "Agencia de Certificación"
+        add_another: "Agregue otra certificación"
+        store_id: "Tienda de Buceo"
+        name: "Nombre del Curso"
+      commission_rate:
+        default: "Predeterminado (%)"
+        additional_commission_rate: "Tarifa Adicional de Comisión (%)"
+        commission_rate_money: "Tarifa de Comisión"
+      customer_experience_level:
+        name: "Nombre"
+      customer_source:
+        name: "Nombre"
+        store_id: "ID de Centro de Buceo"
+      customer:
+        customer_experience_level_id: "Nivel de Experiencia"
+        given_name: "Primer Nombre"
+        family_name: "Apellido"
+        born_on: "Fecha de Nacimiento"
+        default_discount_level: "Descuento %"
+        source: "Origen"
+        tag_list: "Etiquetas"
+        telephone: "Teléfono"
+        mobile_phone: "Móbil"
+        email: "Dirección de Correo-e"
+        last_dive_on: "Último Buceo"
+        number_of_logged_dives: "Buceos Registrados"
+        fins: "Aletas"
+        bcd: "BCD (Chaleco Hidrostático)"
+        wetsuit: "Wetsuit (Traje de Neopreno)"
+        hotel_name: "Nombre del Hotel"
+        room_number: "Número del Cuarto"
+        gender: "Género"
+        credit_note: "Nota de Crédito"
+        genders:
+          male: "Masculino"
+          female: "Femenino"
+        emergency_contact_details: "Detalles del Contacto de Emergencia"
+        weight: "Peso"
+        mask_own: "Máscara"
+        regulator_own: "Regulador"
+        fins_own: "Propietario de Aletas"
+        bcd_own: "Propietario de BCD"
+        wetsuit_own: "Propietario de Wetsuit"
+        custom_fields: "Campos Personalizados"
+        notes: "Notas del Cliente"
+        send_event_related_emails: "Enviar Correos-e Relacionados con el Evento"
+        tax_id: 'ID de Impuesto'
+        zero_tax_rate: 'Tasa de Impuesto Cero'
+      course_event:
+        certification_level_id: Course
+        price: Course Price
+      discount:
+        value: "Valor"
+        kind: "Tipo de Descuento"
+      company:
+        name: "Nombre de la Tienda"
+        telephone: "Número Telefónico de la Tienda"
+        email: "Correo-e de la tienda"
+        primary_contact_id: "Contacto Principal"
+        website_url: "Página Web"
+        api_key: "Llave API"
+        referral_code: 'Código de Referencia (para compartir)'
+        invite_code: 'Código de Invitado'
+        currency_for_store: Currency
+        tax_id: 'IVA'
+      store:
+        name: "Nombre de Tienda de Buceo"
+        time_zone: "Huso Horario"
+        currency_id: "Moneda"
+        public_key: "Llave Pública"
+        api_key: "Store API Key"
+        location: "Ubicación"
+        printer_type: "Tipo de Impresora"
+        calendar_type: "Calendario Predeterminado"
+        barcode_printing_type: "Impresión de Código de Barras"
+        tax_rate_inclusion: 'Opciones de Impuestos'
+        standart_term: 'Términos'
+        tsp_url: 'Dirección IP Local'
+        standart_rental_term: Términos
+        invoice_title: Custom Factura Título
+        receipt_title: Custom Receipt Título
+        calendar_header: Calendario Header
+        calendar_footer: Calendario Pie de Página
+        initial_receipt_number: Número de Recibo Inicial
+      stores/boat:
+        name: "Nombre del Barco"
+        color: "Color del Calendario"
+        store_id: "Tienda de Buceo"
+      stores/custom_field:
+        name: "Nombre del Campo"
+        value: "Valor"
+        customer_id: "Cliente"
+      stores/event_tariff:
+        name: "Nombre de la Tarifa"
+        min: "# Mín de Eventos"
+        max: "# Máx de Eventos"
+        percentage: "Descuento (%)"
+      stores/email_setting:
+        store_id: "Tienda de Buceo"
+        booking_confirmed_content: "Su contenido adicional"
+        include_sale_receipt_to_booking_confirmed: "Incluye recibo de ventas"
+        disable_booking_confirmed_email: "Desactivar correo-e"
+        event_reminder_content: "Su contenido adicional"
+        time_to_send_event_reminder: "Tiempo para enviar correo-e:"
+        include_sale_receipt_to_event_reminder: "Incluye recibo de ventas"
+        disable_event_reminder_email: "Desactivar correo-e"
+        online_event_booking_content: "Su contenido adicional"
+        include_sale_receipt_to_online_event_booking: "Incluye recibo de ventas"
+        disable_online_event_booking_email: "Desactivar correo-e"
+        sales_receipt_content: "Su contenido adicional"
+        disable_sales_receipt_email: "Desactivar correo-e"
+        service_ready_for_collection_content: "Su contenido adicional"
+        include_sales_receipt_to_service_ready_for_collection: "Incluye recibo de ventas"
+        disable_service_ready_for_collection_email: "Desactivar correo-e"
+        disable_low_inventory_product_reminder_email: "Desactivar el recordatorio por correo-e del inventario bajo"
+      diver_type:
+        name: "Nombre"
+      stores/email_setting:
+        rental_receipt_content: Alquiler Recibo Contenido
+      event_customer_participant_insurance:
+        insurance_id: "Seguro"
+      event_customer_participant_kit_hire:
+        kit_hire_id: "Renta de Kit"
+      event_customer_participant:
+        customer_id: "Cliente"
+        event_user_participant: "Personal Asignado"
+        nitrox: 'Nitrox'
+        note: Nota
+        group_name: Nombre del Grupo
+        quantity: Número en el Grupo
+        contact_information: Información del Contacto
+      event_trip:
+        name: "Nombre del Viaje"
+        cost: "Precio del Viaje"
+        tax_rate_id: "Tasa de Impuesto"
+        commission_rate_money: "Comisión"
+        local_cost: "Precio local"
+      event_type:
+        name: "Nombre"
+      event_user_participant:
+        user_id: "Miembros del Personal Disponibles"
+        role: "Rol"
+        include_to_recuring_events: "Agregue un miembro del personal a todos los eventos recurrentes futuros en este"
+      event:
+        name: "Nombre del Evento"
+        event_type_id: "Tipo de Evento"
+        certification_agency_id: "Agencia de Certificación"
+        event_trip_id: "Viaje"
+        starts_at: "Fecha / Hora de Comienzo"
+        ends_at: "Fecha / Hora de Fin"
+        frequency: "Frecuencia"
+        location: "Ubicación(s)"
+        additional_equipment: "Equipo Adicional"
+        notes: "Notas del Evento (para uso interno)"
+        price: "Precio del Evento"
+        private: "Visibilidad del Evento En Línea"
+        instructions: "Instrucciones Para El Cliente (enviado vía correo-e antes del evento)"
+        enable_booking: "Reservaciones En Línea"
+        limit_of_registrations: "# Máx. de Participantes"
+        boat_id: "Barco"
+        include_material_price: "Incluye Precio del Material"
+        number_of_frequencies: "Número de Recurrentes"
+        number_of_dives: "Buceos"
+      frequency:
+        one: "Único"
+        daily: "Recurrente Diario"
+        every_other_day: 'Cada Dos Días'
+        weekly: "Recurrente Semanal"
+        fortnightly: "Quincenal"
+        monthly: "Recurrente Mensual"
+        yearly: "Recurrente Anual"
+      gift_card:
+        gift_card_type_id: "ID de Tipo de Tarjeta de Regalo"
+        uniq_id: "ID de Uniq"
+        status: "Estatus"
+        available_balance: "Saldo Disponible"
+      gift_card_type:
+        company_id: "ID del Centro de Buceo"
+        valid_for: "Válido Por"
+        value: "Valor"
+        uniq_id: "ID de Uniq"
+      image:
+        image: "Imagen"
+      payment_credential:
+        paypal_login: "Login API PayPal"
+        paypal_password: "Contraseña API PayPal"
+        paypal_signature: "Firma API PayPal"
+        stripe_secret_key: "Clave Secreta de la Banda"
+        stripe_publishable_key: "Llave Publicable de la Banda"
+        epay_merchant_number: "Epay Merchant Number"
+        epay_password: "Epay Password"
+        epay_currency: "Epay Currency"
+      payment_method:
+        store_id: "Tienda de Buceo"
+        name: "Nombre"
+        default: "Predeterminado"
+        additional_payment_method: "Método de Pago Adicional"
+      payment:
+        sale_id: "Venta"
+        cashier_id: "Cajero"
+        payment_method_id: "Método de Pago"
+        amount: "Monto"
+      product:
+        name: "Nombre"
+        sku_code: "SKU"
+        number_in_stock: "Nivel Actual de Inventario"
+        description: "Descripción"
+        brand_id: "Marca"
+        supplier_id: "Proveedor"
+        category_id: "Categoría"
+        accounting_code: "Código de Contabilidad"
+        supplier_code: "Código de Proveedor"
+        supply_price: "Precio de Suministro"
+        markup: "Sobreprecio"
+        tax_rate_id: "Tasa de Impuesto"
+        retail_price: "Precio al Menudeo"
+        barcode: "Código de Barras"
+        store_id: "Tienda de Buceo"
+        commission_rate_id: "Tasa de Comisión"
+        commission_rate_money: "Tasa de Comisión"
+        deleted_at: "Eliminado El"
+        company_id: "Centro de Buceo"
+        image: "Imagen"
+        low_inventory_reminder: "Recordatorio de Bajo Inventario"
+        archived: Archivado
+      user:
+        email: "Dirección de Correo-e"
+        password: "Contraseña"
+        password_confirmation: "Confirme Contraseña"
+        role: "Nivel de Usuario"
+        time_zone: "Huso Horario"
+        api_key: 'API Key Usuario'
+        given_name: First Name
+        family_name: Last Name
+        alternative_email: Alternative Email Address
+        telephone: Phone
+        tag_list: Tags
+        emergency_contact_details: Emergency Contact Details
+        contracted_hours: Contracted Hours
+        start_date: Start Date
+        end_date: End Date
+        mailchimp_api_key: MailChimp API Key
+        mailchimp_list_id_for_customer: Customer List
+        mailchimp_list_id_for_business_contact: Business Contacts
+        mailchimp_list_id_for_staff_member: Staff Members
+        locale: Locale
+        sale_target: Monthly Sales Target
+        sale_target_show_dashboard: Show target on dashboard
+      sale_product:
+        sale_id: "Venta"
+        product_id: "Producto"
+        quantity: "Cantidad"
+      sale:
+        store_id: "Tienda de Buceo"
+        creator_id: "Creador"
+        name: "Nombre de Venta"
+        status: "Estátus de Venta"
+        grand_total: "Gran Total"
+        change: "Cambio"
+      services/service_item:
+        service_id: "Servicio"
+        product_id: "Producto"
+      services/service_kit:
+       store_id: "Tienda de Buceo"
+       name: "Nombre"
+       stock_level: "Nivel del Inventario"
+       supply_price: "Precio de Suministro"
+       retail_price: "Precio al Menudeo"
+       type_of_service_id: "Tipo de Servicio"
+       tax_rate_id: "Tasa de Impuesto"
+      services/time_interval:
+        service_id: "Servicio"
+        user_id: "Técnico"
+      services/type_of_service:
+        store_id: "Tienda de Buceo"
+        name: "Nombre"
+        labour: "Trabajo (horas)"
+        labour_price: "Precio de Trabajo (por hora)"
+        price_of_service_kit: "Precio del Kit de Servicio"
+        tax_rate_id: "Tasa de Impuesto"
+      service:
+        status: "Estátus"
+        barcode: "Código de Barras"
+        store_id: "Tienda de Buceo"
+        sale_id: "Lista de Venta"
+        type_of_service_id: "Tipo de Servicio"
+        kit: "Kit Atendiéndose en Servicio"
+        serial_number: "Número de Serie"
+        customer_id: "Cliente"
+        user_id: "Técnico"
+        collection_date: "Fecha de Recolección"
+        tag_list: "Etiquetas"
+        complimentary_service: "Servicio Complementario"
+      supplier:
+        name: "Nombre de la Empresa"
+        email: "Dirección de Correo-e"
+        telephone: "Teléfono"
+        tag_list: "Etiquetas"
+      store_product:
+        name: "Nombre"
+        sku_code: "SKU"
+        number_in_stock: "Nivel Actual de Inventario"
+        description: "Descripción"
+        brand_id: "Marca"
+        supplier_id: "Proveedor"
+        category_id: "Categoría"
+        accounting_code: "Código de Contabilidad"
+        supplier_code: "Código de Proveedor"
+        supply_price: "Precio de Suministro"
+        markup: "Sobreprecio"
+        tax_rate_id: "Tasa de Impuesto"
+        retail_price: "Precio al Menudeo"
+        barcode: "Código de Barras"
+        store_id: "Tienda de Buceo"
+        commission_rate_id: "Tasa de Comisión"
+        commission_rate_money: "Tasa de Comisión"
+        deleted_at: "Eliminado El"
+        company_id: "Centro de Buceo"
+        image: "Imagen"
+        low_inventory_reminder: "Recordatorio de Bajo Inventario"
+        price_per_day: Precio por día
+      tag:
+        name: "Nombre de Etiqueta"
+      tax_rate:
+        amount: "Monto"
+        default: "Predeterminado (%)"
+        additional_tax_rate: "Tasa de Impuesto Adicional (%)"
+        identifier: 'Identificador de Tipo de Gravamen'
+      incident:
+        description: "Información del Incidente"
+      note:
+        description: "Nota del Contenido"
+      rental:
+        store_id: Store
+        user_id: Usuario
+        customer_id: Cliente
+        return_date: Fecha de Regreso
+        pickup_date: Fecha de Recogida
+      rental_product:
+        name: Nombre
+        sku_code: SKU
+        number_in_stock: Nivel Actual de Inventario
+        description: Descripción
+        brand_id: Marca
+        supplier_id: Proveedor
+        category_id: Categoría
+        accounting_code: Código de Contabilidad
+        supplier_code: Código de Proveedor
+        supply_price: Precio de Suministro
+        tax_rate_id: Tasa de Impuesto
+        barcode: Código de Barras
+        store_id: Tienda de Buceo
+        commission_rate_id: Tasa de Comisión
+        commission_rate_money: Tasa de Comisión
+        deleted_at: Eliminado El
+        image: Imagen
+        price_per_day: Precio por día
+        low_inventory_reminder: Recordatorio de Bajo Inventario
+        archived: Archivado
+        markup: Sobreprecio
+    modules:
+      extra_event:
+        name: "Nombre"
+        cost: "Precio para el Cliente"
+        tax_rate_id: "Tasa de Impuesto"
+        type: "Tipo"
+        time: "Tiempo"
+        information: "Información de Recolección"
+  controllers:
+    application:
+      check_available_shops: "Usted no tiene acceso a ninguna tienda"
+    has_beed_added: "se ha agregado correctamente"
+    has_beed_removed: "ha sido eliminado correctamente"
+    sync_failed: "Falló la sincronización. %{message} para un recurso con ID = %{id} "
+    customer_sync_ok: "Sincronización de cliente con mailchimp exitosa"
+    sale_id: "ID de la Venta"
+    store: "Tienda de Buceo"
+    email_send: "Correo-e enviado satisfactoriamente"
+    store_changed: "Se ha cambiado la Tienda de Buceo"
+    no_access: "La Tienda de Buceo no existe o usted no tiene acceso a esta tienda"
+    image_deleted: "La imagen ha sido eliminada"
+    image_not_deleted: "Hubo un error al eliminar esta imagen"
+    check_access: "Usted no tiene acceso a esta página"
+    all_sales: "Todas las Ventas"
+    event_registration: "Registros del Evento"
+    new_customer: "Clientes Nuevos"
+    sale_customer: "Ventas / Clientes"
+    receipt_send: "El recibo se envió satisfactoriamente a través de correo-e"
+    receipt_not_send: "Hubo un error al enviar el recibo a través de correo-e"
+    incorrect_file_type: "Tipo de archivo incorrecto"
+    you_have_errors: "Usted tiene errores"
+    on_line: "en línea"
+    printer_options_updated: "Las opciones de la impresora han sido actualizadas"
+    mailchimp_updated: "Las listas Mailchimp han sido actualizadas satisfactoriamente"
+    api_key_updated: "La Llave API ha sido actualizada satisfactoriamente"
+    additional_list_updated: "La lista adicional ha sido actualizada"
+    trips: "La lista de viajes ha sido actualizada satisfactoriamente"
+    certification_level: "Los niveles de certificación han sido agregados satisfactoriamente"
+    staff_member_updated: "Se ha agregado satisfactoriamente el miembro del personal"
+    staff_sync_ok: "La sincronización del personal con mailchimp ha sido exitosa"
+    business_sync_ok: "La sincronización del proveedor con mailchimp ha sido exitosa"
+    event_approve: "Se ha aprobado el cliente y se ha enviado el correo-e de confirmación"
+    update_stores: "Ubicación adicional de la tienda se actualizó correctamente. Su próxima factura ha sido ajustada."
+    your_have_no_persmisions: "Usted no puede editar esta tarjeta de regalo"
+    disable_sold_gift_cards: "La Tarjeta de Regalo ha sido desactivada"
+    enable_sold_gift_cards: "La Tarjeta de Regalo ha sido activada"
+    event_has_been_cancelled: "El evento ha sido cancelado"
+    customer_has_been_rejected: "El cliente ha sido rechazado del evento y se ha reembolsado. Se ha enviado un correo-e de confirmación."
+    this_event_cancelled: "Este evento ha sido cancelado"
+    event_cancelled: "El evento ya estaba cancelado"
+    event_available: "Evento no disponible"
+    servicing_success: "Se han guardado satisfactoriamente los ajustes del servicio"
+    boats_success: "Se han guardado satisfactoriamente los ajustes del barco"
+    cant_edit_service: "Usted no puede editar este servicio"
+    check_service_settings: "Por favor configure sus ajustes del servicio antes de reservar su primer servicio"
+    you_have_to_choose_agency: "Usted tiene que seleccionar agencia"
+    customer_added_to_event: "Se agregó satisfactoriamente el cliente al evento"
+    you_cant_remove_resource: "Usted no puede eliminar recurso"
+    export_flash: "Exportador de %{type} se está ejecutando actualmente. Usted recibirá un correo electrónico una vez finalizado."
+    stores:
+      open_successfully: "Tienda de Buceo abrió satisfactoriamente"
+      close_successfully: "Tienda de Buceo cerró satisfactoriamente"
+    events:
+      no_resource: "No hay recurso seleccionado"
+      incorrect_date: "Usted está utilizando una fecha incorrecta"
+      incorrect_start_date: "La Fecha de Inicio no puede ser mayor que la Fecha de Finalización"
+      cant_remove_event: "Usted no puede eliminar este evento"
+    event_customer_participants:
+      all_good: "Los Clientes Participantes al Evento se han guardado satisfactoriamente"
+    pages:
+      index:
+        sales: "Ventas"
+        event: "Registros del Evento"
+        customers: "Nuevos Clientes"
+        avg_sale: "Venta/Cliente Prom."
+        services: "Servicios Completados"
+    settings:
+      no_access: 'Usted no tiene acceso a estos métodos'
+      clear_data_success: "%{data} ha sido limpiado satisfactoriamente"
+  helpers:
+    application:
+      edit: "Editar"
+      print: "Imprimir"
+      actions: "Acciones"
+      issue_refund: "Emitir Reembolso"
+      finalize_sale: "Terminar Venta"
+      day: "día"
+      own: "Kit Propio"
+      rent: "Renta"
+      item: 'artículo'
+    customers:
+      loading: "cargando 10 registros más..."
+    services:
+      mark_as_complete: "Marcar Servicio Como Completo"
+      pay_for_service: "Pagar por el Servicio"
+  mailer:
+    company_mailer:
+      welcome_subject: "Bienvenido a Dive Centre HQ"
+      notify_manager_subject: "Error de acceso del personal para Dive Centre HQ"
+      event_cancelled_no_payments_subject: "Evento CANCELADO: %{event}"
+      event_participant_removed_subject: "ELIMINADO del Evento: %{event}"
+    store_mailer:
+      remind_product_subject: "Los siguientes productos han activado el recordatorio de inventario bajo"
+    sale_mailer:
+      subject: "Recibo # %{id}"
+    service_mailer:
+     note_added_subject: "Actualización del Servicio para %{kit} (%{serial})"
+     service_collection_subject: "Servicio al Kit completo y listo para su recolección"
+  models:
+    tax_rate:
+      cannot_remove_tax_rate: "Usted no puede eliminar la tasa de impuesto que está asociada con los productos"
+  js:
+    charts:
+      target: Target
+      actual: Actual
+      revenue: Revenue
+  views:
+    actions:
+      confirm: '¿Está seguro?'
+      remove: 'Eliminar'
+      cancel: 'Cancelar'
+      change: 'Cambiar'
+      save: 'Guardar'
+      select_file: 'Seleccionar archivo'
+      delete: 'Eliminar'
+      edit: 'Editar'
+    customer:
+      form:
+        own: 'Propio'
+        rent: 'Renta'
+    emails_examples:
+      receipt: 'Receipt #%{receipt}'
+      further_instructions: 'Más Instrucciones'
+      any_questions: 'Si usted tiene cualquier pregunta, por favor contáctenos en'
+      or_call: 'o llámenos al %{telephone}.'
+      event_date: 'Fecha del Evento'
+      with_regards: 'Saludos,'
+      this_email_sent_to: 'Este correo-e fue enviado a %{email}'
+      sent_by_centre: 'Este correo-e fue enviado por %{company_name}.'
+      telephone: 'Teléfono: %{tel}'
+      registered_address: 'Dirección Registrada: %{address}'
+    sale_mailer:
+      receipt: 'Recibo #%{receipt}'
+      any_questions: 'Si usted tiene cualquier duda, por favor contáctenos al'
+      or_call: 'o llámenos al %{telephone}.'
+      event: 'EVENTO'
+      unit_price: 'PRECIO UNITARIO'
+      qty: 'CANT'
+      sub_total: 'SUB-TOTAL'
+      subtotal: 'Sub Total:'
+      discount: 'Descuento:'
+      tax_inc: 'Impuestos Inc:'
+      net_due: 'NETO DEBIDO:'
+      payments: 'Pagos'
+      with_regards: 'Saludos,'
+      this_email_sent_to: 'Este correo-e fue enviado a %{email}'
+      sent_by_centre: 'Este correo-e fue enviado por %{company_name}.'
+      telephone: 'Teléfono: %{tel}'
+      registered_address: 'Dirección Registrada: %{address}'

@@ -1,0 +1,5 @@
+es:
+  events:
+    boats:
+      boats: "Recursos"
+      unassigned: "No Asignado"

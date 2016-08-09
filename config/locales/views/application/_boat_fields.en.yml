@@ -1,0 +1,6 @@
+en:
+  application:
+    boat_fields:
+      placeholder: '6 difit RGB value'
+      edit: 'Edit'
+      delete: 'Delete'

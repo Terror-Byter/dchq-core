@@ -1,0 +1,16 @@
+es:
+  settings:
+    trips:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_trips: 'Ajustes: Lista de Precio de Viajes'
+      t_trip_name: 'Nombre del Viaje'
+      t_standard_price: 'Precio Estándar'
+      t_local_price: 'Precio Local'
+      t_tax_rate: 'Tasa de Impuesto'
+      t_commission: 'Comisión'
+      t_tafiff_rates: 'Tasas Arancelarias'
+      t_action: 'Acción'
+      add_trip: 'Agregar Viaje'
+      exclude: 'Excluir'
+

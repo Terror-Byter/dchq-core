@@ -1,0 +1,4 @@
+es:
+  models:
+    address:
+      invalid: Atributos de dirección no válidos

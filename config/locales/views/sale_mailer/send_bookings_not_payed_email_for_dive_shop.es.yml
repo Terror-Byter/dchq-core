@@ -1,0 +1,10 @@
+es:
+  sale_mailer:
+    send_bookings_not_paid_email_for_store:
+      alt: 'Dive Centre HQ'
+      new_booking_request: 'Nueva Solicitud de Reservación Recibida'
+      has_made_online_booking: '%{customer} ha hecho una solicitud de reservación en línea para %{event_name} en %{starts_at}. Los detalles de la reservación están a continuación. Este es una solicitud en línea ya que se tiene que confirmar la eligibilidad para bucear y el pago está pendiente.'
+      approve_customer_for_event: 'Aprobar al Cliente para el Evento'
+      event_date: 'Fecha del Evento'
+      team: 'El equipo Dive Centre HQ'
+      registered_office: ''

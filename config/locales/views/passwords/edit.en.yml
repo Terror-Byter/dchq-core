@@ -1,0 +1,6 @@
+en:
+  passwords:
+    edit:
+      title: Enter the email address you signed up with and we'll send you a link to reset your password.
+      title_reset: Enter and confirm a new password for your account.
+      button: Save Password

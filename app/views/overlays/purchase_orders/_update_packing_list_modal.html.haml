@@ -1,0 +1,21 @@
+#update-packing-list-modal.modal.hide.fade
+  = form_tag send_email_to_supplier_purchase_order_path(purchase_order), method: :post, id: 'mark-received-and-send-form', class: 'hide' do
+    = hidden_field_tag 'purchase_order[status]', :received_in_part_amended
+  = form_tag set_status_purchase_order_path(purchase_order), method: :post, id: 'mark-received-form', class: 'hide' do
+    = hidden_field_tag 'status', :received_in_part_amended
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('.amend_consignment')
+  .modal-body.center
+    .row-fluid
+      .span10.offset1
+        %p{align: "center"}
+          = t('.will_be_added_to_inventory')
+        %p.uniformjs{align: "center"}
+          %label
+            = check_box_tag 'purchase_order_mark_received', 'yes', true
+            = t('.send_updated_packing_list_to_supplier')
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('views.actions.cancel')
+    %a.btn.btn-primary{href: "#"}= t('.mark_as_received')
+

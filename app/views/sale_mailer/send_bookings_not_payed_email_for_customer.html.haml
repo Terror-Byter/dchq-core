@@ -1,0 +1,32 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = show_company_logo(@store)
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('sale_mailer.send_bookings_not_paid_email_for_customer.hello', customer: @event_customer_participant.customer.full_name)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('sale_mailer.send_bookings_not_paid_email_for_customer.thanks_for_booking')
+      %strong #{@event_customer_participant.event.name}
+      = t('sale_mailer.send_bookings_not_paid_email_for_customer.with', shop_name: @store.name)
+      = t('views.sale_mailer.any_questions')
+      = mail_to @store.company.email
+      = t('views.sale_mailer.or_call', telephone: @store.company.telephone)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'} Your booking details are below. This is a booking request as your diving credentials need to be verified to confirm eligibility to participate.
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'} Further Instructions
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= nl2br @event_customer_participant.event.instructions
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      %strong= t('sale_mailer.send_bookings_not_paid_email_for_customer.event_date')
+      \: #{@event_customer_participant.event.starts_at.in_time_zone.strftime("#{@event_customer_participant.event.starts_at.in_time_zone.day.ordinalize} %B, %Y at %I:%M%P")}
+    = render 'unpaid_receipt'
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear: both;'}
+      = t('views.sale_mailer.with_regards')
+      %br
+      = @store.name
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag @store.avatar.image.url(:original) unless @store.avatar.blank?
+      %br
+      = t('views.sale_mailer.sent_by_centre', company_name: @store.company.name)
+      = t('views.sale_mailer.telephone', tel: @store.company.telephone)
+      = t('views.sale_mailer.registered_address', address: @store.company.address.full_address)

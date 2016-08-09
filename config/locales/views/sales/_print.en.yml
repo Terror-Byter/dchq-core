@@ -1,0 +1,26 @@
+en:
+  sales:
+    print:
+      alt_logo: "Logo"
+      customers: "Customers:"
+      receipt: "Receipt #%{receipt}"
+      invoice: "Tax Invoice #%{invoice}"
+      invoice_data: "Invoice Date: %{date}"
+      name: "Hello %{name}"
+      description: "Thank you for your purchase from %{name}. If you have any questions about your order please contact us at %{email} or call us on %{telephone}."
+      description_2: "The details of your order are listed below. Thanks again for your business."
+      sku: "SKU / PRODUCT"
+      unit_price: "UNIT PRICE"
+      qty: "QTY"
+      category: 'CATEGORY'
+      discount_heading: "DISCOUNT"
+      discount: "Less Discount:"
+      sub_total: "ITEM TOTAL"
+      subtotal: "Sub Total:"
+      tax_inc: "Tax:"
+      net_due: "NET DUE:"
+      payments: "Payments"
+      with_regards: "With regards,"
+      this_mail: "This email was sent to %{mail}."
+      tax_identifier: 'Tax ID:'
+      outstanding: 'TO PAY:'

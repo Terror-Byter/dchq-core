@@ -1,0 +1,20 @@
+en:
+  events:
+    cancel_complete:
+      events: Events
+      h2: Event Cancelled
+      p: This event has been cancelled.
+      h2_1: Amount Received
+      h2_2: Amount Refunded
+      h2_3: Refunds Required
+      h2_4: Refunds Made
+      h2_5: Process Refunds
+      p_1: This is a list of customers that paid for this event, along with their refund status.
+      registrant_namespace: Customers
+      date_registered: Date Registered
+      amount_paid: Amount Paid
+      amount_refund: Amount Refunded
+      actions: Actions
+      view_refund: View Refund Details
+      issue_refund: Issue Refund
+      no_data: No data

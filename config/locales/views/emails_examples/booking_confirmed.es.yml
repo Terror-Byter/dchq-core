@@ -1,0 +1,13 @@
+es:
+  emails_examples:
+    booking_confirmed:
+      booking_confirmed: 'Reservación Confirmada:'
+      confirmed_for_event_listed_below: 'Usted ha sido confirmado para el evento descrito a continuación. Por favor traiga una copia de esta confirmación de reservación con usted para el evento.'
+      event: 'EVENTO'
+      unit_price: 'PRECIO UNITARIO'
+      qty: 'CANT'
+      sub_total: 'SUB-TOTAL'
+      sub_tot: 'Sub Total:'
+      tax_inc: 'Incl Imp:'
+      net_due: 'NETO DEBIDO:'
+      payments: 'Pagos:'

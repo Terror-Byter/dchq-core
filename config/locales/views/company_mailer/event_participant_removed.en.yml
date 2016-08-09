@@ -1,0 +1,9 @@
+en:
+  company_mailer:
+    event_participant_removed:
+      event_update: 'Event Update'
+      have_been_removed: 'You have been removed from the event'
+      if_made_payment: "If you've made a payment for this event, please contact us regarding a refund or credit note, otherwise no further action is required."
+      any_questions_contact: 'If you have any questions, please contact us at'
+      or_call: 'or call us on'
+      regards: 'Regards'

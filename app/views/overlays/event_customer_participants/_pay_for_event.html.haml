@@ -1,0 +1,25 @@
+:ruby
+  sales = current_store.sales.active.joins(:sale_customers).sort{ |a, b| a.receipt_id <=> b.receipt_id }.map{ |u| ["#{ecp.customer.try(:full_name)} - #{u.name}", u.id] }
+
+%div{ id: "pay_for_event_#{ecp.id}", class: 'modal hide fade' }
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.event_customer_participants.pay_for_event.header')
+  .modal-body.center{:style => "overflow:visible;"}
+    %h5= t('overlays.event_customer_participants.pay_for_event.header_1')
+    %p= t('overlays.event_customer_participants.pay_for_event.content_1')
+    = form_tag pay_for_event_sales_path do
+      = hidden_field_tag "ecp_id", ecp.id
+      = submit_tag t('overlays.event_customer_participants.pay_for_event.button_1'), class: 'btn btn-primary'
+    - if sales.any? && !ecp.customer.blank?
+      %hr/
+      %h5= t('overlays.event_customer_participants.pay_for_event.header_2')
+      %p= t('overlays.event_customer_participants.pay_for_event.content_2')
+      = form_tag pay_for_event_sales_path do
+        = hidden_field_tag :customer_id, ecp.customer.id
+        = hidden_field_tag "ecp_id", ecp.id
+        = select_tag 'sale_id', options_for_select(sales), { class: 'selectpicker', :'data-size' => '10' }
+        %br/
+        = submit_tag t('overlays.event_customer_participants.pay_for_event.button_2'), class: 'btn btn-primary'
+  .modal-footer
+    %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.event_customer_participants.pay_for_event.cancel')

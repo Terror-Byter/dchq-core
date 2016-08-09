@@ -1,0 +1,50 @@
+= simple_form_for resource, html: { multipart: true }, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#DetailsTab', class: 'glyphicons group', :'data-toggle' => 'tab' do
+              %i>
+              = t('suppliers.form.supplier_details')
+          %li
+            = link_to '#addressTab', class: 'glyphicons direction', :'data-toggle' => 'tab' do
+              %i>
+              = t('suppliers.form.address')
+      .widget-body
+        .tab-content
+          #DetailsTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('suppliers.form.supplier_information')
+                %p.muted= t('suppliers.form.supplier_information_text')
+              .span4
+                = f.input :name, input_html: { class: 'span11' }
+              .span3
+                = f.simple_fields_for :logo do |form|
+                  = render 'avatar_fields', f: form
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('suppliers.form.contact_details')
+                %p.muted= t('suppliers.form.contact_details_text')
+              .span3
+                = f.input :email, input_html: { class: 'span11' }
+              .span3
+                = f.input :telephone, input_html: { class: 'span11' }
+              .span3
+                = f.label :tag_list
+                = f.hidden_field :tag_list
+                %ul#tag_list
+          #addressTab.tab-pane
+            = f.simple_fields_for :address do |form|
+              = render 'address_fields', f: form
+    / // Widget END
+    .heading-buttons
+      .buttons.pull-right{:style => "margin: 0;"}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('customers.form.save')
+      .clearfix
+

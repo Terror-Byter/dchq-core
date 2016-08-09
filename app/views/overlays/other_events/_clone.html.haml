@@ -1,0 +1,23 @@
+#clone-event-modal.modal.hide.fade
+  = form_tag duplicate_other_event_path(resource) do
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+      %h3= t '.title'
+    .modal-body
+      %p{:style => "margin-top:10px;"}= t '.body'
+      .row-fluid
+        .span6
+          = label_tag :starts_at, t('.starts_at')
+          .input-append.date.datetimepicker
+            = text_field_tag :starts_at, nil, class: 'span11 starts_at autoupdate'
+            %span.add-on
+              %i.icon-calendar
+        .span6
+          = label_tag :ends_at, t('.ends_at')
+          .input-append.date.datetimepicker
+            = text_field_tag :ends_at, nil, class: 'span11 ends_at'
+            %span.add-on
+              %i.icon-calendar
+    .modal-footer
+      %button.btn.btn-default{:'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t '.cancel'
+      = submit_tag t('.button'), class: 'btn btn-primary'

@@ -1,0 +1,97 @@
+= simple_form_for resource, html: { multipart: true }, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#productDescriptionTab', class: 'glyphicons t-shirt', :'data-toggle' => 'tab' do
+              %i>
+              = t('products.form.product_details')
+          %li
+            = link_to '#productPhotosTab', class: 'glyphicons picture', :'data-toggle' => 'tab' do
+              %i>
+              = t('products.form.photo')
+          %li
+            = link_to '#productAccountingTab', class: 'glyphicons barcode', :'data-toggle' => 'tab' do
+              %i>
+              = t('products.form.account_barcodes')
+          %li
+            = link_to '#productPriceTab', class: 'glyphicons bank', :'data-toggle' => 'tab' do
+              %i>
+              = t('products.form.pricing')
+      .widget-body
+        .tab-content
+          #productDescriptionTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('products.form.product_name_sku')
+                %p.muted= t('products.form.product_name_sku_text')
+              .span6
+                = f.input :name, input_html: { class: 'span11' }
+              .span3
+                = f.input :sku_code
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('products.form.description')
+                %p.muted= t('products.form.description_text')
+              .span9
+                = f.input :description, input_html: { rows: '2', style: 'width: 96%;' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('products.form.stock_level_reminder')
+                %p.muted= t('products.form.stock_level_reminder_text')
+              .span3
+                = f.input :number_in_stock, input_html: { class: 'span11' }
+              .span3
+                = f.input :low_inventory_reminder
+            %hr.separator.bottom/
+            = render 'store_products/product_information', f: f
+          #productPhotosTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('products.form.product_image')
+                %p.muted= t('products.form.product_image_text')
+              .span3
+                = f.simple_fields_for :logo do |form|
+                  = render 'avatar_fields', f: form
+          #productAccountingTab.tab-pane
+            = render 'store_products/accounting_and_barcode', f: f
+          #productPriceTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('products.form.price_calculation')
+                %p.muted= t('products.form.price_calculation_text')
+              .span3
+                = f.label :supply_price
+                .input-prepend
+                  %span.add-on= current_store.currency.unit.html_safe
+                  = f.text_field :supply_price, class: 'span11', size: nil
+              .span3
+                = f.label :markup
+                .input-append
+                  = f.text_field :markup, class: 'span11', size: nil
+                  %span.add-on %
+              .span3
+                = f.label :retail_price
+                .input-prepend
+                  %span.add-on= current_store.currency.unit.html_safe
+                  = f.text_field :retail_price, class: 'span11', size: nil
+                %p{style: "margin-top:-8px;"}= current_store.tax_rate_inclusion? ? t('products.form.tax_inc') : t('products.form.tax_exc')
+            .row-fluid
+              .span3
+              .span3
+                = f.label :offer_price
+                .input-prepend
+                  %span.add-on= current_store.currency.unit.html_safe
+                  = f.text_field :offer_price, class: 'span11', size: nil
+            %hr.separator.bottom/
+            = render 'store_products/tax_and_commission', f: f
+    .heading-buttons
+      .buttons.pull-right{style: "margin: 0;"}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('products.form.save')
+      .clearfix

@@ -1,0 +1,5 @@
+en:
+  emails_examples:
+    event_reminder:
+      booking_confirmation_reminder: 'Booking  Confirmation Reminder:'
+      confirmed_for_event_listed_below: 'You have been confirmed for the event listed below.'

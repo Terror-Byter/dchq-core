@@ -1,0 +1,11 @@
+#rental-complete.modal.hide.fade
+  = form_for resource do |f|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3= t '.header'
+    .modal-body
+      %p= t '.body'
+      = f.select :status, resource.decorate.available_statuses, { include_blank: false }, {}
+    .modal-footer
+      %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t '.cancel'
+      = f.submit t('.button'), class: 'btn btn-primary'

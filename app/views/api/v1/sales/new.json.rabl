@@ -1,0 +1,3 @@
+object :@sale
+
+attributes :id

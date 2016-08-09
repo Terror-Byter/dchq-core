@@ -1,0 +1,9 @@
+#rental_agreement.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('.header')
+  .modal-body{style: 'max-height: 500px; overflow-y: auto;'}
+    %p= current_store.standart_rental_term
+  .modal-footer
+    %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('.customer_decline')
+    = link_to t('.customer_acceped'), '#create-rental-overlay', class: 'btn btn-primary submit', :'data-toggle' => :modal, :'data-dismiss' => :modal

@@ -1,0 +1,10 @@
+en:
+  gift_card_types:
+    form:
+      gift_card_details: 'Gift Card Details'
+      card_value: 'Card Value'
+      card_value_text: 'Enter the value of the gift card.'
+      value_is_variable: 'Value is variable and will be input at time of checkout'
+      validity: 'Validity'
+      validity_text: 'The validity will be linked to each gift card sold.'
+      save: 'Save'

@@ -1,0 +1,10 @@
+%tr
+  %td.important
+    = link_to customer.full_name, customer
+  %td= customer.telephone
+  %td= customer.email
+  %td= customer.address
+  %td
+    %b= customer.primary_certificate
+  %td= raw customer.tags
+  %td= formatted_currency(customer.purchase_amount)

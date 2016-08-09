@@ -1,0 +1,51 @@
+-# NOTES: all staff can view this page, but only managers can update availability for all users
+-# staff_members can update their own availability from this view
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('staff_members.schedule.home')
+  %li.divider
+  %li= t('staff_members.schedule.crm')
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('staff_members.schedule.staff')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.group
+        %i
+        = t('staff_members.schedule.staff_scheduling', start_date: @start_date.strftime("%a %e %b"), end_date: @end_date.strftime("%a %e %b"))
+      %span.details.pull-right
+        = link_to "<< Previous 14 days", schedule_staff_members_path(start_date: @start_date - 14.days, end_date: @start_date - 1.day)
+        |
+        = link_to "Next 14 days >>", schedule_staff_members_path(start_date: @end_date + 1, end_date: @end_date + 14.days)
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr
+            %th Name
+            - 14.times do |i|
+              %th= (@start_date + i.days).strftime('%a %e')
+        %tbody
+
+          - current_store.users.order('given_name').includes(:user_holidays).uniq.each do |staff|
+            - holidays = staff.user_holidays.map{|h| (h.start_date..h.end_date).to_a }.flatten.uniq
+
+            %tr
+              %td= staff.full_name
+
+              - 14.times do |i|
+                - date = @start_date + i.days
+
+                - if staff.send(date.strftime('%A').downcase) == '0' && !staff.overtime.include?(date)
+                  %td{style: 'background-color: orange; text-align: center'}
+                    = link_to 'day off', mark_as_available_staff_member_path(staff, date: date, format: :json), class: 'mark_as_available'#, :confirm => 'You are about to change this day to available. Are you sure you want to proceed?'
+                - elsif holidays.include?(date)
+                  %td{style: 'background-color: #DFF233; text-align: center'}
+                    = link_to 'holiday', mark_as_available_staff_member_path(staff, date: date, format: :json), class: 'mark_as_available'#, :confirm => 'You are about to change this day to available. Are you sure you want to proceed?'
+                - else
+                  %td{style: 'background-color: green; text-align: center'}
+                    = link_to 'available', mark_as_day_off_staff_member_path(staff, date: date, format: :json), style: 'color: #ffffff', class: 'mark_as_day_off'

@@ -1,0 +1,2 @@
+class EventCustomerParticipantOptions::InsuranceDecorator < EventCustomerParticipantOptions::EventCustomerParticipantOptionDecorator
+end

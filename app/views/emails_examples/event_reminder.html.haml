@@ -1,0 +1,32 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = show_company_logo(current_store)
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}
+      = t('emails_examples.event_reminder.booking_confirmation_reminder')
+      #{'<CUSTOMER_FULL_NAME>'}
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('emails_examples.event_reminder.confirmed_for_event_listed_below')
+    - unless current_store.email_setting.event_reminder_content.blank?
+      %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= nl2br current_store.email_setting.event_reminder_content
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('views.emails_examples.any_questions')
+      = mail_to current_company.email
+      = t('views.emails_examples.or_call', telephone: current_company.telephone)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      %strong= t('views.emails_examples.event_date')
+      \: #{'<EVENT_START_TIME>'}
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('views.emails_examples.further_instructions')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= '<EVENT_INSTRUCTIONS>'
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear: both;'}
+      = t('views.emails_examples.with_regards')
+      %br
+      = current_store.name
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag current_store.avatar.image.url(:original) unless current_store.avatar.blank?
+      = t('views.emails_examples.sent_by_centre', company_name: current_store.company.name)
+      = t('views.emails_examples.telephone', tel: current_store.company.telephone)
+      = t('views.emails_examples.registered_address', address: current_store.company.address.full_address)

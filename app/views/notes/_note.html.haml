@@ -1,0 +1,14 @@
+%tr{id: dom_id(note)}
+  %td.important
+    = link_to note.creator_name, note.creator
+  %td= note.created_at
+  %td= best_in_place(note, :description, path: note_path(note), activator: "#edit_#{dom_id(note)}")
+  %td
+    - if note.has_attachment?
+      = link_to note.attachment_url, target: '_blank' do
+        %i.icon-file
+        = note.file_name
+  %td
+    = link_to t('customers.show.edit_note'), "javascript:void(0);", id: "edit_#{dom_id(note)}"
+    |
+    = link_to t('customers.show.delete_note'), note_path(note), method: :delete, remote: true, confirm: I18n.t("views.actions.confirm"), :style => "color:red;"

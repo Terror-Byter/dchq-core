@@ -1,0 +1,7 @@
+en:
+  reports:
+    sales_by_brand:
+      home: 'Home'
+      reports: 'Reports'
+      report_sales_by_brand: 'Report: Sales by Brand'
+      sales_by_brand: 'Sales by Brand'

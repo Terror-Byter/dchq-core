@@ -1,0 +1,4 @@
+en:
+  models:
+    address:
+      invalid: Invalid address attributes

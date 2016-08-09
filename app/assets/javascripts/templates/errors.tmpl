@@ -1,0 +1,11 @@
+<div class="alert alert-danger alert-dismissable" id="errorExplanation">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4>
+    ${I18n.t("js.rental.errors")}
+  </h4>
+  <ul style="margin-bottom:15px;">
+    {{each data.errors}}
+      <li>${S($index).humanize().s} - ${$value}</li>
+    {{/each}}
+  </ul>
+</div>

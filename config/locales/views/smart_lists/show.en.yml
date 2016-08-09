@@ -1,0 +1,14 @@
+en:
+  smart_lists:
+    show:
+      home: Home
+      crm: CRM
+      name: 'Smart List: %{name}'
+      export: Export Customer Records
+      edit: Edit Smart List
+      email: Email List Members
+      my: My Smart List
+      table_name: Name
+      table_email: Email Address
+      no_records: No records
+      total: 'Total customers: %{total}'

@@ -1,0 +1,23 @@
+.row-fluid
+  .span3
+    %strong= t('customers.form.certifications')
+    %p.muted= t('customers.form.certifications_text')
+  .span2
+    = f.input :certification_agency_id, collection: CertificationAgency.all, input_html: { class: 'selectpicker span12 certification_agency' }, selected: f.object.certification_agency.try(:id), include_blank: true
+  .span2
+    = f.input :certification_level_id, collection: [], input_html: { class: 'selectpicker span12 certification_level', :'data-selected' => f.object.certification_level_id }
+  .span2
+    = f.label :certification_date
+    #datetimepicker9.input-append.date
+      = f.text_field :certification_date, class: 'span6 datepicker', size: false
+      %span.add-on
+        %i.icon-calendar
+  .span1
+    = f.input :membership_number, input_html: { class: 'span11' }
+  .span1
+    = f.input :primary, input_html: { class: 'primary' }
+  .span1
+    = f.link_to_remove class: 'btn btn-mini btn-danger btn-icon glyphicons remove', style: 'margin-top:28px;' do
+      %i
+      = t('views.actions.remove')
+  .clear

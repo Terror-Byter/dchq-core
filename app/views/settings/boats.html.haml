@@ -1,0 +1,40 @@
+= content_for :js do
+  = javascript_include_tag "jscolor"
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.boats.home')
+  %li.divider
+  %li= link_to t('settings.boats.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.boats.settings_boats_resources')
+= simple_nested_form_for current_store, url: update_store_settings_path,
+                                            html: { method: :put }, validate: true do |f|
+  = f.error_messages
+  = hidden_field_tag :back_url, boats_settings_path
+  = hidden_field_tag :notice, t('settings.boats.notice')
+  = hidden_field_tag :back_action, 'boats'
+  .innerLR
+    .row-fluid
+      .span12
+        .row-fluid
+          .span6
+            %label{style: 'font-weight: bold;'}= t('settings.boats.t_boat_resource_name')
+          .span3
+            %label{style: 'font-weight: bold;'}= t('settings.boats.t_calendar_color')
+          .span3
+            %label{style: 'font-weight: bold;'}= t('settings.boats.t_action')
+    = f.fields_for :boats, current_store.boats.blank? ? current_store.boats.build : current_store.boats do |build|
+      = render 'boat_fields', f: build
+    = f.link_to_add :boats, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+      %i
+      = t('settings.boats.new_boat')
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('settings.emails.save')

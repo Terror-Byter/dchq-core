@@ -1,0 +1,13 @@
+es:
+  sales:
+    show:
+      home: 'Inicio'
+      sales: 'Ventas'
+      sales_receipt: 'Recibo de Ventas: %{status}'
+      sales_receipt_refund: 'Reembolso de Venta'
+      print_receipt: 'Imprimir Recibo'
+      print_receipt_invoice: 'Imprimir Factura'
+      email_receipt: 'Enviar Recibo por Correo-e'
+      email_receipt_invoice: 'Factura electrónica'
+      greeting_text: 'Gracias por su compra. Si usted tiene cualquier duda acerca de su orden por favor contáctenos en %{email} o llámenos al %{tel}.'
+      hello_customer: 'Hola %{customer},'

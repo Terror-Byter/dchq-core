@@ -1,0 +1,19 @@
+en:
+  decorators:
+    smart_list:
+      product_purchased: 'Product: Purchased'
+      product_not_purchased: 'Product: Not Purchased'
+      event_completed: 'Event: Completed'
+      event_not_completed: 'Event: Not Completed'
+      course_completed: 'Course: Completed'
+      course_not_completed: 'Course: Not Completed'
+      servicing_completed: 'Servicing: Completed'
+      rental_completed: 'Rental: Completed'
+      and_c: AND
+      or_c: OR
+      c_7_days: 'In the last 7 days'
+      c_4_weeks: 'In the last 4 weeks'
+      c_6_months: 'In the last 6 months'
+      c_1_years: 'In the last year'
+      c_2_years: 'In the last 2 years'
+      c_ever: 'Ever'

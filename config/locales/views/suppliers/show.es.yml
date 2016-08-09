@@ -1,0 +1,27 @@
+es:
+  suppliers:
+    show:
+      home: 'Inicio'
+      crm: 'CRM'
+      suppliers: 'Proveedores'
+      new_note: 'Nueva Nota'
+      new_supplier_contact: 'Nuevo Contacto de Proveedor'
+      edit_supplier: 'Editar Proveedor'
+      contact_info: 'Información de Contacto'
+      address: 'Dirección:'
+      email: 'Correo-e:'
+      ph: 'Tel:'
+      tags: 'Etiquetas:'
+      supplier_contacts: 'Contactos del Proveedor'
+      notes: 'Notas'
+      supplier_contact_name: 'Nombre'
+      supplier_contact_phone: 'Teléfono'
+      supplier_contact_email: 'Correo-e'
+      supplier_contact_position: 'Posición'
+      supplier_contact_actions: 'Acciones'
+      edit_business_contact: 'Editar'
+      delete_business_contact: 'Eliminar'
+      delete_supplier: 'Eliminar Proveedor'
+      no_contacts: 'No hay Contactos'
+      no_notes: 'No hay Notas'
+

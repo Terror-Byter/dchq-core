@@ -1,0 +1,10 @@
+en:
+  brands:
+    table_headers:
+      brand: 'Brand'
+      category: 'Category'
+      skus: 'SKUs'
+      units_stock: 'Units in Stock'
+      stock_value: 'Stock Value'
+      average_monthly_sale: 'Average Monthly Sale'
+      last_sale: 'Last Sale'

@@ -1,0 +1,8 @@
+es:
+  events:
+    print_resource_manifest:
+      print_resource_manifest: 'Imprimir Manifiesto de Recursos'
+      select_resource: 'Seleccionar Recurso'
+      select_day: 'Selecciones Día'
+      from: 'De'
+      to: 'A'

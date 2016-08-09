@@ -1,0 +1,184 @@
+:ruby
+  @sale_ids = current_store.sales.for_invoice(@finance_report.working_time).map(&:id)
+  @rentals  = current_store.rentals.for_invoice(@finance_report.working_time)
+
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= t('.reports')
+.innerLR
+  .row-fluid
+    .span9
+      %h3.heading-mosaic
+        = t('.financial_reports')
+    .span3.right
+      .buttons.hidden-print
+        = link_to "javascript:window.print()", class: 'btn btn-small btn-default btn-icon glyphicons print' do
+          %i
+          = t('.print')
+  .row-fluid
+    .span6
+      .widget
+        .widget-head
+          %h4.heading= t('.register_details')
+        .widget-body.list
+          %ul
+            %li
+              %span= t('.shop')
+              %span.count #{current_store.name}
+            %li
+              %span= t('.business')
+              %span.count #{current_company.name}
+    .span6
+      .widget
+        .widget-head
+          %h4.heading= t('.open_close_times')
+        .widget-body.list
+          %ul
+            %li
+              %span= t('.opened')
+              %span.count #{l(@finance_report.working_time.open_at, formats: :default)}
+            %li
+              %span= t('.closed')
+              %span.count #{l(@finance_report.working_time.close_at, formats: :default)}
+  .row-fluid
+    .widget
+      .widget-head
+        %h4.heading= t('.sales')
+      .widget-body.list
+        %ul
+          %li
+            %span
+              %strong= t('.completed_sales')
+            %span.count #{formatted_currency @finance_report.complete_payments}
+          %li
+            %span= t('.tax_total')
+            %span.count #{formatted_currency @finance_report.tax_total}
+          %li
+            %span
+              %strong= t('.discounts')
+            %span.count #{formatted_currency @finance_report.discounts}
+          %li
+            %span
+              %strong= t('.total_payments')
+            %span.count #{formatted_currency @finance_report.total_payments}
+
+  .row-fluid
+    .widget
+      .widget-head
+        %h4.heading= t('.category_payments')
+      .widget-body
+        %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+          %thead
+            %tr
+              %th= t('.category_payments')
+              %th= t('.sales')
+          %tbody
+            - current_store.categories.each do |category|
+
+              -#TODO: MiscellaneousProduct does not have sale_productable_id, therefore causing SaleProduct section below to break. We need to check product and if sale_productable_id blank, use productable_category_name from MiscellaneousProduct instead. 
+
+              - price = SaleProduct.where(sale_id: @sale_ids, sale_productable_id: category.all_product_ids).sum(&:smart_line_item_price) + Rented.where(rental_id: @rentals, rental_product_id: category.rental_products).sum(&:line_item_price)
+              - unless price.zero?
+                %tr
+                  %td.important #{category.name}
+                  %td= formatted_currency price
+            - SaleProduct.where(sale_id: @sale_ids, sale_productable_type: ['EventCustomerParticipant', 'MaterialPrice']).each do |sp|
+              - ecp = sp.sale_productable
+              - if ecp.class != MaterialPrice
+                %tr
+                  %td.important= ecp.event.name
+                  %td= ecp.event.decorate.price
+                - ecp.event_customer_participant_options.each do |ecpo|
+                  - unless ecpo.quantity.zero? || ecpo.unit_price.zero?
+                    %tr
+                      %td.important= ecpo.name
+                      %td= formatted_currency(ecpo.line_item_price)
+              - if ecp.class == MaterialPrice && !ecp.price.zero?
+                %tr
+                  %td.important= ecp.name
+                  %td= formatted_currency ecp.price
+
+            - SaleProduct.only_services.where(sale_id: @sale_ids).each do |s|
+              - unless s.sale_productable.complimentary_service
+                - s.sale_productable.kits.each do |kit|
+                  %tr
+                    %td.important= kit.type_of_service.name_for_sale
+                    %td= kit.type_of_service.decorate.price
+                  - if kit.type_of_service.service_kit
+                    - price = kit.type_of_service.service_kit.line_item_price
+                    - unless price.zero?
+                      %tr
+                        %td= kit.type_of_service.service_kit.name_for_sale
+                        %td= formatted_currency(price)
+                - s.sale_productable.products.each do |p|
+                  %tr
+                    %td= p.name
+                    %td= p.decorate.price
+
+  = form_for current_store, url: update_finance_report_reports_path, html: { method: :put } do |f|
+    = hidden_field_tag :id, @finance_report.id
+    = f.error_messages
+    .row-fluid
+      .widget
+        .widget-head
+          %h4.heading= t('.payments')
+        .widget-body
+          %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+            %thead
+              %tr
+                %th= t('.payment_type')
+                %th= t('.amount')
+                %th= t('.to_post')
+            %tbody
+              = f.fields_for :finance_reports, f.object.finance_reports.where(id: @finance_report.id) do |ff|
+                = ff.fields_for :finance_report_payments, @finance_report.finance_report_payments.complete do |build|
+                  %tr
+                    %td.important #{build.object.name}
+                    %td #{formatted_currency build.object.amount}
+                    %td
+                      - if @finance_report.sent?
+                        #{formatted_currency build.object.custom_amount}
+                      - else
+                        .input-prepend.margin-bottom-none
+                          %span.add-on #{current_store.currency.unit.html_safe}
+                          = build.text_field :custom_amount, class: 'span12', value: number_with_precision(build.object.custom_amount, precision: current_store.currency.precision)
+    .row-fluid
+      .widget
+        .widget-head
+          %h4.heading Float
+        .widget-body
+          %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+            %thead
+              %tr
+                %th= t('.t_time')
+                %th= t('.t_staff')
+                %th= t('.t_action')
+                %th= t('.t_amount')
+                %th= t('.t_notes')
+            %tbody
+              = f.fields_for :tills, @tills do |ff|
+                %tr
+                  %td.important  #{l(ff.object.created_at, formats: :default)}
+                  %td= ff.object.user.full_name
+                  %td
+                    %label.checkbox.inline{style: 'padding-left: 10px; padding-top:0px;'}
+                      = ff.radio_button :take_out, "1", checked: ff.object.take_out?
+                      = t('.t_take_out')
+
+                    %label.checkbox.inline{style: 'padding-top:0px;'}
+                      = ff.radio_button :take_out, "0", checked: !ff.object.take_out?
+                      = t('.t_put_in')
+                  %td
+                    .input-prepend.margin-bottom-none
+                      %span.add-on #{current_store.currency.unit.html_safe}
+                      = ff.text_field :amount, class: 'span12', value: number_with_precision(ff.object.amount, precision: current_store.currency.precision)
+                  %td
+                    = ff.text_field :notes, class: 'span12 margin-bottom-none', value: ff.object.notes
+
+    %button.btn.btn-primary.btn-icon.glyphicons.ok_2.pull-right.hidden-print{ type: 'submit' }
+      %i
+      = t('.save_totals')

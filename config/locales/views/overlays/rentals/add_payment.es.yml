@@ -1,0 +1,8 @@
+es:
+  overlays:
+    rentals:
+      add_payment:
+        add_payment: Añadir Pago
+        enter: "Introduzca la cantidad que está recibiendo:"
+        cancel: Cancelar
+        button: Añadir Pago

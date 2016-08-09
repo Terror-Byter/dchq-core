@@ -1,0 +1,7 @@
+es:
+  sale_mailer:
+    booking_confirmed_online_for_customer:
+      booking_confirmed: 'Reservación Confirmada: %{customer}'
+      you_have_been_confirmed: ' Usted ha sido confimado para el evento descrito a continuación. Por favor traiga una copia de esta confirmación de reservación consigo para el evento.'
+      event_date: 'Fecha del Evento'
+      further_instructions: 'Más Instrucciones'

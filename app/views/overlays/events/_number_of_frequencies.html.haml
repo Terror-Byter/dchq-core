@@ -1,0 +1,12 @@
+#number-of-frequency.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.events.number_of_frequencies.header')
+  .modal-body
+    %p= t('overlays.events.number_of_frequencies.content')
+    .row-fluid
+      .span12
+        = text_field_tag :number_of_frequencies, resource.number_of_frequencies
+  .modal-footer
+    %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+    %button.btn.btn-primary{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.save')

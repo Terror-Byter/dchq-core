@@ -1,0 +1,72 @@
+:ruby
+  @notable ||= @business_contact
+  @note ||= @business_contact.notes.new
+  @note.attachment || @note.build_attachment
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('business_contacts.show.home')
+  %li.divider
+  %li= t('business_contacts.show.crm')
+  %li.divider
+  %li= t('business_contacts.show.suppliers')
+
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        = business_contact.full_name
+        %span | #{business_contact.supplier_name}
+    .span8.right
+      - if can? :update, business_contact
+        .buttons.hidden-print
+          = link_to '#new-supplier-note', class: 'btn btn-small btn-default btn-icon glyphicons notes', :'data-toggle' => 'modal' do
+            %i
+            = t('business_contacts.show.new_note')
+          = link_to edit_supplier_business_contact_path(parent, business_contact), class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t('business_contacts.show.edit_supplier_contact')
+.innerLR
+  .row-fluid.row-merge
+    .span12
+      .row-fluid
+        .span2
+          .thumbnail{style: 'margin-bottom:10px;'}
+            = business_contact.image
+        .span5
+          %h4
+            %span= t('business_contacts.show.contact_info')
+          %p
+            = t('business_contacts.show.email')
+            = til mail_to(business_contact.email)
+            = succeed t('business_contacts.show.ph') do
+              %br/
+            = til business_contact.telephone
+          %p
+            = t('business_contacts.show.tags')
+            %span.label #{business_contact.tags}
+      .row-fluid
+        .widget
+          .widget-head
+            %h4.heading.glyphicons.notes
+              %i>
+              = t('business_contacts.show.notes')
+          .widget-body
+            -#TODO NEED TO FIX DECORATOR
+            - if resource.notes.empty?
+              = t('business_contacts.show.no_notes')
+            - else
+              %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                = render 'notes/table_headers'
+                %tbody
+                  -#TODO NEED TO FIX
+                  = render @business_contact.notes.decorate
+%p
+  = link_to supplier_business_contact_path(parent, resource), method: :delete, class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+    %i>
+    = t('business_contacts.show.delete_supplier_contact')
+
+= content_for :overlays do
+  = render 'overlays/business_contacts/new_business_contact_note'

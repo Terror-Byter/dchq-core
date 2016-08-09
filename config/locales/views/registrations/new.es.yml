@@ -1,0 +1,16 @@
+es:
+  registrations:
+    new:
+      store_and_manager: "Detalles de Tienda & Gerente"
+      p: "Por favor ingrese detalles precisos a continuacion ya que serán utilizados en los recibos de venta y también para que nosotros le informemos acerca de actualizaciones del servicio."
+      store_details: "Detalles de la Tienda"
+      store_info: "Ingrese el nombre, dirección y detalles de contacto de su tienda."
+      manager_details: "Detalles del Gerente"
+      p_1: "Ingrese los detalles de la persona responsable de esta tienda y quien tiene autorización para actuar en su nombre."
+      invite_code: "Código de Invitado & Logo de la Tienda"
+      p_2: "Ingrese un código de invitado en caso de que tenga uno, y cargue una foto que será mostrada en los recibos."
+      upload_logo: "Cargar Logo"
+      select_file: "Seleccionar archivo"
+      change: "Cambiar"
+      remove: "Eliminar"
+      button: "Guardar Detalles de Tienda & Gerente"

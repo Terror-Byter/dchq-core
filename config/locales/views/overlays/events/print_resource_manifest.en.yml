@@ -1,0 +1,12 @@
+en:
+  overlays:
+    events:
+      print_resource_manifest:
+        print_resource_manifest: Print Resource Manifest
+        p: Select the resource and date range you want to generate a manifest for.
+        resource: Resource
+        date_from: Date From
+        date_to: Date To
+        cancel: Cancel
+        all: All
+        unresourced: Unresourced

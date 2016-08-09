@@ -1,0 +1,25 @@
+es:
+  application:
+    user_profile_fields:
+      user_details: 'Detalles del Usuario'
+      address: 'Dirección'
+      user_access_availibility: 'Acceso & Disponibilidad del Usuario'
+      user_info: 'Información del Usuario'
+      user_info_text: "Ingresar nombre del usuario."
+      contact_details: 'Detalles de Contacto'
+      contact_details_text: 'Ingresar la dirección de correo-e y los números telefónicos de este usuario.'
+      emergency_contact: 'Contacto & Foto para Emergencia'
+      emergency_contact_text: 'Ingresar los detalles del contacto en caso de emergencia y cargue una foto.'
+      user_access: 'Acceso del Usuario'
+      user_access_text: "Configure los permisos y niveles de acceso de este usuario."
+      shop_access: 'Acesso a la Tienda'
+      work_availability: 'Disponibilidad de Trabajo'
+      work_availability_text: 'Configurar disponibilidad y horas contratdas.'
+      availability: 'Disponibilidad'
+      add_holiday: 'Crear Vacaciones'
+      next_holiday: 'Siguiente Día Feriado'
+      next_holiday_text: "Al agregar eventos nuevos durante este rango de fechas, el usuario se mostrará 'no disponible'."
+      save: 'Guardar'
+      english: 'Inglés'
+      spanish: 'Español'
+      danish: 'Danés'

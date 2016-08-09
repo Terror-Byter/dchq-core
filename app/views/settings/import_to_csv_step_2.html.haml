@@ -1,0 +1,43 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.import_to_csv_step_2.home')
+  %li.divider
+  %li= link_to t('settings.import_to_csv_step_2.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.import_to_csv_step_2.settings_import_step_2')
+= form_tag import_settings_path do
+  .innerLR
+    %p
+      = t('settings.import_to_csv_step_2.content')
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.more_windows
+          %i>
+          = t('settings.import_to_csv_step_2.match_data')
+      .widget-body
+        .row-fluid
+          .span3
+            %strong= t('settings.import_to_csv_step_2.data_matching')
+            %p.muted= t('settings.import_to_csv_step_2.data_matching_text')
+          .span3
+            %p
+              %strong= t('settings.import_to_csv_step_2.your_data')
+          .span6
+            %p
+              %strong= t('settings.import_to_csv_step_2.our_data')
+        - session[:import][:data].first.each_with_index do |field, index|
+          .row-fluid
+            .span3.offset3
+              = field
+            .span6
+              = select_tag "fields_#{index + 1}", options_from_collection_for_select(@fields, :first, :last, @fields.key(field)), { include_blank: true, class: 'selectpicker' }
+            .clear
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('settings.import_to_csv_step_2.complete_import')

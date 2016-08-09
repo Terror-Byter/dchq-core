@@ -1,0 +1,12 @@
+en:
+  overlays:
+    event_customer_participants:
+      pay_for_event:
+        header: "Select Cart for Sale"
+        header_1: "Add to New Cart"
+        content_1: "A new cart will be created for this customer."
+        button_1: "Add to New Cart"
+        header_2: "Add to Existing Cart"
+        content_2: "A this event will be added to an existing cart."
+        button_2: "Add to Existing Cart"
+        cancel: "Close"

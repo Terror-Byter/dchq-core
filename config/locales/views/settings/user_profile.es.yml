@@ -1,0 +1,7 @@
+es:
+  settings:
+    user_profile:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      user_profile: 'Ajustes: Perfil del Usuario'
+

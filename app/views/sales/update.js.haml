@@ -1,0 +1,4 @@
+- if resource.errors.blank?
+  = render(:partial => 'sales/update_form')
+- else
+  alert("#{resource.errors.full_messages.join(", ")}")

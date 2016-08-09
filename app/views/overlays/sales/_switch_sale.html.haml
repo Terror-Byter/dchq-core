@@ -1,0 +1,10 @@
+#switch-sale-modal.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'} ×
+    %h3 Switch Sale
+  .modal-body.center{style: 'max-height: 500px; overflow-y: auto;'}
+    %h4 Active Sales
+    - default_sale_list.each do |sale|
+      = link_to "##{sale.receipt_id} - #{sale.customers.map(&:full_name).join(', ')}", edit_sale_path(sale), class: "btn btn-small btn-default #{sale.eql?(@sale) ? 'active' : ''}"
+  .modal-footer
+    %button.btn.btn-default{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'}= t('views.actions.cancel')

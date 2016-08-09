@@ -1,0 +1,8 @@
+en:
+  reports:
+    sales_by_time:
+      home: 'Home'
+      reports: 'Reports'
+      report_sales_by_time: 'Report: Sales by Time'
+      sales_by_month: 'Sales By Month'
+      sales_by_year: 'Sales By Year'

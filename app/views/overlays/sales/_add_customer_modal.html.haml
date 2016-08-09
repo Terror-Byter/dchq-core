@@ -1,0 +1,12 @@
+#assign-customer-modal.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.sales.add_customer_modal.header')
+  .modal-body.center{style: 'z-index:1001011;'}
+    %label{:for => 'cname'}= t('overlays.sales.add_customer_modal.customer_name')
+    = text_field_tag 'search_customer', nil, class: 'ui-autocomplete-input'
+    %p
+      = t('overlays.sales.add_customer_modal.or')
+      = link_to t('overlays.sales.add_customer_modal.add_new_customer'), new_customer_path
+  .modal-footer
+    %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')

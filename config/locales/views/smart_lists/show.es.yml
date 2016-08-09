@@ -1,0 +1,14 @@
+es:
+  smart_lists:
+    show:
+      home: Casa
+      crm: CRM
+      name: 'Smart List: %{name}'
+      export: Los Registros de Exportación de los Clientes
+      edit: Editar Lista Inteligente
+      email: Lista de Correo Miembros
+      my: My Smart List
+      table_name: Nombre
+      table_email: Dirección de Correo Electrónico
+      no_records: No records
+      total: 'El Total de Clientes: %{total}'

@@ -1,0 +1,27 @@
+#scubatribe-connect.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('overlays.settings.scubatribe_connect.header')
+  .modal-body
+    .row-fluid
+      .span6
+        .well
+          = form_tag settings_scubatribe_path, { method: :post } do
+            %p{align: 'center'}
+              %strong= t('overlays.settings.scubatribe_connect.header_existing_customers')
+            %p= t('overlays.settings.scubatribe_connect.para_existing_customers')
+            %hr
+            = label_tag 'api_key', t('overlays.settings.scubatribe_connect.api_key_existing_customers')
+            = text_field_tag 'api_key', current_store.scuba_tribe.try(:api_key), class: 'span12'
+            %button.btn.btn-primary.btn-block= t('overlays.settings.scubatribe_connect.button_connect_existing')
+      .span6
+        .well
+          %p{align: 'center'}
+            %strong= t('overlays.settings.scubatribe_connect.header_new_customers')
+          %p= t('overlays.settings.scubatribe_connect.para_new_customers')
+          %hr
+          = link_to t('overlays.settings.scubatribe_connect.button_connect_new'),
+            new_settings_scubatribe_path,
+            class: 'btn btn-success btn-block'
+  .modal-footer
+

@@ -1,0 +1,15 @@
+en:
+  models:
+    store:
+      printer_types:
+        80mm: Letter / A4
+        70mm: 70mm Till Roll
+        tsp: Star TSP650 WebPRNT
+      barcode_printing_types:
+        a4: A4
+        zebra: Zebra Printing Language (ZPL)
+      calendar_type:
+        day: Day
+        week: Week
+        month: Month
+      company_error: Company must has one or more shops

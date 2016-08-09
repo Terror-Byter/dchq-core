@@ -1,0 +1,85 @@
+%ul.breadcrumb
+  %li
+    %a.glyphicons.home{ href: root_path }
+      %i
+      = t '.home'
+  %li.divider
+  %li= t '.rentals'
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t '.rentals'
+    .span8.right
+      .buttons.hidden-print
+        - unless current_store.close?
+          = link_to current_store.standart_rental_term.blank? ? '#create-rental-overlay' : '#rental_agreement', class: 'btn btn-primary btn-icon glyphicons circle_plus', :'data-toggle' => :modal do
+            %i
+            = t '.create_rental'
+
+.innerLR
+  .row-fluid
+    .span6
+      .widget{"data-toggle" => "collapse-widget"}
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t '.pre_rental'
+        .widget-body.list
+          %ul
+            %li
+              %span.count= current_store.rentals.pay_pending.count
+              = t '.pay_pending'
+            %li
+              %span.count= current_store.rentals.booked.count
+              = t '.booked'
+    .span6
+      .widget{"data-toggle" => "collapse-widget"}
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t '.pos_rental'
+        .widget-body.list
+          %ul
+            %li
+              %span.count= current_store.rentals.in_progress.count
+              = t '.in_progress'
+            %li
+              %span.count= current_store.rentals.overdue.count
+              = t '.overdue'
+            %li
+              %span.count= current_store.rentals.complete.count
+              = t '.complete'
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t '.rentals'
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr.ransack_links
+            %th= sort_link @q, :id, t('rentals.index.id')
+            %th= t '.kit'
+            %th= sort_link @q, :customer_first_name, t('rentals.index.customer')
+            %th= sort_link @q, :pickup_date, t('rentals.index.pickup_date')
+            %th= sort_link @q, :return_date, t('rentals.index.return_date')
+            %th= t '.to_pay'
+            %th= sort_link @q, :status, t('rentals.index.status')
+        %tbody
+          - if collection.blank?
+            %tr
+              %td{ colspan: 7 }
+                = t '.no_rentals'
+          - else
+            = render collection
+      - unless collection.blank?
+        .separator.top.form-inline.small
+          Total rentals: #{ collection.total_count }
+          = paginate collection
+          .clearfix
+    .clearfix
+
+- unless current_store.close?
+  = content_for :overlays do
+    = render 'overlays/rentals/new'
+    = render 'overlays/rentals/agreement' unless current_store.standart_rental_term.blank?

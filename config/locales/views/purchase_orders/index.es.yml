@@ -1,0 +1,22 @@
+es:
+  purchase_orders:
+    index:
+      overview: 'Visión General'
+      pending_po:
+        one: 'OC Pendiente'
+        many: "OCs Pendientes"
+      po_sent_to_suppliers:
+        one: 'OC Enviada a Proveedores'
+        many: "OCs Enviadas a Proveedores"
+      consignments: 'Envios'
+      expecting_delivery: 'Esperando Entrega'
+      received: 'Recibido'
+      total_pos: "Total de OC's:"
+      table_cols:
+        po_number: 'OC #'
+        supplier: 'Proveedor'
+        delivery_location: 'Ubicación de Envío'
+        value: 'Valor'
+        status: 'Estátus'
+        last_updated: 'Última Actualización'
+        expected_delivery: 'Entrega Esperada'

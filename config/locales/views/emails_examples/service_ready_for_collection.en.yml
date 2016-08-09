@@ -1,0 +1,10 @@
+en:
+  emails_examples:
+    service_ready_for_collection:
+      title: 'Dive Centre HQ'
+      servicing_id: 'Sales Receipt #%{receipt}'
+      servicing_is_complete: "Your %{kit} servicing is complete and ready for collection. If applicable, we've attached your invoice below. If you have any questions about your order please contact us at"
+      sku: 'SKU / PRODUCT'
+      unit_price: 'UNIT PRICE'
+      qty: 'QTY'
+      sub_total: 'SUB-TOTAL'

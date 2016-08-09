@@ -1,0 +1,10 @@
+es:
+  overlays:
+    sales:
+      misc_product:
+        header: Añadir Diverso Producto
+        product_price: Productos Precio
+        tax_rate: Tasa de Impuesto
+        category: Categoría
+        add_misc_product: Añadir Diverso Producto
+        description: Descripción

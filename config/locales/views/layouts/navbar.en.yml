@@ -1,0 +1,25 @@
+en:
+  layouts:
+    navbar:
+      rent: Rental
+      rental_products: Rental Products
+      all_rentals: All Rentals
+      layby_rentals: New
+      booked_rentals: Booked
+      in_progress_rentals: In Progress
+      overdue_rentals: Overdue
+      complete_rentals: Complete
+      pay_pending_rentals: Pay Pending
+      sales_by_day: Sales by Day
+      sales_by_month: Sales by Month
+      sales_by_year: Sales by Year
+      sales_by_staff: Sales by Staff
+      sales_by_brand: Sales by Brand
+      sales_by_category: Sales by Category
+      popular_products: Sales by Product
+      event_sales: Event Sales
+      finance_reports: Finance Reports
+      reports: Reports
+      smart_lists: Smart Lists
+      reviews: Reviews
+      requests: Requests

@@ -1,0 +1,37 @@
+es:
+  purchase_orders:
+    form:
+      purchase_order_id: 'ID de Orden de Compra:'
+      status: 'Estátus:'
+      staff: 'Personal:'
+      scan_barcode: 'Escanee Código de Barras o Comience a Escribir el Nombre del Producto...'
+      quantity: 'Cantidad'
+      add_product: 'Agregar Producto'
+      add_product_not_in_inventory: 'Agregar Producto que no Esté en Inventario'
+      product_creation_success: 'Producto Agregado Satisfactoriamente'
+      assign_supplier: '+ asignar proveedor'
+      supplier: 'proveedor'
+      errors:
+        error_removing_supplier: 'Fallo al eliminar proveedor'
+        error_assigning_supplier: 'Fallo al asignar proveedor'
+        error_adding_product: 'Fallo al agregar producto'
+        error_adding_note: 'Fallo al agregar una nota'
+        failed_to_mark_order_sent: 'Fallo al marcar la orden como enviada'
+        error_setting_delivery_date: 'Fallo al establecer la fecha de envío'
+        assign_supplier_first: 'Por favor, primero asigne el proveedor.'
+        add_items_to_order: 'Por favor, agregue productos a la orden.'
+        error_creating_product: 'Fallo al crear un producto'
+        select_product_first: 'Por favor, primero seleccione el producto.'
+      table_columns:
+        sku_product: 'SKU / Producto'
+        supply_price: 'Precio de Suministro'
+        quantity: 'Cantidad'
+        sub_total: 'Sub-Total'
+        accepted: 'Aceptado'
+        rejected: 'Rechazado'
+      notes:
+        add_note: 'Agregar Nota'
+        notes: 'Notas'
+      po_operations:
+        empty: 'OC Vacía'
+        delete: 'Eliminar OC'

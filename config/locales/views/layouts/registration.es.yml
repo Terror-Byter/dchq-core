@@ -1,0 +1,12 @@
+es:
+  layouts:
+    registration:
+      help: "Ayuda"
+      contact_support: "Contactar a Soporte"
+      logout: "Cerrar Sesión"
+      home: "Inicio"
+      signup: "Registrarse"
+      store_and_manager: "Detalles de la Tienda & Gerente"
+      sales_settings: "Ajustes de las Ventas"
+      event_settings: "Ajustes de los Eventos"
+      complete_setup: "Completar Configuración"

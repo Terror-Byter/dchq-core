@@ -1,0 +1,41 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('sales.event_tariffs.home')
+  %li.divider
+  %li= t('sales.event_tariffs.sales')
+  %li.divider
+  %li= t('sales.event_tariffs.event_tariffs')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('sales.event_tariffs.event_tariffs')
+= simple_nested_form_for current_store, url: update_extra_options_sales_path,
+                                     html: { method: :post}, validate: true do |f|
+  .innerLR
+    = f.error_messages
+    = hidden_field_tag :back_url, event_tariffs_sales_path
+    = hidden_field_tag :message, t('sales.event_tariffs.message')
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#productDescriptionTab', class: 'glyphicons calendar', :'data-toggle' => 'tab' do
+              %i>
+              = t('sales.event_tariffs.event_tariffs')
+      .widget-body
+        .tab-content
+          #productDescriptionTab.tab-pane.active
+            -#TODO NEED TO FIX store decorator
+            = f.fields_for :event_tariffs, current_store.event_tariffs.blank? ? current_store.event_tariffs.build : current_store.event_tariffs
+            = f.link_to_add :event_tariffs, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i>
+              = t('sales.event_tariffs.add_another_tariff')
+    / // Widget END
+    .heading-buttons
+      .buttons.pull-right{:style => 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('sales.event_tariffs.save')
+      .clearfix

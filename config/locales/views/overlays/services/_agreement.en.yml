@@ -1,0 +1,8 @@
+en:
+  overlays:
+    services:
+      agreement:
+        header: 'Service Agreement'
+        content: 'This is the service agreement as listed in the settings area for this store.'
+        customer_decline: 'Customer Decline'
+        customer_acceped: 'Customer Accepted'

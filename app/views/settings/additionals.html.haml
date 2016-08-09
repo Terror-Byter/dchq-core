@@ -1,0 +1,113 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.additionals.home')
+  %li.divider
+  %li= link_to t('settings.additionals.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.additionals.settings_additionals')
+= simple_nested_form_for current_store, url: update_store_settings_path,
+                                            html: { method: :put }, validate: true do |f|
+  = f.error_messages
+  = hidden_field_tag :back_url, additionals_settings_path
+  = hidden_field_tag :notice, t('settings.additionals.notice')
+  = hidden_field_tag :back_action, 'additionals'
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#KitTab', class: 'glyphicons calendar', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.additionals.kit_hire_price')
+          %li
+            = link_to '#TransportTab', class: 'glyphicons adjust_alt', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.additionals.transport_price')
+          %li
+            = link_to '#InsuranceTab', class: 'glyphicons table', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.additionals.insurance_price')
+          %li
+            = link_to '#ExtrasTab', class: 'glyphicons table', :'data-toggle' => 'tab' do
+              %i>
+              = t('settings.additionals.additional_extras_prices')
+      .widget-body
+        .tab-content
+          #KitTab.tab-pane.active
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span5
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_kit_name')
+                  .span3
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_standard_price')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_tax_rate')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_action')
+            = f.simple_fields_for :kit_hires, current_store.kit_hires do |build|
+              - placeholder_kit = current_store.kit_hires.second.eql?(f.object) ? t('settings.additionals.placeholder_kit_1') : t('settings.additionals.placeholder_kit_2')
+              = render 'additional_fields', f: build, placeholder: placeholder_kit
+            = f.link_to_add :kit_hires, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i
+              = t('settings.additionals.new_kit_hire')
+          #TransportTab.tab-pane
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span5
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_transport_name')
+                  .span3
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_standard_price')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_tax_rate')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_action')
+            = f.simple_fields_for :transports, current_store.transports do |build|
+              = render 'additional_fields', f: build, placeholder: t('settings.additionals.placeholder_transport')
+            = f.link_to_add :transports, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i
+              = t('settings.additionals.new_transport')
+          #InsuranceTab.tab-pane
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span5
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_insurance_name')
+                  .span3
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_standard_price')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_tax_rate')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_action')
+            = f.simple_fields_for :insurances, current_store.insurances do |build|
+              = render 'additional_fields', f: build, placeholder: t('settings.additionals.placeholder_insurance')
+            = f.link_to_add :insurances, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i
+              = t('settings.additionals.new_insurance')
+          #ExtrasTab.tab-pane
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span5
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_name')
+                  .span3
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_standard_price')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_tax_rate')
+                  .span2
+                    %label{style: "font-weight:bold;"}= t('settings.additionals.t_action')
+            = f.simple_fields_for :additionals, current_store.additionals do |build|
+              = render 'additional_fields', f: build, placeholder: t('settings.additionals.placeholder')
+            = f.link_to_add :additionals, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i
+              = t('settings.additionals.new_additionals_extra')
+    .heading-buttons
+      .buttons.pull-right{style: "margin: 0;"}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('settings.emails.save')

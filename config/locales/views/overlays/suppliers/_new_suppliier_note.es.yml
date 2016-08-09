@@ -1,0 +1,9 @@
+es:
+  overlays:
+    suppliers:
+      new_suppliier_note:
+        header: 'Agregar Note de Proveedor'
+        note_content: 'Contenido de Nota'
+        upload_file: 'Cargar Archivo'
+        add_button: 'Agregar Note de Proveedor'
+

@@ -1,0 +1,9 @@
+es:
+  sessions:
+    new:
+      title: "Ingrese a Su Cuenta"
+      remember_me: "Recordarme"
+      button: "Acceso Seguro"
+      forgot_pass: "¿olvidó su contraseña?"
+      login: Login
+

@@ -1,0 +1,7 @@
+en:
+  overlays:
+    purchase_orders:
+      new_modal:
+        supplier: 'Supplier'
+        delivery_location: 'Delivery Location'
+        select_supplier_and_location: 'Select the supplier and location the items will be shipped to.'

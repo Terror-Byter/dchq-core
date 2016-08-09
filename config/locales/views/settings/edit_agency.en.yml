@@ -1,0 +1,15 @@
+en:
+  settings:
+    edit_agency:
+      home: 'Home'
+      settings: 'Settings'
+      settings_edit_agency: 'Settings: Course Price List (%{name})'
+      t_course_name: 'Course Name'
+      t_course_price: 'Course Price'
+      t_course_tax: 'Course Tax'
+      t_materials_price: 'Materials Price'
+      t_materials_tax: 'Materials Tax'
+      t_commission: 'Commission'
+      t_total: 'Total'
+      t_action: 'Action'
+      new_course_for_agency: 'New Course For This Agency'

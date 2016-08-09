@@ -1,0 +1,3 @@
+es:
+  errors:
+    has_events: "Usted no puede eliminar el Evento del Viaje hasta que tenga eventos"

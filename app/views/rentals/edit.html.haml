@@ -1,0 +1,36 @@
+%ul.breadcrumb
+  %li
+    %a.glyphicons.home{ href: root_path }
+      %i
+      = t '.home'
+  %li.divider
+  %li= t '.rentals'
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        - if resource.layby? || resource.pay_pending?
+          = t '.new_edit'
+        - else
+          Rental ##{resource.id}
+    - if resource.in_progress? || resource.overdue? || resource.booked?
+      .span8.right
+        .buttons.pull-right.hidden-print
+          %a.btn.btn-primary.btn-icon.glyphicons.refresh{"data-toggle" => "modal", href: "#rental-complete"}
+            %i
+            = t '.change_status'
+#form
+  = render 'form'
+
+
+- unless @rental.layby? || @rental.pay_pending?
+  .hide
+    #print
+      = render 'receipts/rentals/print'
+
+  = content_for :overlays do
+    = render 'overlays/rentals/email_popup'
+
+- if resource.in_progress? || resource.overdue? || resource.booked?
+  = content_for :overlays do
+    = render 'overlays/rentals/change_status'

@@ -1,0 +1,22 @@
+.lightBox01.hidden{id: 'print_resource_manifest'}
+  %h1= t('events.print_resource_manifest.print_resource_manifest')
+  .contentLightbox
+    = form_tag print_resource_manifest_events_path, {target: '_blank'} do
+      %h2{style: 'margin-top: 15px; margin-bottom: 10px;'}= t('events.print_resource_manifest.select_resource')
+      = select_tag :boat_id, options_from_collection_for_select(current_store.boats, 'id', 'name'), {class: 'chzn-select-no-search'}
+      %h2{style: 'margin-top: 20px; margin-bottom: 10px;'}= t('events.print_resource_manifest.select_day')
+      %table{style: 'width:100%'}
+        %tr
+          %td
+            .calendar_fn
+              = label_tag :starts_at, t('events.print_resource_manifest.from')
+              %br
+              = text_field_tag :starts_at, Date.today.strftime('%d-%m-%Y'), style: 'text-transform: none; calendar_fn', id: 'event_starts_at'
+          %td
+            .calendar_fn
+              = label_tag :ends_at, t('events.print_resource_manifest.to')
+              %br
+              = text_field_tag :ends_at, Date.today.strftime('%d-%m-%Y'), style: 'text-transform: none; calendar_fn', id: 'event_ends_at'
+      %br
+      %br
+      = submit_tag t('events.print_resource_manifest.print_resource_manifest') class: 'medium radius success button', style: 'margin-top:10px;'

@@ -1,0 +1,7 @@
+= render 'period_select_form'
+%table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+  %thead
+    = show_months_head
+  %tbody
+    - report.each do |k, v|
+      = show_table_row k, v, class: cycle('', 'color')

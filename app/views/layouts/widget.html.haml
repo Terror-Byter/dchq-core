@@ -1,0 +1,17 @@
+!!!5
+%html
+  %head
+    %title= "Widget Calendar"
+    = include_gon
+    = stylesheet_link_tag 'widget'
+    :css
+      .midle span, .midle a {
+        display: none;
+      }
+    = render 'layouts/locale'
+    = javascript_include_tag "widget_calendar"
+    = csrf_meta_tags
+  %body{:style => "width:100%;background: transparent;"}
+    = @store.calendar_header.try(:html_safe)
+    = yield
+    = @store.calendar_footer.try(:html_safe)

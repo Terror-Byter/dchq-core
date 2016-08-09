@@ -1,0 +1,21 @@
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('reports.sales_by_brand.home')
+  %li.divider
+  %li= t('reports.sales_by_brand.reports')
+.innerLR
+  .row-fluid
+    .span9
+      %h3.heading-mosaic= t('reports.sales_by_brand.report_sales_by_brand')
+    .span3.right
+      .buttons.hidden-print
+        = link_to "javascript:window.print();", class: 'btn btn-small btn-default btn-icon glyphicons print' do
+          %i
+          = t('reports.edit_finance_report.print')
+  .widget
+    .widget-head
+      %h4.heading= t('reports.sales_by_brand.sales_by_brand')
+    .widget-body
+      = render 'table_body', report: @report

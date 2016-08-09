@@ -1,0 +1,9 @@
+#export-staff.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('overlays.staff_members.export_staff_popup.header')
+  .modal-body
+    %p= t('overlays.staff_members.export_staff_popup.content')
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}= t('views.actions.cancel')
+    = link_to t('overlays.staff_members.export_staff_popup.export_data'), export_staff_members_path, class: 'btn btn-primary', method: :post

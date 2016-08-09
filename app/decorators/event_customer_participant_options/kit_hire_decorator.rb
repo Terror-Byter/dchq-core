@@ -1,0 +1,2 @@
+class EventCustomerParticipantOptions::KitHireDecorator < EventCustomerParticipantOptions::EventCustomerParticipantOptionDecorator
+end

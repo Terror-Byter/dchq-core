@@ -1,0 +1,14 @@
+en:
+  settings:
+    servicing:
+      home: 'Home'
+      settings: 'Settings'
+      settings_servicing: 'Settings: Servicing'
+      terms_and_service_types: 'Terms & Service Types'
+      service_kits: 'Service Kits'
+      standard_terms_of_service: 'Standard Terms of Service'
+      standard_terms_of_service_text: 'Enter your terms of service. Customers will be asked to agree before a service is booked in.'
+      add_service_type: 'Add Service Type'
+      add_service_kit: 'Add Service Kit'
+      notice: 'Service settings have been saved successfully'
+

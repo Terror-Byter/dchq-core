@@ -1,0 +1,51 @@
+= simple_form_for [parent, resource], html: { multipart: true }, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#DetailsTab', class: 'glyphicons user', :'data-toggle' => 'tab' do
+              %i>
+              = t('business_contacts.form.individual_details')
+      .widget-body
+        .tab-content
+          #DetailsTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('business_contacts.form.individuals_information')
+                %p.muted= t('business_contacts.form.individuals_information_text')
+              .span3
+                = f.input :given_name, input_html: { class: 'span11' }
+              .span3
+                = f.input :family_name, input_html: { class: 'span11' }
+              .span3
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('business_contacts.form.contact_details')
+                %p.muted= t('business_contacts.form.contact_details_text')
+              .span3
+                = f.input :email, input_html: { class: 'span11' }
+              .span3
+                = f.input :telephone, input_html: { class: 'span11' }
+              .span3
+                = f.input :position, input_html: { class: 'span12' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('business_contacts.form.tags_photo')
+                %p.muted= t('business_contacts.form.tags_photo_text')
+              .span3
+                = f.label :tag_list
+                = f.hidden_field :tag_list
+                %ul#tag_list
+              .span3
+                = f.simple_fields_for :avatar do |form|
+                  = render 'avatar_fields', f: form
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('business_contacts.form.save')
+      .clearfix

@@ -1,0 +1,3 @@
+.input-append
+  = f.text_field :value, style: 'margin: 0; width: 30px'
+  = f.select :kind, Discount.kinds_with_percent.slice('percent', current_store.currency.code).invert, {}, { class: 'discount-kind' }

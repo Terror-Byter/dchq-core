@@ -1,0 +1,7 @@
+%tr{ :id => dom_id(sale) }
+  %td.important
+    = link_to sale.receipt_id, sale_path(sale)
+  %td= sale.created_at
+  %td= sale.product_quantity
+  %td= sale.value
+  %td= sale.status_div

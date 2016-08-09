@@ -1,0 +1,176 @@
+:ruby
+  @event_customer_participant ||= @ecp
+  @event.distance_in_days.times{ @event_customer_participant.event_customer_participant_transports.build } if @event_customer_participant.event_customer_participant_transports.blank?
+  @current_store.additionals.each_with_index{@event_customer_participant.event_customer_participant_additionals.build} if @event_customer_participant.event_customer_participant_additionals.blank?
+  kit_hire = @event_customer_participant.event_customer_participant_kit_hire || @event_customer_participant.build_event_customer_participant_kit_hire
+  insurance = @event_customer_participant.event_customer_participant_insurance || @event_customer_participant.build_event_customer_participant_insurance
+
+- if @current_company.set_stripe?
+  = content_for :js do
+    %script{ src: "https://js.stripe.com/v2/", type: "text/javascript" }
+    :javascript
+      Stripe.setPublishableKey("#{ @current_company.payment_credential.stripe_publishable_key }");
+    = javascript_include_tag 'stripe'
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= t('.event_rigistration')
+
+.innerLR
+  .row-fluid
+    .span8
+      %h3.heading-mosaic= t('.registration_step_1')
+
+.innerLR
+  .row-fluid.row-merge
+    = simple_nested_form_for @event_customer_participant, url: step_2_bookings_path, html: { class: 'nice ecp_form' } do |f|
+      = f.error_messages
+      = hidden_field_tag :public_key, @current_store.public_key
+      = hidden_field_tag :event_id, @event.id
+      %p= t('.information_step_1')
+      .row-fluid
+        .span9
+          #tabAccountAccordion.accordion.accordion-2
+            .accordion-group
+              .accordion-heading
+                = link_to '#collapse-1-1', class: 'accordion-toggle glyphicons parents', :'data-parent' => '#tabAccountAccordion', 'data-toggle' => 'collapse' do
+                  %i>
+                  = t('.customer_information')
+              #collapse-1-1.accordion-body.collapse.in
+                .accordion-inner
+                  .row-fluid
+                    .span6
+                      %label= t('.email_address')
+                      = text_field_tag :customer_email, '', class: 'span11'
+                  #certificate
+                  .row-fluid
+                    .span6
+                      %p
+                        = t('.if_new_customer')
+                        = succeed "." do
+                          = link_to t('.registration_firts'), '#booking-add-customer-modal', :'data-toggle' => 'modal'
+                    .span4.offset2
+                      = link_to '#collapse-2-1', class: 'collapse-2-1 btn btn-primary btn-icon glyphicons right_arrow span12 next-step', :'data-parent' => '#tabAccountAccordion', 'data-toggle' => 'collapse' do
+                        %i>
+                        = t('.proceed_to_equipment')
+            .accordion-group.hide
+              .accordion-heading
+                = link_to '#collapse-2-1', class: 'accordion-toggle glyphicons paperclip', :'data-parent' => '#tabAccountAccordion', :'data-toggle' => 'collapse' do
+                  %i>
+                  = t('.equipment')
+              #collapse-2-1.accordion-body.collapse
+                .accordion-inner
+                  .row-fluid
+                    .span3
+                      %strong= t('.equipment')
+                      %p.muted= t('.equipment_text')
+                    .span4
+                      - if @current_store.kit_hires.any?
+                        = f.simple_fields_for :event_customer_participant_kit_hire, kit_hire do |kh_form|
+                          = kh_form.association :kit_hire, collection: @current_store.kit_hires, input_html: { style: 'overflow: visible', class: 'select2 span12', id: 'kit_hire_select' }
+                    .span5
+                      - if @current_store.insurances.any?
+                        = f.simple_fields_for :event_customer_participant_insurance, insurance do |i_form|
+                          = i_form.association :insurance, collection: @current_store.insurances, input_html: { class: 'select2 span12', id: 'insurance_select', style: 'overflow: visible' }
+                  %hr/
+                  .row-fluid
+                    .span4.offset8
+                      - if @current_store.transports.any?
+                        = link_to '#collapse-3-1', class: 'btn btn-primary btn-icon glyphicons right_arrow span12 next-step', style: 'margin-top:24px;', :'data-parent' => '#tabAccountAccordion', 'data-toggle' => 'collapse' do
+                          %i>
+                          = t('.proceed_to_transport')
+                      - else
+                        = link_to '#collapse-4-1', class: 'btn btn-primary btn-icon glyphicons right_arrow span12 next-step', style: 'margin-top:24px;', :'data-parent' => '#tabAccountAccordion', 'data-toggle' => 'collapse' do
+                          %i>
+                          = t('.proceed_to_additionals')
+            - if @current_store.transports.any?
+              .accordion-group.hide
+                .accordion-heading
+                  = link_to '#collapse-3-1', class: 'accordion-toggle glyphicons boat', :'data-parent' => '#tabAccountAccordion', :'data-toggle' => 'collapse' do
+                    %i>
+                    = t('.transport')
+                #collapse-3-1.accordion-body.collapse
+                  .accordion-inner
+                    .row-fluid
+                      = f.simple_fields_for :event_customer_participant_transports do |form|
+                        = render 'event_customer_participant_transport_fields', f: form
+                    %hr/
+                    .row-fluid
+                      .span4.offset8
+                        = link_to '#collapse-4-1', class: 'btn btn-primary btn-icon glyphicons right_arrow span12 next-step', style: 'margin-top:24px;', :'data-parent' => '#tabAccountAccordion', 'data-toggle' => 'collapse' do
+                          %i>
+                          = t('.proceed_to_additionals')
+            .accordion-group.hide
+              .accordion-heading
+                = link_to '#collapse-4-1', class: 'accordion-toggle glyphicons scuba_diving', :'data-parent' => '#tabAccountAccordion', :'data-toggle' => 'collapse' do
+                  %i>
+                  = t('.additionals')
+              #collapse-4-1.accordion-body.collapse
+                .accordion-inner
+                  .row-fluid
+                    = f.simple_fields_for :event_customer_participant_additionals do |form|
+                      .span2.additionals
+                        = form.hidden_field :additional_id, value: @current_store.additionals[form.object_name.gsub(/[^0-9]+/,'').to_i][:id]
+                        %label= @current_store.additionals[form.object_name.gsub(/[^0-9]+/,'').to_i][:name]
+                        :ruby
+                          number_of_days = ['No'] + (1..@event.distance_in_days).entries.map{|u| [pluralize(u, t('.day')), u]}
+                        = form.select :number_of_days, number_of_days, {}, { class: 'select2 span12' }
+                  %hr/
+                  .row-fluid
+                    .span4.offset8
+                      = link_to '#collapse-5-1', class: 'btn btn-primary btn-icon glyphicons right_arrow span12 next-step', style: 'margin-top:24px;', :'data-parent' => '#tabAccountAccordion', 'data-toggle' => 'collapse' do
+                        %i>
+                        = t('.proceed_to_payment')
+            .accordion-group.hide
+              .accordion-heading
+                = link_to '#collapse-5-1', class: 'accordion-toggle glyphicons coins', :'data-parent' => '#tabAccountAccordion', :'data-toggle' => 'collapse' do
+                  %i>
+                  = t('.payment')
+              #collapse-5-1.accordion-body.collapse
+                .accordion-inner
+                  .payment-errors
+                  .row-fluid
+                    .span9
+                      = label_tag :card_number, t('.card_number')
+                      = text_field_tag :card_number, params[:card_number].blank? ? nil : params[:card_number], :'data-stripe' => "number", class: 'span12 form-control'
+                  .row-fluid
+                    .span3
+                      = label_tag :card_expires_month, t('.expiry_month')
+                      = date_select :card_expires_month, :date, { discard_day: true, discard_year: true, add_month_numbers: true }, { class: 'select2 span10', :'data-stripe' => "exp-month" }
+                    .span3
+                      = label_tag :card_expires_year, t('.expiry_year')
+                      = date_select :card_expires_year, :date, { discard_day: true, discard_month: true, start_year: Date.today.year, end_year: (Date.today.year + 10) }, { class: 'select2 span10', :'data-stripe' => "exp-year" }
+                    .span3
+                      = label_tag :cvc, t('.cv2')
+                      = text_field_tag :cvc, params[:cvv].blank? ? nil : params[:cvv], :'data-stripe' => "cvc", class: 'span12'
+                  %hr/
+                  .row-fluid
+                    .span4
+                      - if @current_company.set_stripe?
+                        %button{ class: 'btn btn-primary btn-icon glyphicons usd stripe', name: :button, type: 'submit', value: 'stripe'}
+                          %i>
+                          = t('.submit_payment_details_stripe')
+                      - if @current_company.set_epay? && @current_store.has_epay_payment_method?
+                        %button{ class: 'btn btn-primary btn-icon glyphicons usd', name: :button, type: 'submit', value: 'epay'}
+                          %i
+                          = t('.submit_payment_details_epay')
+                    .span4
+                      - if @current_company.set_paypal?
+                        %button{ type: 'submit', value: :paypal, name: :button, style: 'border: none; background: white' }
+                          = image_tag "https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"
+                    .span4
+                      %button{ type: 'submit', name: :button, class: 'btn btn-secondary btn-icon glyphicons log_book btn-block', value: :booking }
+                        %i
+                        = t('.book_without_payment')
+        .span3
+          .widget
+            = render 'event_customer_participants/price_breakdown'
+          .clearfix
+
+
+= content_for :overlays do
+  = render 'overlays/bookings/add_customer_modal'

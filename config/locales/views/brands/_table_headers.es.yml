@@ -1,0 +1,10 @@
+es:
+  brands:
+    table_headers:
+      brand: 'Marca'
+      category: 'Categoría'
+      skus: 'SKUs'
+      units_stock: 'Unidades en Inventario'
+      stock_value: 'Valor de Inventario'
+      average_monthly_sale: 'Venta Mensual Promedio'
+      last_sale: 'Última Venta'

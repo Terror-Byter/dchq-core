@@ -1,0 +1,8 @@
+es:
+  gift_card_types:
+    edit:
+      home: 'Inicio'
+      sales: 'Ventas'
+      gift_cards: 'Tarjetas de Regalo'
+      edit_gift_card_type: 'Editar Tipo de Tarjeta de Regalo'
+

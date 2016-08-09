@@ -1,0 +1,35 @@
+es:
+  event_customer_participants:
+    form:
+      home: 'Inicio'
+      events: 'Eventos'
+      add_customer: 'Agregar Cliente'
+      update_customer: 'Actualizar Cliente'
+      add_customer_to_event: 'Agregar Cliente al Evento'
+      update_customer_in_event: 'Actualizar Cliente en el Evento'
+      customer_details: 'Detalles del Cliente'
+      customer: 'Cliente'
+      customer_text: 'Seleccione al cliente que quiere agregar a este evento.'
+      or_quick_add_customer: 'o Agregue Rápidamente un Cliente Nuevo'
+      options: 'Opciones'
+      options_text: 'Seleccione de las siguientes opciones.'
+      free_kit_hire: 'Renta Gratis de Kit'
+      free_insurance: 'Seguro Gratis'
+      pickups: 'Recoleccciones'
+      pickups_text: 'Ingrese si el cliente requiere ser busccado en su lugar de hospedamiento.'
+      additionals: 'Adicionales'
+      additionals_text: 'Seleccione de los siguientes artículos adicionales para este cliente.'
+      price_breakdown: 'Desglose del Precio'
+      event: 'Evento'
+      kit_hire: 'Renta de Kit'
+      insurance: 'Seguro'
+      discount: 'Descuento'
+      course: 'Curso'
+      material: 'Material'
+      total: 'TOTAL'
+      add_customer: 'Agregar Cliente'
+      note: Nota
+      switch_to_group: Cambie a Reserva de Grupo
+      group_details: Detalles del Grupo
+      group_description: Introduzca el nombre del grupo que desea agregar a este evento.
+      switch_to_personal: Volver con la Reserva Personal

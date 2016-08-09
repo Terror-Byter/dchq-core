@@ -1,0 +1,9 @@
+en:
+  overlays:
+    rentals:
+      rental_product_lookup:
+        header: Rental Product Lookup
+        brands: Brands
+        categories: Categories
+        products: Products
+        cancel: Cancel

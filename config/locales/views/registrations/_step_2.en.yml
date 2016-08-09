@@ -1,0 +1,28 @@
+en:
+  registrations:
+    step_2:
+      sales_settings: Sales Settings
+      p: In order to sell products and events, you need to setup your payment methods and tax rates first.
+      payment_methods: Payment Methods
+      tax_rates: Tax Rates
+      commission_rates: Commission Rates
+      p_1: These are the ways your customers can pay for goods or services.
+      method: Method
+      reference_code: Reference Code for Accounting
+      add_payment_method: Add Payment Method
+      p_2: If you are planning on integrating with an accounting package, these tax rates should match up with the tax rates in that account.
+      tax_options: Tax Options
+      p_3: Select whether your prices are tax inclusive or tax exclusive.
+      tax_setup: Tax Setup
+      tax_rate_inclusion: Tax Inclusive
+      tax_rate_exclusive: Tax Exclusive
+      p_4: Enter a set of tax rates that you can assign to products or services.
+      tax_identifier: Tax Rate Indentifier
+      tax_rate: Tax Rate (%)
+      add_tax_rate: Add Tax Rate
+      p_5: If you pay commissions based on sales, you can enter the rates here. You can then assign these rates to products or events at a later time.
+      p_6: Enter any commission rates you pay to staff members.
+      commission_rate_label: Commission Rate (%)
+      add_commission_rate: Add Commission Rate
+      prev: Previous
+      next: Save Sales Settings

@@ -1,0 +1,17 @@
+.row-fluid
+  .span3
+    %strong= t('application.type_of_service_fields.service_types')
+    %p.muted= t('application.type_of_service_fields.service_types_text')
+    = f.link_to_remove "#{content_tag(:i,'')} #{t('application.type_of_service_fields.remove_service_type')}".html_safe, class: 'btn btn-info btn-small btn-icon glyphicons circle_minus'
+  .span3
+    = f.input :name, input_html: { class: 'span11' }
+  .span3
+    = f.input :labour, input_html: { class: 'span11' }
+  .span3
+    = f.input :labour_price, input_html: { class: 'span11' }
+.row-fluid
+  .span3.offset3
+    = f.input :tax_rate_id, collection: current_store.tax_rates_list, input_html: { class: 'selectpicker span11' }
+  .span3
+    = f.input :price_of_service_kit, collection: [[t('application.type_of_service_fields.included'), 'included'], [t('application.type_of_service_fields.additional'), 'additional']], input_html: { class: 'selectpicker span11'}
+%hr.separator.bottom

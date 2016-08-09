@@ -1,0 +1,7 @@
+es:
+  categories:
+    new:
+      home: 'Inicio'
+      sales: 'Ventas'
+      categories: 'Categorías'
+      add_category: 'Agregar Categoría'

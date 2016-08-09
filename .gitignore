@@ -1,0 +1,16 @@
+.bundle
+vendor/bundle
+db/*.sqlite3
+*.log
+tmp/
+.sass-cache/
+*.sw?
+.ruby-version
+.ruby-gemset
+tmp/**/*
+public/stylesheets/*
+*.pid
+config/database.yml
+.DS_Store
+.idea
+public/files/*

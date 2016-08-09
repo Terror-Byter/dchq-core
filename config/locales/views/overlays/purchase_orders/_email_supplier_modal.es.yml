@@ -1,0 +1,8 @@
+es:
+  overlays:
+    purchase_orders:
+      email_supplier_modal:
+        send_to_supplier: 'Enviar a Proveedor'
+        enter_suppliers_email: "Ingresar debajo la dirección de correo-e del proveedor para enviarle la Orden de Compra."
+        download_purchase_order_pdf: 'Descargar como PDF la Orden de Compra'
+        send_purchase_order: 'Enviar Orden de Compra vía Correo-e'

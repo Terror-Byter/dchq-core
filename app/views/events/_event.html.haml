@@ -1,0 +1,8 @@
+%tr{ class: "#{ 'event_cancel' if event.cancel? }" }
+  %td.important
+    = link_to event.decorate.type_name, event_path(event)
+  %td= event.name
+  %td= til event.location
+  %td= til event.decorate.boat
+  %td= l(event.starts_at, format: :default)
+  %td= l(event.ends_at, format: :default)

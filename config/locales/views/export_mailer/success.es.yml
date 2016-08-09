@@ -1,0 +1,4 @@
+es:
+  export_mailer:
+    success:
+      message: 'Tu %{type} exportación se ha generado con éxito. Sus datos exportados se adjunta a este correo. csv.'

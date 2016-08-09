@@ -1,0 +1,9 @@
+%tr
+  %td.important
+    = link_to sale.receipt_id, sale.sale_path
+  %td= sale.created_at
+  %td= sale.creator_name
+  %td= sale.customers
+  %td= sale.grand_total_abs
+  %td= formatted_currency(sale.to_pay)
+  %td= sale.human_status

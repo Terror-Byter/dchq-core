@@ -1,0 +1,13 @@
+%div{id: "quick-add-#{obj.class.name.downcase}", class: "modal hide fade"}
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t("products.popup.#{obj.class.name.downcase}_header")
+  = form_tag create_extra_option_products_path, method: :post, remote: true do
+    .modal-body
+      .row-fluid.center
+        %label= t("products.popup.#{obj.class.name.downcase}_name")
+        = hidden_field_tag :type, obj.class.name.downcase
+        = text_field_tag :name, nil, class: "inputLightbox01"
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      = submit_tag t("products.popup.add_#{obj.class.name.downcase}"), class: 'btn btn-primary'

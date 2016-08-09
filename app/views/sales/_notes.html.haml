@@ -1,0 +1,6 @@
+%strong= t('sales.details.notes.notes')
+\-
+%a#edit-note{'data-toggle' => 'modal', href: '#add-note-modal'}= t('helpers.application.edit')
+%br/
+%span#note-holder
+  = @sale.note.html_safe

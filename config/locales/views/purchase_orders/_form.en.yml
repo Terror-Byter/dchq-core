@@ -1,0 +1,37 @@
+en:
+  purchase_orders:
+    form:
+      purchase_order_id: 'Purchase Order ID:'
+      status: 'Status:'
+      staff: 'Staff:'
+      scan_barcode: 'Scan Barcode or Start Typing Product Name...'
+      quantity: 'Quantity'
+      add_product: 'Add Product'
+      add_product_not_in_inventory: 'Add Product Not In Inventory'
+      product_creation_success: 'Product successfully added'
+      assign_supplier: '+ assign supplier'
+      supplier: 'Supplier'
+      errors:
+        error_removing_supplier: 'Failed to remove supplier'
+        error_assigning_supplier: 'Failed to assign supplier'
+        error_adding_product: 'Failed to add product'
+        error_adding_note: 'Failed to add note'
+        failed_to_mark_order_sent: 'Failed to mark order sent'
+        error_setting_delivery_date: 'Failed to set the delivery date'
+        assign_supplier_first: 'Please assign a supplier first.'
+        add_items_to_order: 'Please add products to the Purchase Order.'
+        error_creating_product: 'Failed to create product'
+        select_product_first: 'Please select the product first.'
+      table_columns:
+        sku_product: 'SKU / Product'
+        supply_price: 'Supply Price'
+        quantity: 'Quantity'
+        sub_total: 'Sub-Total'
+        accepted: 'Accepted'
+        rejected: 'Rejected'
+      notes:
+        add_note: 'Add Note'
+        notes: 'Notes'
+      po_operations:
+        empty: 'Empty PO'
+        delete: 'Delete PO'

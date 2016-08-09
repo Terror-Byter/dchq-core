@@ -1,0 +1,8 @@
+en:
+  overlays:
+    rentals:
+      change_status:
+        header: Change Rental Status
+        body: If you mark this rental as complete and there is still money owing, you will be redirected to the original invoice.
+        cancel: Cancel
+        button: Change Rental Status

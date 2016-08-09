@@ -1,0 +1,20 @@
+en:
+  service_mailer:
+    servicing_collection:
+      sales_receipt_id: 'Sales Receipt #%{receipt}'
+      complete_and_ready_for_collection: "Your %{kit} servicing is complete and ready for collection. If applicable, we've attached your invoice below. If you have any questions about your order please contact us at"
+      or_call: 'or call us on %{telephone}.'
+      date: 'Date: %{date}'
+      scu_product: 'SKU / PRODUCT'
+      unit_price: 'UNIT PRICE'
+      qty: 'QTY'
+      sub_total: 'SUB TOTAL'
+      servicing: 'Servicing:'
+      hours: 'hours'
+      subtotal: 'Sub Total'
+      tax_inc: 'Tax Inc.'
+      net_due: 'NET DUE'
+      with_regards: 'With regards,'
+      sent_by_centre: 'This email was sent by %{company_name}.'
+      telephone: 'Telephone: %{tel}'
+      registered_address: 'Registered Address: %{address}'

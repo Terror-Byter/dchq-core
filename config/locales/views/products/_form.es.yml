@@ -1,0 +1,20 @@
+es:
+  products:
+    form:
+      product_details: 'Detalles del Producto'
+      photo: 'Foto'
+      account_barcodes: 'Contabilidad & Códigos de Barra'
+      pricing: 'Precios'
+      product_name_sku: 'Nombre & SKU del Producto'
+      product_name_sku_text: 'Ingrese el nombre completo de menudeo de este producto y su unidad de mantenimiento en existencias.'
+      description: 'Descripción'
+      description_text: 'Se mostrará la descripción en un correo-e y en los recibos impresos.'
+      stock_level_reminder: 'Niveles & Recordatorios de Inventarios'
+      stock_level_reminder_text: 'Ingrese cuántas unidades tiene actualmente en inventario y nosotros debemos notificarle cuando hacer una re-orden.'
+      product_image: 'Imagen del Producto'
+      product_image_text: 'Cargar la imagen del producto que mostraremos en los recibos y en las listas de venta.'
+      price_calculation: 'Cálculo del Precio'
+      price_calculation_text: 'Estos campos no tienen habilitado el cálculo automático.'
+      tax_inc: '(Imp. Inc.)'
+      tax_exc: '(Imp. Exc.)'
+      save: 'Guardar'

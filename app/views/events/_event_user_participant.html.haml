@@ -1,0 +1,6 @@
+%tr
+  %td.important
+    = link_to event_user_participant.full_name, event_user_participant.user
+  %td= event_user_participant.role
+  %td= til(event_user_participant.assigned_customers.html_safe)
+  %td= link_to t('views.actions.edit'), event_user_participants_event_path(event)

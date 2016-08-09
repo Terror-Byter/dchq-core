@@ -1,0 +1,6 @@
+es:
+  models:
+    service:
+      servicing: Mantenimiento
+      paid: Pagado
+      confirm_term: Usted debe confirmar los términos y condiciones

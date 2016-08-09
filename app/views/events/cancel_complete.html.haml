@@ -1,0 +1,50 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('events.cancel_confirmation_no_registrations.home')
+  %li.divider
+  %li= t('events.cancel_confirmation_no_registrations.events')
+  %li.divider
+  %li= t('events.cancel_confirmation_no_registrations.cancel')
+
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic
+        = t('.events')
+        = resource.name
+.innerLR
+  %p
+    %strong= t(".h2")
+  %p= t(".p")
+  %p
+    %strong= t(".h2_1")
+  %p= formatted_currency(resource.get_paid_event_customer_participants.sum(&:price))
+  %p
+    %strong= t(".h2_2")
+  %p= formatted_currency(resource.get_refunded_event_customer_participants.sum(&:price).abs)
+  %p
+    %strong= t(".h2_3")
+  %p= resource.sales.refunded.count
+  %p
+    %strong= t(".h2_4")
+  %p= resource.sales.refund_complete.count
+  %p
+    %strong= t(".h2_5")
+  %p= t(".p_1")
+  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+    %thead
+      %th &nbsp;
+      %th= t(".registrant_namespace")
+      %th= t(".date_registered")
+      %th= t(".amount_paid")
+      %th= t(".amount_refund")
+      %th= t(".actions")
+    %tbody
+      - if resource.sales.refunded.blank?
+        %tr
+          %td{ colspan: 6 }= t '.no_data'
+      - else
+        - resource.sales.refunded.each do |sale|
+          = render partial: 'refund_event_customer_participant', collection: sale.event_customer_participants, as: :ecp

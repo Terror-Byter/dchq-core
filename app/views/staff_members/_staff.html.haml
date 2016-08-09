@@ -1,0 +1,8 @@
+%tr
+  %td.important
+    = link_to staff.name, staff_member_path(staff)
+  %td= staff.telephone
+  %td= staff.email
+  %td
+    = raw staff.tags
+  %td= formatted_currency(staff.purchase_amount, :precision => current_store.currency.precision, :unit => current_store.currency.unit)

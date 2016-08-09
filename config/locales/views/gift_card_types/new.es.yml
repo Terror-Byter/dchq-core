@@ -1,0 +1,8 @@
+es:
+  gift_card_types:
+    new:
+      home: 'Inicio'
+      sales: 'Ventas'
+      gift_cards: 'Tarjetas de Regalo'
+      add_gift_card_type: 'Agregar un Tipo de Tarjeta de Regalo'
+

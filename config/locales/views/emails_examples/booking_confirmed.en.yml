@@ -1,0 +1,13 @@
+en:
+  emails_examples:
+    booking_confirmed:
+      booking_confirmed: 'Booking Confirmed:'
+      confirmed_for_event_listed_below: 'You have been confirmed for the event listed below. Please bring a copy of this booking confirmation with you to the event.'
+      event: 'EVENT'
+      unit_price: 'UNIT PRICE'
+      qty: 'QTY'
+      sub_total: 'SUB-TOTAL'
+      sub_tot: 'Sub Total:'
+      tax_inc: 'Tax Inc:'
+      net_due: 'NET DUE:'
+      payments: 'Payments:'

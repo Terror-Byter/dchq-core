@@ -1,0 +1,6 @@
+es:
+  application:
+    service_kit_fields:
+      service_kits: 'Kits de Servicio'
+      service_kits_text: 'Ingrese los kits de servicio que abastece.'
+      remove_service_kit: 'Eliminar Kit de Servicio'

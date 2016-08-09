@@ -1,0 +1,51 @@
+%h4
+  = t('application.store_fields.location')
+  - if !f.object.main
+    = f.link_to_remove "#{content_tag(:i,'')} Remove Location".html_safe, class: 'btn btn-info btn-small btn-icon glyphicons circle_minus'
+.row-fluid
+  .span3
+    %strong= t('application.store_fields.shop_details')
+    %p.muted= t('application.store_fields.shop_details_text')
+  .span3
+    = f.input :name, input_html: { class: 'span11' }
+  .span3
+    = f.input :location, input_html: { class: 'span11' }
+  .span3
+    = f.input :time_zone, collection: ActiveSupport::TimeZone.zones_map.invert.to_a, input_html: { class: 'selectpicker' }
+.row-fluid
+  .span3
+  .span3
+    = f.input :initial_receipt_number, input_html: { class: 'span11' }
+.row-fluid
+  .span3
+    %strong= t('application.store_fields.currency_calendar')
+    %p.muted= t('application.store_fields.currency_calendar_text')
+  .span3
+    = f.input :currency_id, collection: Currency.all.collect{ |u| [u.name, u.id] }, input_html: { class: 'selectpicker span11' }
+  .span3
+    = f.input :calendar_type, collection: Store.calendar_types.map{ |i| [i.last, i.first] }, input_html: { class: 'selectpicker span11' }
+- unless f.object.new_record?
+  .row-fluid
+    .span3
+      %strong= t('application.store_fields.calendar_code_key')
+      %p.muted= t('application.store_fields.calendar_code_key_text')
+    .span3
+      %label= t('application.store_fields.embeddable_calendar_code')
+      = link_to '#embed-calendar', class: 'btn btn-small btn-default btn-icon glyphicons embed_close', :'data-toggle' => 'modal' do
+        %i>
+        = t('application.store_fields.show_embed_code')
+    .span3
+      = f.input :public_key, disabled: true, input_html: { class: 'span11' }
+    .span3
+      = f.input :api_key, disabled: true, input_html: { class: 'span11' }
+.row-fluid
+  .span3
+    %strong= 'Public Calendar Customr CSS Styles'
+  .span4
+    = f.input :calendar_header, input_html: { class: 'span11' }
+  .span4
+    = f.input :calendar_footer, input_html: { class: 'span11' }
+
+%hr.separator.bottom/
+
+= render 'overlays/store_fields/embed_calendar', f: f

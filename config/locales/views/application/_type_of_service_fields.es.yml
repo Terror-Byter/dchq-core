@@ -1,0 +1,8 @@
+es:
+  application:
+    type_of_service_fields:
+      service_types: 'Tipos de Servicio'
+      service_types_text: 'Ingrese los tipos de servicio que usted ofrece.'
+      included: 'Incluido'
+      additional: 'Adicional'
+      remove_service_type: 'Eliminar Tipo de Servicio'

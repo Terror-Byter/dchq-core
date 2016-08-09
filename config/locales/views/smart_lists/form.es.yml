@@ -1,0 +1,8 @@
+es:
+  smart_lists:
+    form:
+      create_new_smart_list: Crear nueva lista de Smart
+      find: Encontrar clientes coincidan
+      following: o las siguientes condiciones y el nombre que
+      add_condtion: + Agregar Una Condición
+      button: Ahorra Smart List

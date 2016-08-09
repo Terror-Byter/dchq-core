@@ -1,0 +1,84 @@
+:ruby
+  @sale.payments.build unless @sale.paid?
+  sale = @sale.decorate
+
+  sale_customer = @sale.sale_customers.first
+  @customer = sale_customer.try(:customer)
+  is_deletable ||= @sale.active?
+  allow_delete_link = is_deletable && !@sale.refunded? && !sale_customer.alone_walk_in?
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('sales.form.home')
+  %li.divider
+  %li= t('sales.form.sales')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('sales.form.point_of_sale')
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#switch-sale-modal', class: 'btn btn-small btn-default btn-icon glyphicons refresh', :'data-toggle' => :modal do
+          %i
+          Switch Sale
+        = link_to new_sale_path, remote: true, class: 'btn btn-small btn-default btn-icon glyphicons shopping_cart' do
+          %i
+          = t('sales.form.new_sale')
+
+
+= nested_form_for @sale, remote: true, html: { class: 'sales', method: :put } do |form|
+  .innerLR
+    .row-fluid
+      .span9
+        .widget
+          .widget-head
+            %h4.heading
+              = t('sales.form.sale_id')
+              = @sale.receipt_id
+            %span.details{style: 'color:green; font-weight:bold;'}= @sale.human_status
+            %span.details.pull-right{style: 'color:green; font-weight:bold;'}
+              = t('sales.form.cashier')
+              = @sale.creator.full_name
+          - if !@sale.refunded?
+            .widget-body.collapse.in.hidden-print
+              .row-fluid
+                .span8
+                  = text_field_tag 'search_product', nil, placeholder: t('sales.form.scan_barcode'), class: 'span12 ui-autocomplete-input', autocomplete: 'off', role: 'textbox', :'aria-autocomplete' => 'list', :'aria-haspopup' => true
+                .span2
+                  = link_to t('sales.form.miscellaneous'), '#misc-product-modal', class: 'btn btn-default input-block-level', :'data-toggle' => :modal
+                .span2
+                  = link_to t('sales.form.or_look_product'), '#product-lookup-modal', class: 'btn btn-default input-block-level product-lookup', :'data-toggle' => :modal
+      .span3
+        .widget
+          .widget-head
+            %h4.heading= t('sales.form.customer')
+            - if @sale.active? && @sale.has_only_walkin?
+              %a.details.pull-right{ :'data-toggle' => :modal, href: '#assign-customer-modal' }= t('sales.form.assign_customer')
+              = render 'overlays/sales/add_customer_modal'
+          .widget-body.list.products
+            %ul
+              %li
+                %span.img= image_tag @customer.avatar.image.url(:thumb), alt: t('sales.form.person')
+                %p{style: 'padding-top:10px;'}
+                  = link_to @customer.full_name, @customer
+                  = link_to_if allow_delete_link, t('sales.form.remove'), sale_customer, method: :delete, remote: true, confirm: t('views.actions.confirm')
+                  %br/
+    .shop-client-products.cart
+      = render partial: 'sales/details', locals: { form: form, is_editable: (@sale.active? || @sale.layby?) }
+      .separator.bottom
+      .row-fluid
+        %p
+          %a.btn.btn-default.btn-mini.btn-icon.glyphicons.power{href: close_stores_path}
+            %i>
+            = t('sales.form.close_register')
+          = link_to '#cash-put-out-modal', class: 'btn btn-default btn-mini btn-icon glyphicons coins', :'data-toggle' => 'modal' do
+            %i
+            = t('sales.form.cash_put_out')
+
+= render 'overlays/sales/misc_product'
+= content_for :overlays do
+  = render 'overlays/sales/switch_sale'
+  = render 'overlays/sales/product_lookup'
+  = render 'overlays/sales/cash_put_out_modal' if current_user.manager?

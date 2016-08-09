@@ -1,0 +1,9 @@
+#export-csv.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('overlays.products.download_barcode_popup.header')
+  .modal-body
+    %p= t('overlays.products.download_barcode_popup.content')
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}= t('views.actions.cancel')
+    = link_to t('overlays.products.download_barcode_popup.export_data'), barcode_export_products_path, class: 'btn btn-primary', method: :post

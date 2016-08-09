@@ -1,0 +1,12 @@
+es:
+  reports:
+    sales_by_day:
+      sales_by_day: 'Ventar Por Día'
+      refine_dates: 'Refinar Fechas'
+      sales_tax: 'Ventas inc. Impuesto'
+      tax: 'Impuesto'
+      cost_of_goods: 'Costo de Bienes'
+      gross_profit: 'Ganancia Bruta'
+      taxable_revenue: "Ingreso Imponible"
+      refunds: Reembolsos
+      tax_refunds: Reembolsos de impuestos

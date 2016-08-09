@@ -1,0 +1,12 @@
+- if purchase_order.errors.empty?
+  = render 'update_form'
+
+  -# Re-init event handlers and other stuff
+  Dchq.PurchaseOrder.init();
+
+  -# including JS templates to update certain portions of the page
+  = render 'update_order_total'
+  = render 'update_print_block'
+- else
+  -#TODO: change to smth nice-looking, maybe like flash messages
+  alert("#{purchase_order.errors.full_messages.join(", ")}")

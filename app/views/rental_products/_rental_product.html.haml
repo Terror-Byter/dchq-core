@@ -1,0 +1,11 @@
+%tr
+  %td.important
+    = link_to rental_product.id, rental_product
+  %td
+    = link_to rental_product.name, rental_product
+  %td= rental_product.sku_code
+  %td= rental_product.decorate.brand_name
+  %td= rental_product.decorate.category_name
+  %td= formatted_currency rental_product.price_per_day
+  %td= rental_product.number_in_stock
+  %td= rental_product.archived? ? 0 : rental_product.number_of_available

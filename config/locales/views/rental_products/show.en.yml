@@ -1,0 +1,22 @@
+en:
+  rental_products:
+    show:
+      home: Home
+      rentals: Rentals
+      inventory: Inventory
+      details: Details
+      rental_product: Rental Product
+      edit: Edit Rental Product
+      unarchived: Unarchive Rental Product
+      archived: Archive Rental Product
+      brand: Brand
+      category: Category
+      supplier: Supplier
+      inventory_information: Inventory Information
+      price_per_day: Price Per Day
+      current_inventory_level: Current Inventory Level
+      product_information: Rental Product Information
+      commision_rate: Commission Rate
+      tax_rate: Tax Rate
+      sku: SKU
+      delete_btn: Delete Rental Product

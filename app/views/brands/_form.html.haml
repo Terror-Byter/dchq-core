@@ -1,0 +1,37 @@
+= simple_form_for resource, html: { multipart: true }, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#productDescriptionTab', class: 'glyphicons font', :'data-toggle' => 'tab' do
+              %i>
+              = t('brands.form.brand_details')
+      .widget-body
+        .tab-content
+          #productDescriptionTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('brands.form.name_and_image')
+                %p.muted= t('brands.form.name_and_image_text')
+              .span5
+                = f.input :name, input_html: { class: 'span11' }
+              .span3
+                = f.simple_fields_for :logo do |form|
+                  = render 'avatar_fields', f: form
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('brands.form.description')
+                %p.muted= t('brands.form.description_text')
+              .span9
+                = f.input :description, as: :text, input_html: { style: 'width: 96%;', rows: '2' }
+    / // Widget END
+    .heading-buttons
+      .buttons.pull-right{:style => 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('brands.form.save')
+      .clearfix
+

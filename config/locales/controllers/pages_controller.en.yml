@@ -1,0 +1,4 @@
+en:
+  pages:
+    flash:
+      card_declined: "Your card was declined for your monthly subscription. Please ensure your card is still valid <a href='%{url}'>&nbsp;MORE DETAILS</a>"

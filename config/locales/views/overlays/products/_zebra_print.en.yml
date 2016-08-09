@@ -1,0 +1,7 @@
+en:
+  overlays:
+    products:
+      zebra_print:
+        select_qty: Select Barcode Quantity
+        enter_value: Enter Value
+        button: Print

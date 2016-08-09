@@ -1,0 +1,19 @@
+= nested_form_for resource do |f|
+  = f.error_messages
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.group
+        %i
+        = t '.create_new_smart_list'
+    .widget-body
+      = t '.find'
+      = f.select :join_operator, SmartList.join_operator, {}, { class: 'span1 selectpicker' }
+      = t '.following'
+      = text_field_tag :'smart_list[name]', resource.name
+      %hr/
+      = f.fields_for :smart_list_conditions do |c|
+        = render 'condition_fields', f: c
+      %p
+        = f.link_to_add t('.add_condition'), :smart_list_conditions, class: 'btn btn-default'
+  %p.pull-right
+    = f.submit t('.button'), class: 'btn btn-primary'

@@ -1,0 +1,35 @@
+en:
+  event_customer_participants:
+    form:
+      home: 'Home'
+      events: 'Events'
+      add_customer: 'Add Customer'
+      update_customer: 'Update Customer'
+      add_customer_to_event: 'Add Customer to Event'
+      update_customer_in_event: 'Update Customer in Event'
+      customer_details: 'Customer Details'
+      customer: 'Customer'
+      customer_text: 'Select the customer you want to add to this event.'
+      or_quick_add_customer: 'or Quick Add New Customer'
+      options: 'Options'
+      options_text: 'Select from the following options.'
+      free_kit_hire: 'Free Kit Hire'
+      free_insurance: 'Free Insurance'
+      pickups: 'Pickups'
+      pickups_text: 'Enter whether the customer requires a pickup from their accommodation.'
+      additionals: 'Additionals'
+      additionals_text: 'Select from the following additional items for this customer.'
+      price_breakdown: 'Price Breakdown'
+      event: 'Event'
+      kit_hire: 'Kit Hire'
+      insurance: 'Insurance'
+      discount: 'Discount'
+      course: 'Course'
+      material: 'Material'
+      total: 'TOTAL'
+      add_customer: 'Add Customer'
+      note: Note
+      switch_to_group: Switch to Group Booking
+      group_details: Group Details
+      group_description: Enter the name of the group you want to add to this event.
+      switch_to_personal: Back to Personal Booking

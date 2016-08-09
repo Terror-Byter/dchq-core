@@ -1,0 +1,4 @@
+es:
+  application:
+    additional_fields:
+      delete: 'Eliminar'

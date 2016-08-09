@@ -1,0 +1,7 @@
+en:
+  overlays:
+    rentals:
+      new:
+        create_rental: Create Rental
+        p: Select a customer and setup the collection / return dates for this rental. Once setup, you will be able to add items to rental.
+        cancel: Cancel

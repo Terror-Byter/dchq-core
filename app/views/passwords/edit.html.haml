@@ -1,0 +1,13 @@
+%p.center= t('passwords.edit.title_reset')
+%hr{style: "margin: 20px 0"}
+.row-fluid
+  .span4.offset1.center
+    = image_tag('login-image.png')
+  .span6
+    = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, validate: true do |f|
+      = f.input :reset_password_token, as: :hidden
+      = f.input :password, label_html: { class: 'strong' }, input_html: { class: 'input-block-level' }, autofocus: true
+      = f.input :password_confirmation, label_html: { class: 'strong' }, input_html: { class: 'input-block-level' }
+      %button.btn.btn-success.btn-icon.glyphicons.lock{ type: 'submit' }
+        %i
+        = t('passwords.edit.button')

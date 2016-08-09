@@ -1,0 +1,18 @@
+= render 'header', title: t('events.index.event_calendar')
+
+.innerLR
+  = render 'boats'
+  .widget
+    .widget-head
+      %h4.heading= t('events.index.calendar')
+      %span.calendar-staff-toggler
+        = surround '(', ')' do
+          = link_to 'toggle staff availability on calendar', '#', id: 'toggle_staff'
+          \/
+          = link_to 'view staff schedule', schedule_staff_members_path
+        = hidden_field_tag :staff_toggler, false
+    .widget-body
+      #calendar
+
+= content_for :overlays do
+  = render 'overlays/events/staff_availability'

@@ -1,0 +1,16 @@
+= render 'header', title: t('events.list.event_list')
+
+.innerLR
+  -#= render 'boats'
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.calendar
+        %i
+        = t('events.list.events_in')
+        = @start_date.strftime('%B, %Y')
+      %span.details.pull-right
+        = link_to "<< Previous Month's Events", list_events_path( date: Date.parse(@start_date.to_date.to_s) - 1.months )
+        |
+        = link_to "Next month's Events >>", list_events_path( date: Date.parse(@start_date.to_date.to_s) + 1.months )
+    .widget-body#events-list-collection
+      = render 'events/events_list'

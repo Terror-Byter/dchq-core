@@ -1,0 +1,2 @@
+- if @time_interval
+  $("tbody#time_history").append("#{j(render 'time_intervals/time_interval', time_interval: @time_interval.decorate)}")

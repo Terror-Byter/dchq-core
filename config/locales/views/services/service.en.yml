@@ -1,0 +1,7 @@
+en:
+  services:
+    service:
+      booked: Booked
+      in_progress: In Progress
+      awaiting_collection: Awaiting Collection
+      complete: Complete

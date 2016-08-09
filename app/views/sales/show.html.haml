@@ -1,0 +1,82 @@
+:ruby
+  sale_customer = @sale.sale_customers.first
+
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('sales.show.home')
+  %li.divider
+  %li= t('sales.show.sales')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic.hidden-print= t('sales.show.sales_receipt', status: sale.human_status)
+%form{ id: dom_id(@sale), class: 'sales' }
+.innerLR
+  %table.table.table-invoice
+    %tbody
+      %tr
+        %td{:style => 'width: 58%;'}
+          .media
+            = sale.image
+        %td.right
+          .innerL
+            %h4
+              = "##{sale.receipt_id} / "
+              = sale.created_at
+            - if current_store.printer_type == 'tsp'
+              = link_to 'javascript:void(0)', onclick: "onSendMessage()", class: 'btn btn-default btn-default btn-icon glyphicons print hidden-print' do
+                %i>
+                = t('sales.show.print_receipt')
+            - else
+              = link_to nil, class: 'btn btn-default btn-default btn-icon glyphicons print print-receipt hidden-print' do
+                %i>
+                = t('sales.show.print_receipt')
+            = link_to '#email-receipt-modal', class: 'btn btn-default btn-icon glyphicons envelope hidden-print', :'data-toggle' => 'modal' do
+              %i>
+              = t('sales.show.email_receipt')
+  .separator.bottom
+  .well.margin-none
+
+    - if can_change_complete_sale?
+      = nested_form_for @sale, remote: true, html: { class: 'sales', method: :put } do |form|
+        = render partial: 'sales/sale_customer', collection: sale.sale_customers, as: :customer, locals: { is_editable: true }
+        %a.details{ :'data-toggle' => :modal, href: '#assign-customer-modal' }= t('sales.form.assign_customer') if sale_customer.alone_walk_in?
+        = link_to t('sales.form.remove'), sale_customer, method: :delete, remote: true, confirm: t('views.actions.confirm') unless sale_customer.alone_walk_in?
+        = content_for :overlays do
+          = render 'overlays/sales/add_customer_modal'
+    - else
+      = render partial: 'sales/sale_customer', collection: sale.sale_customers, as: :customer, locals: { is_editable: true }
+
+  .shop-client-products.cart
+    %p{:style => 'margin: 20px 0; font-size:14px;'}
+      %br
+      = t('sales.show.greeting_text', tel: sale.company_telephone, email: sale.company_email)
+
+    / Shopping cart
+    = render partial: 'sales/details', locals: { is_editable: false }
+
+= content_for :js do
+  :javascript
+    $(function() {
+
+      $('.discount a.fancy_link').live('click', function() {
+        var sale_product = $(this).closest('.sale_product');
+
+        var quantity_limit = sale_product.find('.quantity').attr('data-refund-quantity-limit');
+        var options = $(new Array(parseInt(quantity_limit))).map(function(i){ return {'id': i + 1, 'name': i + 1}; });
+      });
+
+      $('a#whole_refund').live('click', function() {
+        $.ajax({
+          type: 'POST',
+          url: "#{refund_sale_path(@sale)}.js",
+          data: $('.refund-checkbox').closest('.pull-right').find('input, select').serialize()
+        });
+      });
+
+      $('a#reopen_layby').live('click', function() {
+        $.post("#{reopen_layby_sale_path(@sale)}.js");
+      });
+    });

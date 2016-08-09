@@ -1,0 +1,12 @@
+en:
+  layouts:
+    registration:
+      help: Help
+      contact_support: Contact Support
+      logout: Logout
+      home: Home
+      signup: Signup
+      store_and_manager: Store & Manager Details
+      sales_settings: Sale Settings
+      event_settings: Event Settings
+      complete_setup: Complete Setup

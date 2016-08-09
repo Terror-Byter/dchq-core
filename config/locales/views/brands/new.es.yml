@@ -1,0 +1,7 @@
+es:
+  brands:
+    new:
+      home: 'Inicio'
+      sales: 'Ventas'
+      brands: 'Marcas'
+      add_brand: 'Agregar Marca'

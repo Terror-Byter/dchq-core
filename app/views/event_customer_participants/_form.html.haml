@@ -1,0 +1,124 @@
+:ruby
+  resource.event.distance_in_days.times{ resource.event_customer_participant_transports.build } if resource.event_customer_participant_transports.blank?
+  current_store.additionals.each_with_index{resource.event_customer_participant_additionals.build} if resource.event_customer_participant_additionals.blank?
+  kit_hire = resource.event_customer_participant_kit_hire || resource.build_event_customer_participant_kit_hire
+  insurance = resource.event_customer_participant_insurance || resource.build_event_customer_participant_insurance
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('event_customer_participants.form.home')
+  %li.divider
+  %li= t('event_customer_participants.form.events')
+  %li.divider
+  %li= resource.new_record? ? t('event_customer_participants.form.add_customer') : t('event_customer_participants.form.update_customer')
+.innerLR
+  .row-fluid
+    .span6
+      %h3.heading-mosaic= resource.new_record? ? t('event_customer_participants.form.add_customer_to_event') : t('event_customer_participants.form.update_customer_in_event')
+    .span6
+      %p.label.label-info{style: 'float:right; margin-top:5px;'} #{til event_customer_participant.spaces_available} spaces left
+= simple_form_for event_customer_participant, url: event_customer_participant.url, html: { class: 'ecp_form' }, validate: true do |f|
+  = f.error_messages
+  = f.input :local_event, as: :hidden
+  = f.hidden_field :event_id
+  .innerLR
+    .row-fluid
+      .span9
+        .widget
+          .widget-head
+            %h4.heading.glyphicons.parents
+              %i
+              = t('event_customer_participants.form.customer_details')
+          .widget-body
+            .row-fluid{ class: "#{ 'hide' unless event_customer_participant.group_name.blank? }" }
+              .span3
+                %strong= t('event_customer_participants.form.customer')
+                %p.muted= t('event_customer_participants.form.customer_text')
+                = link_to "", class: "btn btn-default btn-small btn-icon glyphicons refresh", id: 'switch_to_group', style: "margin-bottom:10px;" do
+                  %i
+                  = t '.switch_to_group'
+              .span5
+                = select_tag 'event_customer_participant_id[]', options_for_select(current_company.customers.without_walk_in.map{|u| [u.full_name, u.id]}), { class: 'select2', multiple: true }
+              .span4
+                = link_to '#quick-add-customer-modal', class: 'btn btn-default btn-small btn-icon glyphicons circle_plus', :'data-toggle' => :modal do
+                  %i>
+                  = t('event_customer_participants.form.or_quick_add_customer')
+            .row-fluid{ class: "#{ 'hide' if event_customer_participant.group_name.blank? }" }
+              .span3
+                %strong= t '.group_details'
+                %p.muted= t '.group_description'
+                = link_to '', class: 'btn btn-default btn-small btn-icon glyphicons refresh', id: 'switch_to_personal', style: "margin-bottom:10px;" do
+                  %i
+                  = t '.switch_to_personal'
+              / // Column END
+              .span4
+                = f.input :group_name, input_html: { class: 'span12' }
+              .span2
+                - if event_customer_participant.event.limit_of_registrations.blank?
+                  = f.input :quantity, input_html: { class: 'span12' }
+                - else
+                  = f.input :quantity, collection: (1..event_customer_participant.event.available_places), include_blank: false, input_html: { class: 'span12, select2' }
+              .span3
+                = f.input :contact_information, input_html: { class: 'span12' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('event_customer_participants.form.options')
+                %p.muted= t('event_customer_participants.form.options_text')
+              .span3
+                = f.association :event_user_participant, collection: event_customer_participant.available_users, input_html: { class: 'selectpicker span12' }
+              .span2
+                = f.simple_fields_for :event_customer_participant_kit_hire, kit_hire do |kh_form|
+                  = kh_form.association :kit_hire, collection: current_store.kit_hires, input_html: { class: 'selectpicker span12', id: 'kit_hire_select' }
+                  .uniformjs
+                    %label
+                      = kh_form.check_box :free
+                      = t('event_customer_participants.form.free_kit_hire')
+              .span2
+                = f.simple_fields_for :event_customer_participant_insurance, insurance do |i_form|
+                  = i_form.association :insurance, collection: current_store.insurances, input_html: { class: 'selectpicker span12', id: 'insurance_select' }
+                  .uniformjs
+                    %label
+                      = i_form.check_box :free
+                      = t('event_customer_participants.form.free_insurance')
+              .span2
+                = f.input :nitrox, collection: (0..parent.number_of_dives), input_html: { class: 'selectpicker span12' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('event_customer_participants.form.pickups')
+                %p.muted= t('event_customer_participants.form.pickups_text')
+              .span9
+                = f.simple_fields_for :event_customer_participant_transports do |form|
+                  = render 'event_customer_participant_transport_fields', f: form
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('event_customer_participants.form.additionals')
+                %p.muted= t('event_customer_participants.form.additionals_text')
+              = f.simple_fields_for :event_customer_participant_additionals do |form|
+                - if current_store.additionals[form.object_name.gsub(/[^0-9]+/,'').to_i]
+                  .span2.additionals
+                    = form.hidden_field :additional_id, value: current_store.additionals[form.object_name.gsub(/[^0-9]+/,'').to_i][:id]
+                    %label= current_store.additionals[form.object_name.gsub(/[^0-9]+/,'').to_i][:name]
+                    :ruby
+                      number_of_days = ['No'] + (1..resource.event.distance_in_days).entries.map{|u| [pluralize(u, 'day'), u]}
+                    = form.select :number_of_days, number_of_days, {}, { class: 'selectpicker span12' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t '.note'
+              .span9
+                = f.input :note, input_html: { rows: '2', style: 'width:98%;'  }
+      .span3
+        .widget
+          = render 'event_customer_participants/price_breakdown'
+        .buttons
+          %button.btn.btn-primary.btn-large.btn-icon.glyphicons.ok_2.span12{ type: :submit }
+            %i
+            = t('event_customer_participants.form.add_customer')
+        .clearfix
+
+= render 'overlays/event_customer_participants/add_customer'

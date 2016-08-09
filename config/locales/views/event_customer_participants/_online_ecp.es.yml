@@ -1,0 +1,5 @@
+es:
+  event_customer_participants:
+    online_ecp:
+      approve: 'Aprobar'
+      reject: 'Rechazar'

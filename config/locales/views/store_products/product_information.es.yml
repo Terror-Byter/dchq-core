@@ -1,0 +1,8 @@
+es:
+  store_products:
+    product_information:
+      product_info: Información del Producto
+      product_info_text: Ingrese la marca, categoría y proveedor de este producto.
+      add_new_brand: Agregar marca nueva
+      add_new_category: Agregar nueva categoría
+      add_new_supplier: Agregar nuevo proveedor

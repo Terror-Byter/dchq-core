@@ -1,0 +1,14 @@
+en:
+  overlays:
+    services:
+      service_complete:
+        header: 'Mark Service as Complete'
+        content1: 'By marking this job as complete, an invoice will be generated for this customer.'
+        content2: "If you've setup a payment gateway, the customer will be given the option to pay for the service online."
+        send_invoice_via_email: 'SEND INVOICE VIA EMAIL TO CUSTOMER'
+        complete_service: 'Complete Service & Raise Invoice'
+        add_to_existing_sale: Complete Service & Add to Existing Sale
+        add_to_new_sale: Add to New Sale
+        p: Mark this sale as complete and add to new sale.
+        add_to_exist_sale: Add to Existing Sale
+        p_1: Mark this sale as complete and add to an existing sale.

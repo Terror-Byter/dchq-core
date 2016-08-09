@@ -1,0 +1,10 @@
+es:
+  sales:
+    sale_customer:
+      tel: 'Tel:'
+      email: 'Correo-e:'
+      phone: 'Teléfono:'
+      mark_customer: '[cliente]'
+      mark_merchant: '[comerciante]'
+      tax_id: 'ID de Impuesto:'
+

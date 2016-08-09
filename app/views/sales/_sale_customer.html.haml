@@ -1,0 +1,31 @@
+%table.table.table-invoice
+  %tbody
+    %tr
+      %td{:style => 'width: 50%; border-right: 1px solid #e5e5e5;'}
+        %h4
+          = customer.full_name
+          %span= t('sales.sale_customer.mark_customer')
+        %address.margin-none
+          = customer.full_address
+          %br/
+          = t('sales.sale_customer.tel')
+          = til customer.telephone
+          %br/
+          = t('sales.sale_customer.email')
+          = til customer.email
+          - unless customer.tax_id.blank?
+            %br/
+            = t('sales.sale_customer.tax_id')
+            = til customer.tax_id
+      %td.right
+        %h4
+          = sale.store_name
+          %span= t('sales.sale_customer.mark_merchant')
+        %address.margin-none
+          = sale.company_address
+          %br/
+          = t('sales.sale_customer.tel')
+          = til sale.company_telephone
+          %br/
+          = t('sales.sale_customer.email')
+          = til sale.company_email

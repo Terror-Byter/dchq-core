@@ -1,0 +1,14 @@
+en:
+  overlays:
+    settings:
+      email_variables_popup:
+        header: 'Email Variables'
+        content: 'The following variables are available to use in the custom email content.'
+        curtomer_full_name: "Customer's Full Name:"
+        customer_name: '%CUSTOMER_NAME%'
+        name_of_event: 'Name of Event:'
+        event_name: '%EVENT_NAME%'
+        date_of_event: 'Date and Time of Event:'
+        event_date: '%EVENT_DATE%'
+        total_cost_of_sale: 'Total Cost of Sale:'
+        sales_total: '%SALES_TOTAL%'

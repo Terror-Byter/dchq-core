@@ -1,0 +1,19 @@
+#new-purchase-order.modal.hide.fade
+  .modal-header
+    %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
+    %h3= t('purchase_orders.common.new_purchase_order')
+  = form_tag purchase_orders_path, method: :post do
+    .modal-body{style: 'overflow-y:visible;'}
+      %p= t('.select_supplier_and_location')
+      %hr/
+      .row-fluid
+        .span6
+          %label= t('.supplier')
+          = suppliers_select
+        .span6
+          %label= t('.delivery_location')
+          = delivery_locations_select
+    .modal-footer
+      %button.btn.btn-default{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'}
+        = t('views.actions.cancel')
+      = submit_tag t('purchase_orders.common.create_purchase_order'), class: 'btn btn-primary'

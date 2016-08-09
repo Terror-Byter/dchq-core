@@ -1,0 +1,10 @@
+#export-all.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('.header')
+
+  .modal-body
+    %p= t('.content')
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}= t('views.actions.cancel')
+    = link_to t('.export_data'), export_products_path, class: 'btn btn-primary', method: :post

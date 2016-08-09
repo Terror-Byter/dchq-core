@@ -1,0 +1,7 @@
+- if resource.decorate.no_sales?
+  = t('customers.show.no_sales')
+- else
+  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+    = render 'sales/table_headers'
+    %tbody
+      = render partial: 'sales/short_sale', collection: resource.decorate.sales

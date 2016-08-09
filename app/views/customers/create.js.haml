@@ -1,0 +1,10 @@
+- if resource.new_record?
+  alert("#{j(resource.errors.full_messages * ', ')}")
+- else
+  - if resource.booked
+    $('#booking-add-customer-modal form input[type="email"], #booking-add-customer-modal form input[type="text"]').val('')
+    $('#booking-add-customer-modal').modal('hide')
+    $('#customer_email').val("#{resource.email}")
+  - else
+    $('#quick-add-customer-modal').modal('hide')
+    $('#event_customer_participant_id_').append("<option value='#{resource.id}'>#{resource.full_name}</option>").select2('val', $('#event_customer_participant_id_').val().concat("#{resource.id}")).trigger('change')

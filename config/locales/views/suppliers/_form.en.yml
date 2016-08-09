@@ -1,0 +1,10 @@
+en:
+  suppliers:
+    form:
+      supplier_details: 'Supplier Details'
+      address: 'Address'
+      supplier_information: 'Supplier Information'
+      supplier_information_text: 'Enter the suppliers name and logo.'
+      upload_logo: 'Upload Logo'
+      contact_details: 'Contact Details'
+      contact_details_text: 'Enter the email address and phone numbers for this customer.'

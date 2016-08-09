@@ -1,0 +1,37 @@
+= content_for :js do
+  = javascript_include_tag :store_settings
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.stores.home')
+  %li.divider
+  %li= link_to t('settings.stores.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.stores.settings_shop_locations')
+= simple_nested_form_for resource, url: update_stores_settings_path,
+                                     html: {method: :put}, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    %p
+      = t('settings.stores.content')
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.globe
+          %i>
+          = t('settings.stores.locations')
+      .widget-body
+        = f.simple_fields_for :stores, current_company.stores.order('created_at DESC') do |build|
+          = render 'application/store_fields', f: build
+        = f.link_to_add :stores, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+          %i
+          = t('settings.stores.add_location')
+
+      .heading-buttons
+        .buttons.pull-right{style: 'margin: 0;'}
+          %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+            %i
+            = t('views.actions.save')

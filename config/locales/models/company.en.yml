@@ -1,0 +1,6 @@
+en:
+  models:
+    company:
+      email_is_fake: Your email address is fake
+      should_be_uniq: should be unique
+      should_be_present: should be present

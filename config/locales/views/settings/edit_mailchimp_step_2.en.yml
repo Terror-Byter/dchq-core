@@ -1,0 +1,9 @@
+en:
+  settings:
+    edit_mailchimp_step_2:
+      home: 'Home'
+      settings: 'Settings'
+      settings_integrations: 'Settings: 3rd Party Integrations'
+      mailchimp_integration: 'MailChimp Integration: Step 2'
+      lists: 'Lists'
+      notice: 'Mailchimp lists have been updated successfully'

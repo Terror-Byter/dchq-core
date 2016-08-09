@@ -1,0 +1,7 @@
+es:
+  overlays:
+    sales:
+      email_popup:
+        header: 'Enviar Recibo por Correo-e'
+        content: 'Ingrese una Direcció de Correo-e Válida'
+        send: 'Enviar Recibo por Correo-e'

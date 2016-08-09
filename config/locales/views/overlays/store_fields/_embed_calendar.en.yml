@@ -1,0 +1,7 @@
+en:
+  overlays:
+    store_fields:
+      embed_calendar:
+        head: 'Embed Calendar Code'
+        content: 'To embed a bookable calendar into your website, copy and paste the following code into your site code.'
+        done: "I'm done!"

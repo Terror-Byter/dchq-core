@@ -1,0 +1,22 @@
+{
+  "name": "Dive Centre HQ",
+  "description": "Open source Point of Sale ",
+  "repository": "https://github.com/dchq/dchq-core",
+  "keywords": ["ruby", "point of sale", "event management"],
+  "website": "http://www.divecentrehq.com",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:schema:load db:migrate db:seed"
+  },
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "RAILS_ENV": "production"
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "mailgun:starter"
+  ]
+}

@@ -1,0 +1,4 @@
+es:
+  models:
+    payment:
+      cant_use_gift_card: "No se puede utilizar esta tarjeta de regalo"

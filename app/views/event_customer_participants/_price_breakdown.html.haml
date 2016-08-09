@@ -1,0 +1,39 @@
+.widget-head
+  %h4.heading.glyphicons.coins
+    %i>
+    = t('event_customer_participants.form.price_breakdown')
+.widget-body.list
+  %ul
+    - if @event_customer_participant.event.is_a?(CourseEvent)
+      %li
+        = t('event_customer_participants.form.course')
+        %span.count#event_course_price
+          = formatted_currency(@event_customer_participant.event_unit_price)
+      %li
+        = t('event_customer_participants.form.material')
+        %span.count#event_material_price
+          = formatted_currency(@event_customer_participant.event_material_price)
+    - else
+      %li
+        = t('event_customer_participants.form.event')
+        %span.count#event_text_price= formatted_currency(@event_customer_participant.event_unit_price)
+    %li
+      = t('event_customer_participants.form.kit_hire')
+      %span.count#kit_hire #{formatted_currency(@event_customer_participant.kit_hire_price)}
+    %li
+      = t('event_customer_participants.form.insurance')
+      %span.count#insurance #{formatted_currency(@event_customer_participant.insurance_price)}
+    %li
+      = t('event_customer_participants.form.pickups')
+      %span.count#transport #{formatted_currency(@event_customer_participant.transports_price)}
+    %li
+      = t('event_customer_participants.form.additionals')
+      %span.count#additionals #{formatted_currency(@event_customer_participant.additionals_price)}
+    %li
+      = t('event_customer_participants.form.discount')
+      %span.count#discount= @event_customer_participant.new_record? ? 0 : @event_customer_participant.show_discount
+    %li
+    %li
+      %strong= t('event_customer_participants.form.total')
+      %span.count#total_price #{formatted_currency(@event_customer_participant.new_record? ? @event_customer_participant.event_unit_price + @event_customer_participant.event_material_price : @event_customer_participant.grand_total_price_with_default_discount)}
+

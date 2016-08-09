@@ -1,0 +1,28 @@
+:ruby
+  payment_methods = current_store.payment_methods.map{|pm| [pm.name, pm.id]}
+  payment_methods = payment_methods.find_all{|u| u.first != 'Credit Note'}
+
+#add-payment-modal.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.sales.add_payment_modal.header')
+  = f.fields_for :payments, @sale.payments.build do |build|
+    = build.hidden_field :cashier_id, value: current_user.id
+    = build.hidden_field :customer_id
+    .modal-body.center{:style => 'overflow:visible;'}
+      - if ( !@sale.sale_products.blank? || !@sale.event_customer_participants.blank? ) && @customer.has_credit_note?
+        .alert.alert-success{ style: "margin-bottom: 15px;" }
+          = t('.credit_note', price: formatted_currency(@customer.credit_note))
+          = link_to t('.apply_credit_note'), get_credit_note_customer_path(@customer, sale_id: @sale.id), remote: true, confirm: 'Are you sure?', style: "color: #fff; text-decoration: underline;"
+
+      - unless @sale.complete_refund?
+        %h4
+          #{t('.amount_due')}: #{ formatted_currency(@sale.change_amount.abs) }
+      %p{:style => 'margin-top:10px;'}= t('overlays.sales.add_payment_modal.content')
+      = build.text_field :amount, value: nil, placeholder: t('.please_enter_amount')
+      %br/
+      = build.select :payment_method_id, payment_methods, {}, { class: 'selectpicker' }
+      = build.hidden_field :amount_for_search
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      %button.btn.btn-primary{ type: :submit }= t('overlays.sales.add_payment_modal.add_payment')

@@ -1,0 +1,8 @@
+es:
+  categories:
+    index:
+      home: 'Inicio'
+      sales: 'Ventas'
+      categories: 'Categorías'
+      new_category: 'Nueva Categoría'
+      total_categories: 'Total de categorías:'

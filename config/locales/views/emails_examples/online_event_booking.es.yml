@@ -1,0 +1,15 @@
+es:
+  emails_examples:
+    online_event_booking:
+      hello: 'Hola %{name}'
+      thanks_for_booking: 'Gracias por su reservación'
+      with: 'con'
+      booking_details_below: 'Sus datos de reservación están debajo. Esta es una pre-reservación, ya que sus credenciales de buceo necesitan ser verificadas para confirmar su eligibilidad para participar.'
+      event: 'EVENTO'
+      unit_price: 'PRECIO UNITARIO'
+      qty: 'CANT'
+      sub_total: 'SUB-TOTAL'
+      sub_tot: 'Sub Total:'
+      tax_inc: 'Inc Imp:'
+      net_due: 'NETO DEBIDO:'
+      payments: 'Pagos:'

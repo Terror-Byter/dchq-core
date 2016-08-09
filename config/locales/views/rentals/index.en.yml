@@ -1,0 +1,22 @@
+en:
+  rentals:
+    index:
+      home: Home
+      rentals: Rentals
+      create_rental: Create Rental
+      pre_rental: Pre-Rental
+      booked: Booked
+      in_progress: In Progress
+      pos_rental: Post-Rental
+      overdue: Overdue
+      complete: Complete
+      id: ID
+      kit: Kit
+      customer: Customer
+      pickup_date: Pickup Date
+      return_date: Return Date
+      to_pay: To Pay
+      status: Status
+      total: Total Rentals
+      no_rentals: "No rentals listed"
+      pay_pending: Payment Pending

@@ -1,0 +1,787 @@
+en:
+  time:
+    formats:
+      default: '%d %b, %Y %I:%M%P'
+      full_month: '%B'
+      datepicker_default: "dd-mm-yyyy hh:ii"
+      datepicker_default_datejs: 'dd-MM-yyyy HH:mm'
+      event_format: '%d-%m-%Y %H:%M'
+      only_time: "%I:%M%P"
+  date:
+    formats:
+      default: '%d %b, %Y'
+      full_month: '%B'
+      date_only: '%d-%m-%Y'
+      datepicker_date: 'dd-mm-yyyy'
+      birthday: '%d-%m-%Y'
+    day_names: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    abbr_day_names: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    month_names: [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    abbr_month_names: [nil, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    order:
+      - :day
+      - :month
+      - :year
+  activerecord:
+    models:
+      address:
+        one: Address
+        other: Addresses
+      admin_user:
+        one: Admin User
+        other: Admin Users
+      attachment:
+        one: Attachment
+        other: Attachments
+      brand:
+        one: Brand
+        other: Brands
+      business_contact:
+        one: Supplier
+        other: Suppliers
+      category:
+        one: Category
+        other: Categories
+      certification_agency:
+        one: Certification Agency
+        other: Certification Agencies
+      certification_level:
+        one: Certification Level
+        other: Certification Levels
+      certification_level_cost:
+        one: Certification Level Cost
+        other: Certification Level Costs
+      certification_level_membership:
+        one: Certification Level Membership
+        other: Certification Level Memberships
+      commission_rate:
+        one: Commission Rate
+        other: Commission Rates
+      currency:
+        one: Currency
+        other: Currencies
+      customer:
+        one: Customer
+        other: Customers
+      customer_experience_level:
+        one: Customer Experience Level
+        other: Customer Experience Levels
+      customer_source:
+        one: Customer Source
+        other: Customer Sources
+      course_event:
+        one: Course Event
+        other: Course Events
+      discount:
+        one: Discount
+        other: Discounts
+      company:
+        one: Company
+        other: Companies
+      store:
+        one: Store
+        other: Stores
+      stores/boat:
+        one: Boat
+        other: Boats
+      stores/custom_field:
+        one: Custom Field
+        other: Custom Fields
+      stores/event_tariff:
+        one: Event Tariff
+        other: Event Tariffs
+      stores/email_setting:
+        one: Email Setting
+        other: Email Settings
+      diver_type:
+        one: Diver Type
+        other: Diver Types
+      event:
+        one: Event
+        other: Events
+      event_customer_participant:
+        one: Customer Event Participant
+        other: Customer Event Participants
+      event_customer_participant_additional:
+        one: Customer Event Participant Additional
+        other: Customer Event Participant Additionals
+      event_customer_participant_insurance:
+        one: Customer Event Participant Insurance
+        other: Customer Event Participant Insurances
+      event_customer_participant_kit_hire:
+        one: Customer Event Participant Kit Hire
+        other: Customer Event Participant Kit Hires
+      event_customer_participant_transport:
+        one: Customer Event Participant Transport
+        other: Customer Event Participant Transports
+      event_trip:
+        one: "Event Trip"
+        other: "Event Trips"
+      event_type:
+        one: "Event Type"
+        other: "Event Types"
+      event_user_participant:
+        one: "Event User Participant"
+        other: "Event User Participants"
+      frequency:
+        one: "Frequency"
+        other: "Frequencies"
+      gift_card:
+        one: "Gift Card"
+        other: "Gift Cards"
+      gift_card_type:
+        one: "Gift Card Type"
+        other: "Gift Card Types"
+      image:
+        one: "Image"
+        other: "Images"
+      incident:
+        one: "Incident"
+        other: "Incidents"
+      note:
+        one: "Note"
+        other: "Notes"
+      other_event:
+        one: 'Other Event'
+        other: 'Other Events'
+      payment:
+        one: "Payment"
+        other: "Payments"
+      payment_credential:
+        one: "Payment Credential"
+        other: "Payment Credentials"
+      payment_method:
+        one: "Payment Method"
+        other: "Payment Methods"
+      product:
+        one: "Product"
+        other: "Products"
+      rental:
+        one: Rental
+        other: Retals
+      rental_product:
+        one: 'Rental Product'
+        other: 'Rental Products'
+      role:
+        one: "Role"
+        other: "Roles"
+      sale:
+        one: "Sale"
+        other: "Sales"
+      sale_customer:
+        one: "Sale Customer"
+        other: "Sale Customers"
+      sale_product:
+        one: "Sale Product"
+        other: "Sale Products"
+      services/service_kit:
+        one: "Service Kit"
+        other: "Service Kits"
+      smart_list:
+        one: Smart List
+        other: Smart Lists
+      smart_list_condition:
+        one: Smart List Condition
+        other: Smart List Conditions
+      store_product:
+        one: Store Product
+        other: Store Products
+      supplier:
+        one: "Supplier"
+        other: "Suppliers"
+      staff_member:
+        one: 'Staff Member'
+        other: 'Staff Members'
+      tax_rate:
+        one: "Tax Rate"
+        other: "Tax Rates"
+      services/service_item:
+        one: "Service Item"
+        other: "Service Items"
+      services/service_kit:
+        one: "Service Kit"
+        other: "Service Kits"
+      services/service_note:
+        one: "Service Note"
+        other: "Service Notes"
+      services/time_interval:
+        one: "Time Interval"
+        other: "Time Intervals"
+      services/type_of_service:
+        one: "Service Type"
+        other: "Service Types"
+      service:
+        one: "Service"
+        other: "Services"
+      user:
+        one: "User"
+        other: "Users"
+    attributes:
+      active_admin_comment:
+        resource_id: "Resource ID"
+        resource_type: "Resource Type"
+        author_id: "Author ID"
+        body: "Body"
+        created_at: "Created At"
+        updated_at: "Updated At"
+        namespace: "Namespace"
+      address:
+        first: "Address 1"
+        second: "Address 2"
+        city: "City"
+        state: "State"
+        country_code: "Country"
+        post_code: "Post Code"
+      brand:
+        name: "Brand Name"
+        description: "Description"
+      business_contact:
+        supplier_id: "Business Association"
+        given_name: "First Name"
+        family_name: "Last Name"
+        email: "Email"
+        telephone: "Phone"
+        position: "Position"
+        primary: "Primary Contact"
+        tag_list: "Tags"
+      category:
+        name: "Category Name"
+        description: "Description"
+      certification_agency:
+        name: "Name"
+      certification_level_cost:
+        cost: "Course Price"
+        tax_rate_id: "Tax Rate"
+        material_price: "Materials Price"
+        material_price_tax_rate_id: "Tax Rate"
+        commission_rate_money: "Commission"
+      certification_level_membership:
+        certification_agency_id: "Certification Agency"
+        certification_level_id: "Certification Level"
+        membership_number: "Cert ID"
+        certification_date: "Certification Date"
+        primary: "Primary"
+      certification_level:
+        certification_agency_id: "Certification Agency"
+        add_another: "Add another certification"
+        store_id: "Store"
+        name: "Course Name"
+      commission_rate:
+        default: "Default (%)"
+        additional_commission_rate: "Additional Commission Rate (%)"
+        commission_rate_money: "Commission Rate"
+      customer_experience_level:
+        name: "Name"
+      customer_source:
+        name: "Name"
+        store_id: "Store ID"
+      customer:
+        customer_experience_level_id: "Experience Level"
+        given_name: "First Name"
+        family_name: "Last Name"
+        born_on: "Date of Birth"
+        default_discount_level: "Discount %"
+        source: "Source"
+        tag_list: "Tags"
+        telephone: "Phone"
+        mobile_phone: "Mobile"
+        email: "Email Address"
+        last_dive_on: "Last Dive"
+        number_of_logged_dives: "Logged Dives"
+        fins: "Fins"
+        bcd: "BCD"
+        wetsuit: "Wetsuit"
+        hotel_name: "Hotel Name"
+        room_number: "Room Number"
+        gender: "Gender"
+        credit_note: "Credit Note"
+        genders:
+          male: "Male"
+          female: "Female"
+        emergency_contact_details: "Emergency Contact Details"
+        weight: "Weight"
+        mask_own: "Mask"
+        regulator_own: "Regulator"
+        fins_own: "Fins Owner"
+        bcd_own: "BCD Owner"
+        wetsuit_own: "Wetsuit Owner"
+        custom_fields: "Custom Fields"
+        notes: "Customer Notes"
+        send_event_related_emails: "Send Event Related Emails"
+        tax_id: 'Tax ID'
+        zero_tax_rate: 'Zero Rate Tax'
+      course_event:
+        certification_level_id: Course
+        price: Course Price
+      discount:
+        value: "Value"
+        kind: "Discount Type"
+      company:
+        name: "Store Name"
+        telephone: "Store Phone Number"
+        email: "Store Email Address"
+        primary_contact_id: "Primary Contact"
+        website_url: "Website"
+        api_key: "API Key"
+        referral_code: 'Referral Code (to share)'
+        invite_code: 'Invite Code'
+        currency_for_store: Currency
+        tax_id: Tax ID
+      store:
+        name: "Store Name"
+        time_zone: "Time Zone"
+        currency_id: "Currency"
+        public_key: "Public Key"
+        api_key: "Store API Key"
+        location: "Location"
+        printer_type: "Printer Type"
+        calendar_type: "Default Calendar"
+        barcode_printing_type: "Barcode Printing"
+        tax_rate_inclusion: 'Tax Options'
+        standart_term: 'Terms'
+        tsp_url: Local IP Address
+        standart_rental_term: Term
+        invoice_title: Custom Invoice Title
+        receipt_title: Custom Receipt Title
+        calendar_header: Calendar Header
+        calendar_footer: Calendar Footer
+        initial_receipt_number: Initial Receipt Number
+      stores/boat:
+        name: "Boat Name"
+        color: "Calendar Color"
+        store_id: "Store"
+      stores/custom_field:
+        name: "Field Name"
+        value: "Value"
+        customer_id: "Customer"
+      stores/event_tariff:
+        name: "Tariff Name"
+        min: "Min # of Events"
+        max: "Max # of Events"
+        percentage: "Discount (%)"
+      stores/email_setting:
+        store_id: "Store"
+        booking_confirmed_content: "Your additional content"
+        include_sale_receipt_to_booking_confirmed: "Include sales receipt"
+        disable_booking_confirmed_email: "Disable email"
+        event_reminder_content: "Your additional content"
+        time_to_send_event_reminder: "Time to send email:"
+        include_sale_receipt_to_event_reminder: "Include sales receipt"
+        disable_event_reminder_email: "Disable email"
+        online_event_booking_content: "Your additional content"
+        include_sale_receipt_to_online_event_booking: "Include sales receipt"
+        disable_online_event_booking_email: "Disable email"
+        sales_receipt_content: "Your additional content"
+        disable_sales_receipt_email: "Disable email"
+        service_ready_for_collection_content: "Your additional content"
+        include_sales_receipt_to_service_ready_for_collection: "Include sales receipt"
+        disable_service_ready_for_collection_email: "Disable email"
+        disable_low_inventory_product_reminder_email: "Disable low inventory reminder email"
+      diver_type:
+        name: "Name"
+      stores/email_setting:
+        rental_receipt_content: Rental Receipt Content
+      event_customer_participant_insurance:
+        insurance_id: "Insurance"
+      event_customer_participant_kit_hire:
+        kit_hire_id: "Kit Hire"
+      event_customer_participant:
+        customer_id: "Customer"
+        event_user_participant: "Assigned Staff"
+        nitrox: 'Nitrox'
+        note: Note
+        group_name: Group Name
+        quantity: Number in Group
+        contact_information: Contact Information
+      event_trip:
+        name: "Trip Name"
+        cost: "Trip Price"
+        tax_rate_id: "Tax Rate"
+        commission_rate_money: "Commission"
+        local_cost: "Local price"
+      event_type:
+        name: "Name"
+      event_user_participant:
+        user_id: "Available Staff Members"
+        role: "Role"
+        include_to_recuring_events: "Add staff member to all future recurring events in this set"
+      event:
+        name: "Event Name"
+        event_type_id: "Event Type"
+        certification_agency_id: "Certification Agency"
+        event_trip_id: "Trip"
+        starts_at: "Start Date / Time"
+        ends_at: "Ends Date / Time"
+        frequency: "Frequency"
+        location: "Location(s)"
+        additional_equipment: "Additional Information"
+        notes: "Event Notes (for internal use)"
+        price: "Event Price"
+        private: "Online Event Visibility"
+        instructions: "Instructions For The Customer (sent via email prior to event)"
+        enable_booking: "Online Bookings"
+        limit_of_registrations: "Max. # of Participants"
+        boat_id: "Boat"
+        include_material_price: "Include Material Price"
+        number_of_frequencies: "Number Of Recurring"
+        number_of_dives: "Dives"
+      frequency:
+        one: "One-off"
+        daily: "Daily Recurring"
+        every_other_day: 'Every Other Day'
+        weekly: "Weekly Recurring"
+        fortnightly: "Fortnightly"
+        monthly: "Monthly Recurring"
+        yearly: "Yearly Recurring"
+      gift_card:
+        gift_card_type_id: "Gift Card Type ID"
+        uniq_id: "Uniq ID"
+        status: "Status"
+        available_balance: "Available Balance"
+      gift_card_type:
+        company_id: "Company ID"
+        valid_for: "Valid For"
+        value: "Value"
+        uniq_id: "Uniq ID"
+      image:
+        image: "Image"
+      payment_credential:
+        paypal_login: "PayPal API Login"
+        paypal_password: "PayPal API Password"
+        paypal_signature: "PayPal API Signature"
+        stripe_secret_key: "Stripe Secret Key"
+        stripe_publishable_key: "Stripe Publishable Key"
+        epay_merchant_number: "Epay Merchant Number"
+        epay_password: "Epay Password"
+        epay_currency: "Epay Currency"
+      payment_method:
+        store_id: "Store"
+        name: "Name"
+        default: "Default"
+        additional_payment_method: "Additional Payment Method"
+      payment:
+        sale_id: "Sale"
+        cashier_id: "Cashier"
+        payment_method_id: "Payment Method"
+        amount: "Amount"
+      product:
+        name: "Name"
+        sku_code: "SKU"
+        number_in_stock: "Current Stock Level"
+        description: "Description"
+        brand_id: "Brand"
+        supplier_id: "Supplier"
+        category_id: "Category"
+        accounting_code: "Accounting Code"
+        supplier_code: "Supplier Code"
+        supply_price: "Supply Price"
+        markup: "Markup"
+        tax_rate_id: "Tax Rate"
+        retail_price: "Retail Price"
+        offer_price: "Offer Price"
+        barcode: "Barcode"
+        store_id: "Store"
+        commission_rate_id: "Commission Rate"
+        commission_rate_money: "Commission Rate Money"
+        deleted_at: "Deleted At"
+        company_id: "Company"
+        image: "Image"
+        low_inventory_reminder: "Low Inventory Reminder"
+        archived: Archived
+      rental:
+        store_id: Store
+        user_id: User
+        customer_id: Customer
+        pickup_date: Pickup Date
+        return_date: Return Date
+      rental_product:
+        name: "Name"
+        sku_code: "SKU"
+        number_in_stock: "Current Stock Level"
+        description: "Description"
+        brand_id: "Brand"
+        supplier_id: "Supplier"
+        category_id: "Category"
+        accounting_code: "Accounting Code"
+        supplier_code: "Supplier Code"
+        supply_price: "Supply Price"
+        tax_rate_id: "Tax Rate"
+        barcode: "Barcode"
+        store_id: "Store"
+        commission_rate_id: Commission Rate
+        commission_rate_money: Commission Rate Money
+        deleted_at: Deleted At
+        image: Image
+        price_per_day: Price per day
+        archived: Archived
+        low_inventory_reminder: Low Inventory Reminder
+        markup: Markup
+      user:
+        email: "Email Address"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        role: "User Level"
+        time_zone: "Timezone"
+        api_key: 'User API Key'
+        given_name: First Name
+        family_name: Last Name
+        alternative_email: Alternative Email Address
+        telephone: Phone
+        tag_list: Tags
+        emergency_contact_details: Emergency Contact Details
+        contracted_hours: Contracted Hours
+        start_date: Start Date
+        end_date: End Date
+        mailchimp_api_key: MailChimp API Key
+        mailchimp_list_id_for_customer: Customer List
+        mailchimp_list_id_for_business_contact: Business Contacts
+        mailchimp_list_id_for_staff_member: Staff Members
+        locale: Locale
+        sale_target: Monthly Sales Target
+        sale_target_show_dashboard: Show target on dashboard
+      sale_product:
+        sale_id: "Sale"
+        product_id: "Product"
+        quantity: "Quantity"
+      sale:
+        store_id: "Store"
+        creator_id: "Creator"
+        name: "Sale Name"
+        status: "Sale Status"
+        grand_total: "Grand Total"
+        change: "Change"
+      services/service_item:
+        service_id: "Service"
+        product_id: "Product"
+      services/service_kit:
+       store_id: "Store"
+       name: "Name"
+       stock_level: "Stock Level"
+       supply_price: "Supply Price"
+       retail_price: "Retail Price"
+       offer_price: "Offer Price"
+       type_of_service_id: "Service Type"
+       tax_rate_id: "Tax Rate"
+      services/time_interval:
+        service_id: "Service"
+        user_id: "Technician"
+      services/type_of_service:
+        store_id: "Store"
+        name: "Name"
+        labour: "Labour (hours)"
+        labour_price: "Labour Price (per hour)"
+        price_of_service_kit: "Service Kit Price"
+        tax_rate_id: "Tax Rate"
+      service:
+        status: "Status"
+        barcode: "Barcode"
+        store_id: "Store"
+        sale_id: "Sale List"
+        type_of_service_id: "Service Type"
+        kit: "Kit Being Serviced"
+        serial_number: "Serial Number"
+        customer_id: "Customer"
+        user_id: "Technician"
+        collection_date: "Collection Date"
+        tag_list: "Tags"
+        complimentary_service: "Complimentary Service"
+      supplier:
+        name: "Business Name"
+        email: "Email Address"
+        telephone: "Phone"
+        tag_list: "Tags"
+      store_product:
+        name: "Name"
+        sku_code: "SKU"
+        number_in_stock: "Current Stock Level"
+        description: "Description"
+        brand_id: "Brand"
+        supplier_id: "Supplier"
+        category_id: "Category"
+        accounting_code: "Accounting Code"
+        supplier_code: "Supplier Code"
+        supply_price: "Supply Price"
+        markup: "Markup"
+        tax_rate_id: "Tax Rate"
+        retail_price: "Retail Price"
+        offer_price: "Offer Price"
+        barcode: "Barcode"
+        store_id: "Store"
+        commission_rate_id: "Commission Rate"
+        commission_rate_money: "Commission Rate"
+        deleted_at: "Deleted At"
+        company_id: "Company"
+        image: "Image"
+        low_inventory_reminder: "Low Inventory Reminder"
+        price_per_day: Price per day
+      tag:
+        name: "Tag Name"
+      tax_rate:
+        amount: "Amount"
+        default: "Default (%)"
+        additional_tax_rate: "Additional Tax Rate (%)"
+        identifier: 'Tax Rate Identifier'
+      incident:
+        description: "Incident Information"
+      note:
+        description: "Note Content"
+
+    modules:
+      extra_event:
+        name: "Name"
+        cost: "Price to Customer"
+        tax_rate_id: "Tax Rate"
+        type: "Type"
+        time: "Time"
+        information: "Pickup Information"
+  controllers:
+    application:
+      check_available_shops: "You have no access to any shops"
+    has_beed_added: "has been added successfully"
+    has_beed_removed: "has been removed successfully"
+    sync_failed: "Sync failed. %{message} for resource with ID = %{id} "
+    customer_sync_ok: "Customer sync with mailchimp successful"
+    sale_id: "Sale ID"
+    store: "Store"
+    email_send: "Email sent successfully"
+    store_changed: "Store has been changed"
+    no_access: "Store doesn't exist or you have no access to this shop"
+    image_deleted: "Image has been deleted"
+    image_not_deleted: "There was an error deleting this image"
+    check_access: "You do not have access to this page"
+    all_sales: "All Sales"
+    event_registration: "Event Registrations"
+    new_customer: "New Customers"
+    sale_customer: "Sales / Customers"
+    receipt_send: "Receipt successfully sent via email"
+    receipt_not_send: "There was a error sending the receipt via email"
+    incorrect_file_type: "Incorrect file type"
+    you_have_errors: "You have errors"
+    on_line: "on line"
+    printer_options_updated: "Printer options have been updated"
+    mailchimp_updated: "Mailchimp lists have been updated successfully"
+    api_key_updated: "API Key has been updated successfully"
+    additional_list_updated: "Additional list has been updated"
+    trips: "Trips list has been updated"
+    certification_level: "Certification levels added successfully"
+    staff_member_updated: "Staff member has been added successfully"
+    staff_sync_ok: "Staff sync with mailchimp was successful"
+    business_sync_ok: "Supplier sync with mailchimp was successful"
+    event_approve: "Customer has been approved and email confirmation sent"
+    update_stores: "Additional shop location successfully updated."
+    your_have_no_persmisions: "Your can't edit this gift card"
+    disable_sold_gift_cards: "Gift Card has been disabled"
+    enable_sold_gift_cards: "Gift Card has been enabled"
+    event_has_been_cancelled: "Event has been cancelled"
+    customer_has_been_rejected: "Customer has been rejected from event and refunded. An email notification has been sent."
+    this_event_cancelled: "This event has been cancelled"
+    event_cancelled: "Event already cancelled"
+    event_available: "Event not available"
+    servicing_success: "Service settings have been saved successfully"
+    boats_success: "Boat settings have been saved successfully"
+    cant_edit_service: "You can't edit this service"
+    check_service_settings: "Please setup your service settings before booking in your first service"
+    you_have_to_choose_agency: "You have to choose agency"
+    customer_added_to_event: "Customer added to event successfully"
+    you_cant_remove_resource: "You can't remove resource"
+    export_flash: "Exporting of %{type} is currently running. You'll receive an email once complete."
+    stores:
+      till_updated_successfully: "Till updated successfully"
+      open_successfully: "Store opened successfully."
+      close_successfully: "Store closed successfully"
+    events:
+      no_resource: "No Resource was selected"
+      incorrect_date: "You using incorrect date"
+      incorrect_start_date: "Start Date can't be greater than End Date"
+      cant_remove_event: "You cannot remove this event"
+    event_customer_participants:
+      all_good: "Event Customer Participants saved successfully"
+    pages:
+      index:
+        sales: "Sales"
+        event: "Event Registrations"
+        customers: "New Customers"
+        avg_sale: "Avg. Sale/Customer"
+        services: "Services Completed"
+    settings:
+      no_access: 'You have no access to these methods'
+      clear_data_success: "%{data} have been cleaned successfully"
+  helpers:
+    application:
+      edit: "Edit"
+      print: "Print"
+      actions: "Actions"
+      issue_refund: "Issue Refund"
+      finalize_sale: "Finalize Sale"
+      day: "day"
+      own: "Own Kit"
+      rent: "Rental"
+      item: 'item'
+    customers:
+      loading: "loading 10 more records..."
+    services:
+      mark_as_complete: "Mark Service As Complete"
+      pay_for_service: "Pay for Servicing"
+  mailer:
+    company_mailer:
+      welcome_subject: "Welcome to Dive Centre HQ"
+      event_cancelled_no_payments_subject: "CANCELLED Event: %{event}"
+      event_participant_removed_subject: "REMOVED from Event: %{event}"
+    store_mailer:
+      remind_product_subject: "The following products have triggered a low-inventory reminder"
+    sale_mailer:
+      subject: "Receipt # %{id}"
+    service_mailer:
+     note_added_subject: "Servicing Update for %{kit} (%{serial})"
+     service_collection_subject: "Kit servicing complete and ready for collection"
+  models:
+    tax_rate:
+      cannot_remove_tax_rate: "You can't remove tax rate which associated with products"
+  js:
+    charts:
+      target: Target
+      actual: Actual
+      revenue: Revenue
+  views:
+    actions:
+      confirm: 'Are you sure?'
+      remove: 'Remove'
+      cancel: 'Cancel'
+      change: 'Change'
+      save: 'Save'
+      select_file: 'Select file'
+      delete: 'Delete'
+      edit: 'Edit'
+    customer:
+      form:
+        own: 'Own'
+        rent: 'Rent'
+    emails_examples:
+      receipt: 'Receipt #%{receipt}'
+      further_instructions: 'Further Instructions'
+      any_questions: 'If you have any questions, please contact us at'
+      or_call: 'or call us on %{telephone}.'
+      event_date: 'Event Date'
+      with_regards: 'With regards,'
+      this_email_sent_to: 'This email was sent to %{email}'
+      sent_by_centre: 'This email was sent by %{company_name}.'
+      telephone: 'Telephone: %{tel}'
+      registered_address: 'Registered Address: %{address}'
+    sale_mailer:
+      receipt: 'Receipt #%{receipt}'
+      any_questions: 'If you have any questions, please contact us at'
+      or_call: 'or call us on %{telephone}.'
+      event: 'EVENT'
+      unit_price: 'UNIT PRICE'
+      qty: 'QTY'
+      sub_total: 'SUB-TOTAL'
+      subtotal: 'Sub Total:'
+      discount: 'Discount:'
+      tax_inc: 'Tax Inc:'
+      net_due: 'NET DUE:'
+      payments: 'Payments'
+      with_regards: 'With regards,'
+      this_email_sent_to: 'This email was sent to %{email}'
+      sent_by_centre: 'This email was sent by %{company_name}.'
+      telephone: 'Telephone: %{tel}'
+      registered_address: 'Registered Address: %{address}'

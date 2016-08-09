@@ -1,0 +1,8 @@
+en:
+  gift_card_types:
+    new:
+      home: 'Home'
+      sales: 'Sales'
+      gift_cards: 'Gift Cards'
+      add_gift_card_type: 'Add Gift Card Type'
+

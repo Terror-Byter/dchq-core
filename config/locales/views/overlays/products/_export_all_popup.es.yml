@@ -1,0 +1,7 @@
+es:
+  overlays:
+    products:
+      export_all_popup:
+        header: Exportar Datos del Producto
+        content: Un archivo csv se generará contiene sus productos. Esta acción se procesa en segundo plano y se entrega a través de correo electrónico una vez finalizado.
+        export_data: Exportar Datos del Producto

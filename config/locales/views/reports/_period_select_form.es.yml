@@ -1,0 +1,5 @@
+es:
+  reports:
+    period_select_form:
+      months: 'Meses'
+      refine_dates: 'Refinar Fechas'

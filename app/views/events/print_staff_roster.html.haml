@@ -1,0 +1,64 @@
+!!!
+%html
+  %head
+    %title= t('events.print_staff_roster.title')
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+  %body
+    .container-fluid
+      #content{style: "margin: 10px;"}
+
+        - @users.each do |user|
+          .hidden-phone
+            %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 2%;'}
+              = t('events.print_staff_roster.roster', name: user.full_name)
+              = show_company_logo(current_store, {style: 'float:right; height: 40px; margin-top: -15px;'})
+            %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1; font-weight: bold; margin: 15px 2% 0 2%;'}
+              = t('events.print_staff_roster.event_date', start: @starts_at.to_s(:with_day), end: @ends_at.to_s(:with_day))
+            %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1; margin: 10px 2%; width: 96%;'}
+              %thead
+                %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                  %td{style: 'padding:4px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_staff_roster.date')
+                  %td{style: 'padding:4px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_staff_roster.time')
+                  %td{style: 'padding:4px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_staff_roster.boat')
+                  %td{style: 'padding:4px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_staff_roster.event')
+                  %td{style: 'padding:4px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_staff_roster.location')
+              %tbody
+                - @events[user.id].each do |event|
+                  %tr
+                    %td{style: 'padding:4px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.starts_at.strftime("%A #{event.starts_at.day.ordinalize} %B")
+                    %td{style: 'padding:4px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.starts_at.strftime('%I:%M%P')
+                    %td{style: 'padding:4px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.boat.try(:name)
+                    %td{style: 'padding:4px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.name
+                    %td{style: 'padding:4px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.location
+
+        - @users.each do |user|
+          .visible-phone{style: 'margin-right: 10px !important;'}
+            %h4.heading-mosaic.margin-none= t('events.print_staff_roster.roster', name: user.full_name)
+            %p= t('events.print_staff_roster.event_date', start: @starts_at.to_s(:with_day), end: @ends_at.to_s(:with_day))
+            .accordion{:id => "accordion-1"}
+              - @events[user.id].each do |event|
+                .accordion-group
+                  .accordion-heading
+                    %a.accordion-toggle{"data-parent" => "#accordion-#{event.id}", "data-toggle" => "collapse", href: "#collapse-event-#{event.id}"}
+                      = event.starts_at.strftime("%A #{event.starts_at.day.ordinalize} %B, %I:%M%P")
+                  .accordion-body.collapse{:id => "collapse-event-#{event.id}"}
+                    .accordion-inner
+                      %strong= t('events.print_staff_roster.event')
+                      = event.name
+                      %br
+                      %strong= t('events.print_staff_roster.location')
+                      = event.location
+                      %br/
+                      %strong= t('events.print_staff_roster.boat')
+                      = event.boat.try(:name)

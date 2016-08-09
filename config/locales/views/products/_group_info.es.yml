@@ -1,0 +1,7 @@
+es:
+  products:
+    group_info:
+      units_in_stock: 'Unidades en Inventario:'
+      stock_value: 'Valor de Inventario:'
+      avg_monthly_sale: 'Prom. de Ventas Mensuales:'
+      last_sale: 'Última Venta:'

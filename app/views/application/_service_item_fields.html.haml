@@ -1,0 +1,4 @@
+%li.product
+  %span.count= formatted_currency(f.object.product.retail_price)
+  = truncate f.object.product.name, length: 15
+  [#{f.link_to_remove t("views.actions.remove")}]

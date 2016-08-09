@@ -1,0 +1,16 @@
+es:
+  business_contacts:
+    show:
+      home: 'Inicio'
+      crm: 'CRM'
+      suppliers: 'Proveedores'
+      new_note: 'Nueva Nota'
+      edit_supplier_contact: 'Editar Contacto del Proveedor'
+      contact_info: 'Información de Contacto'
+      email: 'Correo-e:'
+      ph: 'Ph:'
+      tags: 'Etiquetas:'
+      notes: 'Notas'
+      delete_supplier_contact: 'Eliminar Contacto del Proveedor'
+      no_notes: 'No Hay Notas'
+

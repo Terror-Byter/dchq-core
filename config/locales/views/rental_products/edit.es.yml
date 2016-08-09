@@ -1,0 +1,6 @@
+es:
+  rental_products:
+    edit:
+      home: Casa
+      rentals: Alquileres
+      inventory: Inventario

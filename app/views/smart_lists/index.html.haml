@@ -1,0 +1,42 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t '.home'
+  %li.divider
+  %li= t '.crm'
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t '.smart_lists'
+    .span8.right
+      .buttons.pull-right.hidden-print
+        - if can? :create, SmartList.new(company: current_company)
+          = link_to new_resource_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+            %i
+            = t '.new_smart_list'
+.innerLR
+  .row-fluid
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.group
+          %i
+          = t '.your_smart_lists'
+      .widget-body
+        %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+          %thead
+            %tr
+              %th= t '.list_name'
+              %th= t '.conditions'
+          %tbody
+            - if collection.empty?
+              %tr
+                %td{ colspan: 2 }
+                  = t '.no_records'
+            - else
+              = render collection
+
+        .separator.top.form-inline.small
+          = t '.total_smart_list', count: collection.total_count
+          = paginate collection
+          .clearfix

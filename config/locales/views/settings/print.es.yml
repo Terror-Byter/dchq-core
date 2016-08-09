@@ -1,0 +1,11 @@
+es:
+  settings:
+    print:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_print: 'Ajustes: Impresión'
+      content: "Nosotros le ofrecemos la habilidad de imprimir recibos, ya sea en impresoras de recibos delgados o en impresoras normales de computadoras. Basándonos en los ajustes que seleccione a continuación, al presionar 'Imprimir Recibo' cuando haga una venta le proveerá un recibo con el formato en sus dimensiones correctas."
+      printer_options: 'Opciones de Impresora'
+      print_options: 'Opciones de Impresión'
+      print_options_text: 'Seleccione sus ajustes de impresora.'
+      notice: 'Las opciones de impresión han sido actualizadas'

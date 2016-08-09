@@ -1,0 +1,13 @@
+- if purchase_order.errors.empty?
+
+  $('.purchase_orders_amend').replaceWith('#{j(render 'purchase_order_items_table_received').html_safe}');
+
+  -# Re-init event handlers and other stuff
+  Dchq.PurchaseOrder.init();
+
+  -# including JS templates to update certain portions of the page
+  = render 'update_order_total_amended'
+  = render 'update_print_block_amended'
+- else
+  -#TODO: change to smth nice-looking, maybe like flash messages
+  alert("#{purchase_order.errors.full_messages.join(", ")}")

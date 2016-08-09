@@ -1,0 +1,10 @@
+es:
+  settings:
+    rentals:
+      home: Casa
+      settings: Ajustes
+      settings_rentals: 'Ajustes: Alquiler'
+      terms: Condiciones
+      standard_terms_of_rental: Las Condiciones Generales de Alquiler
+      standard_terms_of_rental_text: Introduzca los términos de alquiler. Se pedirá a los clientes a estar de acuerdo antes de crear un rental in
+      notice: Ajustes de alquiler han sido guardado con éxito

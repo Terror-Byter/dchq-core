@@ -1,0 +1,23 @@
+es:
+  settings:
+    edit:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_details: 'Ajustes: Detalles de la Empresa'
+      company_details: 'Detalles de la Empresa'
+      address: 'Dirección'
+      online_bookings: 'Reservaciones En Línea'
+      referrals: 'Referencias'
+      store_details: 'Detalles de la Tienda'
+      store_details_text: 'Ingrese el nombre de su tienda & contactos principales.'
+      contact_details: 'Detalles de Contacto'
+      contact_details_text: 'Ingrese el correo-e de su tienda y el número telefónico.'
+      store_logo: 'Logo de la Tienda'
+      store_logo_text: 'Cargue una foto para mostrar en los recibos.'
+      payment_methods: 'Métodos de Pago'
+      payment_methods_text: 'Configure los métodos de pago para aceptar reservaciones en línea de eventos.'
+      gateway_credential: 'Puerta de Pago'
+      referral_details: 'Detalles de Referencias'
+      referral_details_text: 'Detalles completos en sus referencias.'
+      your_referrer: 'Su Referente'
+      stores_you_referred: "Tiendas que Usted ha Referido"

@@ -1,0 +1,132 @@
+.innerLR
+  .widget.widget-tabs
+    .widget-head
+      %ul
+        %li.active
+          = link_to '#DetailsTab', class: 'glyphicons user', :'data-toggle' => 'tab' do
+            %i>
+            = t('application.user_profile_fields.user_details')
+        %li
+          = link_to '#addressTab', class: 'glyphicons direction', :'data-toggle' => 'tab' do
+            %i>
+            = t('application.user_profile_fields.address')
+        %li
+          %a.glyphicons.adjust_alt{"data-toggle" => "tab", href: "#accessTab"}
+            %i>
+            = t('application.user_profile_fields.user_access_availibility')
+    .widget-body
+      .tab-content
+        #DetailsTab.tab-pane.active
+          .row-fluid
+            .span3
+              %strong= t('application.user_profile_fields.user_info')
+              %p.muted= t('application.user_profile_fields.user_info_text')
+            .span3
+              = f.input :given_name, input_html: { class: 'span11' }
+            .span3
+              = f.input :family_name, input_html: { class: 'span11' }
+            .span3
+              = f.input :sale_target, input_html: { class: 'span11', style: 'margin-bottom:0px;' }
+              .uniformjs
+                = f.input :sale_target_show_dashboard, as: :boolean,
+                                                      inline_label: t('activerecord.attributes.user.sale_target_show_dashboard'),
+                                                      label: false
+          .row-fluid
+            .span3
+            .span3
+              = f.input :password, input_html: { class: 'span11' }
+            .span3
+              = f.input :password_confirmation, input_html: { class: 'span11' }
+            .span3
+              = f.input :locale, collection: [[t('.danish', locale: :da), 'da'], [t('.english', locale: :en), 'en'], [t('.spanish', locale: :es), 'es']], input_html: { class: 'span11 selectpicker' }, include_blank: false
+          %hr.separator.bottom/
+          .row-fluid
+            .span3
+              %strong= t('application.user_profile_fields.contact_details')
+              %p.muted= t('application.user_profile_fields.contact_details_text')
+            .span3
+              = f.input :email, input_html: { class: 'span11' }
+            .span3
+              = f.input :alternative_email, input_html: { class: 'span11' }
+            .span3
+              = f.input :telephone, input_html: { class: 'span11' }
+          %hr.separator.bottom/
+          .row-fluid
+            .span3
+              %strong= t('application.user_profile_fields.emergency_contact')
+              %p.muted= t('application.user_profile_fields.emergency_contact_text')
+            .span3
+              = f.input :instructor_number, input_html: { class: 'span11' }
+            .span3
+              = f.input :emergency_contact_details, input_html: { class: 'span11' }
+            .span3
+              = f.label :tag_list
+              = f.hidden_field :tag_list
+              %ul#tag_list
+          .row-fluid
+            .span3.offset3
+              = f.simple_fields_for :avatar do |form|
+                = render 'avatar_fields', f: form
+        #addressTab.tab-pane
+          = f.simple_fields_for :address do |form|
+            = render 'address_fields', f: form
+        #accessTab.tab-pane
+          .row-fluid
+            .span3
+              %strong= t('application.user_profile_fields.user_access')
+              %p.muted= t('application.user_profile_fields.user_access_text')
+            .span3
+              = f.label :role
+              - if current_user.reload.manager?
+                = f.select :role, Role::ROLES, {}, {class: "selectpicker span11"}
+              - else
+                = f.object.role
+            .span3.uniformjs
+              %label= t('application.user_profile_fields.shop_access')
+              - current_company.stores.each do |store|
+                = check_box_tag "user[store_ids][]", store.id, resource.new_record? ? store == current_store : resource.stores.include?(store)
+                = store.name
+                %br/
+          %hr.separator.bottom/
+          .row-fluid
+            .span3
+              %strong= t('application.user_profile_fields.work_availability')
+              %p.muted= t('application.user_profile_fields.work_availability_text')
+            .span5
+              = label_tag t('application.user_profile_fields.availability')
+              .uniformjs
+                %label{ style: 'display:inline !important; margin-right:8px;' }
+                  - user = f.object.class == UserDecorator ? f.object.user : f.object
+                  - user.available_days.each_with_index do |day, index|
+                    .checker
+                      = f.check_box day.first
+                    #{t('date.abbr_day_names')[index]}
+            .span2
+              = f.input :contracted_hours, input_html: { class: 'span11' }
+          %hr.separator.bottom/
+          = f.simple_fields_for :user_holidays, f.object.persisted? ? f.object.user_holidays.order(:start_date) : [] do |form|
+            .row-fluid
+              .span3
+                %strong= t('application.user_profile_fields.next_holiday')
+                %p.muted= t('application.user_profile_fields.next_holiday_text')
+              .span3
+                = form.label :start_date
+                .input-append.date
+                  = form.text_field :start_date, class: 'span10 datepicker', size: false
+                  %span.add-on
+                    %i.icon-th
+              .span3
+                = form.label :end_date
+                .input-append.date
+                  = form.text_field :end_date, class: 'span10 datepicker', size: false
+                  %span.add-on
+                    %i.icon-th
+          = f.link_to_add :user_holidays, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+            %i
+            = t('application.user_profile_fields.add_holiday')
+  .heading-buttons
+    .buttons.pull-right{style: "margin: 0;"}
+      %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+        %i
+        = t('application.user_profile_fields.save')
+    .clearfix

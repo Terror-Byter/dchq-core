@@ -1,0 +1,16 @@
+es:
+  services:
+    form:
+      service_details: 'Detalles del Servicio'
+      kit_info: 'Kit de Información'
+      kit_info_text: 'Ingrese la información del kit para este servicio.'
+      people: 'Personas'
+      people_text: 'Seleccione de las siguientes opciones.'
+      description: 'Descripción'
+      description_text: 'Ingrese información detallada acerca de este servicio.'
+      price_breakdown: 'Desglose del Precio'
+      add_extra_item: 'Agregar Artículo Extra'
+      total: 'TOTAL'
+      book_service: 'Reservar Servicio'
+      add_kit: 'Añadir kit'
+

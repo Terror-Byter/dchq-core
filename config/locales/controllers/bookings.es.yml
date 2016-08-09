@@ -1,0 +1,7 @@
+es:
+  controllers:
+    bookings:
+      cannot_find_event: Lo sentimos, pero no podemos encontrar el evento con ese identificador.
+      event_unavailabe: Lo sentimos, este evento no está disponible para su reserva online en este momento.
+      no_booking: Esta tienda no ha permitido el acceso a las reservas en línea.
+      incorrect_public_key: Se ha producido un error debido a la clave pública pueda ser incorrecta.

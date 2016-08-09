@@ -1,0 +1,95 @@
+!!!
+/[if lt IE 7] <html class="ie lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="ie lt-ie9 lt-ie8">
+/[if IE 8] <html class="ie lt-ie9">
+/[if gt IE 8] <html class="ie gt-ie8">
+/ [if !IE]><!
+%html
+  / <![endif]
+  %head
+    %title Dive Centre HQ
+    = include_gon
+    / Meta
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}/
+    = stylesheet_link_tag :application, media: :all
+    = stylesheet_link_tag controller_name if File.exists?("#{Rails.root}/app/assets/stylesheets/#{controller_name}.css.sass")
+    = javascript_include_tag :'pace.min'
+    /[if IE]
+      = javascript_include_tag :excanvas
+    /[if lt IE 8]
+      = javascript_include_tag :json2
+    = render 'layouts/locale'
+    = csrf_meta_tags
+  %body{ body_attributes }
+    .container-fluid.fluid.menu-left
+      .navbar.main.hidden-print
+        = link_to content_tag(:span, 'DCHQ'), root_path, class: 'appbrand pull-left'
+        %button.btn.btn-navbar{type: 'button'}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %ul.topnav.pull-right
+          %li.search.hidden-phone
+            .pull-left
+              .input
+                = text_field_tag 'q', '', class: 'search-query', placeholder: t("top_menu.quick_search"), :'data-path' => search_pages_path, autocomplete: :off, style: 'margin-bottom: 1px'
+              .search_value
+          %li.search.visible-phone
+            .pull-left
+              .input
+                = text_field_tag 'q', nil, placeholder: t("top_menu.quick_search"), :'data-path' => search_pages_path, autocomplete: :off, class: 'input', style: 'margin-bottom: 1px; width: 100px;'
+              .search_value
+          - unless available_stores.blank?
+            %li.hidden-phone
+              = link_to '#', class: 'glyphicons pin', :'data-toggle' => :dropdown do
+                %i
+                = current_store.name
+              %ul.dropdown-menu.pull-right
+                - available_stores.each do |store|
+                  %li{ class: "#{ 'active' if current_store == store}" }
+                    = link_to store.name, change_current_store_pages_path(id: store.id)
+          %li.account
+            = link_to '', class: 'glyphicons logout lock', :'data-toggle' => :dropdown do
+              %span.hidden-phone.text= current_user.full_name
+              %i
+            %ul.dropdown-menu.pull-right
+              %li.highlight.profile
+                %span
+                  %span.heading
+                    = t('top_menu.users_block.profile')
+                    = link_to t('top_menu.users_block.edit'), user_profile_settings_path, class: 'pull-right'
+                  %span.img
+                  %span.details
+                    = link_to current_user.full_name, user_profile_settings_path
+                    = current_user.email
+                  %span.clearfix
+              %li
+                = link_to settings_path, class: 'glyphicons cogwheel' do
+                  = t('top_menu.users_block.settings')
+                  %i
+              %li
+                %span= link_to t('button.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-default btn-mini pull-right'
+      #wrapper
+        = render 'layouts/navbar'
+        #content
+          .hidden-print
+            = bootstrap_flash
+          = yield
+      .clearfix
+    = yield :overlays
+    :javascript
+      var primaryColor = '#55AB48',
+      dangerColor = '#bd362f',
+      successColor = '#609450',
+      warningColor = '#ab7a4b',
+      inverseColor = '#45484d';
+      var themerPrimaryColor = primaryColor;
+    = javascript_include_tag :application
+    - if I18n.locale != :en
+      = javascript_include_tag "select2_locale_#{I18n.locale}", "jquery.ui.datepicker-#{I18n.locale}"
+    = javascript_include_tag controller_name if File.exists?("#{Rails.root}/app/assets/javascripts/#{controller_name}.js.coffee")
+    = yield :js

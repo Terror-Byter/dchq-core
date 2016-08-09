@@ -1,0 +1,12 @@
+en:
+  events:
+    event_user_participants:
+      home: 'Home'
+      events: 'Events'
+      add_staff: 'Add Staff'
+      update_staff: 'Update Staff'
+      add_staff_to_event: 'Add Staff Member to Event'
+      update_staff_in_event: 'Update Staff Member in Event'
+      staff_member: 'Staff Member'
+      staff_role: 'Staff & Role'
+      staff_role_text: 'Select the staff member and enter their role.'

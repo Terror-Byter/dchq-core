@@ -1,0 +1,12 @@
+da:
+  bookings:
+    price_breakdown:
+      price_breakdown: 'Pris oversigt'
+      event: 'Event'
+      kit_hire: 'Udstyrsleje'
+      insurance: 'Forsikring'
+      transport: 'Transport'
+      equipment: 'Udstyrsleje'
+      additionals: 'Diverse'
+      discount: 'Rabat'
+      total: 'TOTAL'

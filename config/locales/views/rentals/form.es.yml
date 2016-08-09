@@ -1,0 +1,16 @@
+es:
+  rentals:
+    form:
+      rental_id: 'Alquiler ID: %{id}'
+      cashier: 'Cajero: %{name}'
+      lookup: Buscar Artículo
+      placeholder: Escanear Código de Barras o Comience a Escribir Alquiler Productos ...
+      rental_details: Detalles del Alquiler
+      customer: Cliente
+      dates: Fechas
+      to: a
+      booked: Reservados
+      overdue: Atrasado
+      in_progress: En Curso
+      complete: Completo
+      pay_pending: Pendiente de Pago

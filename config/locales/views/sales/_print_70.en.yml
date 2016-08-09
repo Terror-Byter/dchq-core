@@ -1,0 +1,13 @@
+en:
+  sales:
+    print_70:
+      p: "PH: %{telephone}  E: %{email}"
+      receipt: "Receipt #%{receipt}"
+      discount: "Less Discount"
+      subtotal: "Sub Total"
+      tax_inc: "Tax"
+      net_due: "NET DUE"
+      payment: "Payments"
+      tnx_order: "Thank you for your order."
+      check: "Check out our website at %{url}"
+      credit_note: "CREDIT NOTE"

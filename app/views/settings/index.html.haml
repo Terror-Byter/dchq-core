@@ -1,0 +1,94 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= t('.settings')
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('.settings')
+.innerLR
+  .row-fluid
+    .span4
+      = link_to user_profile_settings_path, class: 'widget-stats' do
+        %span.glyphicons.user
+          %i
+        %span.txt= t('.user_profile')
+      .clearfix
+
+    - if current_user.manager?
+      .span4
+        = link_to edit_setting_path(resource), class: 'widget-stats' do
+          %span.glyphicons.briefcase
+            %i
+          %span.txt= t('.company_details')
+        .clearfix
+      .span4
+        = link_to stores_settings_path, class: 'widget-stats' do
+          %span.glyphicons.shopping_bag
+            %i
+          %span.txt= t('.shop_locations')
+        .clearfix
+  .row-fluid{style: 'margin-top:10px'}
+    - if current_user.manager?
+      .span4
+        = link_to sales_settings_path, class: 'widget-stats' do
+          %span.glyphicons.shopping_cart
+            %i
+          %span.txt= t('.sale_settings')
+        .clearfix
+      .span4
+        = link_to events_settings_path, class: 'widget-stats' do
+          %span.glyphicons.calendar
+            %i
+          %span.txt= t('.event_settings')
+        .clearfix
+      .span4
+        = link_to servicing_settings_path, class: 'widget-stats' do
+          %span.glyphicons.settings
+            %i
+          %span.txt= t('.servicing_settings')
+        .clearfix
+  .row-fluid{style: 'margin-top:10px'}
+    - if current_user.manager?
+      .span4
+        = link_to rentals_settings_path, class: 'widget-stats' do
+          %span.glyphicons.notes_2
+            %i
+          %span.txt= t('.rental_settings')
+        .clearfix
+      .span4
+        = link_to emails_settings_path, class: 'widget-stats' do
+          %span.glyphicons.envelope
+            %i
+          %span.txt= t('.email_settings')
+        .clearfix
+      .span4
+        = link_to print_settings_path, class: 'widget-stats' do
+          %span.glyphicons.print
+            %i
+          %span.txt= t('.print_settings')
+        .clearfix
+  .row-fluid{style: 'margin-top:10px'}
+    - if current_user.manager?
+      .span4
+        = link_to import_to_csv_step_1_settings_path, class: 'widget-stats' do
+          %span.glyphicons.file_import
+            %i
+          %span.txt= t('.import_data')
+        .clearfix
+      .span4
+        = link_to integrations_settings_path, class: 'widget-stats' do
+          %span.glyphicons.iphone_exchange
+            %i
+          %span.txt= t('.party_integrations')
+        .clearfix
+    - if current_user == current_company.owner
+      .span4
+        = link_to clear_data_page_settings_path, class: 'widget-stats' do
+          %span.glyphicons.delete
+            %i
+          %span.txt= t('.clear_test_data')
+        .clearfix

@@ -1,0 +1,10 @@
+en:
+  overlays:
+    other_events:
+      clone:
+        title: Duplicate Event & Participants
+        body: By duplicating this event, you will also be adding the same customers to the new event.
+        starts_at: Start Date/Time
+        ends_at: End Date/Time
+        cancel: Cancel
+        button: Duplicate Event & Participants

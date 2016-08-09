@@ -1,0 +1,9 @@
+en:
+  sale_mailer:
+    send_bookings_email_for_customer:
+      hello: 'Hello %{customer}'
+      thanks_for_booking: 'Thank you for your booking'
+      with: 'with %{shop_name}.'
+      your_booking_details: 'Your booking details are below. This is a pre-booking as your diving credentials need to be verified to confirm eligibility to participate.'
+      event_date: 'Event Date'
+      further_instructions: 'Further Instructions'

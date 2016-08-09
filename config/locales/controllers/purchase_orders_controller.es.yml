@@ -1,0 +1,16 @@
+es:
+  controllers:
+    purchase_orders:
+      flash:
+        create:
+          no_supplier_provided: 'No se ha proporcionado ningún proveedor.'
+          no_delivery_location_provided: 'No se ha proporcionado ninguna dirección de entrga.'
+        destroy:
+          success: 'Se eliminó satisfactoriamente la orden de compra.'
+          error: 'Hubo un error al borrar la orden de compra.'
+        send_email_to_supplier:
+          bad_supplier_email: 'Correo-e del proveedor malo'
+          success: 'Se envió satisfactoriamente la orden de compra al proveedor'
+          error: 'Fallo al enviar la orden de compra al proveedor'
+        add_product:
+          wrong_supplier: 'El producto que ha ingresado no está disponible en el proveedor actual.'

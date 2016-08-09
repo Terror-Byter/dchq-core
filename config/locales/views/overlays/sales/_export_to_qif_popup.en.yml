@@ -1,0 +1,9 @@
+en:
+  overlays:
+    sales:
+      export_to_qif_popup:
+        header: 'Export Financial Data'
+        content: 'Select the date range you wish to export to QIF format.'
+        export_data: 'Export Financial Data'
+        date_from: 'Date From'
+        date_to: 'Date To'

@@ -1,0 +1,4 @@
+es:
+  models:
+    certification_level:
+      should_has_no_events: En caso de que no tiene eventos

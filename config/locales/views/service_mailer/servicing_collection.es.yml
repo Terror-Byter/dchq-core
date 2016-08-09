@@ -1,0 +1,20 @@
+es:
+  service_mailer:
+    servicing_collection:
+      sales_receipt_id: 'Recibo de Ventas #%{receipt}'
+      complete_and_ready_for_collection: "El mantenimiento a su %{kit} está terminado y listo para su recolección. Si aplica, hemos adjuntado su favtura. Si tiene cualquier duda acerca de su orden por favor contáctenoa a"
+      or_call: 'o llámenos al %{telephone}.'
+      date: 'Fecha: %{date}'
+      scu_product: 'SKU / PRODUCTO'
+      unit_price: 'PRECIO UNITARIO'
+      qty: 'CANT'
+      sub_total: 'SUB TOTAL'
+      servicing: 'Mantenimiento:'
+      hours: 'horas'
+      subtotal: 'Sub Total'
+      tax_inc: 'Imp. Inc.'
+      net_due: 'NETO DEBIDO'
+      with_regards: 'Saludos,'
+      sent_by_centre: 'Este correo-e fue enviado por %{company_name}.'
+      telephone: 'Teléfono: %{tel}'
+      registered_address: 'Dirección Registrada: %{address}'

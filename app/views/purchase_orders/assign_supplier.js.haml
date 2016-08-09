@@ -1,0 +1,3 @@
+$('#supplier-info').html('#{j(render 'purchase_orders/supplier_info').html_safe}');
+$('#assign-supplier-link').hide();
+$('#purchase_order_email').val('#{purchase_order.supplier_email_for_inputs}');

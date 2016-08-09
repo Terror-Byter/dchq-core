@@ -1,0 +1,4 @@
+- if @product.try(:valid?)
+  = render partial: 'sales/update_form'
+- else
+  alert("#{@product.errors.full_messages * ', '}")

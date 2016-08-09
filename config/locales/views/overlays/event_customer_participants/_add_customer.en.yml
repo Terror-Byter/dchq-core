@@ -1,0 +1,8 @@
+en:
+  overlays:
+    event_customer_participants:
+      add_customer:
+        header: "Quick Add Customer"
+        content: "Please enter the minimal amount of data required to create a customer profile. If you want to add additional information such as the customer's address, you can do this later by visiting the customer profile page."
+        button: "Add New Customer"
+        cancel: "Close"

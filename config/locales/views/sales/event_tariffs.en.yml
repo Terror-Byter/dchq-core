@@ -1,0 +1,10 @@
+en:
+  sales:
+    event_tariffs:
+      home: 'Home'
+      sales: 'Sales'
+      event_tariffs: 'Event Tariffs'
+      add_another_tariff: 'Add Another Tariff'
+      save: 'Save'
+      message: 'Event Tariffs updated successfully'
+

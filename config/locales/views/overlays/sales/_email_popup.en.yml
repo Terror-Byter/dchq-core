@@ -1,0 +1,7 @@
+en:
+  overlays:
+    sales:
+      email_popup:
+        header: 'Email Receipt'
+        content: 'Enter Valid Email'
+        send: 'Send Receipt via Email'

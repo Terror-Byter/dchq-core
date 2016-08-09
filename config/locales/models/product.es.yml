@@ -1,0 +1,5 @@
+es:
+  models:
+    product:
+      out_of_stock: Agotado
+      in_stock: En Stock

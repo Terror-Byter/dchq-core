@@ -1,0 +1,32 @@
+= simple_form_for resource, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#productDescriptionTab', class: 'glyphicons font', :'data-toggle' => 'tab' do
+              %i>
+              = t('categories.form.category_details')
+      .widget-body
+        .tab-content
+          #productDescriptionTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('categories.form.category_name')
+                %p.muted= t('categories.form.category_name_text')
+              .span6
+                = f.input :name, input_html: { class: 'span11' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('categories.form.description')
+                %p.muted= t('categories.form.description_text')
+              .span9
+                = f.input :description, as: :text, input_html: { style: 'width: 96%;', rows: '2' }
+    .heading-buttons
+      .buttons.pull-right{:style => 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('categories.form.save')
+      .clearfix

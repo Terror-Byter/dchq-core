@@ -1,0 +1,5 @@
+es:
+  sales:
+    available_limit_exceeded:
+      js:
+        msg: Has superado el límite de los carros de venta abiertas. Favor de completar una venta.

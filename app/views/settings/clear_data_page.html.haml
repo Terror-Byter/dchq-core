@@ -1,0 +1,41 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.clear_data_page.home')
+  %li.divider
+  %li= link_to t('settings.clear_data_page.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.clear_data_page.settings_clear_test_data')
+= form_tag clear_data_settings_path do
+  .innerLR
+    %p= t('settings.clear_data_page.content')
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.power
+          %i>
+          = t('settings.clear_data_page.clear_test_data')
+      .widget-body
+        .row-fluid
+          .span3
+            %strong= t('settings.clear_data_page.select_data_to_clear')
+            %p.muted= t('settings.clear_data_page.select_data_to_clear_text')
+          .span9
+            %label= t('settings.clear_data_page.clear_data')
+            .uniformjs
+              %label{:style => "display:inline !important; margin-right:8px;"}
+                = check_box_tag :'resources[]', 'sales'
+                = t('settings.clear_data_page.sales')
+              %label{:style => "display:inline !important; margin-right:8px;"}
+                = check_box_tag :'resources[]', 'events'
+                = t('settings.clear_data_page.events')
+              %label{:style => "display:inline !important; margin-right:8px;"}
+                = check_box_tag :'resources[]', 'customers'
+                = t('settings.clear_data_page.customers')
+    .heading-buttons
+      .buttons.pull-right{:style => "margin: 0;"}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('views.actions.save')

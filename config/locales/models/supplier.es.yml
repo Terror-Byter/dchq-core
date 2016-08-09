@@ -1,0 +1,4 @@
+es:
+  models:
+    supplier:
+      email_is_fake: Su dirección de correo electrónico es falso

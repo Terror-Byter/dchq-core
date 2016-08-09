@@ -1,0 +1,10 @@
+en:
+  settings:
+    integrations:
+      home: 'Home'
+      settings: 'Settings'
+      settings_integrations: 'Settings: 3rd Party Integrations'
+      para: 'Connect Dive Centre HQ to 3rd party applications including accounting systems, review platforms and email marketing portals.'
+      scubatribe: 'ScubaTribe'
+      xero: 'Xero Online Accounting'
+      mailchimp: 'MailChimp Email Marketing'

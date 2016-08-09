@@ -1,0 +1,58 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.events.home')
+  %li.divider
+  %li= link_to t('settings.events.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.events.settings_events')
+.innerLR
+  .row-fluid
+    .span6
+      .media.box-generic
+        %span.pull-left.glyphicons.inbox
+          %i
+        .media-body
+          %h4.media-heading= t('settings.events.course_price_list')
+          %p= t('settings.events.course_price_list_text')
+          %p
+            = link_to select_agency_settings_path, class: 'btn btn-primary btn-icon glyphicons inbox' do
+              %i
+              = t('settings.events.course_button')
+    .span6
+      .media.box-generic
+        %span.pull-left.glyphicons.fins
+          %i
+        .media-body
+          %h4.media-heading= t('settings.events.trip_price_lists')
+          %p= t('settings.events.trip_price_lists_text')
+          %p
+            = link_to trips_settings_path, class: 'btn btn-primary btn-icon glyphicons fins' do
+              %i
+              = t('settings.events.trip_button')
+  .row-fluid{:style => "margin-top:10px;"}
+    .span6
+      .media.box-generic
+        %span.pull-left.glyphicons.oxygen_bottle
+          %i
+        .media-body
+          %h4.media-heading= t('settings.events.price_list_additional')
+          %p= t('settings.events.price_list_additional_text')
+          %p
+            = link_to additionals_settings_path, class: 'btn btn-primary btn-icon glyphicons oxygen_bottle' do
+              %i
+              = t('settings.events.additionals_button')
+    .span6
+      .media.box-generic
+        %span.pull-left.glyphicons.boat
+          %i
+        .media-body
+          %h4.media-heading= t('settings.events.boats_resources')
+          %p= t('settings.events.boats_resources_text')
+          %p
+            = link_to boats_settings_path, class: 'btn btn-primary btn-icon glyphicons boat' do
+              %i
+              = t('settings.events.boats_button')

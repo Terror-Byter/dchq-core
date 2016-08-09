@@ -1,0 +1,24 @@
+#email-variables.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3= t('overlays.settings.email_variables_popup.header')
+  .modal-body.center
+    %p= t('overlays.settings.email_variables_popup.content')
+    %p
+      = t('overlays.settings.email_variables_popup.curtomer_full_name')
+      %br/
+      %strong= t('overlays.settings.email_variables_popup.customer_name')
+    %p
+      = t('overlays.settings.email_variables_popup.name_of_event')
+      %br/
+      %strong= t('overlays.settings.email_variables_popup.event_name')
+    %p
+      = t('overlays.settings.email_variables_popup.date_of_event')
+      %br/
+      %strong= t('overlays.settings.email_variables_popup.event_date')
+    %p
+      = t('overlays.settings.email_variables_popup.total_cost_of_sale')
+      %br/
+      %strong= t('overlays.settings.email_variables_popup.sales_total')
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}= t('views.actions.cancel')

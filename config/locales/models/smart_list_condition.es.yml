@@ -1,0 +1,21 @@
+es:
+  models:
+    smart_list_condition:
+      more_than: Más Que
+      less_than: Menos Que
+      any: Any Item
+      specific_item: Specific Item
+      product_purchased: 'Producto: Comprado'
+      product_not_purchased: 'Producto: No Adquirido'
+      event_completed: 'Evento: Completo'
+      event_not_completed: 'Evento: Desconocido'
+      courses_completed: 'Curso: Completo'
+      courses_not_completed: 'Curso: Desconocido'
+      servicing_completed: 'Mantenimiento: Completado'
+      rental_completed: 'Alquiler: Completo'
+      last_7_days: En los últimos 7 días
+      last_4_weeks: En las últimas 4 semanas
+      last_6_months: En los últimos 6 meses
+      last_year: En el último año
+      last_2_years: En los últimos 2 años
+      ever: Alguna vez

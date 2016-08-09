@@ -1,0 +1,9 @@
+es:
+  overlays:
+    sales:
+      refund_payment_method:
+        header: "Emitir un Reembolso o Nota de Crédito"
+        refund: "Reemolso"
+        credit_note: "Nota de Crédito"
+        issue_refund: "Emitir Reembolso"
+        refund_method: "Método de Reembolso"

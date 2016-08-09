@@ -1,0 +1,16 @@
+en:
+  registrations:
+    new:
+      store_and_manager: Store & Manager Details
+      p: Please enter accurate details below as they will be used on sales receipts and for us to keep you informed of updates to the service.
+      store_details: Store Details
+      store_info: Enter your store name, address and contact details.
+      manager_details: Manager Details
+      p_1: Enter the details of the person responsible for this store and who has authorisation to act on its behalf.
+      invite_code: Invite Code & Store Logo
+      p_2: Enter an invite code if you have one, and upload a photo to show on receipts.
+      upload_logo: Upload Logo
+      select_file: Select file
+      change: Change
+      remove: Remove
+      button: Save Store & Manager Details

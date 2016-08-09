@@ -1,0 +1,12 @@
+en:
+  smart_lists:
+    index:
+      home: Home
+      crm: CRM
+      smart_lists: Smart Lists
+      new_smart_list: New Smart List
+      your_smart_lists: Your Smart Lists
+      list_name: List Name
+      conditions: Conditions
+      no_records: No records
+      total_smart_list: 'Total smart lists: %{count}'

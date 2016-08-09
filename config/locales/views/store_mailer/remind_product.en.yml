@@ -1,0 +1,9 @@
+en:
+  store_mailer:
+    remind_product:
+      hello: 'Hello %{full_name},'
+      following_products: 'The following products have triggered a low-inventory reminder for %{store_name}.'
+      scu_product: 'SKU / PRODUCT'
+      unit_price: 'UNIT PRICE'
+      in_stock: 'CURRENTLY IN STOCK'
+      best_wishes: 'Best wishes,'

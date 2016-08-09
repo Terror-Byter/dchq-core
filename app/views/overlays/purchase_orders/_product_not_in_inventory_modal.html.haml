@@ -1,0 +1,44 @@
+= form_for Product.new, url: products_path, method: :post, validate: true do |f|
+  #product-not-in-inventory-modal.modal.large.hide.fade
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3= t('.add_new_product')
+    .modal-body{style: "overflow-y:visible;"}
+      = f.hidden_field :number_in_stock, value: '0'
+      = f.hidden_field :low_inventory_reminder, value: '5'
+      .row-fluid
+        .span8
+          = f.label :name
+          = f.text_field :name, class: 'span12', required: 'required'
+        .span4
+          = f.label :sku_code
+          = f.text_field :sku_code, class: 'span12', required: 'required'
+      .row-fluid
+        .span4
+          = f.label :brand_id
+          = f.select 'brand_id', options_from_collection_for_select(@brands, 'id', 'name'), {}, class: 'span12 selectpicker', :'data-size' => '10'
+        .span4
+          = f.label :category_id
+          = f.select 'category_id', options_from_collection_for_select(@categories, 'id', 'name'), {}, class: 'span12 selectpicker', :'data-size' => '15'
+        .span4
+          = f.label :supplier_id
+          = f.select 'supplier_id', options_from_collection_for_select(@suppliers, 'id', 'name'), {}, class: 'span12 selectpicker', :'data-size' => '10'
+      .row-fluid
+        .span4
+          = f.label :tax_rate_id
+          = f.select 'tax_rate_id', current_store.tax_rates_list, {}, class: 'span12 selectpicker'
+        .span4
+          = f.label :supply_price, nil, class: 'decimal required control-label'
+          .input-prepend
+            %span.add-on $
+            = f.number_field :supply_price, class: 'span10', value: '0.0'
+        .span4
+          = f.label :retail_price, nil, class: 'decimal required control-label'
+          .input-prepend
+            %span.add-on $
+            = f.number_field :retail_price, class: 'span10', value: '0.0'
+    = f.hidden_field :commission_rate_id, value: current_store.commission_rates_list.first[1]
+    = f.hidden_field :barcode
+    .modal-footer
+      %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('views.actions.cancel')
+      %a.btn.btn-primary{href: "#"}= t('.add_new_product')

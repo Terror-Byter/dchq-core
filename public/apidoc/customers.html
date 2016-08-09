@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API documentation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/bundled/bootstrap.min.css'/>
+<link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/bundled/prettify.css'/>
+<link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/bundled/bootstrap-responsive.min.css'/>
+  <link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/application.css'/>
+  <!-- IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div id='container'>
+        <ul class='breadcrumb'>
+  <li>
+    <a href='../apidoc.html'>DchqCore 1.0</a>
+    <span class='divider'>/</span>
+  </li>
+  <li class='active'>
+    Customers
+    
+  </li>
+  
+</ul>
+
+<div class='page-header'>
+  <h1>
+    Customers
+    <br>
+    <small></small>
+  </h1>
+</div>
+
+
+
+
+<div class='accordion' id='accordion'>
+
+    <hr>
+    <div class='pull-right small'>
+      <a href='../apidoc/customers/index.html'> >>> </a>
+    </div>
+    <div>
+        <h2>
+          <a href='#description-index'
+           class='accordion-toggle'
+           data-toggle='collapse'
+           data-parent='#accordion'>
+            GET /api/v1/customers
+          </a><br>
+          <small>Show list customers</small>
+        </h2>
+    </div>
+
+
+    <div id='description-index' class='collapse accordion-body'>
+      
+
+  <h3>Supported Formats</h3>
+  json
+
+
+
+  <h3>Examples</h3>
+    <pre class="prettyprint">
+########### Request Example #################
+# URL
+https://app.divecentrehq.com/api/v1/customers
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;
+}
+
+########### Response Example ################
+{
+  &quot;customers&quot;: [
+    {
+      &quot;id&quot;: 46114,
+      &quot;given_name&quot;: &quot;Kelly&quot;,
+      &quot;family_name&quot;: &quot;Barr&quot;,
+      &quot;born_on&quot;: null,
+      &quot;gender&quot;: &quot;male&quot;,
+      &quot;email&quot;: &quot;kellyandglennritchie@gmail.com&quot;,
+      &quot;send_event_related_emails&quot;: true,
+      &quot;telephone&quot;: &quot;&quot;,
+      &quot;mobile_phone&quot;: &quot;&quot;,
+      &quot;source&quot;: &quot;&quot;,
+      &quot;default_discount_level&quot;: &quot;0.0&quot;,
+      &quot;tax_id&quot;: &quot;&quot;,
+      &quot;zero_tax_rate&quot;: false,
+      &quot;tag_list&quot;: [],
+      &quot;emergency_contact_details&quot;: &quot;-&quot;,
+      &quot;hotel_name&quot;: &quot;&quot;,
+      &quot;room_number&quot;: &quot;&quot;,
+      &quot;customer_experience_level_id&quot;: null,
+      &quot;last_dive_on&quot;: null,
+      &quot;number_of_logged_dives&quot;: 0,
+      &quot;fins&quot;: &quot;&quot;,
+      &quot;bcd&quot;: &quot;&quot;,
+      &quot;wetsuit&quot;: &quot;&quot;,
+      &quot;weight&quot;: &quot;&quot;,
+      &quot;company&quot;: {
+        &quot;id&quot;: 597,
+        &quot;name&quot;: &quot;Underwater Odyssey&quot;
+      },
+      &quot;address&quot;: {
+        &quot;id&quot;: 52194,
+        &quot;first&quot;: &quot;&quot;,
+        &quot;second&quot;: &quot;&quot;,
+        &quot;city&quot;: &quot;&quot;,
+        &quot;state&quot;: &quot;&quot;,
+        &quot;country_code&quot;: &quot;&quot;,
+        &quot;post_code&quot;: &quot;&quot;
+      },
+      &quot;custom_fields&quot;: [
+        {
+          id: 1,
+          name: &quot;Field Name&quot;
+          value: &quot;Field Value&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: 46115,
+      &quot;given_name&quot;: &quot;Tim&quot;,
+      &quot;family_name&quot;: &quot;Hill&quot;,
+      &quot;born_on&quot;: null,
+      &quot;gender&quot;: null,
+      &quot;email&quot;: null,
+      &quot;send_event_related_emails&quot;: true,
+      &quot;telephone&quot;: null,
+      &quot;mobile_phone&quot;: null,
+      &quot;source&quot;: null,
+      &quot;default_discount_level&quot;: &quot;0.0&quot;,
+      &quot;tax_id&quot;: null,
+      &quot;zero_tax_rate&quot;: false,
+      &quot;tag_list&quot;: [],
+      &quot;emergency_contact_details&quot;: &quot;-&quot;,
+      &quot;hotel_name&quot;: null,
+      &quot;room_number&quot;: null,
+      &quot;customer_experience_level_id&quot;: null,
+      &quot;last_dive_on&quot;: null,
+      &quot;number_of_logged_dives&quot;: 0,
+      &quot;fins&quot;: null,
+      &quot;bcd&quot;: null,
+      &quot;wetsuit&quot;: null,
+      &quot;weight&quot;: null,
+      &quot;company&quot;: {
+        &quot;id&quot;: 597,
+        &quot;name&quot;: &quot;Underwater Odyssey&quot;
+      },
+      &quot;address&quot;: {
+        &quot;id&quot;: 52195,
+        &quot;first&quot;: null,
+        &quot;second&quot;: null,
+        &quot;city&quot;: null,
+        &quot;state&quot;: null,
+        &quot;country_code&quot;: null,
+        &quot;post_code&quot;: null
+      },
+      &quot;custom_fields&quot;: []
+    }
+  ]
+}</pre>
+
+  <h3>Params</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+    </tbody>
+  </table>
+
+    </div>
+    <hr>
+    <div class='pull-right small'>
+      <a href='../apidoc/customers/show.html'> >>> </a>
+    </div>
+    <div>
+        <h2>
+          <a href='#description-show'
+           class='accordion-toggle'
+           data-toggle='collapse'
+           data-parent='#accordion'>
+            GET /api/v1/customers/:id
+          </a><br>
+          <small>Show customer details info</small>
+        </h2>
+    </div>
+
+
+    <div id='description-show' class='collapse accordion-body'>
+      
+
+  <h3>Supported Formats</h3>
+  json
+
+
+
+  <h3>Examples</h3>
+    <pre class="prettyprint">
+########### Request Example  ################
+# URL
+https://app.divecentrehq.com/api/v1/customers/1
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;
+}
+
+########### Response Example ################
+{
+&quot;customer&quot;:
+  {
+    &quot;id&quot;: 23575,
+    &quot;given_name&quot;: &quot;Adam&quot;,
+    &quot;family_name&quot;: &quot;Charney&quot;,
+    &quot;email&quot;: &quot;email@example.com&quot;,
+    &quot;telephone&quot;: &quot;443-253-1188&quot;,
+    &quot;source&quot;: &quot;Email&quot;,
+    &quot;credit_note&quot;: &quot;1.0&quot;,
+    &quot;born_on&quot;: &quot;1992-12-12&quot;,
+    &quot;last_dive_on&quot;: &quot;2013-01-01&quot;,
+    &quot;default_discount_level&quot;: &quot;4.0&quot;,
+    &quot;mobile_phone&quot;: &quot;1111-111-1111-111&quot;,
+    &quot;address&quot;:
+      {
+        &quot;first&quot;: &quot;432 Some Street,&quot;,
+        &quot;second&quot;: &quot;&quot;,
+        &quot;city&quot;: &quot;Sydney&quot;,
+        &quot;state&quot;: &quot;New South Wales&quot;,
+        &quot;post_code&quot;: &quot;2111&quot;,
+        &quot;country&quot;: &quot;Australia&quot;
+      },
+    &quot;certification_level_memberships&quot;: [
+      {
+        &quot;id&quot;: 4673,
+        &quot;membership_number&quot;: &quot;12312312&quot;,
+        &quot;certification_date&quot;: &quot;2013-04-16&quot;,
+        &quot;primary&quot;: true,
+        &quot;certification_level&quot;:
+          {
+            &quot;id&quot;: 205,
+            &quot;name&quot;: &quot;Open Water Diver&quot;,
+            &quot;certification_agency&quot;:
+              {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;PADI&quot;
+              }
+            }
+          }
+    ],
+    &quot;bcd&quot;: &quot; (Rent)&quot;,
+    &quot;fins&quot;: &quot; (Rent)&quot;,
+    &quot;wetsuit&quot;: &quot;4 (Rent)&quot;,
+    &quot;regulator&quot;: &quot;(Rent)&quot;,
+    &quot;mask&quot;:&quot;(Rent)&quot;,
+    &quot;sales&quot;: [
+      {
+        &quot;id&quot;: 1568,
+        &quot;created_at&quot;: &quot;2013-02-23T10:30:19-05:00&quot;,
+        &quot;grand_total&quot;: &quot;856.9&quot;,
+        &quot;products&quot;: &quot;OCTO ABYSS, ABYSS 22&quot;
+      },
+      {
+        &quot;id&quot;: 1596,
+        &quot;created_at&quot;: &quot;2013-03-05T13:43:58-05:00&quot;,
+        &quot;grand_total&quot;: &quot;-252.28&quot;,
+        &quot;products&quot;: &quot;OCTO ABYSS&quot;
+      }
+    ]
+  }
+}</pre>
+
+  <h3>Params</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>id </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Customer ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+    </tbody>
+  </table>
+
+    </div>
+    <hr>
+    <div class='pull-right small'>
+      <a href='../apidoc/customers/create.html'> >>> </a>
+    </div>
+    <div>
+        <h2>
+          <a href='#description-create'
+           class='accordion-toggle'
+           data-toggle='collapse'
+           data-parent='#accordion'>
+            POST /api/v1/customers
+          </a><br>
+          <small>Create new customer</small>
+        </h2>
+    </div>
+
+
+    <div id='description-create' class='collapse accordion-body'>
+      
+
+  <h3>Supported Formats</h3>
+  json
+
+
+
+  <h3>Examples</h3>
+    <pre class="prettyprint">
+########### Request Example #################
+# URL
+https://app.divecentrehq.com/api/v1/customers
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;,
+  customer: {
+    given_name: &quot;asdas&quot;,
+    family_name: &quot;sadas&quot;,
+    born_on: &quot;1986-11-12&quot;,
+    gender: &quot;male&quot;,
+    email: &quot;kaktusyaka@gmail.com&quot;,
+    send_event_related_emails: 1,
+    telephone: &quot;+3126127361278&quot;,
+    mobile_phone: &quot;+2323123123&quot;,
+    source: &quot;Source&quot;,
+    default_discount_level: 10.0,
+    tax_id: 12,
+    zero_tax_rate: 0,
+    tag_list: &quot;&quot;,
+    emergency_contact_details: &quot;No Contact&quot;,
+    address_attributes: {
+      first: &quot;1 Street&quot;,
+      second: &quot;&quot;,
+      city: &quot;New York&quot;,
+      state: &quot;Alabama&quot;,
+      country_code: &quot;US&quot;,
+      post_code: &quot;9875&quot;
+    },
+    hotel_name: &quot;First Hotel&quot;,
+    room_number: &quot;2c&quot;,
+    customer_experience_level_id: &quot;&quot;,
+    last_dive_on: &quot;2014-01-22&quot;,
+    number_of_logged_dives: 0,
+    fins: &quot;M&quot;,
+    bcd: &quot;XL&quot;,
+    wetsuit: &quot;XL&quot;,
+    weight: &quot;120&quot;,
+    custom_fields_attributes: {
+      &lt;RANDOM NUMBER&gt;: {
+        name: &quot;custom field&quot;,
+        value: &quot;custom_field_value&quot;,
+        _destroy: false
+      },
+      &lt;RANDOM NUMBER&gt;: {
+        name: &quot;custom field 2&quot;,
+        value: &quot;custom field value&quot;,
+        _destroy: false
+      }
+    }
+  }
+}
+########### Response Example ################
+# SUCCESS
+no response
+
+#FAILURE
+{
+  &quot;company&quot;: [
+    &quot;does not exist&quot;
+  ],
+  &quot;company_id&quot;: [
+    &quot;does not exist&quot;
+  ],
+  &quot;given_name&quot;: [
+    &quot;can&#x27;t be blank&quot;
+  ],
+  &quot;family_name&quot;: [
+    &quot;can&#x27;t be blank&quot;
+  ]
+}
+</pre>
+
+  <h3>Params</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>customer </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[given_name] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Given name of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[family_name] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Family name of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[born_on] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Date of birthday</p>
+
+        <br>
+        Value: Must be Date
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[gender] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Gender of the customer.</p>
+
+        <br>
+        Value: Must be one of: male, female.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[email] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Email of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[send_event_related_emails] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Send event related emails</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[telephone] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Telephone of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[mobile_phone] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Mobile Telephone</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[source] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer source</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[default_discount_level] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer default discount level</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[tax_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer tax id</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[zero_tax_rate] </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Customer zero tax rate</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[tag_list] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer tags</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[emergency_contact_details] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Emergancy Contact of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[address] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][first] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>First street</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][second] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Second street</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][city] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>City</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][state] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>State</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][country_code] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Country in ISO</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][post_code] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Post code</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[hotel_name] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer hotel name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[room_number] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer room number in hotel</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[customer_experience_level_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer experience level id</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[last_dive_on] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Last dive on date</p>
+
+        <br>
+        Value: Must be Date
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[number_of_logged_dives] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Number of logged dives</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[fins] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Fins size</p>
+
+        <br>
+        Value: Must be one of: Jr, 4/5, 6/7, 8/9, 10/11, 12/13, 14/15.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[bcd] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>BCD size</p>
+
+        <br>
+        Value: Must be one of: Jr, Xs, S, M, L, XL.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[wetsuit] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Wetsuit size</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[weight] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer weight</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[custom_fields_attributes] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[custom_fields_attributes][name] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Custom field name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[custom_fields_attributes][value] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Custom field value</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[custom_fields_attributes][_destroy] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>If true then we will remove current custom field</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+
+
+
+    </tbody>
+  </table>
+
+    </div>
+    <hr>
+    <div class='pull-right small'>
+      <a href='../apidoc/customers/update.html'> >>> </a>
+    </div>
+    <div>
+        <h2>
+          <a href='#description-update'
+           class='accordion-toggle'
+           data-toggle='collapse'
+           data-parent='#accordion'>
+            PUT /api/v1/customer/:id
+          </a><br>
+          <small>Update exist customer</small>
+        </h2>
+    </div>
+
+
+    <div id='description-update' class='collapse accordion-body'>
+      
+
+  <h3>Supported Formats</h3>
+  json
+
+
+
+  <h3>Examples</h3>
+    <pre class="prettyprint">
+########### Request Example ################
+# URL
+https://app.divecentrehq.com/api/v1/customers/1
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;,
+  id: 1,
+  customer: {
+    given_name: &quot;asdas&quot;,
+    family_name: &quot;sadas&quot;,
+    born_on: &quot;1986-11-12&quot;,
+    gender: &quot;male&quot;,
+    email: &quot;kaktusyaka@gmail.com&quot;,
+    send_event_related_emails: 1,
+    telephone: &quot;+3126127361278&quot;,
+    mobile_phone: &quot;+2323123123&quot;,
+    source: &quot;Source&quot;,
+    default_discount_level: 10.0,
+    tax_id: 12,
+    zero_tax_rate: 0,
+    tag_list: &quot;&quot;,
+    emergency_contact_details: &quot;No Contact&quot;,
+    address_attributes: {
+      first: &quot;1 Street&quot;,
+      second: &quot;&quot;,
+      city: &quot;New York&quot;,
+      state: &quot;Alabama&quot;,
+      country_code: &quot;US&quot;,
+      post_code: &quot;9875&quot;
+    },
+    hotel_name: &quot;First Hotel&quot;,
+    room_number: &quot;2c&quot;,
+    customer_experience_level_id: &quot;&quot;,
+    last_dive_on: &quot;2014-01-22&quot;,
+    number_of_logged_dives: 0,
+    fins: &quot;M&quot;,
+    bcd: &quot;XL&quot;,
+    wetsuit: &quot;XL&quot;,
+    weight: &quot;120&quot;,
+    custom_fields_attributes: {
+      &lt;RANDOM NUMBER&gt;: {
+        name: &quot;custom field&quot;,
+        value: &quot;custom_field_value&quot;,
+        _destroy: false
+      },
+      &lt;RANDOM NUMBER&gt;: {
+        name: &quot;custom field 2&quot;,
+        value: &quot;custom field value&quot;,
+        _destroy: false
+      }
+    }
+  }
+}
+########### Response Example ################
+# SUCCESS
+no content
+
+# FAILURE
+{
+  &quot;company&quot;: [
+    &quot;does not exist&quot;
+  ],
+  &quot;company_id&quot;: [
+    &quot;does not exist&quot;
+  ],
+  &quot;given_name&quot;: [
+    &quot;can&#x27;t be blank&quot;
+  ],
+  &quot;family_name&quot;: [
+    &quot;can&#x27;t be blank&quot;
+  ]
+}
+</pre>
+
+  <h3>Params</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>id </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Customer ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>customer </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[given_name] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Given name of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[family_name] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Family name of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[born_on] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Date of birthday</p>
+
+        <br>
+        Value: Must be Date
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[gender] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Gender of the customer.</p>
+
+        <br>
+        Value: Must be one of: male, female.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[email] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Email of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[send_event_related_emails] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Send event related emails</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[telephone] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Telephone of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[mobile_phone] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Mobile Telephone</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[source] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer source</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[default_discount_level] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer default discount level</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[tax_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer tax id</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[zero_tax_rate] </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Customer zero tax rate</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[tag_list] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer tags</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[emergency_contact_details] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Emergancy Contact of the customer</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[address] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][first] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>First street</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][second] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Second street</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][city] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>City</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][state] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>State</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][country_code] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Country in ISO</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[address][post_code] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Post code</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[hotel_name] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer hotel name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[room_number] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer room number in hotel</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[customer_experience_level_id] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer experience level id</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[last_dive_on] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Last dive on date</p>
+
+        <br>
+        Value: Must be Date
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[number_of_logged_dives] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Number of logged dives</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[fins] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Fins size</p>
+
+        <br>
+        Value: Must be one of: Jr, 4/5, 6/7, 8/9, 10/11, 12/13, 14/15.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[bcd] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>BCD size</p>
+
+        <br>
+        Value: Must be one of: Jr, Xs, S, M, L, XL.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[wetsuit] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Wetsuit size</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[weight] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Customer weight</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(250,250,250);'>
+    <td>
+      <strong>customer[custom_fields_attributes] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+        <br>
+        Value: Must be a Hash
+
+
+    </td>
+
+  </tr>
+
+    <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[custom_fields_attributes][name] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Custom field name</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[custom_fields_attributes][value] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>Custom field value</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(245,245,245);'>
+    <td>
+      <strong>customer[custom_fields_attributes][_destroy] </strong><br>
+      <small>
+        optional
+        , nil allowed
+      </small>
+    </td>
+    <td>
+      
+<p>If true then we will remove current custom field</p>
+
+        <br>
+        Value: Must be one of: true, false.
+
+
+    </td>
+
+  </tr>
+
+  
+
+
+
+    </tbody>
+  </table>
+
+    </div>
+    <hr>
+    <div class='pull-right small'>
+      <a href='../apidoc/customers/destroy.html'> >>> </a>
+    </div>
+    <div>
+        <h2>
+          <a href='#description-destroy'
+           class='accordion-toggle'
+           data-toggle='collapse'
+           data-parent='#accordion'>
+            DELETE /api/v1/customers/:id
+          </a><br>
+          <small>Delete customer</small>
+        </h2>
+    </div>
+
+
+    <div id='description-destroy' class='collapse accordion-body'>
+      
+
+  <h3>Supported Formats</h3>
+  json
+
+
+
+  <h3>Examples</h3>
+    <pre class="prettyprint">
+########### Request Example #################
+# URL
+https://api.divecentrehq.com/api/v1/customers/1
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;,
+  id: 1
+}
+
+########### Response Example ################
+no content
+</pre>
+
+  <h3>Params</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>id </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Customer ID</p>
+
+        <br>
+        Value: Must be Integer
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+    </tbody>
+  </table>
+
+    </div>
+</div>
+
+
+        
+      </div>
+    </div>
+    <hr>
+    <footer>&copy; 2014  Dive Centre HQ API</footer>
+  </div>
+  <script type='text/javascript' src='../apidoc/javascripts/bundled/jquery-1.7.2.js'></script>
+<script type='text/javascript' src='../apidoc/javascripts/bundled/bootstrap-collapse.js'></script>
+<script type='text/javascript' src='../apidoc/javascripts/bundled/prettify.js'></script>
+<script type='text/javascript' src='../apidoc/javascripts/apipie.js'></script>
+</body>
+</html>

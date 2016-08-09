@@ -1,0 +1,10 @@
+es:
+  suppliers:
+    form:
+      supplier_details: 'Detalles del Proveedor'
+      address: 'Dirección'
+      supplier_information: 'Información del Proveedor'
+      supplier_information_text: 'Ingrese el nombre y logo del proveedor.'
+      upload_logo: 'Cargar Logo'
+      contact_details: 'Detalles de Contacto'
+      contact_details_text: 'Ingrese la dirección de correo-e y los números de teléfono de este cliente.'

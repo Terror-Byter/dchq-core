@@ -1,0 +1,76 @@
+= simple_form_for resource, html: { multipart: true }, validate: true do |f|
+  = f.error_messages
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            %a.glyphicons.font{"data-toggle" => "tab", href: "#productDescriptionTab"}
+              %i>
+              = t '.rental_item'
+          %li
+            %a.glyphicons.picture{"data-toggle" => "tab", href: "#productPhotosTab"}
+              %i>
+              = t '.photos'
+          %li
+            %a.glyphicons.adjust_alt{"data-toggle" => "tab", href: "#productAccountingTab"}
+              %i>
+              = t '.accounting_and_barcode'
+          %li
+            %a.glyphicons.table{"data-toggle" => "tab", href: "#productPriceTab"}
+              %i>
+              = t '.pricing'
+      .widget-body
+        .tab-content
+          #productDescriptionTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t '.product_name'
+                %p.muted= t '.product_name_text'
+              .span5
+                = f.input :name, input_html: { class: 'span12' }
+                .separator
+              .span2
+                = f.input :sku_code, input_html: { class: 'span12' }
+                .separator
+              .span2
+                = f.input :number_in_stock, input_html: { class: 'span11' }
+                .separator
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t '.description'
+                %p.muted= t '.description_text'
+              .span9
+                = f.input :description, input_html: { rows: '2', style: 'width: 96%;' }
+            %hr.separator.bottom/
+            = render 'store_products/product_information', f: f
+          #productPhotosTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t '.image'
+                %p.muted= t '.image_text'
+              .span3
+                = f.simple_fields_for :logo do |form|
+                  = render 'avatar_fields', f: form
+          #productAccountingTab.tab-pane
+            = render 'store_products/accounting_and_barcode', f: f
+          #productPriceTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t '.pricing'
+                %p.muted= t '.pricing_text'
+              .span4
+                = f.label :price_per_day
+                .input-prepend
+                  %span.add-on= current_store.currency.unit
+                  = f.text_field :price_per_day, class: 'span12', size: nil
+                %p{style: "margin-top:-8px;"}= current_store.tax_rate_inclusion? ? t('.tax_inc') : t('.tax_exc')
+            %hr.separator.bottom/
+            = render 'store_products/tax_and_commission', f: f
+    .heading-buttons
+      .buttons.pull-right{style: "margin: 0;"}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: :submit }
+          %i
+          = t '.save'
+      .clearfix

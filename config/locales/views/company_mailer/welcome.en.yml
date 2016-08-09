@@ -1,0 +1,15 @@
+en:
+  company_mailer:
+    welcome:
+      congratulations: 'Congratulations, your account is now active!'
+      congratulations2: 'Congratulations on taking the giant stride into online dive centre management - your customers and staff will thank you for it!'
+      able_to_login: 'You are now able to login to Dive Centre HQ any time, from anywhere to easily manage your store. Here are your login details:'
+      login_details: 'Login details'
+      account_access: 'Account access:'
+      username: 'Username:'
+      password: 'Password:'
+      set_a_registration: 'Set at registration'
+      login_to_dchq: 'Login to Dive Centre HQ'
+      check_out: 'Check out the'
+      support_docs: 'support documentation'
+      for_useful: "for useful tips and demonstrations on getting the most out of the software."

@@ -1,0 +1,12 @@
+-# TODO: make this a common partial for all kinds of views in project
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('purchase_orders.common.home')
+  %li.divider
+  %li
+    = t('purchase_orders.common.sales') # TODO: make this a link
+  %li.divider
+  %li= t('purchase_orders.common.purchase_orders')

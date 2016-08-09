@@ -1,0 +1,12 @@
+es:
+  application:
+    store_fields:
+      location: 'Ubicación'
+      shop_details: 'Detalles de la Tienda'
+      shop_details_text: 'Ingrese su nombre de tienda & información de la ubicación.'
+      currency_calendar: 'Moneda & Calendario'
+      currency_calendar_text: 'Seleccione la moneda a utilizar en esta tienda y el formato de calendario predeterminado.'
+      calendar_code_key: 'Código & Llaves del Calendario'
+      calendar_code_key_text: 'Estas son las llaves utilizadas para publicar un calendario en su página web o accesar los datos vía API.'
+      embeddable_calendar_code: 'Código de Calendario Incrustable'
+      show_embed_code: 'Mostrar Código para Incrustar'

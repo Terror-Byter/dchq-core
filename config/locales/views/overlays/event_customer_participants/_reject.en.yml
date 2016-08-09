@@ -1,0 +1,8 @@
+en:
+  overlays:
+    event_customer_participants:
+      reject:
+        h3: Reject %{full_name} from %{event}
+        p: '%{full_name} will be removed from the event. They will also be sent an email confirming the rejection.'
+        reason: REASON FOR REJECTION
+        button: Refund & Reject Customer

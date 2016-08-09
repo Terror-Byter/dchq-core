@@ -1,0 +1,12 @@
+en:
+  sale_mailer:
+    booking_online_for_shop:
+    alt: 'Dive Centre HQ'
+    new_booking_request: 'New Booking Request Received'
+    made_an_online_booking: '%{customer} has made an online booking for %{event_name} on %{start_at}. The booking details are below. This is a booking request as eligibility to dive needs to be confirmed.'
+    approve_customer_for_event: 'Approve Customer for Event'
+    reject_customer: 'Reject Customer'
+    note_if_reject: 'Note: If you reject this customer, we will redirect you to PayPal to issue a refund.'
+    booking_date: 'Booking Date'
+    team: 'The Dive Centre HQ team'
+    registered_office: ''

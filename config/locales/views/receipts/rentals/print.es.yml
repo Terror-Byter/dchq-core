@@ -1,0 +1,27 @@
+es:
+  receipts:
+    rentals:
+      receipt:
+        alt_logo: Logo
+        customers: "Cliente:"
+        receipt: "Recibo #%{receipt}"
+        invoice: "Factura #%{invoice}"
+        invoice_data: 'Fecha de la Factura: %{date}'
+        name: Hola %{name}
+        description: Gracias por su compra de %{name}. Si usted tiene cualquier duda acerca de su orden por favor contáctenos en %{email} o llámenos al %{telephone}.
+        description_2: Debajo está la confirmación de su orden. Gracias por hacer negocios con nosotros.
+        sku: SKU / PRODUCTO
+        days: DÍAS
+        unit_price: PRECIO UNITARIO
+        qty: CANT
+        category: CATEGORÍA
+        discount_heading: DESCUENTO
+        discount: "Menos Descuento:"
+        sub_total: TOTAL DEL ARTÍCULO
+        subtotal: "Sub Total:"
+        tax_inc: "Impuesto:"
+        net_due: "NETO DEBIDO:"
+        payments: Pagos
+        with_regards: Saludos,
+        this_mail: Este correo-e fue enviado a %{mail}.
+        tax_identifier: 'ID de Impuesto:'

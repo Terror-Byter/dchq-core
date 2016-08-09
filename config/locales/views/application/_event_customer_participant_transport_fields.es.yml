@@ -1,0 +1,4 @@
+es:
+  application:
+    event_customer_participant_transport_fields:
+      day: 'Día'

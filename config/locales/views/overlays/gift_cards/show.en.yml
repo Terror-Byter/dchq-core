@@ -1,0 +1,6 @@
+en:
+  overlays:
+    gift_cards:
+      show:
+        header: "Edit Gift Card"
+        content: "Enter the unique identifier (or barcode) for this gift card."

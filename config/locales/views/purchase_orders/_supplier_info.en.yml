@@ -1,0 +1,4 @@
+en:
+  purchase_orders:
+    supplier_info:
+      remove: '[remove]'

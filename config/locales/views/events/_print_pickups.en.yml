@@ -1,0 +1,8 @@
+en:
+  events:
+    print_pickups:
+      title: "Today's Pickups"
+      name: 'Name'
+      current_accommodation: 'Hotel / Accommodation'
+      location: 'Pickup Location (if different)'
+      time: 'Time'

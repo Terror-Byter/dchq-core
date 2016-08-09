@@ -1,0 +1,8 @@
+en:
+  products:
+    edit:
+      home: 'Home'
+      sales: 'Sales'
+      products: 'Products'
+      edit: 'Edit'
+      edit_product: 'Edit Product'

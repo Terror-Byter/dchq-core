@@ -1,0 +1,7 @@
+en:
+  sale_mailer:
+    booking_confirmed_online_for_customer:
+      booking_confirmed: 'Booking Confirmed: %{customer}'
+      you_have_been_confirmed: ' You have been confirmed for the event listed below. Please bring a copy of this booking confirmation with you to the event.'
+      event_date: 'Event Date'
+      further_instructions: 'Further Instructions'

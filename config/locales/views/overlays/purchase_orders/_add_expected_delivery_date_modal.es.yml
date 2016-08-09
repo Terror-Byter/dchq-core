@@ -1,0 +1,7 @@
+es:
+  overlays:
+    purchase_orders:
+      add_expected_delivery_date_modal:
+        expected_delivery_date: 'Fecha Esperada de Entrega'
+        enter_date: 'Ingrese la fecha que espera recibir este envío.'
+        add_expected_delivery_date: 'Agregar Fecha Esperada de Entrega'

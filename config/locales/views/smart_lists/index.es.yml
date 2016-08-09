@@ -1,0 +1,12 @@
+es:
+  smart_lists:
+    index:
+      home: Casa
+      crm: CRM
+      smart_lists: Listas Inteligentes
+      new_smart_list: Nueva Lista Inteligente
+      your_smart_lists: Sus inteligentes Listas
+      list_name: Nombre de la Lista
+      conditions: Condiciones
+      no_records: No hay registros
+      total_smart_list: 'Total de listas inteligentes: %{count}'

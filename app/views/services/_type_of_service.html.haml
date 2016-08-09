@@ -1,0 +1,8 @@
+- @type_of_services.each do |type_of_service|
+  %li.type_of_service
+    %span.count= formatted_currency(type_of_service.unit_price)
+    = type_of_service.name
+  - unless type_of_service.service_kit.blank?
+    %li.type_of_service
+      %span.count= formatted_currency type_of_service.service_kit.unit_price
+      = type_of_service.service_kit.name

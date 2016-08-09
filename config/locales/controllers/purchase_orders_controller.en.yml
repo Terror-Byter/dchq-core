@@ -1,0 +1,12 @@
+en:
+  controllers:
+    purchase_orders:
+      flash:
+        create:
+          error_creating_order: 'Failed to create purchase order'
+        destroy:
+          success: 'Purchase order was successfully deleted'
+          error: 'Error deleting purchase order'
+        send_email_to_supplier:
+          success: 'Purchase order successfully sent to supplier'
+          error: 'Failed to email the order to supplier'

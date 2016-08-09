@@ -1,0 +1,17 @@
+en:
+  events:
+    print_resource_utilisation:
+      h2: Resource Utilisation Report for %{starts_at} to %{ends_at}
+      resource: Resource
+      event_name: Event Name
+      time: Time
+      location: Location
+      staff: Staff
+      staff_names: Staff Names
+      customers: Customers
+      customer_names: Customer Names
+      summary_for_period: Summary for Period
+      total_events: Total Events
+      total_hours: Total Hours
+      total_clients: Total Clients
+      avg_clents: Avg Clients

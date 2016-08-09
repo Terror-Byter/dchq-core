@@ -1,0 +1,10 @@
+.widget
+  .widget-head
+    %h4.heading= t('purchase_orders.form.supplier')
+    = purchase_order.link_to_assign_supplier(t('purchase_orders.form.assign_supplier'))
+  .widget-body.list.products
+    %ul
+      %li
+        %p#supplier-info{style: 'padding-top:10px;'}
+          - if purchase_order.model.supplier.present?
+            = render 'purchase_orders/supplier_info'

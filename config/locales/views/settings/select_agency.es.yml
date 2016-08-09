@@ -1,0 +1,6 @@
+es:
+  settings:
+    select_agency:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_course_price: 'Ajustes: Lista de Precio de Cursos'

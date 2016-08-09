@@ -1,0 +1,20 @@
+es:
+  events:
+    cancel_complete:
+      events: Eventos
+      h2: Evento Cancelado
+      p: Este evento ha sido cancelado.
+      h2_1: Cantidad Recibida
+      h2_2: Importe de la Devolución
+      h2_3: Los Reembolsos Requeridos
+      h2_4: Devoluciones Realizadas
+      h2_5: Los Reembolsos de Proceso
+      p_1: Esta es una lista de los clientes que pagaron por este evento, junto con su estado de su reembolso.
+      registrant_namespace: Clientes
+      date_registered: Fecha de Registro
+      amount_paid: Cantidad Pagada
+      amount_refund: Importe de la Devolución
+      actions: Acciones
+      view_refund: Ver los Detalles del Reembolso
+      issue_refund: Emitir Reintegro
+      no_data: Sin datos

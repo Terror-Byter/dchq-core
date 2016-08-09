@@ -1,0 +1,6 @@
+es:
+  business_contacts:
+    edit:
+      home: 'Inicio'
+      crm: 'CRM'
+      edit_supplier_contact: 'Editar Contacto del Proveedor'

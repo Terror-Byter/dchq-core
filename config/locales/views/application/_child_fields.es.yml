@@ -1,0 +1,9 @@
+es:
+  application:
+    child_fields:
+      day: 'Día'
+      remove_day: 'Eliminar Día'
+      date_and_times: 'Días & Horas'
+      date_and_times_text: 'Ingrese el día/hora de inicio y finalización y la frecuencia de este evento.'
+      dive_info: 'Información de Buceo'
+      dive_info_text: 'Seleccione el barco/recurso, ubicaciones, número de buceos y el máximo de participantes.'

@@ -1,0 +1,11 @@
+.row-fluid
+  .span3
+    %strong= t('.tax_commissions')
+    %p.muted= t('.tax_commissions_text')
+  .span3
+    = f.association :tax_rate, collection: current_store.tax_rates_list,
+                            input_html: { class: 'selectpicker' },
+                            include_blank: false
+  .span3
+    = f.association :commission_rate, collection: current_store.commission_rates_list, input_html: { class: 'selectpicker' }, include_blank: false
+

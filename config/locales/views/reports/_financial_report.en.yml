@@ -1,0 +1,7 @@
+en:
+  reports:
+    financial_reports:
+      sales_report: 'Sales Report (%{type})'
+      view_in_xero: 'View in Xero'
+      invoice: 'Invoice'
+      credit: 'Credit'

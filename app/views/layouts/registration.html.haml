@@ -1,0 +1,66 @@
+!!!
+/[if lt IE 7] <html class="ie lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="ie lt-ie9 lt-ie8">
+/[if IE 8] <html class="ie lt-ie9">
+/[if gt IE 8] <html class="ie gt-ie8">
+/ [if !IE]><!
+%html
+  / <![endif]
+  %head
+    %title Dive Centre HQ: Create Account
+    / Meta
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}/
+    = stylesheet_link_tag :application
+    /[if IE]
+      = javascript_include_tag :excanvas
+    /[if lt IE 8]
+      = javascript_include_tag :json2
+    = render 'layouts/locale'
+    = csrf_meta_tags
+  %body{ body_attributes }
+    .container-fluid.fluid.menu-left
+      .navbar.main.hidden-print
+        = link_to content_tag(:span, 'DCHQ'), root_path, class: 'appbrand pull-left'
+      #wrapper
+        #content
+          = bootstrap_flash
+          %ul.breadcrumb
+            %li
+              = link_to root_path, class: 'glyphicons home' do
+                %i
+                = t('layouts.registration.home')
+            %li.divider
+            %li= t('layouts.registration.signup')
+          .innerLR
+            .row-fluid
+              .span12
+                %h3.heading-mosaic= t('layouts.registration.signup')
+          .innerLR
+            #rootwizard.wizard
+              .wizard-head
+                %ul
+                  %li= link_to t('layouts.registration.store_and_manager'), '#tab1', :'data-toggle' => 'tab'
+                  %li= link_to t('layouts.registration.sales_settings'), '#tab2', :'data-toggle' => 'tab'
+                  %li= link_to t('layouts.registration.event_settings'), '#tab3', :'data-toggle' => 'tab'
+              .widget
+                = yield
+              - if current_user && current_user.step_3?
+                %p
+                  = link_to complete_setup_pages_path, class: 'btn btn-success btn-large btn-icon glyphicons ok pull-right finish_setup' do
+                    %i
+                    = t('layouts.registration.complete_setup')
+      .clearfix
+    :javascript
+      var primaryColor = '#55AB48',
+      angerColor = '#bd362f',
+      uccessColor = '#609450',
+      arningColor = '#ab7a4b',
+      nverseColor = '#45484d';
+    :javascript
+      var themerPrimaryColor = primaryColor;
+    = javascript_include_tag :application
+    = yield :js

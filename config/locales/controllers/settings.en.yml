@@ -1,0 +1,5 @@
+en:
+  controllers:
+    settings:
+      import_notice: "Importing of %{type} is currently running. You'll receive an email once complete."
+      incorrect_delimiter: Your import uses the ; symbol as a delimiter. You need to use a comma (,) as the delimiter.

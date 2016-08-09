@@ -1,0 +1,25 @@
+en:
+  settings:
+    import_to_csv_step_1:
+      home: Home
+      settings: Settings
+      settings_import_step_1: 'Settings: Import Data: Step 1'
+      content: Please select a file to import. If you are wanting to import an Excel file, please save it as .csv before you upload. Example csv files can be
+      download: downloaded from GitHub
+      about_importing: About Importing Data
+      supported: 'Supported input file types: Excel saved as .csv'
+      after_upload: After uploading, we will show you a preview of the uploaded data. You can then define which column goes where and match your data to our system.
+      preview: "Once you're happy with the preview, you can push the data into your Dive Centre HQ account. You can cancel the import at any time."
+      import_options: Import Options
+      import_data: Import Type
+      import_data_text: Choose your import options and upload the import file.
+      import_type: Import Type
+      start_import: Start Import
+      customers: Customers
+      suppliers: Suppliers
+      business_individuals: Business Individuals
+      products: Products
+      import_file: Import File
+      msg: Data import has been successful
+      rental_products: Rental Products
+      eve_import: EVE Import (Invoice Line Item)

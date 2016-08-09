@@ -1,0 +1,7 @@
+es:
+  services:
+    service:
+      booked: Reservado
+      in_progress: En Curso
+      awaiting_collection: En espera de la Colección
+      complete: Completo

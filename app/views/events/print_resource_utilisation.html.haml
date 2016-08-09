@@ -1,0 +1,179 @@
+!!!
+%html
+  %head
+    %title DCHQ
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+  %body
+    .container-fluid
+      #content{style: "margin: 10px;"}
+
+        .hidden-phone
+          %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 10px 2%;'}
+            =  t 'events.print_resource_utilisation.h2', starts_at: @starts_at.strftime("%A #{@starts_at.day.ordinalize} %B, %Y"), ends_at: @ends_at.strftime("%A #{@ends_at.day.ordinalize} %B, %Y")
+            = show_company_logo(current_store, {class: 'pull-right'})
+          - (@starts_at..@ends_at).each do |date|
+            - events = current_store.events_with_boats.where(starts_at: date.beginning_of_day..date.end_of_day)
+            - next if events.blank?
+            %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 2%;'}
+              = date.strftime("%A #{date.day.ordinalize} %B, %Y")
+            %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 2%; width: 96%;'}
+              %thead
+                %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.resource')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.event_name')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.time')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.location')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.staff')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.staff_names')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.customers')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.customer_names')
+              %tbody
+                - events.each do |event|
+                  %tr
+                    %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.boat.try(:name)
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.name
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{event.starts_at.strftime('%I:%M%P')} - #{event.ends_at.strftime('%I:%M%P')}
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.location
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.event_user_participants.count
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.event_user_participants.map{|u| u.user.full_name}.join(', ')
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.event_customer_participants.count
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.event_customer_participants.map{|u| u.decorate.customer_name}.join(', ')
+
+          %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 2%;'}
+            = t('events.print_resource_utilisation.summary_for_period')
+          %div{style: 'margin: 15px 1%; width: 48%; float: left;'}
+            %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 2%; width: 96%;'}
+              %thead
+                %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.resource')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.total_events')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.total_hours')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.total_clients')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.avg_clents')
+              %tbody
+                - current_store.boats.each do |boat|
+                  - events = boat.events.where(starts_at: @starts_at..@ends_at)
+                  - next if events.blank?
+                  %tr
+                    %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= boat.name
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.count
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= convert_seconds_to_hours_and_mins(calculate_event_time(events))
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.map{|event| event.event_customer_participants.count}.sum
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.map{|event| event.event_customer_participants.count}.sum.to_f / events.count
+
+          %div{style: 'margin: 15px 1%; width: 48%; float: right;'}
+            %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 2%; width: 96%;'}
+              %thead
+                %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.staff')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.total_events')
+                  %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                    %b= t('events.print_resource_utilisation.total_hours')
+              %tbody
+                - current_company.users.each do |user|
+                  - events = user.events.where(starts_at: @starts_at..@ends_at)
+                  - next if events.blank?
+                  %tr
+                    %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= user.full_name
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.count
+                    %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= convert_seconds_to_hours_and_mins(calculate_event_time(events))
+
+
+
+
+        .visible-phone{style: 'margin-right: 10px !important;'}
+          %h4.heading-mosaic.margin-none= t 'events.print_resource_utilisation.h2', starts_at: @starts_at.strftime("%A #{@starts_at.day.ordinalize} %B, %Y"), ends_at: @ends_at.strftime("%A #{@ends_at.day.ordinalize} %B, %Y")
+          - (@starts_at..@ends_at).each do |date|
+            - events = current_store.events_with_boats.where(starts_at: date.beginning_of_day..date.end_of_day)
+            - next if events.blank?
+            %h5.heading-mosaic{style: "margin-top:20px;"}= date.strftime("%A #{date.day.ordinalize} %B, %Y")
+            .accordion{:id => "accordion-#{date}"}
+              - events.each do |event|
+                .accordion-group
+                  .accordion-heading
+                    %a.accordion-toggle{"data-parent" => "#accordion-#{date}", "data-toggle" => "collapse", href: "#collapse-event-#{event.id}"}
+                      #{event.starts_at.strftime('%I:%M%P')} - #{event.ends_at.strftime('%I:%M%P')}
+                      |
+                      = event.boat.try(:name)
+                  .accordion-body.collapse{:id => "collapse-event-#{event.id}"}
+                    .accordion-inner
+                      %strong= t('events.print_resource_utilisation.event_name')
+                      = event.name
+                      %br
+                      %strong= t('events.print_resource_utilisation.location')
+                      = event.location
+                      %br/
+                      %strong
+                        = t('events.print_resource_utilisation.staff')
+                        (x#{event.event_user_participants.count}):
+                      = event.event_user_participants.map{|u| u.user.full_name}.join(', ')
+                      %br/
+                      %strong
+                        = t('events.print_resource_utilisation.customers')
+                        (x#{event.event_customer_participants.count}):
+                      = event.event_customer_participants.map{|u| u.decorate.customer_name}.join(', ')
+
+
+          %h5{style: "margin-top:20px;"}= t('events.print_resource_utilisation.summary_for_period')
+          %table{border: "0", cellpadding: "0", cellspacing: "0", style: "font-size: 12px; line-height: 1; width: 100%; margin-bottom:20px;"}
+            %thead
+              %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.resource')
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.total_events')
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.total_hours')
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.total_clients')
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.avg_clents')
+            %tbody
+              - current_store.boats.each do |boat|
+                - events = boat.events.where(starts_at: @starts_at..@ends_at)
+                - next if events.blank?
+                %tr
+                  %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= boat.name
+                  %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.count
+                  %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= convert_seconds_to_hours_and_mins(calculate_event_time(events))
+                  %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.map{|event| event.event_customer_participants.count}.sum
+                  %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.map{|event| event.event_customer_participants.count}.sum.to_f / events.count
+
+          %table{border: "0", cellpadding: "0", cellspacing: "0", style: "font-size: 12px; line-height: 1; width: 100%;"}
+            %thead
+              %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.staff')
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.total_events')
+                %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                  %b= t('events.print_resource_utilisation.total_hours')
+            %tbody
+              - current_company.users.each do |user|
+                - events = user.events.where(starts_at: @starts_at..@ends_at)
+                - next if events.blank?
+                %tr
+                  %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= user.full_name
+                  %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= events.count
+                  %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= convert_seconds_to_hours_and_mins(calculate_event_time(events))

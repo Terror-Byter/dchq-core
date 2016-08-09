@@ -1,0 +1,18 @@
+es:
+  staff_members:
+    index:
+      home: 'Inicio'
+      crm: 'CRM'
+      staff: 'Personal'
+      setup_mailchimp: 'Configurar MailChimp'
+      sync_mailchimp: 'Sincronizar a MailChimp'
+      export_records: 'Exportar Registros del Personal'
+      new_staff: 'Nuevo Miembro del Personal'
+      staff_record: 'Historial del Personal'
+      table_name: 'Nombre'
+      table_phone: 'Teléfono'
+      table_email: 'Correo-e'
+      table_tags: 'Etiquetas'
+      table_product_sales: 'Ventas de Productos'
+      total_staff: 'Personal total:'
+

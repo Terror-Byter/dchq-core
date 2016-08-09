@@ -1,0 +1,7 @@
+en:
+  overlays:
+    events:
+      edit_recurring_event:
+        just_this_one: 'Just this one'
+        header: 'Recurring Event Detected'
+        content: "We've detected this event is part of a recurring set. How many future events in this set would you like to update?"

@@ -1,0 +1,8 @@
+es:
+  overlays:
+    services:
+      add_item_confirmation:
+        header: 'Modificación de Servicio'
+        content: 'Usted está agregando un artículo al servicio que ya está en vía. Para continuar, por favor confirme que usted tiene la autorización del cliente para agregar este artículo.'
+        declined: 'Declinado'
+        authorised: 'Authorizado'

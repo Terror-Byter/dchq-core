@@ -1,0 +1,4 @@
+en:
+  decorators:
+    course_event:
+      full_event: ' [FULL]'

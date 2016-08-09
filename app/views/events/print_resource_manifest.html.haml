@@ -1,0 +1,285 @@
+!!!
+%html
+  %head
+    %title Resource Manifest
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+  %body
+    .container-fluid
+      #content{style: "margin: 10px;"}
+
+        .hidden-phone
+          :css
+            @media all {
+              .page-break  { display: none; }
+            }
+
+            @media print {
+              .page-break  { display: block; page-break-before: always; }
+            }
+          #manifest
+            - @events.each do |event|
+              .space{style: 'margin: 15px 2%;'}
+                %div.resource_manifest{style: 'float:right; height: 40px;'}
+                  = current_company.has_image? ? current_company.image_thumb : current_store.name
+                %p
+                  %strong{style: 'font-size: 14px;'}= t('events.print_resource_manifest.resource_manifest')
+                  %span{style: 'font-weight: normal;'} #{@boat.try(:name)}
+                  %br
+                  = t('events.print_resource_manifest.staff')
+                  %span{style: 'font-weight: normal;'}
+                    - event.event_user_participants.each do |event_user_participant|
+                      #{event_user_participant.user.full_name},
+                  %br
+                  = t('events.print_resource_manifest.date_time')
+                  %span{style: 'font-weight: normal;'} #{event.event_time}
+              %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; margin: 15px 2%; width: 96%;'}
+                %thead
+                  %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.customer')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.staff')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.pickup')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.activity')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.cert')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.dives')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.weight')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.reg')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.bcd')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.fins')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.mask')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.wetsuit')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.emergency')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b= t('events.print_resource_manifest.nitrox')
+                    %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                      %b Last dive
+                %tbody
+                  - event.event_customer_participants.select{ |u| u.not_refunded? }.each do |ecp|
+                    - customer = ecp.customer
+                    %tr
+                      %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{ecp.decorate.customer_name}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{ecp.decorate.associated_staff_for_manifest}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{ecp.show_event_customer_participant_transpost}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{event.name}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer.last_cert if customer}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer.number_of_logged_dives if customer}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer.weight if customer}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer_equipment_to_human customer.regulator_own? if customer}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= customer.bcd_own? ? customer_equipment_to_human(customer.bcd_own?) : customer.bcd if customer
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= customer.fins_own? ? customer_equipment_to_human(customer.fins_own?) : customer.fins if customer
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer_equipment_to_human customer.mask_own? if customer}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= customer.wetsuit_own? ? customer_equipment_to_human(customer.wetsuit_own?) : customer.wetsuit if customer
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer.emergency_contact_details if customer}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{ecp.nitrox}
+                      %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer.last_dive_on if !customer.last_dive_on.blank?}
+              %div{style: 'margin: 0px 2%; width: 45%; float: left;'}
+                %p{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5;'}
+                  %strong= t('events.print_resource_manifest.locations')
+                  %br/
+                  #{event.location}
+                %p{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5;'}
+                  %strong= t('events.print_resource_manifest.event_notes')
+                  %br/
+                  = event.notes
+                  %br/
+                  %br/
+                %p{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5;'}
+                  %strong= t('events.print_resource_manifest.notes_incidents')
+                  %br/
+                  %br/
+              %div{style: 'margin: 15px 2%; width: 47%; float: left;'}
+                %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5;width: 100%;'}
+                  %thead
+                    %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                      %td{colspan: '6', style: 'text-align:center; font-weight:bold;'}= t('events.print_resource_manifest.rental_bcd')
+                    %tr
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'} Jr
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} Xs
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} S
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} M
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} L
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} XL
+                  %tbody
+                    %tr
+                      %td{style: 'text-align:center; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('Jr', 'bcd')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('Xs', 'bcd')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('S', 'bcd')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('M', 'bcd')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('L', 'bcd')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('XL', 'bcd')
+                %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5;width: 100%; margin-top: 10px;'}
+                  %thead
+                    %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                      %td{colspan: '7', style: 'text-align:center; font-weight:bold;'}= t('events.print_resource_manifest.fins')
+                    %tr
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'} Jr
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 4/5
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 6/7
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 8/9
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 10/11
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 12/13
+                      %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 14/15
+                  %tbody
+                    %tr
+                      %td{style: 'text-align:center; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('Jr', 'fins')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('4/5', 'fins')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('6/7', 'fins')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('8/9', 'fins')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('10/11', 'fins')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('12/13', 'fins')
+                      %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('14/15', 'fins')
+                %div{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5;width: 50%; margin-top: 10px; float:right; text-align: center;'}
+                  %strong= t('events.print_resource_manifest.weight_total')
+                  = event.calc_total_weight
+                  %strong{style: 'margin-left: 20px;'}= t('events.print_resource_manifest.masks')
+                  = event.calc_rent_masks
+              = content_tag :div, nil, class: 'page-break' if @events.count > 1
+
+
+        .visible-phone{style: 'margin-right: 10px !important;'}
+          - @events.each do |event|
+            %p
+              %strong{style: 'font-size: 14px;'}= t('events.print_resource_manifest.resource_manifest')
+              %span{style: 'font-weight: normal;'} #{@boat.try(:name)}
+              %br
+              %strong= t('events.print_resource_manifest.staff')
+              %span{style: 'font-weight: normal;'}
+                - event.event_user_participants.each do |event_user_participant|
+                  #{event_user_participant.user.full_name},
+              %br
+              %strong= t('events.print_resource_manifest.date_time')
+              %span{style: 'font-weight: normal;'} #{event.event_time}
+
+
+            %h5.heading-mosaic= t('events.print_resource_manifest.customers')
+            .accordion{:id => "accordion-#{event.event_time}"}
+              - event.event_customer_participants.each do |ecp|
+                - customer = ecp.customer
+                .accordion-group
+                  .accordion-heading
+                    %a.accordion-toggle{"data-parent" => "#accordion-#{customer.try(:id)}", "data-toggle" => "collapse", href: "#collapse-customer-#{customer.try(:id)}"}
+                      #{ecp.decorate.customer_name}
+                      |
+                      #{event.name}
+                  .accordion-body.collapse{:id => "collapse-customer-#{customer.try(:id)}"}
+                    .accordion-inner
+                      %strong= t('events.print_resource_manifest.pickup')
+                      \:
+                      #{ecp.show_event_customer_participant_transpost}
+                      %br
+                      %strong= t('events.print_resource_manifest.cert')
+                      \:
+                      #{customer.last_cert if customer}
+                      %br
+                      %strong= t('events.print_resource_manifest.dives')
+                      \:
+                      #{customer.number_of_logged_dives if customer}
+                      %br
+                      %strong= t('events.print_resource_manifest.emergency')
+                      \:
+                      #{customer.emergency_contact_details if customer}
+                      %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; width: 100%; margin-top:10px;'}
+                        %thead
+                          %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                              %b= t('events.print_resource_manifest.weight')
+                            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                              %b= t('events.print_resource_manifest.reg')
+                            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                              %b= t('events.print_resource_manifest.bcd')
+                            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                              %b= t('events.print_resource_manifest.fins')
+                        %tbody
+                          %tr
+                            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;border-left:1px solid #EAEAEA;'} #{customer.weight if customer}
+                            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{customer_equipment_to_human customer.regulator_own? if customer}
+                            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= customer.bcd_own? ? customer_equipment_to_human(customer.bcd_own?) : customer.bcd if customer
+                            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= customer.fins_own? ? customer_equipment_to_human(customer.fins_own?) : customer.fins if customer
+                      %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; width: 100%; margin-top:10px;'}
+                        %thead
+                          %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                              %b= t('events.print_resource_manifest.mask')
+                            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                              %b= t('events.print_resource_manifest.wetsuit')
+                            %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'}
+                              %b= t('events.print_resource_manifest.nitrox')
+                        %tbody
+                          %tr
+                            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;border-left:1px solid #EAEAEA;'} #{customer_equipment_to_human customer.mask_own? if customer}
+                            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= customer.wetsuit_own? ? customer_equipment_to_human(customer.wetsuit_own?) : customer.wetsuit if customer
+                            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{ecp.nitrox}
+
+
+            %p
+              %strong= t('events.print_resource_manifest.locations')
+              %br/
+              #{event.location}
+              %strong= t('events.print_resource_manifest.event_notes')
+              %br/
+              = event.notes
+
+            %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5;width: 100%;'}
+              %thead
+                %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                  %td{colspan: '6', style: 'text-align:center; font-weight:bold;'}= t('events.print_resource_manifest.rental_bcd')
+                %tr
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'} Jr
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} Xs
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} S
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} M
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} L
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} XL
+              %tbody
+                %tr
+                  %td{style: 'text-align:center; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('Jr', 'bcd')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('Xs', 'bcd')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('S', 'bcd')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('M', 'bcd')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('L', 'bcd')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('XL', 'bcd')
+            %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5;width: 100%; margin-top: 10px;'}
+              %thead
+                %tr{bgcolor: '#EAEAEA', style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+                  %td{colspan: '7', style: 'text-align:center; font-weight:bold;'}= t('events.print_resource_manifest.fins')
+                %tr
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'} Jr
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 4/5
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 6/7
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 8/9
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 10/11
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 12/13
+                  %td{style: 'text-align:center; font-weight:bold; width: 16%; padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4;border-top:1px solid #D4D4D4;'} 14/15
+              %tbody
+                %tr
+                  %td{style: 'text-align:center; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('Jr', 'fins')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('4/5', 'fins')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('6/7', 'fins')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('8/9', 'fins')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('10/11', 'fins')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('12/13', 'fins')
+                  %td{style: 'text-align:center;padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= event.calc_dive_equipment('14/15', 'fins')
+
+            %p{style: 'margin-top:10px;'}
+              %strong= t('events.print_resource_manifest.weight_total')
+              = event.calc_total_weight
+              %strong{style: 'margin-left: 20px;'}= t('events.print_resource_manifest.masks')
+              = event.calc_rent_masks

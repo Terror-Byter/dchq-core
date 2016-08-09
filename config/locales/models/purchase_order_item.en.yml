@@ -1,0 +1,3 @@
+en:
+  errors:
+    only_distinct_products_allowed: 'Only distinct products allowed per single purchase order'

@@ -1,0 +1,6 @@
+es:
+  controllers:
+    sales:
+      sale_not_found: Venta no encontrado
+      destroy: Venta se ha eliminado con éxito!
+      date_from_required: Desde la fecha es campo obligatorio

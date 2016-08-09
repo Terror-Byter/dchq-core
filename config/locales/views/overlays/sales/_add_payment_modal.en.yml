@@ -1,0 +1,11 @@
+en:
+  overlays:
+    sales:
+      add_payment_modal:
+        header: Add Payment
+        content: "Enter the amount you're receiving:"
+        add_payment: Add Payment
+        amount_due: AMOUNT DUE
+        please_enter_amount: Please enter amount
+        credit_note: "This customer has %{price} credit available."
+        apply_credit_note: Apply credit as a payment

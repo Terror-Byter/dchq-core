@@ -1,0 +1,23 @@
+#export-csv.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.sales.export_to_csv.header')
+  = form_tag export_to_csv_sales_path do
+    .modal-body
+      %p= t('overlays.sales.export_to_csv.content')
+      .row-fluid
+        .span6
+          = label_tag t('overlays.sales.export_to_csv.date_from')
+          .input-append.date
+            = text_field_tag :start_date, nil, class: 'datepicker', style: 'z-index:10010;'
+            %span.add-on
+              %i.icon-calendar
+        .span6
+          = label_tag t('overlays.sales.export_to_csv.date_to')
+          .input-append.date
+            = text_field_tag :end_date, nil, class: 'datepicker', style: 'z-index:10011;'
+            %span.add-on
+              %i.icon-calendar
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      = submit_tag t('overlays.sales.export_to_csv.export_data'), class: 'btn btn-primary'

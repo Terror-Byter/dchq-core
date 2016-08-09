@@ -1,0 +1,7 @@
+en:
+  reports:
+    sales_by_category:
+      home: 'Home'
+      reports: 'Reports'
+      report_sales_by_category: 'Report: Sales by Category'
+      sales_by_category: 'Sales by Category'

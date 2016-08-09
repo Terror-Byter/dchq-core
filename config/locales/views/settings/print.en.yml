@@ -1,0 +1,11 @@
+en:
+  settings:
+    print:
+      home: 'Home'
+      settings: 'Settings'
+      settings_print: 'Settings: Print'
+      content: "We offer you the ability to print receipts on either thin receipt printers or on a normal computer printer. Based on the setting you select below, pressing 'Print Receipt' when making a sale will provide a receipt formatted in the correct dimensions."
+      printer_options: 'Printer Options'
+      print_options: 'Print Options'
+      print_options_text: 'Choose your printer settings.'
+      notice: 'Printer options have been updated'

@@ -1,0 +1,7 @@
+es:
+  reports:
+    sales_by_category:
+      home: 'Inicio'
+      reports: 'Reportes'
+      report_sales_by_category: 'Reporte: Ventas por Categoría'
+      sales_by_category: 'Ventas por Categoría'

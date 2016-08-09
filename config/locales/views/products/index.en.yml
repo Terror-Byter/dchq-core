@@ -1,0 +1,17 @@
+en:
+  products:
+    index:
+      home: 'Home'
+      sales: 'Sales'
+      products: 'Products'
+      download_barcode: 'Export Barcode CSV'
+      export_all: 'Export Product Data'
+      new_product: 'New Product'
+      overview: 'Overview'
+      total_stock_value: 'Total stock value (based on supply price)'
+      all_products: 'All products'
+      stock_levels: 'Stock Levels'
+      products_in_stock: 'Products in stock'
+      products_out_of_stock: 'Products out of stock'
+      total_products: 'Total products:'
+      archived_products: Archived Products

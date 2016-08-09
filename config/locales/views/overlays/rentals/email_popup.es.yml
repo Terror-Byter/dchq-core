@@ -1,0 +1,8 @@
+es:
+  overlays:
+    rentals:
+      email_popup:
+        header: Correo Electrónico de Recibos
+        label: Introduzca la dirección de correo electrónico del destinatario
+        cancel: Cancelar
+        button: Enviar Recibo por Correo Electrónico

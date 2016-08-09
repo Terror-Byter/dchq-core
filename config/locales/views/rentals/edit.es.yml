@@ -1,0 +1,7 @@
+es:
+  rentals:
+    edit:
+      home: Casa
+      rentals: Alquileres
+      new_edit: Nueva / Edición Alquiler
+      change_status: Cambie Alquiler Estado

@@ -1,0 +1,19 @@
+.row-fluid
+  .span3
+    %strong= t('application.service_kit_fields.service_kits')
+    %p.muted= t('application.service_kit_fields.service_kits_text')
+    = f.link_to_remove "#{content_tag(:i,'')} #{t('application.service_kit_fields.remove_service_kit')}".html_safe, class: 'btn btn-info btn-small btn-icon glyphicons circle_minus'
+  .span3
+    = f.input :name, input_html: { class: 'span11' }
+  .span3
+    = f.input :stock_level, input_html: { class: 'span11' }
+  .span3
+    = f.input :type_of_service_id, collection: current_store.names_type_of_services, input_html: { class: 'selectpicker span11' }
+.row-fluid
+  .span2.offset3
+    = f.input :tax_rate_id, collection: current_store.tax_rates_list, input_html: { class: 'selectpicker span11' }
+  .span2
+    = f.input :supply_price, input_html: { class: 'span11' }
+  .span2
+    = f.input :retail_price, input_html: { class: 'span11' }
+%hr.separator.bottom

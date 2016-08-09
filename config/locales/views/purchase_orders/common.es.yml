@@ -1,0 +1,10 @@
+es:
+  purchase_orders:
+    common:
+      home: 'Inicio'
+      sales: 'Ventas'
+      purchase_orders: 'Órdenes de Compra'
+      new_purchase_order: 'Nueva Orden de Compra'
+      create_purchase_order: 'Crear Orden de Compra'
+      supplier_code: 'Código de proveedor:'
+      sku_code: 'SKU:'

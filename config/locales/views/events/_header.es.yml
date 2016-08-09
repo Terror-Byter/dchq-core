@@ -1,0 +1,11 @@
+es:
+  events:
+    header:
+      home: "Inicio"
+      events: "Eventos"
+      event_calendar: "Calendario de Eventos"
+      staff_roster: "Lista del Personal"
+      utilisation_report: "Reporte de Utilización"
+      resource_manifest: "Manifiesto de Recurso"
+      new_event: "Nuevo Evento"
+      new_course: "Nuevo Curso"

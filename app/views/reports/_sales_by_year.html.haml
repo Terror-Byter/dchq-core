@@ -1,0 +1,19 @@
+.widget
+  .widget-head
+    %h4.heading= title
+  .widget-body
+    %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+      %thead
+        %tr
+          %th
+          - (Date.today.year - @period..Date.today.year).each do |year|
+            %th{style: year.eql?(Date.today.year) ? 'color: yellow;' : ''}
+              = year
+      %tbody
+        = show_table_row_with_currency t('reports.sales_by_day.sales_tax'), @report_by_year[:sales_inc_tax]
+        = show_table_row_with_currency t('reports.sales_by_day.tax'), @report_by_year[:taxes], :class => "color"
+        = show_table_row_with_currency t('reports.sales_by_day.taxable_revenue'), @report_by_year[:taxable_revenue], :class => "color"
+        = show_table_row_with_currency t('reports.sales_by_day.cost_of_goods'), @report_by_year[:cost_of_goods]
+        = show_table_row_with_currency t('reports.sales_by_day.gross_profit'), @report_by_year[:gross_profit], :class => "color"
+        = show_table_row_with_currency t('reports.sales_by_day.refunds'), @report_by_year[:refunds]
+        = show_table_row_with_currency t('reports.sales_by_day.tax_refunds'), @report_by_year[:tax_refunds]

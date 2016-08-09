@@ -1,0 +1,22 @@
+es:
+  rental_products:
+    index:
+      home: Casa
+      rentals: Alquileres
+      inventory: Inventario
+      rental_inventory: Alquiler Inventario
+      new_inventory: Nueva Alquiler de Artículos de Inventario
+      available_rental_inventory: Disponible Alquiler Inventario
+      inventory_on_rent: Inventario Temas Actualmente en Alquiler
+      item: Nombre del Elemento
+      sku: 'SKU #'
+      brand: Marca
+      category: Categoría
+      price_per_day: Precio por día
+      total: Inventario total
+      available: Disponible
+      no_available: No existe un inventario disponible
+      archived: Archivado
+      archived_rental_inventory: Archivado Alquiler Inventario
+      id: ID
+      export_all: Exportar Datos de Alquiler de Productos

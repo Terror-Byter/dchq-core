@@ -1,0 +1,6 @@
+en:
+  controllers:
+    sales:
+      sale_not_found: Sale not found
+      destroy: Sale has been removed successfully!
+      date_from_required: Date From is required field

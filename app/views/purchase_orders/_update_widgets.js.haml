@@ -1,0 +1,9 @@
+- if purchase_order.editable?
+  - widget_status = render 'purchase_orders/widgets/add_product'
+- else
+  - widget_status = render 'purchase_orders/widgets/awaiting_delivery'
+
+$('#widget-status').empty()
+$('#widget-status').html("#{j(widget_status).html_safe}");
+$('#widget-supplier').empty()
+$('#widget-supplier').html("#{j(render 'purchase_orders/widgets/supplier').html_safe}");

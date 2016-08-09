@@ -1,0 +1,8 @@
+es:
+  products:
+    edit:
+      home: 'Inicio'
+      sales: 'Ventas'
+      products: 'Productos'
+      edit: 'Editar'
+      edit_product: 'Editar Producto'

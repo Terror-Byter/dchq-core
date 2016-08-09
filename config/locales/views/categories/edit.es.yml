@@ -1,0 +1,7 @@
+es:
+  categories:
+    edit:
+      home: 'Inicio'
+      sales: 'Ventas'
+      categories: 'Categorías'
+      edit_category: 'Editar Categoría'

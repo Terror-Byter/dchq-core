@@ -1,0 +1,124 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('services.show.home')
+  %li.divider
+  %li= t('services.show.servicing')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        = t('services.show.service_id')
+        = service.id
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#new-servicing-note', class: 'btn btn-small btn-default btn-icon glyphicons notes', :'data-toggle' => 'modal' do
+          %i
+          = t('services.show.new_note')
+        - if resource.booked? or resource.in_progress?
+          = link_to edit_resource_path, class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t('services.show.edit_service')
+        = mark_as_complete_buttons
+= hidden_field_tag :service_id, resource.id
+.innerLR
+  .row-fluid.row-merge
+    .span12
+      .row-fluid
+        .span2
+          .thumbnail{style: 'margin-bottom:10px;'}
+            = image_tag resource.logo
+        .span5
+          %h4
+            %span
+              = t('services.show.customer')
+              = til service.customer_full_name
+          %p
+            %strong= t('services.show.address')
+            = til service.customer_address
+            %br>/
+            %strong= t('services.show.email')
+            = mail_to til(service.customer_email)
+            = succeed t('services.show.ph') do
+              %br/
+            &nbsp;
+            = til(service.customer_telephone)
+            %br>/
+            = t('services.show.mob')
+            = til(service.customer_mobile)
+          %ul.unstyled.icons
+            %li.glyphicons.scuba_diving
+              %i
+              = t('services.show.serial_number')
+              = service.kits.map{|k| til(k.serial_number)}.join(', ')
+            %li.glyphicons.coins
+              %i
+              = t('services.show.quoted_price')
+              = formatted_currency(resource.decorate.total_price_service_items)
+        .span4.offset1
+          - if resource.booked? or resource.in_progress?
+            .widget
+              .widget-head
+                %h4.heading= t('services.show.servicing_timer')
+              .widget-body.list
+                .row-fluid
+                  .span5
+                    %p{style: 'margin-top:8px; margin-left: 10px;'}
+                      %a.btn.btn-small.btn-success.glyphicons.play{ href: '', class: "#{ 'hide' if resource.continue? }" }
+                        %i>
+                        = t('services.show.start_timer')
+                    %p{style: 'margin-top:8px; margin-left: 10px;'}
+                      %a.btn.btn-small.btn-danger.glyphicons.pause{ href: '', class: "#{ 'hide' unless resource.continue? }" }
+                        %i>
+                        = t('services.show.stop_timer')
+                  .span6
+                    %h3#counter= service.seconds_to_hours
+      .row-fluid
+        .widget.widget-tabs
+          .widget-head
+            %ul
+              %li.active
+                = link_to '#tab-1', class: 'glyphicons notes', :'data-toggle' => 'tab' do
+                  %i
+                  = t('services.show.overview')
+              %li
+                = link_to '#tab-2', class: 'glyphicons log_book', :'data-toggle' => 'tab' do
+                  %i
+                  = t('services.show.servicing_history')
+          .widget-body
+            .tab-content
+              #tab-1.tab-pane.active
+                - if service.no_service_notes?
+                  = t('services.show.no_service_notes')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    %thead
+                      %tr
+                        %th= t('services.show.t_technician')
+                        %th= t('services.show.t_notes')
+                        %th= t('services.show.t_photos')
+                        %th= t('services.show.t_date')
+                        %th= t('services.show.t_actions')
+                    %tbody
+                      = render partial: 'service_notes/service_note', collection: service.service_notes
+              #tab-2.tab-pane
+                - if service.no_time_intervals?
+                  = t('services.show.no_history')
+                - else
+                  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+                    %thead
+                      %tr
+                        %th= t('services.show.t_date')
+                        %th= t('services.show.t_technician')
+                        %th= t('services.show.t_time_tracked')
+                    %tbody#time_history
+                      = render partial: 'time_intervals/time_interval', collection: resource.time_intervals.includes(:user).complete.decorate
+  - if resource.booked? || resource.in_progress?
+    = link_to resource, method: :delete, confirm: 'Are you sure?', class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+      %i>
+      = t('services.show.delete_service')
+
+= content_for :overlays do
+  = render 'overlays/service_notes/new_service_note'
+  = render 'overlays/services/service_complete' if service.customer_has_email?

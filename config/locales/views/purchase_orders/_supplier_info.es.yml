@@ -1,0 +1,4 @@
+es:
+  purchase_orders:
+    supplier_info:
+      remove: '[eliminar]'

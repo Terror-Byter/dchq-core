@@ -1,0 +1,8 @@
+es:
+  products:
+    new:
+      home: 'Inicio'
+      sales: 'Ventas'
+      products: 'Productos'
+      create: 'Crear'
+      create_product: 'Crear Producto'

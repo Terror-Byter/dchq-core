@@ -1,0 +1,7 @@
+es:
+  decorators:
+    rental:
+      in_progress: En Curso
+      complete: Completo
+      overdue: Atrasado
+

@@ -1,0 +1,5 @@
+es:
+  gift_cards:
+    print:
+      for_use_at: 'Para usar en'
+      valid_until: 'Válida hasta %{date}'

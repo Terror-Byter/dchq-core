@@ -1,0 +1,8 @@
+es:
+  overlays:
+    settings:
+      xero_tax_rates_popup:
+        header: 'No Coincide Tasa de Impuesto'
+        content: 'Sus tasas de impuestos varían entre Dive Centre HQ y Xerp. Por favor agregue las tasas de impuestos faltantes a su cuenta Xero para asegurar que sus ventas diarias se publiquen correctamente.'
+        company_hq: 'Dive Centre HQ'
+        xero: 'Xero'

@@ -1,0 +1,58 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= link_to t('.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('.settings_import_step_1')
+
+= form_tag import_to_csv_step_2_settings_path, { method: :post, multipart: true } do |f|
+  .innerLR
+    %p
+      = t('.content')
+      = succeed '.' do
+        = link_to t('.download'), 'https://gist.github.com/1881733'
+    %h5= t('.about_importing')
+    %ul
+      %li= t('.supported')
+      %li= t('.after_upload')
+      %li= t('.preview')
+    .widget
+      .widget-head
+        %h4.heading.glyphicons.file_import
+          %i>
+          = t('.import_options')
+      .widget-body
+        .row-fluid
+          .span3
+            %strong= t('.import_data')
+            %p.muted= t('.import_data_text')
+          .span3
+            = label_tag t('.import_type')
+            = select_tag :import_type, options_for_select([[t('.customers'), 'Customer'],
+                                                          [t('.suppliers'), 'Supplier'],
+                                                          [t('.business_individuals'), 'BusinessContact'],
+                                                          [t('.products'), 'Product'],
+                                                          [t('.rental_products'), 'RentalProduct'],
+                                                          [t('.eve_import'), 'Eve']]), class: 'selectpicker'
+          .span6
+            = label_tag t('.import_file')
+            .fileupload.fileupload-new{ :'data-provides' => 'fileupload' }
+              .input-append
+                .uneditable-input.span3
+                  %i.icon-file.fileupload-exists
+                  %span.fileupload-preview
+                %span.btn.btn-default.btn-file
+                  %span.fileupload-new= t('application.attachment_fields.select_file')
+                  %span.fileupload-exists= t('views.actions.change')
+                  = file_field_tag :file
+                = link_to  t('views.actions.remove'), '#', class: 'btn fileupload-exists', :'data-dismiss' => 'fileupload'
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('.start_import')

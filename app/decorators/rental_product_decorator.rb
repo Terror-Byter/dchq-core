@@ -1,0 +1,2 @@
+class RentalProductDecorator < StoreProductDecorator
+end

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API documentation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap.min.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/prettify.css'/>
+<link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/bundled/bootstrap-responsive.min.css'/>
+  <link type='text/css' rel='stylesheet' href='../../apidoc/stylesheets/application.css'/>
+  <!-- IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div id='container'>
+        <ul class='breadcrumb'>
+  <li>
+    <a href='../../apidoc.html'>DchqCore 1.0</a>
+    <span class='divider'>/</span>
+  </li>
+  <li>
+    <a href='../../apidoc/events.html'>
+      Events
+      
+    </a>
+    <span class='divider'>/</span>
+  </li>
+  <li class='active'>index</li>
+  
+
+</ul>
+
+  <div class='page-header'>
+    <h1>
+      GET /api/v1/events<br>
+      <small>Show list of all events in the specific store</small>
+    </h1>
+  </div>
+
+<div>
+
+  
+
+  <h2>Supported Formats</h2>
+  json
+
+
+
+  <h2>Examples</h2>
+    <pre class="prettyprint">
+########### Request Example #################
+# URL
+https://app.divecentrehq.com/api/v1/events
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;,
+  store_api_key: &lt;STORE_API_KEY&gt;,
+  param: &quot;Day&quot;
+
+  #========= OR ==========
+
+  user_token: &lt;USER_TOKEN&gt;,
+  store_api_key: &lt;STORE_API_KEY&gt;,
+  starts_at: &quot;2014-08-01 09:12:59&quot;,
+  ends_at: &quot;2014-08-05&quot;
+}
+
+########### Response Example ################
+{
+  &quot;events&quot;: [
+    {
+      &quot;id&quot;: 13481,
+      &quot;name&quot;: &quot;Salida Vapor&quot;,
+      &quot;starts_at&quot;: &quot;2014-08-06T18:00:00+12:00&quot;,
+      &quot;ends_at&quot;: &quot;2014-08-06T21:00:00+12:00&quot;,
+      &quot;number_of_dives&quot;: 0,
+      &quot;limit_of_registrations&quot;: 15,
+      &quot;number_of_event_customer_participants&quot;: 0,
+      &quot;number_of_staff_members&quot;: 0,
+      &quot;type&quot;: &quot;Trip&quot;,
+      &quot;price&quot;: &quot;NZ$0.00&quot;
+    },
+    {
+      &quot;id&quot;: 13482,
+      &quot;name&quot;: &quot;Salida Costa grupo Jordi&quot;,
+      &quot;starts_at&quot;: &quot;2014-08-09T08:30:00+12:00&quot;,
+      &quot;ends_at&quot;: &quot;2014-08-09T17:00:00+12:00&quot;,
+      &quot;number_of_dives&quot;: 10,
+      &quot;limit_of_registrations&quot;: 15,
+      &quot;number_of_event_customer_participants&quot;: 0,
+      &quot;number_of_staff_members&quot;: 0,
+      &quot;type&quot;: &quot;Course&quot;,
+      &quot;price&quot;: &quot;NZ$12.00&quot;
+    }
+  ]
+}
+</pre>
+
+  <h2>Params</h2>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>period </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Period for events select. By default day</p>
+
+        <br>
+        Value: Must be one of: day, week, month, quarter, year.
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>starts_at </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Start at time for event select. If period is empty</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>ends_at </strong><br>
+      <small>
+        optional
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Ends at time for event select. If period is empty</p>
+
+        <br>
+        Value: Must be DateTime
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+  <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>store_api_key </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>Store API Key</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+    </tbody>
+  </table>
+
+</div>
+
+
+        
+      </div>
+    </div>
+    <hr>
+    <footer>&copy; 2014  Dive Centre HQ API</footer>
+  </div>
+  <script type='text/javascript' src='../../apidoc/javascripts/bundled/jquery-1.7.2.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/bootstrap-collapse.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/bundled/prettify.js'></script>
+<script type='text/javascript' src='../../apidoc/javascripts/apipie.js'></script>
+</body>
+</html>

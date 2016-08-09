@@ -1,0 +1,4 @@
+en:
+  controllers:
+    other_events:
+      cloned: 'Event has been cloned successfully!'

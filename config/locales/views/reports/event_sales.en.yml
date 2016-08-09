@@ -1,0 +1,10 @@
+en:
+  reports:
+    event_sales:
+      home: 'Home'
+      reports: 'Reports'
+      report_event_sales: 'Report: Event Sales'
+      event_sales: 'Event Sales'
+      dive_courses: 'Dive Courses'
+      dive_trips: 'Dive Trips'
+      totals: 'Totals'

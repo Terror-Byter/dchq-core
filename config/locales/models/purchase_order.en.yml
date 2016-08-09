@@ -1,0 +1,20 @@
+en:
+  enumerize:
+    purchase_order:
+      status:
+        pending: 'Pending'
+        sent_to_supplier: 'Sent to supplier'
+        expecting_delivery: 'Expecting delivery'
+        received_in_part: 'Received in part'
+        received_in_full: 'Received in full'
+        received_in_part_amended: 'Received in part' # this is correct name for this status
+  models:
+    purchase_order:
+      warnings:
+        no_supplier_provided: 'No supplier provided'
+        no_delivery_location_provided: 'No delivery location provided'
+      errors:
+        add_product:
+          wrong_supplier: 'The product you have entered is not available from the current supplier'
+        send_email_to_supplier:
+          has_malformed_email: 'has malformed email'

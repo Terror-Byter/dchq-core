@@ -1,0 +1,10 @@
+es:
+  overlays:
+    event_customer_participants:
+      remove_popup:
+        header: "Eliminar a Cliente del Evento"
+        content_unpaid: "Usted está eliminando %{full_name} de este evento. No se hicieron pagos, por lo tanto no es necesario que tome alguna otra acción."
+        content_other: "Usted está eliminando %{full_name} de este evento. Este cliente ha echo un pago de #{formatted_currency(ecp.price)}. USted será dirigido para emitir un reembolso o una nota de crédito."
+        checkbox_label: "Enviar un correo-e de notificación al cliente"
+        remove_button: "Eliminar Cliente del Evento"
+        cancel: "Cerrar"

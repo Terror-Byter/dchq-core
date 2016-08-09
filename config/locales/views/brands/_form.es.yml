@@ -1,0 +1,9 @@
+es:
+  brands:
+    form:
+      brand_details: 'Detalles de la Marca'
+      name_and_image: 'Nombre & Imagen de la Marca'
+      name_and_image_text: 'Ingrese el nombre completo de la marca y el logo asociado.'
+      description: 'Descripción'
+      description_text: 'Se mostrará la descripción en la página de detalles de la marca.'
+      save: 'Guardar'

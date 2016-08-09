@@ -1,0 +1,6 @@
+en:
+  sale_mailer:
+    send_bookings_email_for_customer_reject:
+      booking_rejected: 'Booking Rejected: %{customer}'
+      your_booking_rejected: 'Your booking for %{event_name} on %{starts_at} has been rejected. Any payments made have been refunded and will show on your statement shortly. No further action is necessary.'
+      reason_for_reject: 'Reason For Rejection'

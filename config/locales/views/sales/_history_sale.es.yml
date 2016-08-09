@@ -1,0 +1,4 @@
+es:
+  sales:
+    history_sale:
+      order_id: 'ID de Orden:'

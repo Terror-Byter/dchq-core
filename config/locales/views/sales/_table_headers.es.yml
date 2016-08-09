@@ -1,0 +1,10 @@
+es:
+  sales:
+    table_headers:
+      order_id: 'ID de Orden'
+      date: 'Fecha'
+      products: 'Productos'
+      value: 'Total'
+      outstanding: 'Pendiente'
+      status: 'Estátus'
+      to_pay: 'A Pagar'

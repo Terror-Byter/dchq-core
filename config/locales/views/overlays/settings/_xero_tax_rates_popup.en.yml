@@ -1,0 +1,8 @@
+en:
+  overlays:
+    settings:
+      xero_tax_rates_popup:
+        header: 'Tax Rate Mismatch'
+        content: 'Your tax rates vary between Dive Centre HQ and Xero. Please add the missing tax rates to your Xero account to ensure your daily sales post correctly.'
+        company_hq: 'Dive Centre HQ'
+        xero: 'Xero'

@@ -1,0 +1,16 @@
+%tr
+  %td.important
+    = link_to participant.customer.full_name, participant.customer
+  %td= link_to participant.event.name, event_path(participant.event)
+  %td= participant.event.starts_at.strftime('%B %d, %Y')
+  %td= participant.price
+  %td
+    = link_to approve_event_event_customer_participant_path(participant.event, participant), class: 'btn btn-small btn-success btn-icon glyphicons ok_2' do
+      %i>
+      = t('event_customer_participants.online_ecp.approve')
+    = link_to "#reject_#{dom_id(participant)}", class: 'btn btn-small btn-danger btn-icon glyphicons ban', :'data-toggle' => :modal do
+      %i>
+      = t('event_customer_participants.online_ecp.reject')
+
+= content_for :overlays do
+  = render 'overlays/event_customer_participants/reject', ecp: participant

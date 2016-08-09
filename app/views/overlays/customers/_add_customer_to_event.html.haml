@@ -1,0 +1,19 @@
+#add-customer-to-event.modal.hide.fade{ data: { id: @customer.id } }
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.customers.add_customer_to_event.header')
+  = form_tag add_to_event_customer_path(customer), method: :post do
+    .modal-body.center{style: 'overflow-y: visible;'}
+      .row-fluid
+        %label= t('overlays.customers.add_customer_to_event.select_events')
+        .event-list
+          = t('overlays.customers.add_customer_to_event.loading')
+      .row-fluid
+        %p
+          = t('overlays.customers.add_customer_to_event.or')
+          = link_to t('overlays.customers.add_customer_to_event.create_new_event'), new_other_event_path
+          |
+          = link_to t('overlays.customers.add_customer_to_event.create_new_course'), new_course_event_path
+    .modal-footer
+      = link_to t('views.actions.cancel'), '#', class: 'btn btn-default', :'aria-hidden' => true, :'data-dismiss' => :modal
+      = submit_tag t('overlays.customers.add_customer_to_event.add_button'), class: 'btn btn-primary'

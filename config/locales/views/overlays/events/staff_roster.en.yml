@@ -1,0 +1,11 @@
+en:
+  overlays:
+    events:
+      staff_roster:
+        h3: Print Staff Roster
+        p: Select the staff member and date range you want to generate a roster for.
+        staff_member: Staff Member
+        date_from: Date From
+        date_to: Date To
+        cancel: Cancel
+        button: Print Staff Roster

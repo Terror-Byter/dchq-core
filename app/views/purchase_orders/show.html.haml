@@ -1,0 +1,18 @@
+= render 'form'
+
+= content_for :overlays do
+  - case
+  - when purchase_order.pending?
+    = render 'overlays/purchase_orders/email_supplier_modal'
+    = render 'overlays/purchase_orders/pdf_supplier_mark_sent_modal'
+    = render 'overlays/purchase_orders/assign_supplier_modal'
+    = render 'overlays/purchase_orders/product_not_in_inventory_modal'
+  - when purchase_order.sent?
+    = render 'overlays/purchase_orders/add_expected_delivery_date_modal'
+    = render 'overlays/purchase_orders/receive_consignment_modal'
+  - when purchase_order.amendable?
+    = render 'overlays/purchase_orders/email_supplier_modal'
+    = render 'overlays/purchase_orders/update_packing_list_modal'
+  -# Only notes are available for all of the statuses
+  = render 'overlays/purchase_orders/add_note_modal'
+

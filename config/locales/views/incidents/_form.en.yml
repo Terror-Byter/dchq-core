@@ -1,0 +1,5 @@
+en:
+  incidents:
+    form:
+      header: 'Add Incident'
+      add_button: 'Add Incident'

@@ -1,0 +1,9 @@
+es:
+  company_mailer:
+    event_participant_removed:
+      event_update: 'Evento Actualizado'
+      have_been_removed: 'Usted ha sido eliminado del evento'
+      if_made_payment: "Si usted hizo un pago para este evento, por favor contáctenos acerca de un reembolso o una nota de crédito, de lo contrario, no es necesaria otra acción."
+      any_questions_contact: 'Si usted tiene cualquier pregunta, por favor contáctenos en'
+      or_call: 'o llámenos al'
+      regards: 'Saludos'

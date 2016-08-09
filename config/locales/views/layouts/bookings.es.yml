@@ -1,0 +1,7 @@
+es:
+  layouts:
+    bookings:
+      sidebar_menu:
+        checkout: 'Pago'
+      checkout_submenu:
+        events: 'Eventos'

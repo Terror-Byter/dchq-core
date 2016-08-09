@@ -1,0 +1,26 @@
+en:
+  application:
+    user_profile_fields:
+      user_details: 'User Details'
+      address: 'Address'
+      user_access_availibility: 'User Access & Availability'
+      user_info: 'User Information'
+      user_info_text: "Enter the user's name."
+      contact_details: 'Contact Details'
+      contact_details_text: 'Enter the email address and phone numbers for this user.'
+      emergency_contact: 'Emergency Contact & Photo'
+      emergency_contact_text: 'Enter emergency contact details and upload a photo.'
+      user_access: 'User Access'
+      user_access_text: "Setup this user's permissions and access levels."
+      shop_access: 'Shop Access'
+      work_availability: 'Work Availability'
+      work_availability_text: 'Setup availability and contracted hours.'
+      availability: 'Availability'
+      instructor_number: 'Instructor Number'
+      add_holiday: 'Add Holiday'
+      next_holiday: 'Next Holiday'
+      next_holiday_text: "During this date range, the user will show as 'unavailable' when adding new events."
+      save: 'Save'
+      english: 'English'
+      spanish: 'Spanish'
+      danish: 'Danish'

@@ -1,0 +1,21 @@
+.widget
+  .widget-head
+    %h4.heading
+      = t('purchase_orders.form.purchase_order_id')
+      = purchase_order.id
+    %span.details{style: 'color:green; font-weight:bold;'}
+      = t('purchase_orders.form.status')
+      %span#status
+        = purchase_order.status
+    %span.details.pull-right{style: "color:green; font-weight:bold;"}
+      = t('purchase_orders.form.staff')
+      = purchase_order.creator
+  .widget-body.collapse.in.hidden-print
+    .row-fluid
+      .span8
+        %span#delivery-date
+          = render 'purchase_orders/widgets/awaiting_delivery_date_info'
+      .span4
+        %a.btn.btn-success.btn-large.input-block-level.btn-icon.glyphicons.shopping_bag{"data-toggle" => "modal", href: "#receive-consignment", style: "text-align:center; text-transform:uppercase;"}
+          %i>
+          = t('.receive_consignment')

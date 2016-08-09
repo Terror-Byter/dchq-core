@@ -1,0 +1,12 @@
+en:
+  products:
+    popup:
+      brand_header: 'Quick Add Brand'
+      brand_name: 'Brand Name'
+      add_brand: 'Quick Add Brand'
+      category_header: 'Quick Add Category'
+      category_name: 'Category Name'
+      add_category: 'Quick Add Category'
+      supplier_header: 'Quick Add Supplier'
+      supplier_name: 'Supplier Name'
+      add_supplier: 'Quick Add Supplier'

@@ -1,0 +1,29 @@
+!!!
+/[if lt IE 7] <html class="ie lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="ie lt-ie9 lt-ie8">
+/[if IE 8] <html class="ie lt-ie9">
+/[if gt IE 8] <html class="ie gt-ie8">
+/ [if !IE]><!
+%html
+  / <![endif]
+  %head
+    %title Dive Centre HQ: Login
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}/
+    = stylesheet_link_tag :session
+    = yield :css
+    = render 'layouts/locale'
+    = csrf_meta_tags
+  %body.login{ body_attributes }
+    #login
+      %p{align: "center", style: "margin-bottom:20px;"}
+        = link_to image_tag('logo-on-white.png'), root_path
+      .form-signin
+        .hidden-print
+          = bootstrap_flash
+        = yield
+    = javascript_include_tag :session
+    = yield :js

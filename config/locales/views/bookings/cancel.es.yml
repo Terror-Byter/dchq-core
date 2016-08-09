@@ -1,0 +1,6 @@
+es:
+  bookings:
+    cancel:
+      event_registration: Event Registration
+      p: Su pago no tuvo éxito, sin embargo, le hemos reservado provisionalmente en este evento.
+      p_1: Para confirmar esta reserva, por favor contacte con nosotros en %{telephone} o correo electrónico {email}.

@@ -1,0 +1,14 @@
+en:
+  settings:
+    xero:
+      edit_xero:
+        home: 'Home'
+        settings: 'Settings'
+        xero_integration: 'Xero Integration'
+        account_settings: 'Account Settings'
+        notice: 'NOTICE:'
+        notice_content: 'You currently have a different number of tax rates in Dive Centre HQ compared to Xero. Before you post your sales to Xero, please'
+        routing_error: ' Rounding errors may occur for sales tax calculations on small transactions'
+        for_discrepancies: 'For discrepancies in the till closure payment count'
+        register_closing_totals: 'Register Closing Totals'
+        unliked_xero: 'Unlink Xero Account'

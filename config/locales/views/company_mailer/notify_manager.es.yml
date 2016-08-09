@@ -1,0 +1,11 @@
+es:
+  company_mailer:
+    notify_manager:
+      staff_account_access_notification: 'Notificación de Acceso a la Cuenta del Personal'
+      limiting_access: 'Este es un mensaje de notificación generado por %{full_name}. Su cuenta actualmente no está vinculada a alguna tienda de buceo, por lo tanto limita el acceso a Dive Centre HQ.'
+      whats_required: "Qué se Necesita"
+      login: 'login'
+      you_need_to: 'Usted necesita'
+      as_soon_as_complete: 'y proveer %{full_name} con acceso a una tienda de buceo. Tan pronto como se complete esta acción, ellos podrán asociar la información correspondiente.'
+      any_questions: 'Si usted tiene cualquier duda o requiere de asistencia, por favor contacte a nuestro'
+      support_team: 'equipo de soporte'

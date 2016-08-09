@@ -1,0 +1,11 @@
+%tr
+  %td.important
+    = gift_card.sales
+  %td= gift_card.uniq_id
+  %td= formatted_currency gift_card.available_balance
+  %td= gift_card.solded_at
+  %td= gift_card.expiry_date
+  %td= gift_card.status
+  %td
+    = link_to_function t('gift_card_types.show.print'), "$('##{ dom_id(gift_card) }').printElement();"
+    = render 'gift_cards/print', gift_card: gift_card, html_class: 'hide'

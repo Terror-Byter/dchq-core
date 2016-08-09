@@ -1,0 +1,5 @@
+es:
+  import_mailer:
+    success:
+      message: 'Tu %{type} importación ha tenido éxito. Ahora puede acceder a los datos importados accediendo en cualquier momento.'
+      sign_in: Registrarse

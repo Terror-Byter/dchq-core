@@ -1,0 +1,7 @@
+es:
+  reports:
+    sales_by_popular:
+      home: 'Inicio'
+      reports: 'Reportes'
+      report_sales_by_popular_products: 'Reporte: Ventas por Producto'
+      sales_by_popular_products: 'Ventas'

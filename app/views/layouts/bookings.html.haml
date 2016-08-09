@@ -1,0 +1,55 @@
+!!!
+/[if lt IE 7] <html class="ie lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="ie lt-ie9 lt-ie8">
+/[if IE 8] <html class="ie lt-ie9">
+/[if gt IE 8] <html class="ie gt-ie8">
+/ [if !IE]><!
+%html
+  / <![endif]
+  %head
+    %title DCHQ
+    = include_gon
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}/
+    = render 'layouts/locale'
+    = stylesheet_link_tag :application, media: :all
+    /[if IE]
+      = javascript_include_tag :excanvas
+    /[if lt IE 8]
+      = javascript_include_tag :json2
+    = csrf_meta_tags
+  %body{ body_attributes }
+    .container-fluid.fluid.menu-left
+      .navbar.main.hidden-print
+        = link_to content_tag(:span, @current_store.name), root_path, class: 'appbrand pull-left'
+      #wrapper
+        #menu.hidden-phone.hidden-print
+          .slim-scroll
+            %ul
+              %li{ class: "large hasSubmenu glyphicons shopping_cart active" }
+                = link_to '#menu_components_sales', :'data-toggle' => 'collapse' do
+                  %i
+                  %span= t('layouts.bookings.sidebar_menu.checkout')
+                %ul#menu_components_sales.collapse.in
+                  %li.active= link_to content_tag(:span, t('layouts.bookings.checkout_submenu.events')), '#'
+        #content
+          .hidden-print
+            = bootstrap_flash
+          = yield
+      .clearfix
+    = yield :overlays
+    :javascript
+      var primaryColor = '#55AB48',
+      dangerColor = '#bd362f',
+      successColor = '#609450',
+      warningColor = '#ab7a4b',
+      inverseColor = '#45484d';
+    :javascript
+      var themerPrimaryColor = primaryColor;
+    = javascript_include_tag :application
+    = javascript_include_tag controller_name if File.exists?("#{Rails.root}/app/assets/javascripts/#{controller_name}.coffee")
+    = yield :js
+

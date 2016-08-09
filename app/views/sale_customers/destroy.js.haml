@@ -1,0 +1,8 @@
+- @sale = resource.sale
+- form_partial = "sales/form"
+
+- if @sale.complete?
+  window.location.reload()
+- else
+  $('#sales').html('#{j(render form_partial).html_safe}')
+  Dchq.Sale.init()

@@ -1,0 +1,11 @@
+en:
+  events:
+    print_staff_roster:
+      title: Print Staff Roster
+      roster: "%{name}'s Roster"
+      event_date: '%{start} to %{end}'
+      date: Date
+      time: Time
+      boat: Boat
+      event: Event
+      location: Location

@@ -1,0 +1,9 @@
+es:
+  service_mailer:
+    note_added:
+      job_id: 'ID del Trabajo: #%{id}'
+      servicing_update: 'Actualización de Mantenimiento para %{kit} (%{serial})'
+      with_regards: 'Saludos,'
+      sent_by_centre: 'Este correo-e fue enviado por %{company_name}.'
+      telephone: 'Teléfono: %{tel}'
+      registered_address: 'Dirección Registrada: %{address}'

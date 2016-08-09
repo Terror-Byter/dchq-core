@@ -1,0 +1,13 @@
+- if resource.decorate.no_event_customer_participants?
+  = t('customers.show.no_events')
+- else
+  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+    %thead
+      %tr
+        %th= t('customers.show.event_name')
+        %th= t('customers.show.event_price')
+        %th= t('customers.show.event_date')
+    %tbody
+      = render partial: 'event_customer_participants/event_customer_participant_for_customer',
+        collection: resource.decorate.event_customer_participants.select{ |u| u.not_refunded? }.sort{ |a, b| b.event.starts_at <=> a.event.starts_at }.uniq,
+        as: :ecp

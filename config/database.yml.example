@@ -1,0 +1,25 @@
+defaults: &defaults
+  adapter: postgresql
+  username: postgres
+  password:
+  encoding: utf8
+  host: localhost
+
+development:
+  database: dchq_development
+  <<: *defaults
+
+test: &test
+  database: dchq_test
+  <<: *defaults
+
+production:
+  database: dchq_production
+  <<: *defaults
+
+staging:
+  database: dchq_staging
+  <<: *defaults
+
+cucumber:
+  <<: *test

@@ -1,0 +1,9 @@
+es:
+  event_customer_participants:
+    event_customer_participant:
+      pay_for_event: 'Pago por Evento'
+      paid: 'Pagado'
+      layby: 'Apartar'
+      cancelled: 'Cancelado'
+      not_paid: 'No Pagados'
+      note: Nota

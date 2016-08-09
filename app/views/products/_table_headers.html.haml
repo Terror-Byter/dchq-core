@@ -1,0 +1,15 @@
+- hide_brand ||= false
+- hide_category ||= false
+
+%thead
+  %tr.ransack_links
+    %th= sort_link @q, :name, t('products.table_headers.product_name'), { filter: params[:filter] }
+    %th= sort_link @q, :sku_code, t('products.table_headers.sku'), { filter: params[:filter] }
+    - unless hide_brand
+      %th= sort_link @q, :brand_name, t('products.table_headers.brand'), { filter: params[:filter] }
+    - unless hide_category
+      %th= sort_link @q, :category_name, t('products.table_headers.category'), { filter: params[:filter] }
+    %th= sort_link @q, :supplier_name, t('products.table_headers.supplier'), { filter: params[:filter] }
+    %th= sort_link @q, :retail_price, t('products.table_headers.price'), { filter: params[:filter] }
+    %th= sort_link @q, :number_in_stock, t('products.table_headers.inventory'), { filter: params[:filter] }
+    %th= sort_link @q, :status, t('products.table_headers.status'), { filter: params[:filter] }

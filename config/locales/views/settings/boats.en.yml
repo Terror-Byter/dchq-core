@@ -1,0 +1,11 @@
+en:
+  settings:
+    boats:
+      home: 'Home'
+      settings: 'Settings'
+      settings_boats_resources: 'Settings: Boats & Resources'
+      notice: 'Boat settings have been saved successfully'
+      t_boat_resource_name: 'Boat / Resource Name'
+      t_calendar_color: 'Calendar Colour'
+      t_action: 'Action'
+      new_boat: 'New Boat / Resource'

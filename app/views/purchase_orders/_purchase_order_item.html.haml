@@ -1,0 +1,28 @@
+= form.fields_for :purchase_order_items, purchase_order_item, wrapper: false do |poi_form|
+  %tr
+    %td.product
+      .media
+        %span.media-object.pull-left
+          = purchase_order_item.image
+        .media-body
+          %span.heading
+            %h5= purchase_order_item.product
+            %span
+              = t('purchase_orders.common.supplier_code')
+              %strong= purchase_order_item.supplier_code
+              \|
+              = t('purchase_orders.common.sku_code')
+              %strong= purchase_order_item.sku
+    %td.center
+      - if purchase_order.editable?
+        = poi_form.text_field :price, {class: 'span1 supply-price', value: "#{purchase_order_item.price}"}
+      - else
+        = purchase_order_item.price_formatted
+    %td.center
+      - if purchase_order.editable?
+        = poi_form.text_field :quantity, {class: 'span1', style: 'text-align:center;', value: "#{purchase_order_item.quantity}"}
+        -# hidden checkbox to destroy item if count == 0 (checked by corresponding JS module)
+        = poi_form.hidden_field '_destroy'
+      - else
+        = purchase_order_item.quantity
+    %td.center= purchase_order_item.sub_total

@@ -1,0 +1,16 @@
+= f.hidden_field :creator_id, value: current_user.id
+.modal-body
+  .row-fluid
+    = f.input :description, input_html: { rows: 2, style: 'width: 96%' }
+  .row-fluid
+    .span8
+      = f.link_to_add :attachments, class: 'btn btn-small btn-default btn-icon glyphicons circle_plus', style: 'margin-bottom:10px;' do
+        %i
+        = t('application.service_note_fields.add_another')
+    .span3
+      = f.simple_fields_for :attachments do |form|
+        = render 'attachment_fields', f: form
+
+  - if service.customer_has_email?
+    .row-fluid
+      = f.input :notify, as: :boolean, label_html: { class: 'checkbox' }, label: false, inline_label: t('application.service_note_fields.email_note_to_customer')

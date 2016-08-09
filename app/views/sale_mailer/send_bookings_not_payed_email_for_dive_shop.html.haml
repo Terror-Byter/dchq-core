@@ -1,0 +1,25 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', :'http-equiv' => 'Content-Type'}
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = image_tag 'https://app.divecentrehq.com/assets/email-logo.png', alt: t('sale_mailer.send_bookings_not_paid_email_for_store.alt')
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}
+      = @store.name
+      = t('sale_mailer.send_bookings_not_paid_email_for_store.new_booking_request')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= t('sale_mailer.send_bookings_not_paid_email_for_store.has_made_online_booking', customer: @event_customer_participant.customer.full_name, event_name: @event_customer_participant.event.name, starts_at: @event_customer_participant.event.starts_at.in_time_zone.strftime("#{@event_customer_participant.event.starts_at.in_time_zone.day.ordinalize} %B, %Y at %I:%M%P"))
+    %p.button{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 25px 5%;'}
+      = link_to approve_event_event_customer_participant_url(@event_customer_participant.event, @event_customer_participant), style: 'font-family: Arial, sans-serif; font-size: 14px; color: #fff; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; background-color: #00afdb; padding: 12px 24px;' do
+        = t('sale_mailer.send_bookings_not_paid_email_for_store.approve_customer_for_event')
+      = link_to 'View Booking Details', edit_event_event_customer_participant_url(@event_customer_participant.event, @event_customer_participant), style: 'margin-left: 20px'
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 25px 5%;'}
+      %strong= t('sale_mailer.send_bookings_not_paid_email_for_store.event_date')
+      \: #{@event_customer_participant.event.starts_at.in_time_zone.strftime("#{@event_customer_participant.event.starts_at.in_time_zone.day.ordinalize} %B, %Y at %I:%M%P")}
+    = render 'unpaid_receipt'
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear: both;'}
+      = t('views.sale_mailer.with_regards')
+      %br
+      = t('sale_mailer.send_bookings_not_paid_email_for_store.team')
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = t('sale_mailer.send_bookings_not_paid_email_for_store.registered_office')

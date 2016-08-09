@@ -1,0 +1,11 @@
+es:
+  events:
+    cancel_confirmation_no_registrations:
+      home: 'Inicio'
+      events: 'Eventos'
+      cancel: 'Cancelar'
+      cancel_event: 'Cancelar Evento:'
+      you_are_about: 'Usted está apunto de cancelar este evento. ¿Está seguro que quiere proceder?'
+      content: 'Ya que no hay registros para el evento, simplemente se marcará como "Cancelado" y !no se enviarán notificacioes!'
+      wait: 'Espera, Quiero Conservar Este Evento'
+      yes_cancel: 'Si, ¡Cancela Este Evento!'

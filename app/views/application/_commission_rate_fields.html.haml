@@ -1,0 +1,11 @@
+:ruby
+  is_default_in_store = f.object.default?
+
+.row-fluid
+  .span3
+    = f.input :amount, input_html: { class: 'span11' }, label: false
+  - unless is_default_in_store
+    .span3
+      = f.link_to_remove class: 'btn btn-small btn-danger btn-icon glyphicons circle_minus' do
+        %i
+        = t('views.actions.remove')

@@ -1,0 +1,6 @@
+en:
+  controllers:
+    products:
+      archived: Product has been successfully archived
+      unarchived: Product has been successfully unarchived
+      product_barcode: Products for Barcode

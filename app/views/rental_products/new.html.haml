@@ -1,0 +1,17 @@
+%ul.breadcrumb
+  %li
+    %a.glyphicons.home{ href: root_path }
+      %i
+      = t('.home')
+  %li.divider
+  %li= link_to t('.rentals'), rentals_path
+  %li.divider
+  %li= link_to t('.inventory'), collection_path
+  %li.divider
+  %li= t('.add')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('.new')
+
+= render 'form'

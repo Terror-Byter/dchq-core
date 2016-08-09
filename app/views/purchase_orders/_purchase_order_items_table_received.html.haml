@@ -1,0 +1,13 @@
+= nested_form_for purchase_order, url: update_amend_purchase_order_path, remote: true, html: { class: 'purchase_orders_amend', method: :put } do |form|
+  %table.table.table-bordered.table-striped.table-vertical-center.table-condensed
+    %thead
+      %tr
+        %th= t('purchase_orders.form.table_columns.sku_product')
+        %th.center{style: 'width: 100px;'}= t('purchase_orders.form.table_columns.supply_price')
+        %th.center{style: 'width: 100px;'}= t('purchase_orders.form.table_columns.accepted')
+        %th.center{style: 'width: 100px;'}= t('purchase_orders.form.table_columns.rejected')
+        %th.center{style: 'width: 100px;'}= t('purchase_orders.form.table_columns.sub_total')
+    %tbody
+      - purchase_order.purchase_order_items.each_with_index do |purchase_order_item, poi_index|
+        = render(partial: 'purchase_orders/purchase_order_item_in_part',
+        locals: {form: form, purchase_order_item: purchase_order_item, cur_item_index: poi_index})

@@ -1,0 +1,118 @@
+:ruby
+  barcode = Barby::Code39.new(resource.barcode, extended: true) unless resource.barcode.blank?
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t '.home'
+  %li.divider
+  %li= link_to t('.rentals'), rentals_path
+  %li.divider
+  %li= link_to t('.inventory'), collection_path
+  %li.divider
+  %li= t('.details')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic
+        = t('.rental_product')
+        %span
+          |
+          = rental_product.name
+    .span8.right
+      .buttons.hidden-print
+        - if can? :update, rental_product
+          = link_to edit_resource_path, class: 'btn btn-small btn-default btn-icon glyphicons pencil' do
+            %i
+            = t('.edit')
+          - if rental_product.archived?
+            = link_to unarchived_rental_product_path(resource), class: 'btn btn-small btd-default btn-icon glyphicons database_lock' do
+              %i
+              = t('.unarchived')
+          - else
+            = link_to archived_rental_product_path(resource), class: 'btn btn-small btd-default btn-icon glyphicons database_lock' do
+              %i
+              = t('.archived')
+.innerLR
+  .row-fluid
+    .span3
+      %a.thumb
+        = rental_product.image
+      .separator.bottom
+    .span5
+      %h4= rental_product.name
+      .menubar.links.primary
+        %ul
+          %li= t('.brand')
+          %li
+            = link_to rental_product.brand_name, brand_path(rental_product.brand)
+          %li= t('.category')
+          %li
+            = link_to rental_product.category_name, category_path(rental_product.category)
+          %li= t('.supplier')
+          %li
+            = link_to rental_product.supplier_name, supplier_path(rental_product.supplier)
+      %p= rental_product.description
+    .span4.well
+      - unless rental_product.barcode.blank?
+        = print_barcode_html barcode
+  .row-fluid
+    .span12
+      .widget.widget-tabs
+        .widget-head
+          %ul
+            %li.active
+              = link_to '#tab-1', class: 'glyphicons fins', :"data-toggle" => "tab" do
+                %i
+                = t('.inventory_information')
+        .widget-body
+          .tab-content
+            #tab-1.tab-pane.active
+              .row-fluid
+                .span6
+                  .widget
+                    .widget-head
+                      %h4.heading.glyphicons.tags
+                        %i>
+                        = t('.inventory_information')
+                    .widget-body.list
+                      %ul
+                        %li
+                          %span.count
+                            = formatted_currency(rental_product.price_per_day)
+                          = t('.price_per_day')
+                        %li
+                          %span.count
+                            = rental_product.number_in_stock
+                          = t('.current_inventory_level')
+                .span6
+                  .widget
+                    .widget-head
+                      %h4.heading.glyphicons.oxygen_bottle
+                        %i>
+                        = t('.product_information')
+                    .widget-body.list
+                      %ul
+                        %li
+                          %span.count
+                            - if rental_product.no_commission_rate?
+                              = formatted_currency(rental_product.commission_rate_money)
+                            - else
+                              = rental_product.commission_rate
+                          = t('.commision_rate')
+                        %li
+                          %span.count
+                            = rental_product.tax_rate
+                          = t('.tax_rate')
+                        %li
+                          %span.count
+                            = rental_product.sku_code
+                          = t('.sku')
+%p
+  - if can? :destroy, resource
+    = link_to resource_path, method: :delete,
+      confirm: I18n.t('views.actions.confirm'),
+      class: 'btn btn-default btn-mini btn-icon glyphicons bin' do
+      %i>
+      = t('.delete_btn')

@@ -1,0 +1,6 @@
+en:
+  passwords:
+    new:
+      title: Reset Password
+      button: Reset Password
+      default: Reset Password

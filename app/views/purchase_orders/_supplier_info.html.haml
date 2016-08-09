@@ -1,0 +1,11 @@
+= purchase_order.link_to_supplier
+- if purchase_order.pending?
+  = link_to remove_supplier_purchase_order_path(purchase_order, format: :json),
+  method: :post,
+  remote: true,
+  confirm: t('views.actions.confirm'),
+  id: 'remove-supplier-link' do
+    %strong>
+      = t('.remove')
+    %br/
+  = purchase_order.supplier_address

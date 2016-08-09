@@ -1,0 +1,19 @@
+- if collection.empty?
+  = t('events.events_list.no_events')
+- else
+  %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+    %thead
+      %tr.ransack_links
+        %th= sort_link @q, :event_type_name, t('events.events_list.type')
+        %th= sort_link @q, :name, t('events.events_list.name')
+        %th= sort_link @q, :location, t('events.events_list.locations')
+        %th= sort_link @q, :boat_name, t('events.events_list.boat')
+        %th= sort_link @q, :starts_at, t('events.events_list.start')
+        %th= sort_link @q, :ends_at, t('events.events_list.end')
+    %tbody
+      = render partial: 'event', collection: @events.decorate
+  .separator.top.form-inline.small
+    = t('events.events_list.total_entries', count: @events_paginate.total_count)
+    .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+      = paginate @events_paginate
+    .clearfix

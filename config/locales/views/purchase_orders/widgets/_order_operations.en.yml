@@ -1,0 +1,9 @@
+en:
+  purchase_orders:
+    widgets:
+      order_operations:
+        send_to_supplier: Send to Supplier
+        print_purchase_order: Print Purchase Order
+        amend_consignment: Amend Consignment
+        amended_order_total: 'AMENDED ORDER TOTAL: '
+        original_order_total: 'ORIGINAL ORDER TOTAL: '

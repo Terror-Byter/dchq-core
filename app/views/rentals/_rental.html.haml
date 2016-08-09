@@ -1,0 +1,21 @@
+%tr
+  %td.important
+    = link_to rental.id, rental_path(rental)
+  %td= til(rental.renteds.includes(:rental_product).map{|r| r.rental_product.name } * ', ')
+  %td= link_to rental.customer.full_name, rental.customer
+  %td= l(rental.pickup_date, format: :default)
+  %td= l(rental.return_date, format: :default)
+  %td
+    - if rental.layby? || rental.pay_pending?
+      %a.btn.btn-small.btn-primary.btn-icon.glyphicons.coins{ href: rental_path(rental) }
+        %i>
+        = formatted_currency(rental.rental_payments.blank? ? rental.grand_total : rental.reload.change.abs)
+    - else
+      = link_to rental, class: 'btn btn-small btn-success btn-icon glyphicons ok_2' do
+        %i
+        = t '.paid'
+
+  %td
+    %span{ style: "#{ 'color: red' if rental.overdue? }" }
+      = t(".#{rental.status}")
+

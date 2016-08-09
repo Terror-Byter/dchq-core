@@ -1,0 +1,23 @@
+#export-qif.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.sales.export_to_qif_popup.header')
+  = form_tag export_to_qif_customers_path, { method: :post } do
+    .modal-body
+      %p= t('overlays.sales.export_to_qif_popup.content')
+      .row-fluid
+        .span6
+          = label_tag t('overlays.sales.export_to_qif_popup.date_from')
+          .input-append.date
+            = text_field_tag :start_date, nil, class: 'datepicker', id: 'export_to_qif_starts_at', style: 'z-index:10010;'
+            %span.add-on
+              %i.icon-calendar
+        .span6
+          = label_tag t('overlays.sales.export_to_qif_popup.date_to')
+          .input-append.date
+            = text_field_tag :end_date, nil, class: 'datepicker', id: 'export_to_qif_ends_at', style: 'z-index:10011;'
+            %span.add-on
+              %i.icon-calendar
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      = submit_tag t('overlays.sales.export_to_qif_popup.export_data'), class: 'btn btn-primary'

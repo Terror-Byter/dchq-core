@@ -1,0 +1,14 @@
+es:
+  gift_card_types:
+    index:
+      home: 'Inicio'
+      sales: 'Ventas'
+      gift_cards: 'Tarjetas de Regalo'
+      new_gift_card: 'Nueva Tarjeta de Regalo'
+      value: 'Valor'
+      valid_for: 'Válida por'
+      month_sale: "Las Ventas de Este Mes"
+      last_sale: 'Última Venta'
+      month_from_date_of_issue: '%{number} meses desde la fecha de emisión'
+      total_gift_cards: 'Total de tarjetas de regalo:'
+

@@ -1,0 +1,8 @@
+es:
+  overlays:
+    services:
+      agreement:
+        header: 'Acuerdo de Servicio'
+        content: 'Este es el acuerdo de servicio tal como está descrito en el área de ajustes para esta tienda.'
+        customer_decline: 'Rechazo del Cliente'
+        customer_acceped: 'Cliente Aceptó'

@@ -1,0 +1,30 @@
+es:
+  bookings:
+    step_1:
+      home: Inicio
+      event_rigistration: Registro del Evento
+      registration_step_1: 'Registro del Evento: Paso 1'
+      information_step_1: 'Este evento requiere información para que calcule el costo total. Por favor seleccione en las opciones debajo para confirmar su reservación.'
+      customer_information: 'Información del Cliente'
+      if_new_customer: Si usted es un cliente nuevo y no ha reservado antes con nosotros,
+      registration_firts: por favor, primero registre sus detalles
+      proceed_to_additionals: Proceder a Adicionales
+      additionals: Adicionales
+      additionals_text: Seleccione si usted requiere o no rentar un kit y/o seguro.
+      proceed_to_transport: Proceder al Transporte
+      transport: Transporte
+      day: 'Día'
+      proceed_to_equipment: Proceder al Equipo
+      equipment: Equipo
+      equipment_camera_hire: 'Equipo: Renta de Cámara'
+      proceed_to_payment: Proceder al Pago
+      payment: Pago
+      book_event: Reservar Evento
+      email_address: 'Dirección de Correo Electrónico'
+      no: No
+      card_number: 'Número de Tarjeta'
+      expiry_month: Caducidad Mes
+      expiry_year: 'Año de Caducidad'
+      cv2: 'Código CV2'
+      submit_payment_details: Enviar Detalles del Pago
+      book_without_payment: Libro sin Pago

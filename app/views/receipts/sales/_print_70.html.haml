@@ -1,0 +1,68 @@
+%table{cellspacing: '0', style: {width: '100%'}}
+  %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+    %td{valign: 'top'}
+      %table{style: 'background:#fff;width:265px;', cellpadding: '0', cellspacing: '0'}
+        %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+          %td{align: 'center'}
+            %h3= @sale.store.name
+            - if @sale.refund?
+              %center
+                %b= t('sales.print_70.credit_note')
+            %p{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;margin-bottom:20px;margin-top:15px;font-weight: bold;'}
+              = @sale.store.company.address.full_address
+              %br>/
+              = t('sales.print_70.p', telephone: @sale.store.company.telephone, email: @sale.store.company.email)
+            %p{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;margin-bottom:20px;margin-top:15px;'}
+              #{@sale.created_at}
+              %br>/
+              = t('sales.print_70.receipt', receipt: @sale.receipt_id)
+        %tr{valign: 'top', style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+          %td{style: 'padding: 15px;', width: '265'}
+            %table{border: '0', cellpadding: '0', cellspacing: '0', width: '260'}
+              %tbody
+                - @sale.sale_products.each do |sale_product|
+                  %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+                    %td= "#{sale_product.quantity} x #{sale_product.sale_productable.name} (##{sale_product.sale_productable.class.name.eql?('MiscellaneousProduct') ? "#{t('sales.print.category')}: #{sale_product.sale_productable.category.name}" : "#{sale_product.sale_productable.sku_code}"})"
+                    %td{valign: 'top'}= sale_product.decorate.price
+
+            %div{style: 'border-top:1px dotted #000; height: 1px; margin: 10px 0'}
+            %table{border: '0', cellpadding: '0', cellspacing: '0', width: '260'}
+              - if @sale.completed? && @sale.discount
+                %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+                  %td{valign: 'top'}
+                    %strong= t('sales.print_70.discount')
+                  %td{valign: 'top'}
+                    %span{style: 'float:right;'}= formatted_currency(@sale.calc_discount)
+              %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+                %td{valign: 'top'}
+                  %strong= t('sales.print_70.subtotal')
+                %td{valign: 'top'}
+                  %span{style: 'float:right;'}= formatted_currency(@sale.sub_total.abs)
+              %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+                %td{valign: 'top'}
+                  %strong= t('sales.print_70.tax_inc')
+                %td{valign: 'top'}
+                  %span{style: 'float:right;'}= formatted_currency(@sale.tax_rate_total.abs)
+              %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+                %td{valign: 'top'}
+                  %strong= t('sales.print_70.net_due')
+                %td{valign: 'top'}
+                  %span{style: 'float:right;'}= formatted_currency(@sale.grand_total)
+            %div{style: 'border-top:1px dotted #000; height: 1px; margin: 10px 0'}
+            %table{border: '0', cellpadding: '0', cellspacing: '0', width: '260'}
+              %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+                %td{valign: 'top'}
+                  %strong= t('sales.print_70.payment')
+              %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+                %td{valign: 'top'}
+                  - @sale.payments.where{ id.not_eq nil }.each do |payment|
+                    %span #{formatted_currency(payment.amount)} #{payment.payment_method.name} - #{l(payment.created_at, formats: :default)}
+                    %br/
+            %div{style: 'clear: both;'}
+      %table{style: 'background:#fff;width:265px;', cellpadding: '0', cellspacing: '0'}
+        %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+          %td
+            %p{align: 'center', style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;margin-bottom:20px;font-size:11px;'}
+              = t('sales.print_70.tnx_order')
+              %br>/
+              = t('sales.print_70.check', url: @sale.store.company.website_url)

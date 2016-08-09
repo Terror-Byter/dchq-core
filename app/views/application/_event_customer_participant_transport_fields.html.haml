@@ -1,0 +1,15 @@
+:ruby
+  counter = f.object_name.gsub(/[^0-9]+/,'').to_i
+
+= hidden_field :number_of_days, value: counter
+.row-fluid.transports
+  .span4
+    = f.association :transport, collection: @current_store.transports, input_html: { class: 'selectpicker span12' }
+  .span2
+    = f.input :time, as: :string, input_html: { class: 'span12', value: f.object.time ? f.object.time.strftime('%H:%M') : nil }
+  .span4
+    = f.input :information, input_html: { class: 'span12' }
+  .span1
+    %label= t('application.event_customer_participant_transport_fields.day')
+    %p= counter.next
+    = f.hidden_field :start_date, value: f.object.start_date.blank? ? (@event_customer_participant.event.starts_at.to_date + counter.days).strftime("%Y-%m-%d") : f.object.start_date

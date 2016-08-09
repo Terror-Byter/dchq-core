@@ -1,0 +1,14 @@
+es:
+  settings:
+    stores:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_shop_locations: 'Ajustes: Ubicaciones de la Tienda'
+      content: 'Usted puede agregar el número de ubicaciones de su tienda que desee. Para cada tienda adicional, hay un cargo extra de £25/mes además de su suscripción actual.'
+      agreement: 'Al agregar una tienda adicional, usted está aceptando el cargo extra.'
+      locations: 'Ubicaciones'
+      add_location: 'Agregar Ubicación'
+      current_subscription: 'Suscripción Actual'
+      plan: 'Plan'
+      additional_shop_locations: 'Ubicaciones de Tiendas Adicionales'
+      total_monthly_price: 'Precio Mensual Total'

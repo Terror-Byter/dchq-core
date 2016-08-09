@@ -1,0 +1,50 @@
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('reports.sales_by_staff.home')
+  %li.divider
+  %li= t('reports.sales_by_staff.reports')
+.innerLR
+  .row-fluid
+    .span9
+      %h3.heading-mosaic= t('reports.sales_by_staff.report_sales_by_staff')
+    .span3.right
+      .buttons.hidden-print
+        = link_to "javascript:window.print();", class: 'btn btn-small btn-default btn-icon glyphicons print' do
+          %i
+          = t('reports.edit_finance_report.print')
+  .widget
+    .widget-head
+      %h4.heading #{t('reports.sales_by_staff.totals_and_commissions')} (#{l @date_start} - #{l @date_end})
+    .widget-body
+      .row-fluid.hidden-print
+        %form
+          .span3
+            #datepicker9.input-append.date
+              %input.span12.datepicker{name: :date_start, placeholder: t('reports.sales_by_staff.from_date'), type: "text", value: params[:date_start]}/
+              %span.add-on
+                %i.icon-calendar
+          .span3
+            #datepicker10.input-append.date
+              %input.span12.datepicker{name: :date_end, placeholder: t('reports.sales_by_staff.to_date'), type: "text", value: params[:date_end]}/
+              %span.add-on
+                %i.icon-calendar
+          .span2
+            %button.btn.btn-small.btn-primary.btn-icon.glyphicons.history{ type: :submit }
+              %i>
+              = t('reports.sales_by_staff.refine_dates')
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr
+            %th
+            %th= t('reports.sales_by_staff.total_sale')
+            %th= t('reports.sales_by_staff.commission_sale')
+            %th= t('reports.sales_by_staff.comission_earned')
+        %tbody
+          - @report.each do |report|
+            %tr
+              %td.important= report[:name]
+              %td= formatted_currency(report[:total_sale])
+              %td= formatted_currency(report[:comission_total])
+              %td= formatted_currency(report[:comission_earned])

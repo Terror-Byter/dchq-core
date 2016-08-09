@@ -1,0 +1,14 @@
+en:
+  reports:
+    sales_by_staff:
+      home: 'Home'
+      reports: 'Reports'
+      report_sales_by_staff: 'Report: Sales by Staff'
+      sales_by_staff: 'Sales by Staff'
+      totals_and_commissions: Totals and Commissions
+      from_date: From Date
+      to_date: To Date
+      refine_dates: Refine Dates
+      total_sale: Total Sales
+      commission_sale: Commission Sales
+      comission_earned: Commission Earned

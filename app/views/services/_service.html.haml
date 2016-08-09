@@ -1,0 +1,16 @@
+%tr
+  %td.important
+    = link_to service.id, service
+  %td= service.serial_number
+  %td= service.kit
+  %td= service.user_full_name
+  %td
+    = link_to service.customer_full_name, service.customer
+  %td= l service.booked_in, format: :default
+  %td= l service.collection_date, format: :default
+  %td= service.seconds_to_hours
+  %td
+    = link_to service.show, class: service.show_class do
+      %i>
+      = service.pay_status
+  %td= t ".#{ service.aasm_human_state.downcase.gsub(' ', '_').to_sym }"

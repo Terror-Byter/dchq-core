@@ -1,0 +1,17 @@
+.widget
+  .widget-head
+    %h4.heading
+      = t('purchase_orders.form.purchase_order_id')
+      = purchase_order.id
+    %span.details{style: 'color:green; font-weight:bold;'}
+      = t('purchase_orders.form.status')
+      %span#status
+        = purchase_order.status
+    %span.details.pull-right{style: "color:green; font-weight:bold;"}
+      = t('purchase_orders.form.staff')
+      = purchase_order.creator
+  .widget-body.collapse.in.hidden-print
+    .row-fluid
+      .span8
+        %strong
+          = purchase_order.status

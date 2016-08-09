@@ -1,0 +1,48 @@
+- sale = @sale.decorate
+%tr{id: dom_id(record)}
+  %td.product
+    .media
+      %span.media-object.pull-left
+        - if record.sale_productable_type == 'EventCustomerParticipant' || record.event?
+          = image_tag 'calendar.png'
+        - else
+          = record.image_for_event_type
+          = record.image
+      .media-body
+        - if !@sale.refunded? && @sale.completed? && record.can_be_refunded?
+          .pull-right.hidden-print
+            %label.refund-checkbox.uniformjs{style: "margin-top:6px;"}
+              = check_box_tag 'sale_product_id[]', record.id
+              Refund Items
+            .refund-total-dropdown.hide
+              = select_tag 'refund_quantity[]', options_for_select((1..record.quantity).entries) , class: 'span1 select2'
+
+        - if record.gift_card_type? && sale.completed?
+          = link_to "#edit_gift_card_#{record.id}", class: 'hidden-print', :'data-toggle' => 'modal' do
+            %h5= record.productable_name
+            %span= record.productable_sku_code
+          = content_for :overlays do
+            = render 'overlays/gift_cards/show', {record: record, resource: record.sale_productable }
+
+        - else
+          %h5
+            = record.productable_name
+            %span{style: "color: green;"}= "[RRP: #{formatted_currency(record.product.retail_price)}]".html_safe if record.product.try(:offer_price)
+          %span= record.productable_sku_code
+
+  %td.center= record.unit_price
+  %td.center= record.tax_rate
+  %td.center.quantity
+    - if is_editable && !sale.refund? && !record.service_type? && !record.event? && record.sale_productable_type != 'EventCustomerParticipant'
+      = form.fields_for :sale_products, record do |sp_form|
+        = sp_form.select :quantity, record.quantities_options, { selected: record.quantity }, { class: 'span1' }
+    - else
+      = record.quantity
+  %td.center.discount
+    - unless record.service_type? || record.gift_card_type?
+      - if is_editable && !@sale.refund? && !@sale.has_discount
+        = form.fields_for :sale_products, record do |sp_form|
+          = sp_form.fields_for :prod_discount, record.prod_discount ? record.prod_discount : record.build_prod_discount
+      - else
+        = til formatted_discount(record.prod_discount)
+  %td.center= record.price

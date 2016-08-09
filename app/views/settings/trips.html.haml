@@ -1,0 +1,45 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.trips.home')
+  %li.divider
+  %li= link_to t('settings.trips.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.trips.settings_trips')
+= simple_nested_form_for current_store, url: update_store_settings_path,
+                                            html: { method: :put }, validate: true do |f|
+  = f.error_messages
+  = hidden_field_tag :back_url, trips_settings_path
+  = hidden_field_tag :notice, t('controllers.trips')
+  = hidden_field_tag :back_action, 'trips'
+  .innerLR
+    .row-fluid
+      .span12
+        .row-fluid
+          .span3
+            %label{style: 'font-weight:bold;'}= t('settings.trips.t_trip_name')
+          .span2
+            %label{style: 'font-weight:bold;'}= t('settings.trips.t_standard_price')
+          .span2
+            %label{style: 'font-weight:bold;'}= t('settings.trips.t_local_price')
+          .span2
+            %label{style: 'font-weight:bold;'}= t('settings.trips.t_tax_rate')
+          .span1
+            %label{style: 'font-weight:bold;'}= t('settings.trips.t_commission')
+          .span1.uniformjs
+            %label{style: 'font-weight:bold;'}= t('settings.trips.t_tafiff_rates')
+          .span1
+            %label{style: 'font-weight:bold;'}= t('settings.trips.t_action')
+    = f.simple_fields_for :event_trips, current_store.event_trips.order('id ASC') do |build|
+      = render 'event_trip_fields', f: build
+    = f.link_to_add :event_trips, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+      %i
+      = t('settings.trips.add_trip')
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('settings.emails.save')

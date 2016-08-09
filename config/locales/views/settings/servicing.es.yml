@@ -1,0 +1,14 @@
+es:
+  settings:
+    servicing:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_servicing: 'Ajustes: Servicios'
+      terms_and_service_types: 'Tipos de Términos & Servicio'
+      service_kits: 'Kits de Servicio'
+      standard_terms_of_service: 'Términos de Servicio Estándares'
+      standard_terms_of_service_text: 'Ingrese sus términos de servicio. Se le solicitará a los clientes aceptar antes de reservar un servicio.'
+      add_service_type: 'Agregar un Tipo de Servicio'
+      add_service_kit: 'Agregar un Kit de Servicio'
+      notice: 'Se han guardado satisfactoriamente los ajustes de servicios'
+

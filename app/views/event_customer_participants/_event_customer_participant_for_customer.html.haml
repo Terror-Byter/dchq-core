@@ -1,0 +1,9 @@
+%tr
+  %td.important
+    - if ecp.event_cancel
+      = link_to ecp.event_name, event_path(ecp.event)
+      = content_tag :span, t('event_customer_participants.event_customer_participant.cancelled'), style: 'color:red'
+    - else
+      = link_to ecp.event_name, event_path(ecp.event)
+  %td= til(ecp.price)
+  %td= til(ecp.starts_at)

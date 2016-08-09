@@ -1,0 +1,51 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('staff_members.index.home')
+  %li.divider
+  %li= t('staff_members.index.crm')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('staff_members.index.staff')
+    .span8.right
+      .buttons.hidden-print
+        - if current_user.manager?
+          = link_to current_user.staff_mailchimp, class: 'btn btn-small btn-default btn-icon glyphicons share', :'data-toggle' => 'modal' do
+            %i
+            = current_user.staff_mailchamp_link_name
+          = link_to '#export-staff', class: 'btn btn-small btn-default btn-icon glyphicons download', :'data-toggle' => 'modal' do
+            %i
+            = t('staff_members.index.export_records')
+        = link_to new_staff_member_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+          %i
+          = t('staff_members.index.new_staff')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.group
+        %i
+        = t('staff_members.index.staff_record')
+        %small
+          = link_to '(show staff schedule & availability)', schedule_staff_members_path
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr.ransack_links
+            %th= sort_link @q, :given_name, t('staff_members.index.table_name')
+            %th= sort_link @q, :telephone, t('staff_members.index.table_phone')
+            %th= sort_link @q, :email, t('staff_members.index.table_email')
+            %th= t('staff_members.index.table_tags')
+            %th= sort_link @q, :purchase_amount, t('staff_members.index.table_product_sales')
+        %tbody
+          = render partial: 'staff', collection: staff_members
+      / Options
+      .separator.top.form-inline.small
+        = t('staff_members.index.total_staff')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+
+= content_for :overlays do
+  = render 'overlays/staff_members/export_staff_popup'

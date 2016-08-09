@@ -1,0 +1,5 @@
+$("#quick-add-#{@resource.class.name.downcase}").modal('hide')
+- if @resource.new_record?
+  alert("Please enter correct name")
+- else
+  $(".#{@resource.class.name.downcase}_select").append("<option value='#{@resource.id}'>#{@resource.name}</option>").selectpicker('refresh').selectpicker('val', "#{@resource.id}")

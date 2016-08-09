@@ -1,0 +1,41 @@
+en:
+  button:
+    logout: 'Logout'
+  top_menu:
+    quick_search: 'Quick search...'
+    users_block:
+      profile: 'Profile'
+      edit: 'edit'
+      settings: 'Settings'
+      contact_support: 'Contact Support'
+  sidebar_menu:
+    dashboard: 'Dashboard'
+    sales: 'Sales'
+    events: 'Events'
+    crm: 'CRM'
+    servicing: 'Servicing'
+  sales_submenu:
+    point_of_sale: 'Point-of-Sale'
+    sales_history: 'Sales History'
+    products: 'Products'
+    brands: 'Brands'
+    categories: 'Categories'
+    purchase_orders: "Purchase Orders"
+    gift_cards: 'Gift Cards'
+    credit_notes: 'Credit Notes'
+    sales_targets: 'Sales Targets'
+    event_tariffs: 'Event Tariffs'
+  events_submenu:
+    calendar: 'Calendar'
+    list: 'List'
+  crm_submenu:
+    customers: 'Customers'
+    suppliers: 'Suppliers'
+    staff: 'Staff'
+    scheduling: 'Scheduling'
+  servicing_submenu:
+    all_services: 'All Services'
+    booked: 'Booked'
+    in_progress: 'In Progress'
+    to_collect: 'To Collect'
+    complete: 'Complete'

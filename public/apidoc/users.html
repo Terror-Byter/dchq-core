@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API documentation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/bundled/bootstrap.min.css'/>
+<link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/bundled/prettify.css'/>
+<link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/bundled/bootstrap-responsive.min.css'/>
+  <link type='text/css' rel='stylesheet' href='../apidoc/stylesheets/application.css'/>
+  <!-- IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div id='container'>
+        <ul class='breadcrumb'>
+  <li>
+    <a href='../apidoc.html'>DchqCore 1.0</a>
+    <span class='divider'>/</span>
+  </li>
+  <li class='active'>
+    Users
+    
+  </li>
+  
+</ul>
+
+<div class='page-header'>
+  <h1>
+    Users
+    <br>
+    <small></small>
+  </h1>
+</div>
+
+
+
+
+<div class='accordion' id='accordion'>
+
+    <hr>
+    <div class='pull-right small'>
+      <a href='../apidoc/users/index.html'> >>> </a>
+    </div>
+    <div>
+        <h2>
+          <a href='#description-index'
+           class='accordion-toggle'
+           data-toggle='collapse'
+           data-parent='#accordion'>
+            GET /api/v1/users
+          </a><br>
+          <small>List of all users for specific dive centre</small>
+        </h2>
+    </div>
+
+
+    <div id='description-index' class='collapse accordion-body'>
+      
+<p>This method allow only for manager&#39;s user</p>
+
+
+  <h3>Supported Formats</h3>
+  json
+
+
+
+  <h3>Examples</h3>
+    <pre class="prettyprint">
+########### Request Example ################
+# URL
+https://app.divecentrehq.com/api/v1/users/1
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;
+}
+
+# Response
+{
+  &quot;users&quot;: [
+    {
+      &quot;id&quot;: 311,
+      &quot;email&quot;: &quot;demo+1@divecentrehq.com&quot;,
+      &quot;given_name&quot;: &quot;Andr\u00e9&quot;,
+      &quot;family_name&quot;: &quot;T&quot;,
+      &quot;alternative_email&quot;: &quot;&quot;,
+      &quot;phone&quot;: &quot;02-4567-8901&quot;,
+      &quot;emergency_contact_details&quot;: &quot;Julie Smith, +64 22-345-6789&quot;
+      &quot;address&quot;:
+        {
+          &quot;first&quot;: &quot;123 Pitt Street&quot;,
+          &quot;second&quot;: &quot;&quot;,
+          &quot;city&quot;: &quot;Sydney&quot;,
+          &quot;state&quot;: &quot;NSW&quot;,
+          &quot;post_code&quot;: &quot;2011&quot;,
+          &quot;country&quot;: &quot;United States&quot;
+        }
+    }
+  ]
+}
+</pre>
+
+  <h3>Params</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+    </tbody>
+  </table>
+
+    </div>
+    <hr>
+    <div class='pull-right small'>
+      <a href='../apidoc/users/info.html'> >>> </a>
+    </div>
+    <div>
+        <h2>
+          <a href='#description-info'
+           class='accordion-toggle'
+           data-toggle='collapse'
+           data-parent='#accordion'>
+            GET /api/v1/users/info
+          </a><br>
+          <small>Details information about your user</small>
+        </h2>
+    </div>
+
+
+    <div id='description-info' class='collapse accordion-body'>
+      
+
+  <h3>Supported Formats</h3>
+  json
+
+
+
+  <h3>Examples</h3>
+    <pre class="prettyprint">
+########### Request Example ################
+# URL
+https://app.divecentrehq.com/api/v1/users/info
+
+# Request Body
+{
+  user_token: &lt;USER_TOKEN&gt;
+}
+
+# Response
+{
+  &quot;user&quot;:
+    {
+      &quot;id&quot;: 311,
+      &quot;email&quot;: &quot;demo+1@divecentrehq.com&quot;,
+      &quot;time_zone&quot;: &quot;Auckland&quot;,
+      &quot;role&quot;: &quot;manager&quot;,
+      &quot;created_at&quot;: &quot;2012-02-02T12:34:49Z&quot;,
+      &quot;updated_at&quot;: &quot;2013-05-08T08:15:21Z&quot;,
+      &quot;avatar&quot;: &lt;AVATAR_URL&gt;,
+      &quot;company&quot;:
+        {
+          &quot;id&quot;: 185,
+          &quot;name&quot;: &quot;Andre&quot;
+        },
+      &quot;given_name&quot;: &quot;Andr\u00e9&quot;,
+      &quot;family_name&quot;: &quot;T&quot;,
+      &quot;alternative_email&quot;: &quot;&quot;,
+      &quot;phone&quot;: &quot;02-4567-8901&quot;,
+      &quot;emergency_contact_details&quot;: &quot;Julie Smith, +64 22-345-6789&quot;,
+      &quot;available_days&quot;:
+        {
+          &quot;monday&quot;: &quot;1&quot;,
+          &quot;tuesday&quot;: &quot;1&quot;,
+          &quot;wednesday&quot;: &quot;0&quot;,
+          &quot;thursday&quot;: &quot;1&quot;,
+          &quot;friday&quot;: &quot;1&quot;,
+          &quot;saturday&quot;: &quot;1&quot;,
+          &quot;sunday&quot;: &quot;0&quot;
+        },
+      &quot;start_date&quot;: null,
+      &quot;end_date&quot;: null,
+      &quot;contracted_hours&quot;: &quot;35&quot;,
+      &quot;mailchimp_api_key&quot;: &quot;68b0412a51db3d914eff7771bb6f03cb-us6&quot;,
+      &quot;mailchimp_list_id_for_customer&quot;: null,
+      &quot;mailchimp_list_id_for_staff_member&quot;: null,
+      &quot;mailchimp_list_id_for_business_contact&quot;: null,
+      &quot;locale&quot;: &quot;en&quot;,
+      &quot;address&quot;:
+        {
+          &quot;first&quot;: &quot;123 Pitt Street&quot;,
+          &quot;second&quot;: &quot;&quot;,
+          &quot;city&quot;: &quot;Sydney&quot;,
+          &quot;state&quot;: &quot;NSW&quot;,
+          &quot;post_code&quot;: &quot;2011&quot;,
+          &quot;country&quot;:null
+        }
+    }
+}
+</pre>
+
+  <h3>Params</h3>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><span class="translation_missing" title="translation missing: en.aapipie.param_name">Param Name</span></th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color:rgb(255,255,255);'>
+    <td>
+      <strong>user_token </strong><br>
+      <small>
+        required
+        
+      </small>
+    </td>
+    <td>
+      
+<p>User Token</p>
+
+        <br>
+        Value: Must be String
+
+
+    </td>
+
+  </tr>
+
+  
+
+    </tbody>
+  </table>
+
+    </div>
+</div>
+
+
+        
+      </div>
+    </div>
+    <hr>
+    <footer>&copy; 2014  Dive Centre HQ API</footer>
+  </div>
+  <script type='text/javascript' src='../apidoc/javascripts/bundled/jquery-1.7.2.js'></script>
+<script type='text/javascript' src='../apidoc/javascripts/bundled/bootstrap-collapse.js'></script>
+<script type='text/javascript' src='../apidoc/javascripts/bundled/prettify.js'></script>
+<script type='text/javascript' src='../apidoc/javascripts/apipie.js'></script>
+</body>
+</html>

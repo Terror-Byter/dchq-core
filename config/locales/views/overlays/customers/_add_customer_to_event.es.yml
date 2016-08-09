@@ -1,0 +1,11 @@
+es:
+  overlays:
+    customers:
+      add_customer_to_event:
+        header: 'Agregar Cliente a Evento'
+        select_events: 'Seleccionar Evento(s)'
+        create_new_event: 'Crear Nuevo Evento'
+        create_new_course: 'Crear Nuevo Rumbo'
+        add_button: 'Agregar Cliente a Evento'
+        or: 'O'
+        loading: Cargar...

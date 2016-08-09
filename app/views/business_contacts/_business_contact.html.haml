@@ -1,0 +1,14 @@
+- supplier = business_contact.supplier
+- update_path = supplier_business_contact_path(supplier, business_contact)
+
+%tr{ id: dom_id(business_contact) }
+  %td.important
+    = link_to business_contact.full_name, supplier_business_contact_path(supplier, business_contact)
+  %td= business_contact.telephone
+  %td= mail_to business_contact.email
+  %td= business_contact.position
+  %td
+    = link_to t('suppliers.show.edit_business_contact'), edit_supplier_business_contact_path(supplier, business_contact)
+    |
+    = link_to t('suppliers.show.delete_business_contact'), supplier_business_contact_path(supplier, business_contact), method: :delete,
+      confirm: t('views.actions.confirm'), style: 'color:red'

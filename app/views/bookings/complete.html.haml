@@ -1,0 +1,93 @@
+.alert.alert-success
+  %button.close{"data-dismiss" => "alert", type: "button"} ×
+  = t('.copy_of_your_invoice')
+
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= t('.event_registration')
+
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('.event_registration_successful')
+  .row-fluid
+    .span12
+      %p= t('.you_have_successfully_booked', event_name: @ecp.event.name)
+
+  .row-fluid
+    .span12
+      - unless @ecp.event.instructions.blank?
+        %h3= t('.instructions')
+        = nl2br @ecp.event.instructions
+      %h5= t('.invoice')
+      %table.table-bordered.table-condensed.table-striped.table-primary{style: 'width: 100%; margin-bottom:15px;'}
+        %thead
+          %tr
+            %th{style: 'text-align:left;'}= t('.item')
+            %th{style: 'text-align:left;width: 15%;'}= t('.quantity')
+            %th{style: 'text-align:left;width: 15%;'}= t('.price')
+        %tbody
+          %tr
+            %td= @ecp.event.name
+            %td 1
+            %td= formatted_currency(@ecp.event_line_item_price)
+          - if kit_hire = @ecp.event_customer_participant_kit_hire
+            - unless kit_hire.unit_price.zero?
+              %tr
+                %td= kit_hire.name
+                %td 1
+                %td= formatted_currency(kit_hire.unit_price)
+
+          - if insurance = @ecp.event_customer_participant_insurance
+            - unless insurance.unit_price.zero?
+              %tr
+                %td= insurance.name
+                %td 1
+                %td= formatted_currency(insurance.unit_price)
+          - @ecp.event_customer_participant_transports.each do |transport|
+            - next if transport.quantity.zero? || transport.unit_price.zero?
+            %tr
+              %td= transport.name
+              %td= transport.quantity
+              %td= formatted_currency(transport.unit_price * transport.quantity)
+          - @ecp.event_customer_participant_additionals.each do |additional|
+            - next if additional.quantity.zero? || additional.unit_price.zero?
+            %tr
+              %td= additional.name
+              %td= additional.quantity
+              %td= formatted_currency(additional.unit_price * additional.quantity)
+  .row-fluid
+    .span4
+      %p= link_to_function t('.view_event_calendar'), "window.open('', '_self', ''); window.close();", :class => "btn btn-secondary"
+
+    - if @ecp.sale
+      .span5.offset3
+        %table.table.table-borderless.table-condensed.cart_total
+          %tbody
+            %tr
+              %td.right
+                = t('sales.details.sub_total')
+                = @current_store.decorate.print_tax
+              %td.right.strong
+                = formatted_currency(@ecp.sale.sub_total.abs)
+            %tr
+              %td.right= t('sales.details.tax')
+              %td.right.strong
+                = formatted_currency(@ecp.sale.tax_rate_total.abs)
+            %tr
+              %td{colspan: '2'}
+                .separator.bottom
+                %span.label.right.label-block.large
+                  = t('sales.details.net_due')
+                  = formatted_currency(@ecp.price)
+            %tr
+              %td{colspan: '2'}
+                .separator.bottom
+                %span.label.right.label-block.large
+                  = t('sales.details.less_total_payment')
+                  -# TODO: Show how much the customer actually paid
+                  = formatted_currency(0)

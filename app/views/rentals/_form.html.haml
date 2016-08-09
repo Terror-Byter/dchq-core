@@ -1,0 +1,44 @@
+= form_for @rental, remote: true do |f|
+  .innerLR
+    .row-fluid
+      .span9
+        .widget
+          .widget-head
+            %h4.heading= t '.rental_id', id: @rental.id
+            %span.details{style: "color:green; font-weight:bold;"}= t ".#{ @rental.status }"
+            %span.details.pull-right{style: "color:green; font-weight:bold;"}= t '.cashier', name: @rental.user.full_name
+          .widget-body.collapse.in.hidden-print
+
+            - if resource.layby?
+              .row-fluid
+                .span9
+                  = text_field_tag 'search_rental_product', nil, class: 'span12 ui-autocomplete-input', placeholder: t('.placeholder'), autocomplete: 'off', role: 'textbox', :'aria-autocomplete' => 'list', :'aria-haspopup' => true, :'data-rental-id' => resource.id
+                .span3
+                  %a.btn.btn-default.input-block-level{"data-toggle" => "modal", class: 'rental-product-lookup', href: "#product-lookup-modal"}= t '.lookup'
+            - else
+              .row-fluid
+                .span12
+                  A payment has been assigned to this rental, and therefore cannot be amended.
+                  %br/
+                  %strong #{ t '.dates' }:
+                  #{ l(resource.pickup_date, format: :default) } #{ t '.to' } #{ l(resource.return_date, format: :default) }
+      .span3
+        .widget
+          .widget-head
+            %h4.heading= t '.rental_details'
+          .widget-body.list.products
+            %ul
+              %li
+                %p{style: "padding-top:10px;"}
+                  %strong #{ t '.customer' }:
+                  = link_to resource.customer.full_name, resource.customer
+                  %br/
+                  %strong #{ t '.dates' }:
+                  #{ l(resource.pickup_date, format: :default) } #{ t '.to' } #{ l(resource.return_date, format: :default) }
+    = render 'shoping_cart', f: f
+
+    = render 'overlays/rentals/note', f: f
+
+    - if @rental.layby? || @rental.pay_pending?
+      = render 'overlays/rentals/add_payment', f: f
+      = render 'overlays/rentals/rental_product_lookup'

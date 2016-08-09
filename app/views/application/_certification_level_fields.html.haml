@@ -1,0 +1,28 @@
+= f.hidden_field :certification_agency_id, value: session[:choosen_agency_id]
+
+.row-fluid
+  .span2
+    - if f.object.global?
+      = f.object.name
+    - else
+      = f.text_field :name, class: 'span12'
+      = f.hidden_field :store_id, value: current_store.id
+  = f.simple_fields_for :certification_level_costs, (f.object.certification_level_costs.find_all_by_store_id(current_store.id).empty? ? f.object.certification_level_costs.build : f.object.certification_level_costs.find_all_by_store_id(current_store.id)) do |ff|
+    = ff.hidden_field :store_id, value: current_store.id if ff.object.new_record? or ff.object.store_id
+    .span2
+      = ff.text_field :cost, class: 'span12 certification-level-cost-price'
+    .span1
+      = ff.select :tax_rate_id, current_store.tax_rates_list, {}, class: 'selectpicker span12'
+    .span4
+      = ff.simple_fields_for :material_price, ff.object.material_price.blank? ? ff.object.build_material_price : ff.object.material_price do |build|
+        .span5
+          = build.text_field :price, class: 'span12 certification-level-cost-material-price'
+        .span1
+        .span5
+          = build.select :tax_rate_id, current_store.tax_rates_list, {}, class: 'selectpicker span12'
+    .span1
+      = render 'commission_rate_fields_new_design', f: ff
+    .span1
+      %span.grand_total= formatted_currency(ff.object.total_price_without_tax_rate)
+  .span1
+    = f.link_to_remove t('application.boat_fields.delete'), style: 'color: red' if !f.object.global? && f.object.events.blank?

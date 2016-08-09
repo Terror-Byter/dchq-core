@@ -1,0 +1,7 @@
+en:
+  services:
+    edit:
+      home: 'Home'
+      servicing: 'Servicing'
+      edit_service: 'Edit Service'
+

@@ -1,0 +1,5 @@
+es:
+  models:
+    services:
+      type_of_service:
+        hours: horas

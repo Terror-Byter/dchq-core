@@ -1,0 +1,69 @@
+-# NOTE: we're using instance variables instead of helpers here because this template is used both
+-# as mailer's template partial and as view partial
+
+%table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.2; margin: 15px 5%; width: 90%; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px;'}
+  %tr{style: 'background: #ffffff; border: none;'}
+    %td{style: 'background: #ffffff; border: none; width: 50%; padding-bottom:15px;'}
+      = image_tag @current_company.logo.image.url(:large), alt: t('sales.print.alt_logo') if @current_company.logo.image.exists?
+      %br
+      %br
+      %span
+        = t('.purchase_order_supplier')
+        %br
+        -# ENTER SUPPLIER NAME AND ADDRESS HERE
+        %strong= @current_store.store.location
+
+    %td{style: 'background: #ffffff; border: none; width: 50%;text-align:right;'}
+      %span= t('.purchase_order_number', number: purchase_order.id)
+      %br
+      %span
+        = t('.purchase_order_date', date: l(purchase_order.created_at, formats: :default))
+      %br
+      %br
+      %strong= @current_store.store.name
+      %br
+      %span= [@current_company.address.first, @current_company.address.second].join(', ')
+      %br
+      %span= [@current_company.address.city, @current_company.address.state].join(', ')
+      %br
+      %span
+        = [@current_company.address.post_code].join('<br>')
+        = @current_company.address.country_name
+
+%table{border: "0", cellpadding: "0", cellspacing: "0", style: "font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;"}
+  %thead
+    %tr{style: "background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;"}
+      %td{style: "padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;"}
+        %b= t('.sku')
+      %td{style: "padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;"}
+        %b= t('.unit_price')
+      %td{style: "padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;"}
+        %b= t('.qty_accepted')
+      %td{style: "padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;"}
+        %b= t('.qty_rejected')
+      %td{style: "padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;"}
+        %b= t('.sub_total')
+  %tbody
+    - purchase_order.purchase_order_items.each do |item|
+      %tr{style: "font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;"}
+        %td{style: "padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;"}
+          = item.name_with_sku
+        %td{style: "padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;"}
+          = item.price_formatted
+        %td{style: "padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;"}
+          = item.quantity
+        %td{style: "padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;"}
+          = item.quantity_rejected
+        %td{style: "padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;"}
+          = item.sub_total
+%p{style: "float:right; margin: 15px 5%; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;"}
+  %strong
+    = t('.total')
+  = purchase_order.grand_total
+%div{style: "clear:both"}
+%p.footer{style: "font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;"}
+%p.footer{style: "font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; color: #999; margin: 20px 5% 15px;"}
+  - if purchase_order.note.present?
+    = t('.notes')
+    %br/
+    = purchase_order.note

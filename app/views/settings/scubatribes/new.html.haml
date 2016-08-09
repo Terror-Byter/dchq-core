@@ -1,0 +1,15 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.integrations.home')
+  %li.divider
+  %li= link_to t('settings.integrations.settings'), settings_path
+  %li.divider
+  %li= t('overlays.settings.scubatribe_connect.button_connect_new')
+
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('overlays.settings.scubatribe_connect.button_connect_new')
+  = render 'form'

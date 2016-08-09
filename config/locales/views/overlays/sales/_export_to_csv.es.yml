@@ -1,0 +1,9 @@
+es:
+  overlays:
+    sales:
+      export_to_csv:
+        header: 'Exportar Datos Financieros'
+        content: 'Seleccione el rago de datos que desea exportar el formato CSV.'
+        export_data: 'Exportar Datos Financieros'
+        date_from: 'Fecha desde'
+        date_to: 'Fecha hasta'

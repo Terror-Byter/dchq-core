@@ -1,0 +1,11 @@
+en:
+  overlays:
+    customers:
+      add_customer_to_event:
+        header: 'Add Customer to Event'
+        select_events: 'Select Event(s)'
+        create_new_event: 'Create New Event'
+        create_new_course: 'Create New Course'
+        add_button: 'Add Customer to Event'
+        or: 'Or'
+        loading: Loading...

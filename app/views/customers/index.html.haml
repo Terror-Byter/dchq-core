@@ -1,0 +1,53 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('customers.index.home')
+  %li.divider
+  %li= t('customers.index.crm')
+
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('customers.index.customers')
+    .span8.right
+      .buttons.hidden-print
+        - if current_user.manager?
+          = link_to current_user.customer_mailchimp, class: 'btn btn-small btn-default btn-icon glyphicons share', :'data-toggle' => 'modal' do
+            %i
+            = current_user.customer_mailchamp_link_name
+          = link_to '#export-customers', class: 'btn btn-small btn-default btn-icon glyphicons download', :'data-toggle' => 'modal' do
+            %i
+            = t('customers.index.export_records')
+        = link_to new_customer_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+          %i
+          = t('customers.index.new_customer')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.group
+        %i
+        = t('customers.index.customer_records')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr.ransack_links
+            %th= sort_link @q, :full_name, t('customers.index.table_name')
+            %th= sort_link @q, :telephone, t('customers.index.table_phone')
+            %th= sort_link @q, :email, t('customers.index.table_email')
+            %th= sort_link @q, :address_first, t('customers.index.table_location')
+            %th= t('customers.index.table_certification')
+            %th= t('customers.index.table_tags')
+            %th= sort_link @q, :purchase_amount, t('customers.index.table_sales')
+        %tbody
+          = render customers
+      / Options
+      .separator.top.form-inline.small
+        = t('customers.index.total_customers')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix
+
+= content_for :overlays do
+  = render partial: 'overlays/customers/customer_export_popup'

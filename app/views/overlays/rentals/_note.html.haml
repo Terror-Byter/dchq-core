@@ -1,0 +1,11 @@
+#add-note-modal.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('.add_note')
+  .modal-body
+    .row-fluid
+      .span12
+        = f.text_area :note, class: 'span12', rows: 2
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('.cancel')
+    %button.btn.btn-primary{type: "submit"}= t('.button')

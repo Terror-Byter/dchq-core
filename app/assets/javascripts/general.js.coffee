@@ -1,0 +1,12 @@
+//= require jquery.min
+//= require jquery_ujs
+//= require jquery.ui.all
+//= require jquery.ui.touch-punch
+//= require modernizr
+//= require twitter/bootstrap
+//= require jquery.slimscroll
+//= require common
+//= require jquery.uniform
+//= require prettyphoto-rails
+//= require rails.validations
+//= require rails.validations.simple_form

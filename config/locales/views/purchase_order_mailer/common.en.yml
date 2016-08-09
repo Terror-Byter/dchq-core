@@ -1,0 +1,8 @@
+en:
+  mailer:
+    purchase_order_mailer:
+      common:
+        with_regards: 'With regards,'
+        sent_by_centre: 'This email was sent by %{company_name}.'
+        telephone: 'Telephone: %{tel}'
+        registered_address: 'Registered Address: %{address}'

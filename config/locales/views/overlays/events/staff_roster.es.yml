@@ -1,0 +1,11 @@
+es:
+  overlays:
+    events:
+      staff_roster:
+        h3: "Imprimir Lista del Personal"
+        p: "Seleccione el miembro del personal y rango de fechas para el cual quiere generar la lista."
+        staff_member: "Miembro del Personal"
+        date_from: "Fecha Desde"
+        date_to: "Fecha Hasta"
+        cancel: "Cancelar"
+        button: "Imprimir Lista del Personal"

@@ -1,0 +1,92 @@
+= simple_nested_form_for resource do |f|
+  = f.error_messages
+  = f.hidden_field :terms_and_conditions if resource.new_record?
+  .innerLR
+    .row-fluid
+      .span9
+        .widget.widget-tabs
+          .widget-head
+            %ul
+              %li.active
+                = link_to '#eventDetailsTab', :'data-toggle' => 'tab' do
+                  %i>
+                  = t('services.form.service_details')
+          .widget-body
+            .tab-content
+              #eventDetailsTab.tab-pane.active
+                = f.simple_fields_for :kits do |form|
+                  .row-fluid
+                    .span3
+                      %strong= t('services.form.kit_info')
+                      %p.muted= t('services.form.kit_info_text')
+                    .span3
+                      = form.input :type_of_service_id, collection: current_store.service_types, include_blank: false, input_html: { class: 'select2 span12', data: {type: 'type_of_service_id'}}
+                    .span3
+                      = form.input :kit, input_html: { class: 'span12' }
+                    .span3
+                      = form.input :serial_number, input_html: { class: 'span12' }
+                = f.link_to_add :kits, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+                  %i
+                  = t('services.form.add_kit')
+                %hr.separator.bottom/
+                .row-fluid
+                  .span3
+                    %strong= t('services.form.people')
+                    %p.muted= t('services.form.people_text')
+                  .span3
+                    = f.input :customer_id, collection: current_company.customers_names_and_ids, include_blank: false, input_html: { class: 'select2 span12'}
+                  .span3
+                    = f.input :user_id, collection: current_company.users_names_and_ids, include_blank: false, input_html: { class: 'selectpicker span12'}
+                  .span3
+                    = f.label :collection_date
+                    .input-append.date
+                      = f.text_field :collection_date, class: ' datepicker span8', size: false
+                      %span.add-on
+                        %i.icon-calendar{ :'data-time-icon' => 'icon-time' }
+                %hr.separator.bottom/
+                .row-fluid
+                  .span3
+                    %strong= t('services.form.description')
+                    %p.muted= t('services.form.description_text')
+                  .span9
+                    = f.simple_fields_for :service_notes, resource.service_notes.try(:first) || resource.service_notes.build do |build|
+                      = build.input :description, input_html: { rows: '2', style: 'width: 96%;' }
+                      = build.input :creator_id, as: :hidden, input_html: { value: current_user.id }
+                      = build.input :notify, as: :hidden, input_html: { value: '0' }
+      .span3
+        .widget
+          .widget-head
+            %h4.heading.glyphicons.coins
+              %i>
+              = t('services.form.price_breakdown')
+          .widget-body.list
+            %ul.products-list
+              = f.simple_fields_for :service_items do |ff|
+                = render 'service_item_fields', f: ff
+          .widget-body.list
+            %ul
+              %li
+                = link_to '#add-product-to-service', class: 'btn btn-small btn-default btn-icon glyphicons circle_plus', :'data-toggle' => 'modal' do
+                  %i
+                  = t('services.form.add_extra_item')
+              %li
+                %span.count#sub_total_price
+                  = formatted_currency(service.total_price_service_items)
+                %strong= t('services.form.total')
+              %li
+                .uniformjs{:style => "padding-top:8px;"}
+                  %label
+                    = f.check_box :complimentary_service
+                    = t('activerecord.attributes.service.complimentary_service')
+        .buttons
+          %button.btn.btn-primary.btn-large.btn-icon.glyphicons.ok_2.span12{ type: 'submit' }
+            %i
+            = t('services.form.book_service')
+        .clearfix
+    .row-fluid
+      .heading-buttons
+
+= content_for :overlays do
+  = render 'overlays/services/add_item_popup'
+  = render 'overlays/services/add_item_confirmation' unless resource.new_record?
+  = render 'overlays/services/agreement' if resource.new_record?

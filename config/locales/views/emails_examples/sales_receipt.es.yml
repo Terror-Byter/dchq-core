@@ -1,0 +1,15 @@
+es:
+  emails_examples:
+    sales_receipt:
+      hello: 'Hola %{name}'
+      thanks_for_purchase: 'Gracias por su compra a %{store}. Si usted tiene cualquier duda acerca de su orden,  poor favor contáctenos en %{email} o llámenos al %{telephone}.'
+      order_confirmation_below: 'La confirmación de su orden está debajo. Nuevamente, gracias.'
+      order_date: 'Order Date: %{date}'
+      sku: 'SKU / PRODUCTO'
+      unit_price: 'PRECIO UNITARIO'
+      qty: 'CANT'
+      sub_total: 'SUB-TOTAL'
+      sub_tot: 'Sub Total:'
+      tax_inc: 'Inc Imp:'
+      net_due: 'NETO DEBIDO:'
+      payments: 'Pagos:'

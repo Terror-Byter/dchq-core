@@ -1,0 +1,17 @@
+%ul.unstyled.icons
+  %li.glyphicons.sort
+    %i
+    = t('products.group_info.units_in_stock')
+    = til association.products_in_stock
+  %li.glyphicons.sampler
+    %i
+    = t('products.group_info.stock_value')
+    = formatted_currency(association.products_stock_value)
+  %li.glyphicons.dashboard
+    %i
+    = t('products.group_info.avg_monthly_sale')
+    = formatted_currency(association.average_month_sales)
+  %li.glyphicons.shopping_bag
+    %i
+    = t('products.group_info.last_sale')
+    = association.last_sale_date

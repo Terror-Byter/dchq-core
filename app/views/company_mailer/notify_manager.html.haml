@@ -1,0 +1,29 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = image_tag 'https://app.divecentrehq.com/assets/email-logo.png', alt: t('company_mailer.common.company_hq')
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('company_mailer.notify_manager.staff_account_access_notification')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= t('company_mailer.commont.hi', full_name: @user.company.owner.full_name)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('company_mailer.notify_manager.limiting_access', full_name: @user.full_name)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      %b= t('company_mailer.notify_manager.whats_required')
+    %p.button{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 25px 5%;'}
+      %a{href: 'https://app.divecentrehq.com', style: 'font-family: Arial, sans-serif; font-size: 14px; color: #fff; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; background-color: #00afdb; padding: 12px 24px;'} #{t('company_mailer.notify_manager.login')}
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('company_mailer.notify_manager.you_need_to')
+      %a{href: 'https://app.divecentrehq.com', style: 'color:#278cc6'} #{t('company_mailer.notify_manager.login')}
+      = t('company_mailer.notify_manager.as_soon_as_complete', full_name: @user.full_name)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('company_mailer.notify_manager.any_questions')
+      = succeed '.' do
+        %a{href: 'http://www.divecentrehq.com/support', style: 'color:#278cc6'} #{t('company_mailer.notify_manager.support_team')}
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%;'}
+      = t('company_mailer.common.happy_diving')
+      %br
+      = t('company_mailer.common.dchq_team')
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = t('company_mailer.common.registered_office')

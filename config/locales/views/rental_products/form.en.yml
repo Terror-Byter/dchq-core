@@ -1,0 +1,17 @@
+en:
+  rental_products:
+    form:
+      rental_item: Rental Item Details
+      photos: Photos
+      accounting_and_barcode: Accounting & Barcodes
+      pricing: Pricing
+      product_name: Product Name & SKU
+      product_name_text: Enter the full name for this product and its stock keeping unit.
+      description: Description
+      description_text: The description will be shown on email and printed receipts.
+      image: Product Image
+      image_text: Upload the product image we will display on receipts and sale lists.
+      pricing_text: Enter the rate per day for this item.
+      tax_inc: (Tax Inc.)
+      tax_exc: (Tax Exc.)
+      save: Save

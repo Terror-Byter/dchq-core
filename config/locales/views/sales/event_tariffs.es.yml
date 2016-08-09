@@ -1,0 +1,10 @@
+es:
+  sales:
+    event_tariffs:
+      home: 'Inicio'
+      sales: 'Ventas'
+      event_tariffs: 'Tarifas del Evento'
+      add_another_tariff: 'Agregar Otra Tarifa'
+      save: 'Guardar'
+      message: 'Se han actualizado correctamente las Tarifas del Evento'
+

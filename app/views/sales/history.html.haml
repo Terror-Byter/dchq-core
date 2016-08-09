@@ -1,0 +1,88 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('sales.history.home')
+  %li.divider
+  %li= t('sales.history.sales')
+  %li.divider
+  %li= link_to t('sales.history.sale_history'), history_sales_path
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('sales.history.sale_history')
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#export-qif', class: 'btn btn-small btn-default btn-icon glyphicons download', :'data-toggle' => 'modal' do
+          %i
+          = t('sales.history.export_financials_to_qif')
+        = link_to '#export-csv', class: 'btn btn-small btn-default btn-icon glyphicons download', :'data-toggle' => :modal do
+          %i
+          = t('.export_financials_to_csv')
+        - if current_store.xero.batch? && current_user.manager?
+          = link_to sync_settings_xero_path, class: 'btn btn-small btn-primary btn-icon glyphicons restart' do
+            %i
+            Sync Sales Data to Xero
+          
+.innerLR
+  .row-fluid
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t('sales.history.overview')
+        .widget-body.list
+          %ul
+            %li
+              %span.count= current_store.revenue_this_month
+              = t('sales.history.revenue_this_month')
+            %li
+              %span.count= current_store.average_sale_per_customer
+              = t('sales.history.sales_per_customer')
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t('sales.history.customers')
+        .widget-body.list
+          %ul
+            %li
+              %span.count= current_store.customers_this_month
+              = t('sales.history.new_customers')
+            %li
+              %span.count= current_store.event_registrations_this_month
+              = t('sales.history.event_registrations')
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('sales.history.sales_history')
+    .widget-body
+      - if sales.empty?
+        = t('sales.history.no_sales')
+      - else
+        %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+          %thead
+            %tr.ransack_links
+              %th= sort_link @q, :receipt_id, t('sales.history.t_receipt')
+              %th= sort_link @q, :created_at, t('sales.history.t_date')
+              %th= sort_link @q, :creator_name, t('sales.history.t_staff_member')
+              %th= t('sales.history.t_customers')
+              %th= sort_link @q, :grand_total, t('sales.history.t_total')
+              %th= sort_link @q, :change, t('sales.history.t_to_pay')
+              %th= sort_link @q, :status, t('sales.history.t_status')
+          %tbody
+            = render @sales.decorate
+      / Options
+      .separator.top.form-inline.small
+        = t('sales.history.total_historical_sales')
+        = @sales.total_count
+        .pagination.pagination-small.pull-right{:style => 'margin: 0;'}
+          = paginate @sales
+        .clearfix
+
+= content_for :overlays do
+  = render 'overlays/sales/export_to_qif_popup'
+  = render 'overlays/sales/export_to_csv'

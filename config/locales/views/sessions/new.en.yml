@@ -1,0 +1,9 @@
+en:
+  sessions:
+    new:
+      title: Sign in to Your Account
+      remember_me: Remember me
+      button: Secure Login
+      forgot_pass: forgot your password?
+      login: Login
+

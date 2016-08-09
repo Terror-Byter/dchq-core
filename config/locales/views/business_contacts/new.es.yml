@@ -1,0 +1,6 @@
+es:
+  business_contacts:
+    new:
+      home: 'Inicio'
+      crm: 'CRM'
+      create_supplier_contact: 'Crear Contacto del Proveedor'

@@ -1,0 +1,5 @@
+es:
+  events:
+    index:
+      calendar: "Calendario"
+      event_calendar: "Calendario de Evento"

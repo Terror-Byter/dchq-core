@@ -1,0 +1,12 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('customers.new.home')
+  %li.divider
+  %li= t('customers.new.crm')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('customers.new.create_customer')
+= render 'form'

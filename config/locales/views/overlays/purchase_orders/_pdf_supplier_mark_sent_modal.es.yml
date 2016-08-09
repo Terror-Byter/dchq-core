@@ -1,0 +1,8 @@
+es:
+  overlays:
+    purchase_orders:
+      pdf_supplier_mark_sent_modal:
+        mark_sent: 'Marcar como Enviado'
+        leave_unsent: 'Dejar No-Enviada'
+        want_to_mark_order_sent: '¿Quiere marcar esta Orden de Compra como enviada?'
+        send_to_supplier: 'Enviar a Proveedor'

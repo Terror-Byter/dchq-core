@@ -1,0 +1,8 @@
+%tr{ :id => dom_id(category) }
+  %td.important
+    = link_to category.name, category_path(category)
+  %td= category.products_count
+  %td= category.products_in_stock
+  %td= formatted_currency(category.products_stock_value)
+  %td= formatted_currency(category.average_month_sales)
+  %td= category.last_sale_date

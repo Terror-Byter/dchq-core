@@ -1,0 +1,31 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      %img{alt: t('company_mailer.common.company_hq'), src: 'https://app.divecentrehq.com/assets/email-logo.png'}/
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('store_mailer.remind_product.hello', full_name: @store.company.owner.full_name)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= t('store_mailer.remind_product.following_products', store_name: @store.name)
+    %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;'}
+      %thead
+        %tr{bgcolor: '#EAEAEA'}
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('store_mailer.remind_product.scu_product')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('store_mailer.remind_product.unit_price')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-right:1px solid #d4d4d4;'}
+            %b= t('store_mailer.remind_product.in_stock')
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'} #{product.name} (##{product.sku_code})
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= number_to_currency(product.unit_price, precision: @store.currency.precision, unit: @store.currency.unit)
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}= product.number_in_stock
+    %div{style: 'clear:both'}
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%;'}
+      = t('store_mailer.remind_product.best_wishes')
+      %br{style: 'font-family: Arial, sans-serif; font-size: 14px;'}>/
+      = t('company_mailer.common.dchq_team')
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = t('company_mailer.common.registered_office')

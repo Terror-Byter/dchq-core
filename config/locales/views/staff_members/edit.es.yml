@@ -1,0 +1,6 @@
+es:
+  staff_members:
+    edit:
+      home: 'Inicio'
+      crm: 'CRM'
+      edit_staff: 'Editar Miembro del Personal'

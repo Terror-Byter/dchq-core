@@ -1,0 +1,109 @@
+!!!5
+%html
+  %head
+  %body
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = current_company.image_large
+      %span{style: 'float:right;font-size:12px'}= t('views.emails_examples.receipt', receipt: '<SALE_ID>')
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('emails_examples.sales_receipt.hello', name: '<CUSTOMERS_FULL_NAMES>')
+    - unless current_store.email_setting.sales_receipt_content.blank?
+      %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= current_store.email_setting.sales_receipt_content
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('emails_examples.sales_receipt.thanks_for_purchase', store: current_store.name, email: current_company.email, telephone: current_company.telephone)
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom:10px;'}= t('emails_examples.sales_receipt.order_confirmation_below')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= t('emails_examples.sales_receipt.order_date', date: '<SALE_DATE>')
+    %table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;'}
+      %thead
+        %tr{style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+            %b= t('emails_examples.sales_receipt.sku')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+            %b= t('emails_examples.sales_receipt.unit_price')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+            %b= t('emails_examples.sales_receipt.qty')
+          %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+            %b= t('emails_examples.sales_receipt.sub_total')
+      %tbody
+        - 2.times do |sale_product|
+          %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              #{"<PRODUCT_NAME_#{sale_product}>"} (##{'<SKU_CODE>'})
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<RETAIL_PRICE>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<QUANTITY>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<SUB_TOTAL_WITH_DISCOUNT>'
+        - 2.times do |sale_event|
+          %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = "<EVENT_NAME_#{sale_event}>"
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<UNIT_PRICE>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<QUANTITY>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<SUB_TOTAL_WITH_DISCOUNT>'
+          %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<KIT_HIRE_NAME>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<UNIT_PRICE>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              1
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<SUB_TOTAL_WITH_DISCOUNT>'
+          %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+            %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<INSURANCE_NAME>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<UNIT_PRICE>'
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              1
+            %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+              = '<SUB_TOTAL_WITH_DISCOUNT>'
+          - 3.times do |transport|
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = "<TRANSPORT_NAME_#{transport}>"
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = '<UNIT_PRICE>'
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = '<QUANTITY>'
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = '<SUB_TOTAL_WITH_DISCOUNT>'
+          - 2.times do |additional|
+            %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+              %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = "<ADDITIONAL_NAME_#{additional}>"
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = '<UNIT_PRICE>'
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = '<QUANTITY>'
+              %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+                = '<SUB_TOTAL_WITH_DISCOUNT>'
+    = image_tag 'https://app.divecentrehq.com/assets/email-paid.jpg', style: 'margin: 5px 5%;'
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('emails_examples.sales_receipt.sub_tot')
+      = '<SALE_SUB_TOTAL>'
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('emails_examples.sales_receipt.tax_inc')
+      = '<SALE_TAX_RATE_TOTAL>'
+    %p{style: 'float:right; margin: 15px 5%; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+      %strong= t('emails_examples.sales_receipt.net_due')
+      = '<SALE_GRAND_TOTAL>'
+    %p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; clear:both;'}
+      %strong= t('emails_examples.sales_receipt.payments')
+      - 3.times do |method|
+        = '<AMOUNT>'
+        %em= "<METHOD_NAME_#{method}>"
+    %div{style: 'clear:both'}
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%; clear: both;'}
+      = t('views.emails_examples.with_regards')
+      %br
+      #{current_store.name}
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag current_store.avatar.image.url(:original) unless current_store.avatar.blank?
+      = t('views.emails_examples.sent_by_centre', company_name: current_store.company.name)
+      = t('views.emails_examples.telephone', tel: current_store.company.telephone)
+      = t('views.emails_examples.registered_address', address: current_store.company.address.full_address)

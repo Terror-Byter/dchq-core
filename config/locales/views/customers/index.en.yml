@@ -1,0 +1,19 @@
+en:
+  customers:
+    index:
+      home: 'Home'
+      crm: 'CRM'
+      customers: 'Customers'
+      setup_mailchimp: 'Setup MailChimp'
+      sync_mailchimp: 'Sync to MailChimp'
+      export_records: 'Export Customer Records'
+      new_customer: 'New Customer'
+      customer_records: 'Customer Records'
+      table_name: 'Name'
+      table_phone: 'Phone'
+      table_email: 'Email'
+      table_location: 'Location'
+      table_certification: 'Certification'
+      table_tags: 'Tags'
+      table_sales: 'Sales'
+      total_customers: 'Total customers:'

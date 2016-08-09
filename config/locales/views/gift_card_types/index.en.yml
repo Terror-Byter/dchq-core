@@ -1,0 +1,14 @@
+en:
+  gift_card_types:
+    index:
+      home: 'Home'
+      sales: 'Sales'
+      gift_cards: 'Gift Cards'
+      new_gift_card: 'New Gift Card'
+      value: 'Value'
+      valid_for: 'Valid For'
+      month_sale: "This Month's Sale"
+      last_sale: 'Last Sale'
+      month_from_date_of_issue: '%{number} months from date of issue'
+      total_gift_cards: 'Total gift cards:'
+

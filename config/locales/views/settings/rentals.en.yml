@@ -1,0 +1,10 @@
+en:
+  settings:
+    rentals:
+      home: Home
+      settings: Settings
+      settings_rentals: 'Settings: Rental'
+      terms: Terms
+      standard_terms_of_rental: Standard Terms of Rental
+      standard_terms_of_rental_text: Enter your terms of rental. Customers will be asked to agree before a rental is created in.
+      notice: Rental settings have been saved successfully

@@ -1,0 +1,21 @@
+:ruby
+  certification_agencies = CertificationAgency.all.each_slice(6).to_a
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('settings.select_agency.home')
+  %li.divider
+  %li= link_to t('settings.select_agency.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('settings.select_agency.settings_course_price')
+.innerLR
+  - certification_agencies.each do |array|
+    .row-fluid
+      - array.each do |elem|
+        .span2{style: 'margin-bottom:25px;'}
+          = link_to edit_agency_settings_path(id: elem.id) do
+            = image_tag(elem.logo.image(:thumb))
+          = link_to elem.name, edit_agency_settings_path(id: elem.id)

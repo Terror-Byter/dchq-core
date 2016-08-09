@@ -1,0 +1,8 @@
+es:
+  overlays:
+    rentals:
+      change_status:
+        header: Cambie Alquiler Estado
+        body: Si marca el alquiler de lo más completo y todavía hay dinero que debe, se le redirige a la factura original.
+        cancel: Cancelar
+        button: Cambie Alquiler Estado

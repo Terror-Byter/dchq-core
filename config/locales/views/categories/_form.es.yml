@@ -1,0 +1,9 @@
+es:
+  categories:
+    form:
+      category_details: 'Detalles de la Categoría'
+      category_name: 'Nombre de la Categoría'
+      category_name_text: 'Ingrese el nombre completo de la categoría.'
+      description: 'Descripción'
+      description_text: 'Se mostrará la descripción en la página de detalles de la categoría.'
+      save: 'Guardar'

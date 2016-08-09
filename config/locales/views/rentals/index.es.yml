@@ -1,0 +1,21 @@
+es:
+  rentals:
+    index:
+      home: Casa
+      rentals: Alquileres
+      create_rental: Crear Alquiler
+      pre_rental: Pre-Alquiler
+      booked: Reservados
+      pos_rental: Post-Alquiler
+      in_progress: En Curso
+      overdue: Atrasado
+      complete: Completo
+      id: ID
+      kit: Juego
+      customer: Cliente
+      pickup_date: Fecha de Recogida
+      return_date: Fecha de Regreso
+      to_pay: Pagar
+      status: Estado
+      total: Alquiler Totales
+      no_rentals: Usted no tiene alquileres

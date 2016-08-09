@@ -1,0 +1,4 @@
+en:
+  controllers:
+    smart_lists:
+      sent_email: Email sent successfully

@@ -1,0 +1,20 @@
+en:
+  events:
+    cancel_confirmation_with_registrations:
+      home: 'Home'
+      events: 'Events'
+      cancel: 'Cancel'
+      cancel_event: 'Cancel Event:'
+      you_are_about: 'You are about to cancel this event. Are you sure you wish to proceed?'
+      content: 'The following customers have been booked on this event and will require notification.'
+      reason_for_cancellation: 'Reason for Cancellation'
+      reason_for_cancellation_text: 'This will be included in the automated email sent to the customer.'
+      customers_booked_on_this_event: 'Customers Booked On This Event'
+      t_customer: 'Customer'
+      t_amount_paid: 'Amount Paid'
+      t_refound_required: 'Refund Required'
+      t_notify_via_email: 'Notify via Email'
+      not_required: 'Not required'
+      yess: 'Yes'
+      wait: 'Wait, I Want To Keep This Event'
+      yes_cancel: 'Yes, Cancel Event & Process Refunds!'

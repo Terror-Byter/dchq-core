@@ -1,0 +1,6 @@
+es:
+  staff_members:
+    new:
+      home: 'Inicio'
+      crm: 'CRM'
+      create_staff: 'Crear Miembro del Personal'

@@ -1,0 +1,9 @@
+en:
+  overlays:
+    sales:
+      refund_payment_method:
+        header: Issue Refund or Credit Note
+        refund: Refund
+        credit_note: Credit Note
+        issue_refund: Issue Refund
+        refund_method: Refund Method

@@ -1,0 +1,15 @@
+.modal.hide.fade{ id: "reject_#{ dom_id(ecp) }" }
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('.h3', full_name: ecp.customer.full_name, event: ecp.event.name)
+  = form_tag ecp.decorate.reject_path, {:target => "_top"} do
+    .modal-body
+      %p= t('.p', full_name: ecp.customer.full_name)
+      %hr/
+      .row-fluid
+        .span12
+          = label_tag :reason, t('.reason')
+          = text_area_tag :reason, nil, class: "span12"
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.event_customer_participants.add_customer.cancel')
+      = submit_tag t('.button'), class: 'btn btn-primary'

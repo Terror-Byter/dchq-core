@@ -1,0 +1,12 @@
+= nested_form_for purchase_order, remote: true, html: { class: 'purchase_orders', method: :put } do |form|
+  %table.table.table-bordered.table-striped.table-vertical-center.table-condensed
+    %thead
+      %tr
+        %th= t('purchase_orders.form.table_columns.sku_product')
+        %th.center{style: 'width: 100px;'}= t('purchase_orders.form.table_columns.supply_price')
+        %th.center{style: 'width: 100px;'}= t('purchase_orders.form.table_columns.quantity')
+        %th.center{style: 'width: 100px;'}= t('purchase_orders.form.table_columns.sub_total')
+    %tbody
+      - purchase_order.purchase_order_items.each_with_index do |purchase_order_item, poi_index|
+        = render(partial: 'purchase_order_item',
+        locals: {form: form, purchase_order_item: purchase_order_item, cur_item_index: poi_index})

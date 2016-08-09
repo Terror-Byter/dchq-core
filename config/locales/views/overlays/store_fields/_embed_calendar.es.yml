@@ -1,0 +1,7 @@
+es:
+  overlays:
+    store_fields:
+      embed_calendar:
+        head: 'Código para Incrustar Calendario'
+        content: 'Para incrustar un calendario donde se pueda reservar a su página web, copie y pegue el código siguiente a su página web.'
+        done: "¡Ya terminé!"

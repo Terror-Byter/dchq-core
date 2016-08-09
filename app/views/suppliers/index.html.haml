@@ -1,0 +1,50 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('customers.index.home')
+  %li.divider
+  %li= t('customers.index.crm')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('suppliers.index.suppliers')
+    .span8.right
+      .buttons.hidden-print
+        - if current_user.manager?
+          = link_to current_user.supplier_mailchimp, class: 'btn btn-small btn-default btn-icon glyphicons share', :'data-toggle' => 'modal' do
+            %i
+            = current_user.supplier_mailchamp_link_name
+          = link_to '#export-suppliers', class: 'btn btn-small btn-default btn-icon glyphicons download', :'data-toggle' => 'modal' do
+            %i
+            = t('suppliers.index.export_records')
+        = link_to new_supplier_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+          %i
+          = t('suppliers.index.new_supplier')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.group
+        %i
+        = t('suppliers.index.supplier_records')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr.ransack_links
+            %th= sort_link @q, :name, t('suppliers.index.business')
+            %th= sort_link @q, :address_first, t('suppliers.index.location')
+            %th= sort_link @q, :telephone, t('suppliers.index.phone')
+            %th= sort_link @q, :email, t('suppliers.index.email')
+            %th= t('suppliers.index.tags')
+        %tbody
+          = render suppliers
+      / Options
+      .separator.top.form-inline.small
+        = t('suppliers.index.total_suppliers')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix
+
+= content_for :overlays do
+  = render partial: 'overlays/suppliers/supplier_export_popup'

@@ -1,0 +1,32 @@
+%tr
+  %td.product
+    .media
+      %span.media-object.pull-left
+        %img{height: "30px", src: "https://app.divecentrehq.com/assets/missing/product/thumb.gif", width: "30px"}/
+      .media-body
+        - if !@sale.refunded? && @sale.completed? && record.can_be_refunded?
+          .pull-right.hidden-print
+            %label.refund-checkbox.uniformjs{style: "margin-top:6px;"}
+              = check_box_tag 'sale_product_id[]', record.id
+              Refund Items
+            .refund-total-dropdown.hide
+              = select_tag 'refund_quantity[]', options_for_select((1..record.quantity).entries) , class: 'span1 select2'
+        %span.heading
+          %h5
+            = record.productable_description
+          %span= record.productable_category_name
+  %td.center= record.unit_price
+  %td.center= record.tax_rate
+  %td.center.quantity
+    - if is_editable && !@sale.refund?
+      = form.fields_for :sale_products, record do |sp_form|
+        = sp_form.select :quantity, (0..SaleProduct::QUANTITY_LIMIT).to_a, { selected: record.quantity }, { class: 'span1 selectpicker' }
+    - else
+      = record.quantity
+  %td.center.discount
+    - if is_editable && !@sale.refund? && !@sale.has_discount
+      = form.fields_for :sale_products, record do |sp_form|
+        = sp_form.fields_for :prod_discount, record.prod_discount ? record.prod_discount : record.build_prod_discount
+    - else
+      = til formatted_discount(record.prod_discount)
+  %td.center= record.price

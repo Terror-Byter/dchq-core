@@ -1,0 +1,4 @@
+%tr
+  %td= l time_interval.created_at, format: :default
+  %td= time_interval.user_full_name
+  %td= Time.diff(time_interval.starts_at, time_interval.ends_at, '%hh %mm %ss')[:diff]

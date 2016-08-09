@@ -1,0 +1,33 @@
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('requests.index.home')
+.innerLR
+  %h3.heading-mosaic= t('requests.index.header')
+
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        = t('requests.index.sub_header')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        %thead
+          %tr
+            %th Email
+            %th Date added
+            %th Reviewed
+        %tbody
+          - @requests['results'].each do |request|
+            %tr
+              %td= request['email']
+              %td= request['added']
+              %td= request['reviewed']
+
+      .separator.top.form-inline.small
+        = t('requests.index.total')
+        = @requests['num_records_total']
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate @requests
+        .clearfix

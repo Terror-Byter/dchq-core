@@ -1,0 +1,6 @@
+$('#notes').html('#{j(render 'notes').html_safe}');
+- if purchase_order.amendable?
+  = render 'update_print_block_amended'
+- else
+  = render 'update_print_block'
+$('#add-note').hide();

@@ -1,0 +1,13 @@
+.row-fluid
+  .span3
+    = f.input :name, input_html: { class: 'span12'  }
+  .span2
+    = f.input :min, input_html: { class: 'span12'  }
+  .span2
+    = f.input :max, input_html: { class: 'span12'  }
+  .span2
+    = f.input :percentage, input_html: { class: 'span12'  }
+  .span2
+    = f.link_to_remove class: 'btn btn-mini btn-danger btn-icon glyphicons remove', style: 'margin-top:28px;' do
+      %i
+      = t('views.actions.remove')

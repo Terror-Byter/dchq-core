@@ -1,0 +1,6 @@
+es:
+  pages:
+    no_access:
+      heading: "Acceso Negado"
+      content: "Su cuenta del personal de la tienda de buceo no tiene acceso a ninguna tienda de buceo. Para que pueda usar Dive Centre HQ, su gerente debe habilitar el acceso. Haciendo clic debajo, en 'Notificar al Gerente', nosotros enviaremos un correo-e al dueño de la cuenta y le informaremos de las limitaciones de su cuenta. Por favor tenga en cuenta, nosotros somos incapaces de habilitarle el acceso al personal sin antes tener una confirmación por escrita de un gerente."
+      button: "Notificar al Gerente"

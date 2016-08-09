@@ -1,0 +1,7 @@
+en:
+  bookings:
+    cancel:
+      home: Home
+      event_registration: Event Registration
+      p: Your payment was unsuccessful, however we have tentatively booked you onto this event.
+      p_1: In order to confirm this booking, please contact us on %{telephone} or email %{email}.

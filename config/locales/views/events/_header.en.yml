@@ -1,0 +1,11 @@
+en:
+  events:
+    header:
+      home: Home
+      events: Events
+      event_calendar: Event Calendar
+      staff_roster: Staff Roster
+      utilisation_report: Utilisation Report
+      resource_manifest: Resource Manifest
+      new_event: New Event
+      new_course: New Course

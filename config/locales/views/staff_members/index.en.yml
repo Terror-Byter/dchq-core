@@ -1,0 +1,17 @@
+en:
+  staff_members:
+    index:
+      home: 'Home'
+      crm: 'CRM'
+      staff: 'Staff'
+      setup_mailchimp: 'Setup MailChimp'
+      sync_mailchimp: 'Sync to MailChimp'
+      export_records: 'Export Staff Records'
+      new_staff: 'New Staff Member'
+      staff_record: 'All Staff Members'
+      table_name: 'Name'
+      table_phone: 'Phone'
+      table_email: 'Email'
+      table_tags: 'Tags'
+      table_product_sales: 'Product Sales'
+      total_staff: 'Total staff:'

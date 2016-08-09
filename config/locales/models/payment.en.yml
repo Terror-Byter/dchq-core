@@ -1,0 +1,4 @@
+en:
+  models:
+    payment:
+      cant_use_gift_card: "You can't use this Gift Card"

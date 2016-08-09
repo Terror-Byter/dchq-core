@@ -1,0 +1,7 @@
+en:
+  controllers:
+    bookings:
+      cannot_find_event: Sorry, we cannot find the event with that identifier.
+      event_unavailabe: Sorry, this event is not available for online booking at this time.
+      no_booking: This store has not enabled access to online bookings.
+      incorrect_public_key: There has been an error due to the public key being incorrect.

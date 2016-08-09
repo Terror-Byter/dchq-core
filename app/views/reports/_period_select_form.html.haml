@@ -1,0 +1,16 @@
+= form_tag url_for(action: params[:action], controller: params[:controller]), method: :get do
+  .row-fluid.hidden-print
+    - if action_name == 'sales_by_popular'
+      .span4
+        = select_tag :product_ids, options_for_select(current_store.sold_products.uniq.map{ |p| [p.name, p.id] }, selected: params[:product_ids]),
+                      class: 'select2 span12', multiple: true
+    .span2
+      = select_tag :month, options_for_select(Date::MONTHNAMES.compact, selected: Date::MONTHNAMES[@date.month]),
+                    class: 'selectpicker span12'
+    .span2
+      = select_tag :year, options_for_select((Date.today.year - 6..Date.today.year).to_a.reverse, selected: @date.year),
+                    class: 'selectpicker span12'
+    .span2
+      %button.btn.btn-small.btn-primary.btn-icon.glyphicons.history{ type: 'submit' }
+        %i>
+        = t('reports.period_select_form.refine_dates')

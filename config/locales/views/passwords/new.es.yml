@@ -1,0 +1,6 @@
+es:
+  passwords:
+    new:
+      title: "Restablecer Contraseña"
+      button: "Restablecer Contraseña"
+      default: "Restablecer Contraseña"

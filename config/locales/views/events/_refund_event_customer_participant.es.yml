@@ -1,0 +1,5 @@
+es:
+  events:
+    refund_event_customer_participant:
+      view_refund: Ver Reembolso
+      issue_refund: Reembolso de Emisión

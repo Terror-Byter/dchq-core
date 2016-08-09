@@ -1,0 +1,180 @@
+- current_store.build_avatar unless current_store.avatar
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('.home')
+  %li.divider
+  %li= link_to t('.settings'), settings_path
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('.email_settings')
+= simple_form_for current_store, url: update_store_settings_path,
+                                            html: {method: :put, :class => 'container_16'} do |f|
+  = f.error_messages
+  = hidden_field_tag :back_url, emails_settings_path
+  = hidden_field_tag :notice, t(".notice")
+  = hidden_field_tag :back_action, 'emails'
+  .innerLR
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#eventstab', class: 'glyphicons calendar', :'data-toggle' => 'tab' do
+              %i>
+              = t('.events')
+          %li
+            = link_to '#salestab', class: 'glyphicons coins', :'data-toggle' => 'tab' do
+              %i>
+              = t('.sales')
+          %li
+            = link_to '#servicingtab', class: 'glyphicons settings', :'data-toggle' => 'tab' do
+              %i>
+              = t('.servicing')
+          %li
+            = link_to '#productstab', class: 'glyphicons sampler', :'data-toggle' => 'tab' do
+              %i>
+              = t('.products')
+          %li
+            = link_to '#footertab', class: 'glyphicons align_left', :'data-toggle' => 'tab' do
+              %i>
+              = t('.footer')
+      .widget-body
+        .tab-content
+          = f.simple_fields_for :email_setting, current_store.email_setting do |form|
+            #eventstab.tab-pane.active
+              .row-fluid
+                .span3
+                  %strong= t('.language')
+                .span9
+                  = form.select :language, I18n.available_locales, input_html: { style: 'width:98%;'  }
+              %hr/
+              .row-fluid
+                .span3
+                  %strong= t('.booking_confirmed')
+                  %p.muted= t('.booking_confirmed_text')
+                .span9
+                  - unless current_store.email_setting.disable_booking_confirmed_email?
+                    = link_to t('.view_sample_email'), email_example_settings_path(type: 'booking_confirmed'), target: '_blank', class: 'pull-right'
+                  = form.input :booking_confirmed_content, input_html: { rows: '2', style: 'width:98%;'  }
+                  .row-fluid
+                    .span6.uniformjs
+                      %label
+                        = form.check_box :include_sale_receipt_to_booking_confirmed
+                        = t('.include_sales_receipt')
+                    .span6.uniformjs
+                      %label.right
+                        = form.check_box :disable_booking_confirmed_email
+                        = t('.disable_email')
+              %hr/
+              .row-fluid
+                .span3
+                  %strong= t('.event_reminder')
+                  %p.muted= t('.event_reminder_text')
+                .span9
+                  - unless current_store.email_setting.disable_event_reminder_email?
+                    = link_to t('.view_sample_email'), email_example_settings_path(type: 'event_reminder'), target: '_blank', class: 'pull-right'
+                  = form.input :event_reminder_content, input_html: { rows: '2', style: 'width:98%;'  }
+                  .row-fluid
+                    .span2
+                      = form.label :time_to_send_event_reminder
+                    .span4
+                      = form.time_select :time_to_send_event_reminder, combined: true, minute_interval: 60, default: Time.now.change(hour: 0, min: 0), time_separator: '', class: 'selectpicker span6'
+                    .span6.uniformjs
+                      %label.right
+                        = form.check_box :disable_event_reminder_email
+                        = t('.disable_email')
+
+              %hr/
+              .row-fluid
+                .span3
+                  %strong= t('.online_event_booking')
+                  %p.muted= t('.online_event_booking_text')
+                .span9
+                  - unless current_store.email_setting.disable_online_event_booking_email?
+                    = link_to t('.view_sample_email'), email_example_settings_path(type: 'online_event_booking'), target: '_blank', class: 'pull-right'
+                  = form.input :online_event_booking_content, input_html: { rows: '2', style: 'width:98%;'  }
+                  .row-fluid
+                    .span6.uniformjs
+                      %label
+                        = form.check_box :include_sale_receipt_to_online_event_booking
+                        = t('.include_sales_receipt')
+                    .span6.uniformjs
+                      %label.right
+                        = form.check_box :disable_online_event_booking_email
+                        = t('.disable_email')
+            #salestab.tab-pane
+              .row-fluid
+                .span3
+                  %strong= t('.sales_recepient')
+                  %p.muted= t('.sales_recepient_text')
+                .span9
+                  - unless current_store.email_setting.disable_sales_receipt_email?
+                    = link_to t('.view_sample_email'), email_example_settings_path(type: 'sales_receipt'), target: '_blank', class: 'pull-right'
+                  = form.input :sales_receipt_content, input_html: { rows: '2', style: 'width:98%;'  }
+                  .row-fluid
+                    .span12.uniformjs
+                      %label.right
+                        = form.check_box :disable_online_event_booking_email
+                        = t('.disable_email')
+              %hr
+              .row-fluid
+                .span3
+                  %strong= t('.rentals_recepient')
+                  %p.muted= t('.rentals_recepient_text')
+                .span9
+                  - unless current_store.email_setting.disable_rental_receipt_email?
+                    = link_to t('.view_sample_email'), email_example_settings_path(type: 'rental_receipt'), target: '_blank', class: 'pull-right'
+                  = form.input :rental_receipt_content, input_html: { rows: '2', style: 'width:98%;'  }
+                  .row-fluid
+                    .span12.uniformjs
+                      %label.right
+                        = form.check_box :disable_rental_receipt_email
+                        = t('.disable_email')
+            #servicingtab.tab-pane
+              .row-fluid
+                .span3
+                  %strong= t('.service_complete')
+                  %p.muted= t('.service_complete_text')
+                .span9
+                  - unless current_store.email_setting.disable_service_ready_for_collection_email?
+                    = link_to t('.view_sample_email'), email_example_settings_path(type: 'service_ready_for_collection'), target: '_blank', class: 'pull-right'
+                  = form.input :service_ready_for_collection_content, input_html: { rows: '2', style: 'width:98%;'  }
+                  .row-fluid
+                    .span6.uniformjs
+                      %label
+                        = form.check_box :include_sales_receipt_to_service_ready_for_collection
+                        = t('.include_sales_receipt')
+                    .span6.uniformjs
+                      %label.right
+                        = form.check_box :disable_service_ready_for_collection_email
+                        = t('.disable_email')
+            #productstab.tab-pane
+              .row-fluid
+                .span3
+                  %strong= t('.products_inventory')
+                  %p.muted= t('.products_inventory_text')
+                .span9.uniformjs
+                  %label
+                    = form.check_box :disable_low_inventory_product_reminder_email
+                    = t('.disable_low_inventory_reminder_mail')
+            #footertab.tab-pane
+              .row-fluid
+                .span3
+                  %strong= t('.footer_head')
+                  %p.muted= t('.footer_text')
+                .span6
+                  = f.simple_fields_for :avatar do |form|
+                    = render 'avatar_fields', f: form
+    .heading-buttons
+      = link_to '#email-variables', class: 'btn btn-default btn-mini btn-icon glyphicons adjust_alt', :'data-toggle' => 'modal' do
+        %i>
+        = t('.show_email_variables')
+      .buttons.pull-right{:style => "margin: 0;"}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('.save')
+      .clearfix
+
+= render 'overlays/settings/email_variables_popup'

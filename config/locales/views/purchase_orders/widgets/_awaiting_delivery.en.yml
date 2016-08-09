@@ -1,0 +1,7 @@
+en:
+  purchase_orders:
+    widgets:
+      awaiting_delivery:
+        expected: 'Expected'
+        add_expected_delivery_date: 'Add Expected Delivery Date'
+        receive_consignment: 'Receive Consignment'

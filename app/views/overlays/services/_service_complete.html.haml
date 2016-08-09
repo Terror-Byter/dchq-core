@@ -1,0 +1,29 @@
+#servicing-complete.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'} ×
+    %h3= t('overlays.services.service_complete.header')
+  .modal-body
+    %p= t('overlays.services.service_complete.content1')
+    %p= t('overlays.services.service_complete.content2')
+    .uniformjs
+      %label
+        = check_box_tag :send, true, true, class: 'main'
+        %strong= t('overlays.services.service_complete.send_invoice_via_email')
+    %hr/
+    .center
+      = form_tag complete_service_path(resource), { method: :post } do
+        = check_box_tag :send, true, true, class: 'hide'
+        %h5= t('overlays.services.service_complete.add_to_new_sale')
+        %p= t('overlays.services.service_complete.p')
+        = submit_tag t('overlays.services.service_complete.complete_service'), class: 'btn btn-primary'
+    %hr/
+    .center
+      = form_tag complete_service_path(resource), { method: :post } do
+        = check_box_tag :send, true, true, class: 'hide'
+        %h5= t('overlays.services.service_complete.add_to_exist_sale')
+        %p= t('overlays.services.service_complete.p')
+        = select_tag 'sale_id', options_for_select(current_store.sales.active.map{ |u| ["#{resource.customer.full_name} - #{u.name}", u.id] }), { class: 'selectpicker', :'data-size' => '10' }
+        %br/
+        = submit_tag t('overlays.services.service_complete.add_to_existing_sale'), class: 'btn btn-primary'
+  .modal-footer
+    %button.btn.btn-default{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'}= t('views.actions.cancel')

@@ -1,0 +1,34 @@
+%ul.breadcrumb.hidden-print
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('reports.financial_reports.home')
+  %li.divider
+  %li= t('reports.financial_reports.reports')
+.innerLR
+  .row-fluid
+    .span12
+      %h3.heading-mosaic= t('reports.financial_reports.finance_reports')
+.innerLR
+  .widget
+    .widget-head
+      %h4.heading= t('reports.financial_reports.finance_reports')
+    .widget-body
+      = form_tag url_for(action: params[:action], controller: params[:controller]), method: :get, class: 'refinements' do
+        .row-fluid
+          .span2
+            = select_tag :month, options_for_select(Date::MONTHNAMES.compact, selected: Date::MONTHNAMES[@period.month]), class: 'selectpicker span12'
+          .span2
+            = select_tag :year, options_for_select((Date.today.year - 6..Date.today.year).to_a.reverse, selected: @period.year), class: 'selectpicker span12'
+          .span2
+            %button.btn.btn-small.btn-primary.btn-icon.glyphicons.history{ type: 'submit' }
+              %i>
+              = t('reports.financial_reports.refine_dates')
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center
+        %thead
+          %tr
+            %th
+            %th= t('reports.financial_reports.t_total_sales')
+            %th= t('reports.financial_reports.t_xero')
+        %tbody
+          = render partial: "financial_report", collection: @finance_reports

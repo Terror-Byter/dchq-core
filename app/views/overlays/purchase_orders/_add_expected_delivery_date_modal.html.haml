@@ -1,0 +1,14 @@
+#add-expected-delivery-date.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3= t('.expected_delivery_date')
+  .modal-body.center
+    %p= t('.enter_date')
+    = form_for purchase_order, url: set_expected_delivery_purchase_order_path, html: { class: 'expected-delivery-form'} do |f|
+      .datepicker.input-append.date
+        = f.text_field :expected_delivery, value: purchase_order.expected_delivery_for_datepicker, size: false
+        %span.add-on
+          %i.icon-calendar{ :'data-time-icon' => 'icon-time' }
+  .modal-footer
+    %button.btn.btn-default{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}= t('views.actions.cancel')
+    %a.btn.btn-primary{href: "#"}= t('.add_expected_delivery_date')

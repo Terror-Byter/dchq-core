@@ -1,0 +1,11 @@
+= simple_form_for @form, url: signup_settings_scubatribe_path, validate: true do |f|
+  = f.error_messages
+  .row-fluid
+    .span6
+      .well
+        = f.input 'first_name', class: 'span12'
+        = f.input 'last_name', class: 'span12'
+        = f.input 'company_name', class: 'span12'
+        = f.input 'email_address', class: 'span12'
+        = f.input 'telephone_number', class: 'span12'
+        %button.btn.btn-primary.btn-block= t('overlays.settings.scubatribe_connect.button_connect_new')

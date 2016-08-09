@@ -1,0 +1,8 @@
+es:
+  overlays:
+    rentals:
+      agreement:
+        header: Contrato de Alquiler
+        content: Este es el contrato de alquiler que se enumeran en el área de configuración para esta tienda.
+        customer_decline: Disminución del Cliente
+        customer_acceped: Cliente Aceptado

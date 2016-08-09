@@ -1,0 +1,17 @@
+.row-fluid
+  .span2
+    = label_tag :certification_agency_id, 'Certification Agency'
+    = select_tag :certification_agency_id, options_for_select([''] + CertificationAgency.all.map{ |i| [i.name, i.id] }), { class: 'span12 selectpicker' }
+  .span2
+    = label_tag :certification_level_id, 'Certification Level'
+    = select_tag :certification_level_id, [], { class: 'span12 selectpicker' }
+    = select_tag :certification_level, option_groups_from_collection_for_select(CertificationAgency.all, :all_certification_levels, :name, :id, :name), { class: 'hide original_certification_levels' }
+  .span2
+    = label_tag :certification_date, 'Certification Date'
+    .input-append.date
+      = text_field_tag :certification_date, nil, class: 'span9 datepicker'
+      %span.add-on
+        %i.icon-calendar
+  .span2
+    = label_tag :membership_number, 'Certification Number'
+    = text_field_tag :membership_number, nil, class: 'span11'

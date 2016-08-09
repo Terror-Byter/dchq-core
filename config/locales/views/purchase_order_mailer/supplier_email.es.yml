@@ -1,0 +1,5 @@
+es:
+  mailer:
+    purchase_order_mailer:
+      supplier_email:
+        subject: "Orden de compra #%{number} de %{company}"

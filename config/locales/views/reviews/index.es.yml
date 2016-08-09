@@ -1,0 +1,7 @@
+es:
+  reviews:
+    index:
+      home: 'Home'
+      header: 'Comentarios De Clientes'
+      sub_header: 'Revisar Los Registros'
+      total: 'Total'

@@ -1,0 +1,10 @@
+en:
+  sale_mailer:
+    send_bookings_not_paid_email_for_store:
+      alt: 'Dive Centre HQ'
+      new_booking_request: 'New Booking Request Received'
+      has_made_online_booking: '%{customer} has made an online booking request for %{event_name} on %{starts_at}. The booking details are below. This is a booking request as eligibility to dive has to be confirmed and payment is outstanding.'
+      approve_customer_for_event: 'Approve Customer for Event'
+      event_date: 'Event Date'
+      team: 'The Dive Centre HQ team'
+      registered_office: ''

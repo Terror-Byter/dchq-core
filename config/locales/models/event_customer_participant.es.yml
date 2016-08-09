@@ -1,0 +1,4 @@
+es:
+  models:
+    event_customer_participant:
+      exceeded_limit: Las inscripciones superaron el límite

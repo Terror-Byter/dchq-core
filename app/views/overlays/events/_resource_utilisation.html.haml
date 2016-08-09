@@ -1,0 +1,23 @@
+#print-utilisation-report.modal.hide.fade
+  .modal-header
+    %button.close{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button } ×
+    %h3= t('overlays.events.resource_utilisation.h3')
+  = form_tag print_resource_utilisation_events_path, { target: '_blank', style: 'margin:0px;' } do
+    .modal-body
+      %p= t('overlays.events.resource_utilisation.p')
+      .row-fluid
+        .span6
+          = label_tag :utilisation_starts_at, t('overlays.events.resource_utilisation.date_from')
+          .input-append.date
+            = text_field_tag :starts_at, l(Date.today, format: '%F'), class: 'datepicker', id: 'utilisation_starts_at', style: 'z-index:10010;'
+            %span.add-on
+              %i.icon-calendar
+        .span6
+          = label_tag :utilisation_ends_at, t('overlays.events.resource_utilisation.date_to')
+          .input-append.date
+            = text_field_tag :ends_at, l(Date.today + 7.days, format: '%F'), class: 'datepicker', id: 'utilisation_ends_at', style: 'z-index:10011;'
+            %span.add-on
+              %i.icon-calendar
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('overlays.events.resource_utilisation.cancel')
+      = submit_tag t('overlays.events.resource_utilisation.button'), class: 'btn btn-primary'

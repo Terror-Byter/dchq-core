@@ -1,0 +1,146 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('other_events.form.home')
+  %li.divider
+  %li= t('other_events.form.events')
+  %li.divider
+  %li= resource.new_record? ? t('other_events.form.create') : t('other_events.form.update')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= resource.new_record? ? t('other_events.form.create_event') : t('other_events.form.update_event')
+.innerLR
+  = simple_form_for resource do |f|
+    = f.error_messages
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#eventDetailsTab', class: 'glyphicons calendar', :'data-toggle' => :tab do
+              %i>
+              = t('other_events.form.event_details')
+          %li
+            = link_to '#notificationsTab', class: 'glyphicons adjust_alt', :'data-toggle' => :tab do
+              %i>
+              = t('other_events.form.customer_instructions')
+          %li
+            = link_to '#onlineTab', class: 'glyphicons table', :'data-toggle' => :tab do
+              %i>
+              = t('other_events.form.online_visibility')
+      .widget-body
+        .tab-content
+          #eventDetailsTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.event_name_type')
+                %p.muted= t('other_events.form.event_name_type_text')
+              .span3
+                = f.input :name, input_html: { class: 'span11' }
+              .span3
+                = f.association :event_type, collection: EventType.without_course, input_html: { class: 'selectpicker', :'data-size' => '10' }
+              .span3
+                = f.association :event_trip, collection: current_store.event_trips.with_cost, input_html: { class: 'selectpicker', :'data-size' => '10' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.date_times')
+                %p.muted= t('other_events.form.date_times_text')
+              .span3
+                = f.label :starts_at
+                .datetimepicker.input-append.date{style: 'padding-bottom: 0px !important;'}
+                  = f.text_field :starts_at, value: resource.decorate.starts_at_for_form, class: "span11 starts_at #{'autoupdate' if resource.new_record?}", size: false
+                  %span.add-on
+                    %i.icon-calendar
+                %br/
+                = f.label :all_day, style: 'padding-bottom: 10px;' do
+                  = f.check_box :all_day, class: 'all_day'
+                  = t('other_events.form.all_day')
+              .span3
+                = f.label :ends_at
+                .datetimepicker.input-append.date
+                  = f.text_field :ends_at, value: resource.decorate.ends_at_for_form, class: 'span11 ends_at', size: false
+                  %span.add-on
+                    %i.icon-calendar
+              .span3
+                = f.input :frequency, collection: Frequency.frequencies.map{|u| [u.last[:name], u.first]}, include_blank: false, input_html: { class: 'selectpicker' } if resource.new_record?
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.dive_info')
+                %p.muted= t('other_events.form.dive_info_text')
+              .span3
+                = f.association :boat, collection: current_store.boats, input_html: { class: 'selectpicker' }
+              .span3
+                = f.input :location, input_html: { class: 'span11' }
+                .separator
+              .span1
+                = f.label :number_of_dives
+                .input-prepend
+                  %span.add-on #
+                  = f.input :number_of_dives, label: false, input_html: { class: 'span6' }
+              .span2
+                = f.label :limit_of_registrations
+                .input-prepend
+                  %span.add-on #
+                  = f.input :limit_of_registrations, label: false, input_html: { class: 'span6' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.pricing')
+                %p.muted= t('other_events.form.pricing_text')
+              .span3
+                = f.label :price
+                .input-prepend
+                  %span.add-on= current_store.currency.unit.html_safe
+                  = f.input :price, label: false, input_html: { class: 'span11' }
+          #notificationsTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.customer_instructions')
+                %p.muted= t('other_events.form.customer_instructions_text')
+              .span9
+                = f.input :instructions, input_html: { rows: 2, style: 'width: 96%' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.event_notes')
+                %p.muted= t('other_events.form.event_notes_text')
+              .span9
+                = f.input :notes, input_html: { style: 'width: 96%;', rows: 2 }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.additional_equipment')
+                %p.muted= t('other_events.form.additional_equipment_text')
+              .span6
+                = f.input :additional_equipment, input_html: { class: 'span11' }
+          #onlineTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('other_events.form.online_visibility')
+                %p.muted= t('other_events.form.online_visibility_text')
+              .span3
+                = f.input :private, collection: [['Show on Public Calendar', true], ['Hide from Public Calendar', false]], input_html: { class: 'selectpicker' }, include_blank: false
+              .span3
+                = f.input :enable_booking, collection: [['Enable', true], ['Disable', false]], input_html: { class: 'selectpicker' }, include_blank: false
+    = f.input :number_of_frequencies, as: :hidden
+    - if resource.recurring? && !resource.new_record?
+      = render 'overlays/events/edit_recurring_event', f: f
+      = f.input :number_of_recurring_events_for_update, as: :hidden, input_html: { value: 0 }
+      .heading-buttons
+        .buttons.pull-right{style: 'margin: 0;'}
+          = link_to '#edit_recurring_event', class: 'btn btn-primary btn-icon glyphicons ok_2', :'data-toggle' => :modal do
+            %i
+            = t('views.actions.save')
+    - else
+      .heading-buttons
+        .buttons.pull-right{style: 'margin: 0;'}
+          %button{ type: :submit, class: 'btn btn-primary btn-icon glyphicons ok_2' }
+            %i
+            = t('views.actions.save')
+        .clearfix
+
+= content_for :overlays do
+  = render 'overlays/events/number_of_frequencies'

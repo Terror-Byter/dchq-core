@@ -1,0 +1,58 @@
+:ruby
+  return unless record
+  sale = @sale.decorate
+
+%tr{id: dom_id(record)}
+  %td.product
+    .media
+      %span.media-object.pull-left
+        = image_tag('calendar.png')
+      .media-body
+        - if record.base_event? && sale.completed? && !sale.refunded? && record.can_be_refunded?
+          .pull-right.hidden-print.refund-checkbox
+            %label.uniformjs{style: "margin-top:6px;"}
+              = check_box_tag 'ecp_id[]', record.id
+              Refund Items
+        %h5= record.name.html_safe
+  %td.center= record.unit_price
+  %td.center= record.tax_rate
+  %td.center
+    = record.quantity
+    - if @sale.active?
+      = link_to remove_from_sale_event_customer_participant_path(record), remote: true, method: :delete, confirm: 'Are you sure?' do
+        %i.icon-trash
+  %td.center.discount
+    - if sale.refunded? || record.free?
+      %p= formatted_discount(record.discount)
+    - else
+      - if form && !@sale.has_discount
+        = form.fields_for :event_customer_participants, ecp do |ecp_form|
+          = ecp_form.fields_for record.discount_method, record.send(record.discount_method) ? record.send(record.discount_method) : record.send("build_#{ record.discount_method }")
+      - else
+        = til formatted_discount(record.discount)
+  %td.center= record.unit_price
+
+- if record.event.course?
+  - record = current_store.certification_level_costs.find_by_certification_level_id(record.event.certification_level_id).try(:material_price)
+  - if record && !record.price.zero?
+    %tr{id: dom_id(record)}
+      %td.product
+        .media
+          %span.media-object.pull-left
+            = image_tag('calendar.png')
+          .media-body
+            %h5= t('.material_price')
+      %td.center= formatted_currency record.price
+      %td.center= formatted_currency record.tax_rate_amount(@sale)
+      %td.center 1
+      %td.center.discount
+        -#- if sale.refunded?
+          -#%p= formatted_discount(record.discounts)
+        -#- else
+          -#- if form && !@sale.has_discount
+            -#= form.fields_for :material_price, record do |m_form|
+              -#= m_form.fields_for :discount, record.discount ? record.discount : record.build_discount
+          -#- else
+            -#= til formatted_discount(record.discount)
+      %td.center= formatted_currency(record.discount.try(:apply, record.price) || record.event_line_item_with_discount)
+

@@ -1,0 +1,29 @@
+!!!
+%html{style: 'font-family: Arial, sans-serif; font-size: 14px'}
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+    %title= t('company_mailer.common.company_hq')
+  %body{style: 'font-family: Arial, sans-serif; font-size: 14px;'}
+    %h2{style: 'font-family: Arial, sans-serif; font-size: 14px; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; padding-bottom: 20px; margin: 20px 5%;'}
+      = show_company_logo(@event.store)
+    %p.hello{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; font-weight: bold; margin: 15px 5%;'}= t('company_mailer.event_participant_removed.event_update')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('company_mailer.event_participant_removed.have_been_removed')
+      = succeed '.' do
+        %strong= @event.full_name
+      = t('company_mailer.event_participant_removed.if_made_payment')
+    %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+      = t('company_mailer.event_participant_removed.any_questions_contact')
+      = mail_to @event.store.company.email
+      #{t('company_mailer.event_participant_removed.or_call')} #{@event.store.company.telephone}.
+
+    %p.signature.best{style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; color: #999; margin: 15px 5%;'}
+      = t('company_mailer.event_participant_removed.regards')
+      %br
+      = @event.store.name
+    %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+      = image_tag @event.store.avatar.image.url(:original) unless @event.store.avatar.blank?
+      %br
+      = t('company_mailer.common.sent_by_centre', company_name: @event.store.company.name)
+      = t('company_mailer.common.telephone', tel: @event.store.company.telephone)
+      = t('company_mailer.common.registered_address', address: @event.store.company.address.full_address)

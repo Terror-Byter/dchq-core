@@ -1,0 +1,36 @@
+= form.fields_for :purchase_order_items, purchase_order_item, wrapper: false do |poi_form|
+  %tr
+    %td.product
+      .media
+        %span.media-object.pull-left
+          = purchase_order_item.image
+        .media-body
+          %span.heading
+            %h5= purchase_order_item.product
+            %span
+              = t('purchase_orders.common.supplier_code')
+              %strong= purchase_order_item.supplier_code
+              \|
+              = t('purchase_orders.common.sku_code')
+              %strong= purchase_order_item.sku
+    %td.center
+      - if purchase_order.editable?
+        = poi_form.text_field :price, {class: 'span1 supply-price', value: "#{purchase_order_item.price}"}
+      - else
+        = purchase_order_item.price_formatted
+    %td.center
+      - if purchase_order.editable?
+        = poi_form.text_field :quantity,
+        {class: 'span1', style: 'text-align:center', value: "#{purchase_order_item.quantity}"}
+      - else
+        = purchase_order_item.quantity
+    %td.center
+      - if purchase_order.editable?
+        = poi_form.text_field :quantity_rejected,
+        {class: 'span1', style: 'text-align:center', value: "#{purchase_order_item.quantity_rejected}"}
+      - else
+        = purchase_order_item.quantity_rejected
+      -#= poi_form.hidden_field :quantity_max, value: "#{purchase_order_item.quantity_max_available_for_amend}"
+      %span.hide{id: "purchase_order_purchase_order_items_attributes_#{cur_item_index}_quantity_max"}<
+        = purchase_order_item.quantity_max_available_for_amend
+    %td.center= purchase_order_item.sub_total

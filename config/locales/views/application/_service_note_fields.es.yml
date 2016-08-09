@@ -1,0 +1,5 @@
+es:
+  application:
+    service_note_fields:
+      add_another: 'Agregar Archivo Adjunto'
+      email_note_to_customer: 'Enviar la nota al cliente por correo-e'

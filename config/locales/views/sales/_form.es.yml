@@ -1,0 +1,19 @@
+es:
+  sales:
+    form:
+      home: 'Inicio'
+      sales: 'Ventas'
+      point_of_sale: 'Punto de Venta'
+      new_sale: 'Nueva Venta'
+      sale_id: 'ID de Venta:'
+      cashier: 'Cajero:'
+      scan_barcode: 'Escanee Código de Barras o Comience a Escribir el Nombre del Producto...'
+      or_look_product: 'o Buscar Producto'
+      miscellaneous: 'Diverso'
+      customer: 'Cliente'
+      assign_customer: '+ asignar cliente'
+      person: 'Persona'
+      remove: '[eliminar]'
+      close_register: 'Cerrar Caja Registradora'
+      refund_method: 'Reembolsar Método'
+      cash_put_out: 'Modificar la flotación'

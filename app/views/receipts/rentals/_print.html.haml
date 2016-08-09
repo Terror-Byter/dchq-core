@@ -1,0 +1,122 @@
+:ruby
+  @rental ||= resource
+  customer = @rental.customer
+  @current_store = @rental.store
+  company = @current_store.company
+  unless @current_store.email_setting.rental_receipt_content.blank?
+    custom_content = @current_store.email_setting.rental_receipt_content
+    custom_content = custom_content.gsub("%CUSTOMER_NAME%", customer.full_name)
+    custom_content = custom_content.gsub("%EVENT_NAME%", '')
+    custom_content = custom_content.gsub("%EVENT_DATE%", '')
+    custom_content = custom_content.gsub("%SALES_TOTAL%", formatted_currency(@rental.grand_total))
+  end
+
+%table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 12px; line-height: 1.2; margin: 15px 5%; width: 90%; border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px;'}
+  %tr{style: 'background: #ffffff; border: none;'}
+    %td{style: 'background: #ffffff; border: none; width: 50%; padding-bottom:15px;'}
+      = image_tag company.logo.image.url(:large), alt: t('.alt_logo') if company.logo.image.exists?
+      %br
+      %br
+      %span
+        = t('.customers')
+        %strong= customer.full_name
+      %br
+      - unless customer.tax_id.blank?
+        %span
+          = t('.tax_identifier')
+          = customer.tax_id
+        %br
+      - unless customer.full_name == "Walk In"
+        %span= [customer.address.first, customer.address.second].join(', ')
+        %br
+        %span= [customer.address.city, customer.address.state, customer.address.post_code].join(', ')
+        %br
+        %span= customer.address.country_name
+    %td{style: 'background: #ffffff; border: none; width: 50%;text-align:right;'}
+      %span= t('.receipt', receipt: @rental.id)
+      %br
+      %span
+        = t('.invoice_data', date: l(@rental.created_at, formats: :default) )
+      %br
+      %br
+      %strong= @current_store.name
+      %br
+      %span= [company.address.first, company.address.second].join(', ')
+      %br
+      %span= [company.address.city, company.address.state].join(', ')
+      %br
+      %span
+        = [company.address.post_code].join('<br>')
+        = company.address.country_name
+
+- unless @current_store.email_setting.rental_receipt_content.blank?
+  %p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}= nl2br custom_content
+%p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%;'}
+  = t('.description', name: @current_store.name, email: company.email, telephone: company.telephone)
+%p{style: 'font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; margin: 15px 5%; padding-bottom:10px;'}= t('.description_2')
+%table{border: '0', cellpadding: '0', cellspacing: '0', style: 'font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; margin: 15px 5%; width: 90%;'}
+  %thead
+    %tr{style: 'background: #EAEAEA; border: 1px solid #D4D4D4; background-color: #D4D4D4;'}
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-left:1px solid #D4D4D4; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b= t('.sku')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b= t('.unit_price')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b= t('.days')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b= t('.qty')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b= t('.discount_heading')
+      %td{style: 'padding:5px 9px 6px 9px; line-height:1em; border-bottom:1px solid #D4D4D4; border-right:1px solid #D4D4D4; border-top:1px solid #D4D4D4;'}
+        %b= t('.sub_total')
+  %tbody
+    - @rental.renteds.each do |r|
+      %tr{style: 'font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#000;line-height:20px;'}
+        %td{style: 'padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = "#{r.rental_product.name} (##{r.rental_product.sku_code})"
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency(r.unit_price / @rental.days)
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = @rental.days
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = r.quantity
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = til formatted_discount(r.prod_discount)
+        %td{style: 'padding:7px 9px 9px 9px; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;'}
+          = formatted_currency r.line_item_price
+  = image_tag 'https://app.divecentrehq.com/assets/email-paid.jpg', style: 'margin: 5px 5%;'
+%p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+  %strong
+    = t('.discount')
+  = formatted_currency(@rental.calc_discount)
+%p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+  %strong
+    = t('.subtotal')
+  = formatted_currency(@rental.sub_total.abs)
+%p{style: 'float:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+  %strong
+    = t('.tax_inc')
+  = formatted_currency(@rental.tax_rate_total.abs)
+%p{style: 'float:right; margin: 15px 5%; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;  border-bottom-style: dashed; border-bottom-color: #ccc; border-bottom-width: 1px; clear:both;'}
+  %strong
+    = t('.net_due')
+  = formatted_currency(@rental.grand_total)
+%p{style: 'text-align:right; margin: 5px 5%; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.5; clear:both;'}
+  %strong
+    = t('.payments')
+  %br
+  - @rental.rental_payments.where{ id.not_eq nil }.each do |payment|
+    #{formatted_currency(payment.amount)}
+    %em #{payment.payment_method.name}
+    \-
+    = l(payment.created_at, formats: :default)
+    %br
+%div{style: 'clear:both'}
+- if @recepient
+  %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; border-top-style: dashed; border-top-color: #ccc; border-top-width: 1px; padding-top: 20px; color: #999; margin: 20px 5% 15px;'}
+    = image_tag @current_store.avatar.image.url(:original) unless @current_store.avatar.blank?
+  %p.footer{style: 'font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; color: #999; margin: 20px 5% 15px;'}
+    = t('views.sale_mailer.sent_by_centre', company_name: company.name)
+    = t('views.sale_mailer.telephone', tel: company.telephone)
+    %br
+    = t('views.sale_mailer.registered_address', address: company.address.full_address)

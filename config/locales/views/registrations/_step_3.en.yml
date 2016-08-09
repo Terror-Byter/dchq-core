@@ -1,0 +1,6 @@
+en:
+  registrations:
+    step_3:
+      event_settings: Event Settings
+      p: In order to sell events such as courses and trips, you will need to set these up in advance. You can either do this now by clicking below, or at any time in the future by going to the Settings > Events area.
+      add_event_setting: Add Event Settings

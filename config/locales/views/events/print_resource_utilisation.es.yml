@@ -1,0 +1,17 @@
+es:
+  events:
+    print_resource_utilisation:
+      h2: Reporte de Utilización de Recursos para %{starts_at} al %{ends_at}
+      resource: "Recurso"
+      event_name: "Nombre de Evento"
+      time: "Hora"
+      location: "Ubicación"
+      staff: "Personal"
+      staff_names: "Nombres del Personal"
+      customers: "Clientes"
+      customer_names: "Nombres de Clientes"
+      summary_for_period: "Resumen del Período"
+      total_events: "Total de Eventos"
+      total_hours: "Total de Horas"
+      total_clients: "Total de Clientes"
+      avg_clents: "Clientes Prom"

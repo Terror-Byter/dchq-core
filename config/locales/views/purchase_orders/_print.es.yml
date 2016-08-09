@@ -1,0 +1,17 @@
+es:
+  purchase_orders:
+    print:
+      purchase_order_number: 'Orden de Compra #%{number}'
+      purchase_order_delivery: 'Ubicación de Entrega:'
+      purchase_order_supplier: 'Proveedor'
+      purchase_order_date: 'Fecha: %{date}'
+      sku: 'SKU / PRODUCTO'
+      unit_price: 'PRECIO DE SUMINISTRO'
+      qty: 'CANT'
+      sub_total: 'TOTAL DE ARTÍCULO'
+      total: 'TOTAL'
+      email_sent_by: 'Este correo-e fue enviado por'
+      contact_us_at: 'Por favor contáctenos en'
+      purchase_order_summary: 'Resumen de Órden de Compra'
+      check: "Visite nuestra página web en %{url}"
+      notes: 'Notas:'

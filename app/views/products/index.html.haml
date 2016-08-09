@@ -1,0 +1,88 @@
+%ul.breadcrumb
+  %li
+    = link_to root_path, class: 'glyphicons home' do
+      %i
+      = t('products.index.home')
+  %li.divider
+  %li= t('products.index.sales')
+  %li.divider
+  %li= t('products.index.products')
+.innerLR
+  .row-fluid
+    .span4
+      %h3.heading-mosaic= t('products.index.products')
+    .span8.right
+      .buttons.hidden-print
+        = link_to '#export-csv', class: 'btn btn-small btn-default btn-icon glyphicons qrcode', :'data-toggle' => 'modal' do
+          %i
+          = t('products.index.download_barcode')
+        = link_to '#export-all', class: 'btn btn-small btn-default btn-icon glyphicons download', :'data-toggle' => 'modal' do
+          %i
+          = t('products.index.export_all')
+        - if can? :create, Product
+          = link_to new_product_path, class: 'btn btn-primary btn-icon glyphicons circle_plus' do
+            %i
+            = t('products.index.new_product')
+.innerLR
+  .row-fluid
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t('products.index.overview')
+        .widget-body.list
+          %ul
+            %li
+              %span.count
+                = current_store.products_stock_value
+              = t('products.index.total_stock_value')
+            %li
+              %span.count
+                = current_store.products_count
+              = t('products.index.all_products')
+    .span6
+      .widget
+        .widget-head
+          %h4.heading.glyphicons.stats
+            %i>
+            = t('products.index.stock_levels')
+        .widget-body.list
+          %ul
+            %li
+              %span.count
+                = current_store.products_in_stock
+              = t('products.index.products_in_stock')
+            %li
+              %span.count
+                = current_store.products_out_of_stock
+              = t('products.index.products_out_of_stock')
+  .widget
+    .widget-head
+      %h4.heading.glyphicons.list
+        %i
+        - if params[:filter] == 'archived'
+          = t('.archived_products')
+        - else
+          = t('.products')
+      %span.details.pull-right
+        - if params[:filter] == 'archived'
+          = link_to t('.products'), collection_path
+        - else
+          = link_to t('.archived_products'), collection_path(filter: 'archived')
+    .widget-body
+      %table.table.table-bordered.table-condensed.table-striped.table-primary.table-vertical-center.checkboxs.js-table-sortable
+        = render 'products/table_headers'
+        %tbody
+          = render products
+      / Options
+      .separator.top.form-inline.small
+        = t('products.index.total_products')
+        = collection.total_count
+        .pagination.pagination-small.pull-right{style: 'margin: 0;'}
+          = paginate collection
+        .clearfix
+
+= content_for :overlays do
+  = render 'overlays/products/export_all_popup'
+  = render 'overlays/products/download_barcode_popup'

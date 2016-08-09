@@ -1,0 +1,4 @@
+es:
+  decorators:
+    other_event:
+      full_event: ' [COMPLETO]'

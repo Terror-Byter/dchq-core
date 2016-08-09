@@ -1,0 +1,11 @@
+es:
+  settings:
+    boats:
+      home: 'Inicio'
+      settings: 'Ajustes'
+      settings_boats_resources: 'Ajustes: Barcos % Recursos'
+      notice: 'Los ajustes del barco se han guardado satisfactoriamente'
+      t_boat_resource_name: 'Nombre del Barco / Recurso'
+      t_calendar_color: 'Color del Calendario'
+      t_action: 'Acción'
+      new_boat: 'Nuevo Barco / Recurso'

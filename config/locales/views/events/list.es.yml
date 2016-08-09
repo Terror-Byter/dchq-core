@@ -1,0 +1,5 @@
+es:
+  events:
+    list:
+      events_in: "Eventos en"
+      event_list: "Lista de Eventos"

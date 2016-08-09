@@ -1,0 +1,7 @@
+es:
+  staff_members:
+    schedule:
+      home: 'Inicio'
+      crm: 'CRM'
+      staff: 'Horario del Personal'
+      staff_scheduling: 'Personal'

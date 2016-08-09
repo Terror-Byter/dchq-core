@@ -1,0 +1,177 @@
+= simple_nested_form_for resource, html: { multipart: true }, validate: true do |f|
+  .innerLR
+    = f.error_messages
+    .widget.widget-tabs
+      .widget-head
+        %ul
+          %li.active
+            = link_to '#DetailsTab', class: 'glyphicons notes_2', :'data-toggle' => 'tab' do
+              %i>
+              = t('customers.form.personal_details')
+          %li
+            = link_to '#addressTab', class: 'glyphicons direction', :'data-toggle' => 'tab' do
+              %i>
+              = t('customers.form.address')
+          %li
+            = link_to '#experienceTab', class: 'glyphicons oxygen_bottle', :'data-toggle' => 'tab' do
+              %i>
+              = t('customers.form.experience_certifications')
+          %li
+            = link_to '#equipmentTab', class: 'glyphicons fins', :'data-toggle' => 'tab' do
+              %i>
+              = t('customers.form.dive_equipment')
+          %li
+            = link_to '#customTab', class: 'glyphicons asterisk', :'data-toggle' => 'tab' do
+              %i>
+              = t('customers.form.custom_data')
+      .widget-body
+        .tab-content
+          #DetailsTab.tab-pane.active
+            .row-fluid
+              .span3
+                %strong= t('customers.form.name_and_birthday')
+                %p.muted= t('customers.form.name_and_birthday_text')
+              .span3
+                = f.input :given_name, input_html: { class: 'span11' }
+              .span3
+                = f.input :family_name, input_html: { class: 'span11' }
+              .span2
+                = f.label :born_on
+                .input-append.date
+                  = f.text_field :born_on, class: 'span6 datepicker', size: false, value: resource.decorate.birthday
+                  %span.add-on
+                    %i.icon-calendar
+              .span1
+                = f.label :gender
+                = f.select :gender, {t('activerecord.attributes.customer.genders.male') => 'male',
+                                     t('activerecord.attributes.customer.genders.female') => 'female'},
+                                    {include_blank: false}, class: 'selectpicker span12'
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('customers.form.contact_details')
+                %p.muted= t('customers.form.contact_details_text')
+              .span3
+                = f.input :email, input_html: { class: 'span11' }
+                .uniformjs
+                  = f.input :send_event_related_emails, as: :boolean,
+                                                        inline_label: t('activerecord.attributes.customer.send_event_related_emails'),
+                                                        label: false
+              .span3
+                = f.input :telephone, input_html: { class: 'span11' }
+              .span3
+                = f.input :mobile_phone, input_html: { class: 'span11' }
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('customers.form.photo')
+                %p.muted= t('customers.form.photo_text')
+              .span6
+                = f.simple_fields_for :avatar do |form|
+                  = render 'avatar_fields', f: form
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('customers.form.extra_information')
+                %p.muted= t('customers.form.extra_information_text')
+              .span3
+                = f.input :source, input_html: { class: 'span11' }
+              .span2
+                = f.input :default_discount_level, input_html: { class: 'span11' }
+              .span2
+                = f.input :tax_id, input_html: { class: 'span11' }
+              .span2.uniformjs
+                = label_tag t('customers.form.tax_exempt')
+                = f.input :zero_tax_rate, as: :boolean, label_html: { class: 'checkbox' }, label: false, inline_label: t('activerecord.attributes.customer.zero_tax_rate')
+            .row-fluid
+              .span6.offset3
+                = f.label :tag_list
+                = f.hidden_field :tag_list
+                %ul#tag_list
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('customers.form.emergency_contact')
+                %p.muted= t('customers.form.emergency_contact_text')
+              .span9
+                = f.input :emergency_contact_details, input_html: { class: 'span11' }
+          #addressTab.tab-pane
+            = f.simple_fields_for :address do |form|
+              = render 'address_fields', f: form
+            %hr.separator.bottom/
+            .row-fluid
+              .span3
+                %strong= t('customers.form.current_accomodation')
+                %p.muted= t('customers.form.current_accomodation_text')
+              .span3
+                = f.input :hotel_name, input_html: { class: 'span11' }
+              .span2
+                = f.input :room_number, input_html: { class: 'span11' }
+          #experienceTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('customers.form.dive_experience')
+                %p.muted= t('customers.form.dive_experience_text')
+              .span3
+                = f.association :customer_experience_level, collection: CustomerExperienceLevel.all, input_html: { class: 'selectpicker span11' }
+              .span2
+                = f.label :last_dive_on
+                .input-append.date
+                  = f.text_field :last_dive_on, class: 'span6 datepicker', size: false
+                  %span.add-on
+                    %i.icon-calendar
+              .span2
+                = f.input :number_of_logged_dives, input_html: { class: 'span11' }
+            %hr.separator.bottom/
+
+            = select_tag :certification_level_id, option_groups_from_collection_for_select(CertificationAgency.all, :all_certification_levels, :name, :id, :name), { class: 'hide original_certification_levels' }
+            = f.simple_fields_for :certification_level_memberships do |build|
+              = render 'certification_level_membership_fields', f: build
+            = f.link_to_add :certification_level_memberships, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i
+              = t('customers.form.add_certification')
+          #equipmentTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('customers.form.dive_equipment')
+                %p.muted= t('customers.form.dive_equipment_text')
+              .span2
+                = f.input :fins, collection: Customer.fins_collection, include_blank: true, input_html: { class: 'selectpicker span11'  }
+                .uniformjs
+                  = f.input :fins_own, as: :radio_buttons, collection: [[t('views.customer.form.own'), true], [t('views.customer.form.rent'), false]], label: false
+              .span2
+                = f.input :bcd, collection: Customer.bcd_collection, include_blank: true, input_html: { class: 'selectpicker span11'  }
+                .uniformjs
+                  = f.input :bcd_own, as: :radio_buttons, collection: [[t('views.customer.form.own'), true], [t('views.customer.form.rent'), false]], label: false
+              .span2
+                = f.input :wetsuit, input_html: { class: 'span11'  }
+                .uniformjs
+                  = f.input :wetsuit_own, as: :radio_buttons, collection: [[t('views.customer.form.own'), true], [t('views.customer.form.rent'), false]], label: false
+              .span2
+                = f.input :weight, input_html: { class: 'span11'  }
+            %hr/
+            .row-fluid
+              .span2.offset3
+                = f.label :mask_own
+                .uniformjs
+                  = f.input :mask_own, as: :radio_buttons, collection: [[t('views.customer.form.own'), true], [t('views.customer.form.rent'), false]], label: false
+              .span2
+                = f.label :regulator
+                .uniformjs
+                  = f.input :regulator_own, as: :radio_buttons, collection: [[t('views.customer.form.own'), true], [t('views.customer.form.rent'), false]], label: false
+          #customTab.tab-pane
+            .row-fluid
+              .span3
+                %strong= t('customers.form.custom_fields')
+                %p.muted= t('customers.form.custom_fields_text')
+            = f.simple_fields_for  :custom_fields do |form|
+              = render 'custom_field_fields', f: form
+            = f.link_to_add :custom_fields, class: 'btn btn-default btn-icon glyphicons circle_plus' do
+              %i
+              = t('customers.form.add_custom_field')
+    .heading-buttons
+      .buttons.pull-right{style: 'margin: 0;'}
+        %button.btn.btn-primary.btn-icon.glyphicons.ok_2{ type: 'submit' }
+          %i
+          = t('customers.form.save')
+      .clearfix

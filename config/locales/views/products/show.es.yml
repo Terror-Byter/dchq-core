@@ -1,0 +1,25 @@
+es:
+  products:
+    show:
+      home: 'Inicio'
+      sales: 'Ventas'
+      products: 'Productos'
+      details: 'Detalles'
+      edit_product: 'Editar Producto'
+      print_barcode: 'Imprimir Código de Barra'
+      brand: 'Marca:'
+      category: 'Categoría:'
+      supplier: 'Proveedor:'
+      product_information: 'Información del Producto'
+      commision_rate: 'Tasa de Comisión:'
+      tax_rate: 'Tasa de Impuesto:'
+      sku: 'SKU:'
+      sales_history: 'Historial de Ventas'
+      inventory_information: 'Información de Inventario'
+      retail_price: 'Precio de Menudeo'
+      current_inventory_level: 'Nivel Actul de Inventario'
+      low_inventory_level: 'Nivel Bajo de Inventario'
+      delete_btn: 'Eliminar Producto'
+      no_sales: 'No Hay Ventas'
+      archived: Archivo de Producto
+      unarchived: Desarchivar Producto

@@ -1,0 +1,17 @@
+:ruby
+  partial = 'purchase_orders/purchase_order_item'
+  # just to pass nested form helper to the 'purchase_order_item' partial to render it like the 'static' way
+  partial_rendered = ''
+  nested_form_for purchase_order, remote: true, html: { class: 'purchase_orders', method: :put } do |form|
+    partial_rendered = render(partial: partial, locals: {form: form, purchase_order_item: @purchase_order_item})
+  end
+  partial_rendered = j(partial_rendered).html_safe
+
+-# Add new product and render all bootstrap-selects in the table's rows
+$('.shop-client-products table tbody').first().append('#{partial_rendered}').find('.selectpicker').selectpicker('render');
+-# Clear the product search input
+$('#search_product').val('');
+
+-# including JS templates to update certain portions of the page
+= render 'update_order_total'
+= render 'update_print_block'

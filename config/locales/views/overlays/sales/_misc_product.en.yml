@@ -1,0 +1,10 @@
+en:
+  overlays:
+    sales:
+      misc_product:
+        header: Add Miscellaneous Product
+        product_price: Product Price
+        tax_rate: Tax Rate
+        category: Category
+        add_misc_product: Add Miscellaneous Product
+        description: Description

@@ -1,0 +1,16 @@
+en:
+  bookings:
+    complete:
+      home: Home
+      event_registration: Event Registration
+      event_registration_successful: 'Event Registration: Successful'
+      you_have_successfully_booked: You have successfully booked a space on %{event_name}. We have sent you an email confirmation with further details. If you are a new customer, we will need to confirm your eligibility and certifications for this event and will be in touch in due course.
+      copy_of_your_invoice: A copy of your invoice summary has been sent via email.
+      close_window: Close Window
+      instructions: Further Instructions
+      invoice: Invoice Summary
+      item: Item
+      quantity: Quantity
+      price: Price
+      view_event_calendar: View Event Calendar
+

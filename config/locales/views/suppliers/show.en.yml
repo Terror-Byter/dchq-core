@@ -1,0 +1,27 @@
+en:
+  suppliers:
+    show:
+      home: 'Home'
+      crm: 'CRM'
+      suppliers: 'Suppliers'
+      new_note: 'New Note'
+      new_supplier_contact: 'New Supplier Contact'
+      edit_supplier: 'Edit Supplier'
+      contact_info: 'Contact Information'
+      address: 'Address:'
+      email: 'Email:'
+      ph: 'Ph:'
+      tags: 'Tags:'
+      supplier_contacts: 'Supplier Contacts'
+      notes: 'Notes'
+      supplier_contact_name: 'Name'
+      supplier_contact_phone: 'Phone'
+      supplier_contact_email: 'Email'
+      supplier_contact_position: 'Position'
+      supplier_contact_actions: 'Actions'
+      edit_business_contact: 'Edit'
+      delete_business_contact: 'Delete'
+      delete_supplier: 'Delete Supplier'
+      no_contacts: 'No Contacts'
+      no_notes: 'No Notes'
+

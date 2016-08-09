@@ -1,0 +1,16 @@
+%tr{ id: dom_id(record), class: :sale_product }
+  %td.product
+    %p.gray= record.sku_code
+    %p
+      = record.name_for_sale
+      - if defined?(kit) && kit.present?
+        – #{kit.kit} (#{kit.serial_number})
+  %td.center
+    = formatted_currency(@zero ? 0 : record.unit_price)
+  %td.center
+    = formatted_currency record.tax_rate_amount
+  %td.center.quantity
+    = record.quantity
+  %td.center.discount
+  %td.center
+    = @zero ? formatted_currency(0) : record.decorate.price

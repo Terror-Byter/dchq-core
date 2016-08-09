@@ -1,0 +1,8 @@
+en:
+  overlays:
+    sales:
+      product_lookup:
+        header: 'Product Lookup'
+        brands: 'Brands'
+        categories: 'Categories'
+        products: 'Products'

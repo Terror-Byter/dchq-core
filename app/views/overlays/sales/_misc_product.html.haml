@@ -1,0 +1,28 @@
+#misc-product-modal.modal.hide.fade
+  .modal-header
+    %button.close{:'aria-hidden' => 'true', :'data-dismiss' => 'modal', type: 'button'} ×
+    %h3= t('overlays.sales.misc_product.header')
+  = form_tag add_misc_product_sale_path(@sale), method: :post, remote: true do
+    .modal-body{style: 'overflow: visible;'}
+      .row-fluid
+        .span6
+          %label{for: 'price'}= t('overlays.sales.misc_product.product_price')
+          .input-prepend
+            %span.add-on= current_store.currency.unit.html_safe
+            %input.span12{name: 'misc_product[price]', type: "text"}/
+        .span3
+          %label{for: 'tax_rate_id'}= t('overlays.sales.misc_product.tax_rate')
+          = select_tag 'misc_product[tax_rate_id]', options_for_select(current_store.tax_rates.map{ |t| [t.amount, t.id] }),
+                        class: 'selectpicker span12'
+      .row-fluid
+        .span6
+          %label{for: 'category_id'}= t('overlays.sales.misc_product.category')
+          = select_tag 'misc_product[category_id]', options_for_select(current_store.categories.map{ |c| [c.name, c.id] }),
+                        class: 'select2 span12'
+      .row-fluid
+        .span9
+          %label{ for: 'description' }= t('overlays.sales.misc_product.description')
+          = text_area_tag 'misc_product[description]', nil, class: 'span12'
+    .modal-footer
+      %button.btn.btn-default{ :'aria-hidden' => true, :'data-dismiss' => :modal, type: :button }= t('views.actions.cancel')
+      %button.btn.btn-primary{ type: 'submit' }= t('overlays.sales.misc_product.add_misc_product')

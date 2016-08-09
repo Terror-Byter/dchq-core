@@ -1,0 +1,9 @@
+en:
+  brands:
+    index:
+      home: 'Home'
+      sales: 'Sales'
+      brands: 'Brands'
+      new_brand: 'New Brand'
+      total_brands: 'Total brands:'
+      not_available: 'not available'
