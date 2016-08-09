@@ -1,11 +1,8 @@
-# Dive Centre HQ
+> This project is no longer maintained and has been archived under an MIT license.
+
+# Dive Centre HQ [project archive]
 
 Dive Centre HQ is an open source Rails-based point of sale, event management and equipment servicing platform allowing you to easily manage your retail store.
-
-* [Check out the website](http://www.divecentrehq.com)
-* [View the demo site](http://demo.divecentrehq.com)
-* [Read the release notes](https://github.com/tryshoppe/core/blob/master/CHANGELOG.md)
-* [Read API documentation](http://www.divecentrehq.com/apidocs)
 
 ## Features
 
