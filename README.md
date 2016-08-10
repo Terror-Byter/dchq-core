@@ -1,6 +1,6 @@
-> This project is no longer maintained and has been archived under an MIT license.
+> This project is looking for maintainers. Submit a pull request if you're interested in taking over this open source project.
 
-# Dive Centre HQ [project archive]
+# Dive Centre HQ
 
 Dive Centre HQ is an open source Rails-based point of sale, event management and equipment servicing platform allowing you to easily manage your retail store.
 
