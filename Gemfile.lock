@@ -386,6 +386,8 @@ GEM
       bundler (~> 1.0)
       railties (= 3.2.22.2)
     rails-bootstrap-toggle-buttons (0.0.7)
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (3.2.22.2)
       actionpack (= 3.2.22.2)
       activesupport (= 3.2.22.2)
@@ -508,6 +510,9 @@ GEM
     validates_timeliness (3.0.14)
       timeliness (~> 0.3.6)
     version (1.0.0)
+    viaduct_rails_helpers (1.0.0)
+      rails_serve_static_assets
+      rails_stdout_logging
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
@@ -619,6 +624,10 @@ DEPENDENCIES
   validates_email_format_of!
   validates_existence!
   validates_timeliness
+  viaduct_rails_helpers
   wicked_pdf
   wkhtmltopdf-binary
   xeroizer!
+
+BUNDLED WITH
+   1.12.5
