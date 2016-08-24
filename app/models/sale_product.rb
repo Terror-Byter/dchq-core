@@ -30,13 +30,13 @@ class SaleProduct < ActiveRecord::Base
 
   after_create :update_sale_amounts!
   after_update :update_sale_amounts!
-  after_destroy :update_sale_amounts!
+  after_destroy :update_sale_amounts!, if: ->{ ENV['from_rake_task'].blank? }
 
   after_create :update_number_in_stock_on_create!, if: ->{ sale_productable.class_type.eql?("Product") }
   after_update :update_number_in_stock_on_update!, if: ->{ %w[Product MiscellaneousProduct].include?(sale_productable.class.name) }
-  after_destroy :update_number_in_stock_on_destroy!, if: ->{ sale_productable.class_type.eql?("Product") }
+  after_destroy :update_number_in_stock_on_destroy!, if: ->{ ENV['from_rake_task'].blank? && sale_productable.class_type.eql?("Product") }
   after_save :update_gift_card_status_on_save, if: ->{ sale_productable.class_type.eql?("GiftCard") }
-  after_destroy :change_status_for_services, if: ->{ sale_productable.class_type.eql?("Service") }
+  after_destroy :change_status_for_services, if: ->{ ENV['from_rake_task'].blank? && sale_productable.class_type.eql?("Service") }
 
   attr_accessible :sale_productable_type, :sale_productable_id, :quantity, :original_id,
                   :price, :tax_rate, :commission_rate

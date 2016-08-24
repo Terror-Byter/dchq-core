@@ -17,7 +17,7 @@ class Rented < ActiveRecord::Base
 
   after_save :check_rented_quantity
   after_save :update_amounts!
-  after_destroy :update_amounts!
+  after_destroy :update_amounts!, if: ->{ ENV['from_rake_task'].blank? }
 
   def tax_rate_amount
     return 0 if rental.customer.zero_tax_rate?

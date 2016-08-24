@@ -10,7 +10,7 @@ module Services
     attr_accessible :product_id, :product
 
     after_create :decrease_product
-    after_destroy :increase_product
+    after_destroy :increase_product, if: ->{ ENV['from_rake_task'].blank? }
     private
 
     def decrease_product
