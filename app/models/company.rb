@@ -76,8 +76,6 @@ class Company < ActiveRecord::Base
                :set_outbound_email,
                :setup_mailgun_route
 
-  after_destroy :unsubscribe_dive_centre
-
   def events_count
     other_events.count + course_events.parent.count
   end

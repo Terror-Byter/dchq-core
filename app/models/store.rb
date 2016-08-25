@@ -169,8 +169,9 @@ class Store < ActiveRecord::Base
   before_validation :generate_keys, on: :create
   before_validation :smart_add_tsp_url_protocol
   after_create :create_requirements
-  before_destroy :check_main_store
-  after_destroy :destroy_all_childrens, :remove_invoice
+  before_destroy :check_main_store, if: -> { ENV['from_rake_task'].blank? }
+  after_destroy :destroy_all_childrens
+  after_destroy :remove_invoice, if: ->{ ENV['from_rake_task'].blank? }
 
   def tax_rates_list
     tax_rates.map{ |tr| [tr.amount, tr.id] }

@@ -7,7 +7,7 @@ class Payment < AllPayment
   after_create :update_sale_status!
   before_validation :replace_uniq_id_to_amount
   after_save :update_sale_amounts!, :calculate_credit_note
-  after_destroy :update_sale_amounts!, :update_sale_status!, :recalculate_credit_note
+  after_destroy :update_sale_amounts!, :update_sale_status!, :recalculate_credit_note, if: ->{ ENV['from_rake_task'].blank? }
 
   scope :refunds, ->{ includes(:sale).where( sale: { status: 'complete_refund' } ) }
   scope :for_complete_sales, ->{ includes(:sale).where( sale: { status: ['complete', 'complete_refund'] } ) }
