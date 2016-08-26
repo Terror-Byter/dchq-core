@@ -120,8 +120,8 @@ namespace :remove_extra_data do
         a.destroy! if a.addressable.blank?
       end
 
-      AllPayment.includes(:sale).find_each do |p|
-        p.destroy if p.sale.blank?
+      AllPayment.includes(:cashier).find_each do |p|
+        p.destroy if p.cashier.blank?
       end
 
       Attachment.find_each do |a|
