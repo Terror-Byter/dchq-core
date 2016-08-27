@@ -19,7 +19,7 @@ class Currency < ActiveRecord::Base
   attr_accessible :name, :unit, :code, :separator, :delimiter, :format, :precision
 
   before_validation :normalize_attributes!
-  before_destroy :must_not_destroy_when_dependents_exist
+  before_destroy :must_not_destroy_when_dependents_exist, if: ->{ ENV['from_rake_task'].blank? }
   after_save :update_discounts
 
   scope :order_by_name, ->(direction){ { order: "#{quoted_table_name}.`name` #{direction}" } }

@@ -120,6 +120,10 @@ namespace :remove_extra_data do
         a.destroy! if a.addressable.blank?
       end
 
+      Image.find_each do |i|
+        i.destroy if i.imageable.blank?
+      end
+
       AllPayment.includes(:cashier).find_each do |p|
         p.destroy if p.cashier.blank?
       end
@@ -238,13 +242,34 @@ namespace :remove_extra_data do
           t.destroy
         end
       end
+
+      ActsAsTaggableOn::Tag.find_each do |t|
+        t.destroy if ActsAsTaggableOn::Tagging.find_by_tag_id(t.id).blank?
+      end
+
+      User.with_deleted.includes(:company).find_each do |u|
+        u.destroy! if u.company.blank?
+      end
+
+      Currency.find_each do |c|
+        c.destroy if c.stores.blank?
+      end
+
+      Stores::ScubaTribe.find_each do |s|
+        s.destroy if s.store.blank?
+      end
+
+      PricingPlan.find_each do |p|
+        p.destroy if p.companies.blank?
+      end
     end
 
-    #StoreUser
+    ActiveRecord::Base.connection.execute("TRUNCATE versions RESTART IDENTITY")
+    ActiveRecord::Base.connection.execute("TRUNCATE sessions RESTART IDENTITY")
+    ActiveRecord::Base.connection.execute("TRUNCATE active_admin_comments RESTART IDENTITY")
+    ActiveRecord::Base.connection.execute("TRUNCATE documentation_pages RESTART IDENTITY")
+    ActiveRecord::Base.connection.execute("TRUNCATE admin_users RESTART IDENTITY")
 
-
-    # PaperTrail::Version.find_each do |p|
-    #   p.delete
-    # end
+    AdminUser.create!([{ email: "admin@example.com", password: "changeme" }])
   end
 end
