@@ -46,7 +46,7 @@ class SaleProduct < ActiveRecord::Base
   end
 
   def refund_quantity_limit
-    self.quantity - self.refunded_sale_products.sum(:quantity)
+    self.quantity.to_i - self.refunded_sale_products.sum(:quantity).to_i
   end
 
   def event?

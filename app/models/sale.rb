@@ -218,7 +218,7 @@ class Sale < ActiveRecord::Base
   end
 
   def refund_quantity_limit
-    self.sale_products.map(&:refund_quantity_limit).sum
+    self.sale_products.map(&:refund_quantity_limit).sum.to_i
   end
 
   def can_be_refunded?
