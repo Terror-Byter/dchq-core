@@ -76,6 +76,18 @@ persistent_directories:
   -
     path: 'public/files'
 
+config_files:
+  -
+    path: 'config/database.yml'
+    content: '$RAILS_ENV:
+        adapter: postgresql
+        encoding: unicode
+        database: $VDT_DB_NAME
+        pool: 5
+        username: $VDT_DB_USER
+        password: $VDT_DB_PASS
+        host: $VDT_DB_HOST'
+
 commands:
   -
     event: 'firstrun'
