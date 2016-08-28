@@ -1,0 +1,91 @@
+platform: 'ruby-2.2.1'
+additional_platforms:
+  -
+    name: 'nodejs-6.1.0'
+
+settings:
+  serve_static_files: true
+  document_root: 'public'
+  sleep_inactive_processes: false
+
+processes:
+  -
+    name: 'web'
+    memory: 'standard'
+    command: 'bundle exec puma -p $PORT -t 5:5'
+    quantity: 1
+    public: true
+    kill_after: 3600
+    start_monitor:
+      module: 'httpcheck'
+      string: 'Successfully started'
+      timer: 20
+  -
+    name: 'worker'
+    memory: 'standard'
+    command: 'bundle exec rake jobs:work'
+    quantity: 1
+    public: false
+    kill_after: 3600
+    start_monitor:
+      module: 'timer'
+      string: 'Successfully started'
+      timer: 5
+
+shared_databases:
+  -
+    type: 'postgres'
+    label: 'Primary DB'
+
+environment_variables:
+  -
+    key: 'RAILS_ENV'
+    value: 'production'
+  -
+    key: 'SECRET_KEY'
+    value: 'changeme'
+  -
+    key: 'DEFAULT_PRICING_PLAN'
+    value: 'Manta'
+  -
+    key: 'MAILER_SMTP_AUTHENTICATION'
+    value: 'plain'
+  -
+    key: 'MAILER_SMTP_DOMAIN'
+    value: '$VDT_DOMAIN'
+  -
+    key: 'MAILER_SMTP_HOST'
+    value: '$VDT_SMTP_HOST'
+  -
+    key: 'MAILER_SMTP_USERNAME'
+    value: '$VDT_SMTP_USERNAME'
+  -
+    key: 'MAILER_SMTP_PASSWORD'
+    value: '$VDT_SMTP_PASSWORD'
+  -
+    key: 'MAILER_SMTP_PORT'
+    value: '$VDT_SMTP_PORT'
+  -
+    key: 'MAILGUN_API_KEY'
+    value: 'notset'
+  -
+    key: 'MAILGUN_DOMAIN'
+    value: 'notset'
+
+persistent_directories:
+  -
+    path: 'public/files'
+
+commands:
+  -
+    event: 'firstrun'
+    command: 'bundle exec rake db:schema:load'
+    success_exit_code: 0
+  -
+    event: 'build'
+    command: 'bundle install --deployment --without development:test'
+    success_exit_code: 0
+  -
+    event: 'build'
+    command: 'bundle exec rake assets:precompile RAILS_GROUPS=assets'
+    success_exit_code: 0
