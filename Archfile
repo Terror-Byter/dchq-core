@@ -1,12 +1,13 @@
 platform: 'ruby-2.2.1'
 additional_platforms:
   -
-    name: 'nodejs-6.1.0'
+    type: 'nodejs-6.1.0'
 
 settings:
   serve_static_files: true
   document_root: 'public'
   sleep_inactive_processes: false
+  main_database: kiwi
 
 processes:
   -
@@ -36,6 +37,7 @@ shared_databases:
   -
     type: 'postgres'
     label: 'Primary DB'
+    fruit: kiwi
 
 environment_variables:
   -
@@ -79,14 +81,14 @@ persistent_directories:
 config_files:
   -
     path: 'config/database.yml'
-    content: '$RAILS_ENV:
+    content: "$RAILS_ENV:
         adapter: postgresql
         encoding: unicode
         database: $VDT_DB_NAME
         pool: 5
         username: $VDT_DB_USER
         password: $VDT_DB_PASS
-        host: $VDT_DB_HOST'
+        host: $VDT_DB_HOST"
 
 commands:
   -
@@ -101,3 +103,7 @@ commands:
     event: 'build'
     command: 'bundle exec rake assets:precompile RAILS_GROUPS=assets'
     success_exit_code: 0
+
+build_cache:
+  - '.bundle'
+  - 'vendor/bundle'
