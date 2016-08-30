@@ -85,11 +85,11 @@ config_files:
       $RAILS_ENV:
         adapter: postgresql
         encoding: unicode
-        database: $VDT_DB_NAME
+        database: $VDT_DB_KIWI_NAME
         pool: 5
-        username: $VDT_DB_USER
-        password: $VDT_DB_PASS
-        host: $VDT_DB_HOST
+        username: $VDT_DB_KIWI_USER
+        password: $VDT_DB_KIWI_PASS
+        host: $VDT_DB_KIWI_HOST
 
 commands:
   -
