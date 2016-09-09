@@ -39,17 +39,16 @@
           - if current_store.scubatribe_connected?
             %li{ class: "#{ 'active' if crm_reviews_active? }" }= link_to content_tag(:span, t('.reviews')), reviews_path
             %li{ class: "#{ 'active' if crm_requests_active? }" }= link_to content_tag(:span, t('.requests')), requests_path
-      - if can? :manage, Service
-        %li{ class: "large hasSubmenu glyphicons settings #{ 'active' if services_active? }" }
-          = link_to '#menu_components_servicing', :'data-toggle' => 'collapse' do
-            %i
-            %span= t('sidebar_menu.servicing')
-          %ul#menu_components_servicing{ class: "collapse #{'in' if services_active? }" }
-            %li{ class: "#{ 'active' if services_all_active? }" }= link_to content_tag(:span, t('servicing_submenu.all_services')), services_path
-            %li{ class: "#{ 'active' if services_booked_active? }" }= link_to content_tag(:span, t('servicing_submenu.booked')), services_path(filter: :booked)
-            %li{ class: "#{ 'active' if services_in_progress_active? }" }= link_to content_tag(:span, t('servicing_submenu.in_progress')), services_path(filter: :in_progress)
-            %li{ class: "#{ 'active' if services_to_collect_active? }" }= link_to content_tag(:span, t('servicing_submenu.to_collect')), services_path(filter: :awaiting_collection)
-            %li{ class: "#{ 'active' if services_complete_active? }" }= link_to content_tag(:span, t('servicing_submenu.complete')), services_path(filter: :complete)
+      %li{ class: "large hasSubmenu glyphicons settings #{ 'active' if services_active? }" }
+        = link_to '#menu_components_servicing', :'data-toggle' => 'collapse' do
+          %i
+          %span= t('sidebar_menu.servicing')
+        %ul#menu_components_servicing{ class: "collapse #{'in' if services_active? }" }
+          %li{ class: "#{ 'active' if services_all_active? }" }= link_to content_tag(:span, t('servicing_submenu.all_services')), services_path
+          %li{ class: "#{ 'active' if services_booked_active? }" }= link_to content_tag(:span, t('servicing_submenu.booked')), services_path(filter: :booked)
+          %li{ class: "#{ 'active' if services_in_progress_active? }" }= link_to content_tag(:span, t('servicing_submenu.in_progress')), services_path(filter: :in_progress)
+          %li{ class: "#{ 'active' if services_to_collect_active? }" }= link_to content_tag(:span, t('servicing_submenu.to_collect')), services_path(filter: :awaiting_collection)
+          %li{ class: "#{ 'active' if services_complete_active? }" }= link_to content_tag(:span, t('servicing_submenu.complete')), services_path(filter: :complete)
       %li{ class: "large hasSubmenu glyphicons tags #{'active' if rentals_active?}" }
         = link_to '#menu_components_rentals', :'data-toggle' => 'collapse' do
           %i

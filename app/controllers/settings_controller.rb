@@ -20,7 +20,6 @@ class SettingsController < InheritedResources::Base
   end
 
   def servicing
-    redirect_to root_path, alert: I18n.t('controllers.settings.no_access') unless can? :manage, Service
   end
 
   def import_to_csv_step_2

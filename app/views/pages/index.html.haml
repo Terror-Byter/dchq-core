@@ -91,10 +91,9 @@
             %li
               %span.count= current_store.event_registrations_this_month
               = t('pages.index.event_registrations')
-            - if can? :manage, Service
-              %li
-                %span.count= current_store.services_complete_this_month
-                = t('pages.index.services_complete')
+            %li
+              %span.count= current_store.services_complete_this_month
+              = t('pages.index.services_complete')
     .span6
       .widget
         .widget-head
