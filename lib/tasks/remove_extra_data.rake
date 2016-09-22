@@ -26,8 +26,6 @@ namespace :remove_extra_data do
           end
 
           store.boats.destroy_all
-
-          store.boats.destroy_all
           store.working_times.destroy_all
           store.event_tariffs.destroy_all
           store.finance_reports.destroy_all
