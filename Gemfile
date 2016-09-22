@@ -85,6 +85,7 @@ gem 'roo-xls'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'viaduct_rails_helpers'
+gem 'therubyracer'
 
 group :development do
   gem 'better_errors'
