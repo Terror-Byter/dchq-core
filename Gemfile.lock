@@ -39,6 +39,13 @@ GIT
     client_side_validations (3.2.6)
 
 GIT
+  remote: git://github.com/datejs-utf8/datejs-rails.git
+  revision: 934e0d4d06cd411329273f5d64578842ceeabf8d
+  specs:
+    datejs-rails (2.0.1)
+      railties (>= 3.1)
+
+GIT
   remote: git://github.com/kaktusyaka/barby.git
   revision: 986fbb7b8caea55f9808107352680386746fdd05
   specs:
@@ -188,8 +195,6 @@ GEM
     combined_time_select (1.0.1)
     country_select (1.2.0)
     database_cleaner (1.2.0)
-    datejs-rails (2.0.1)
-      railties (>= 3.1)
     debug_inspector (0.0.2)
     deep_cloneable (2.0.0)
       activerecord (>= 3.1.0, < 5.0.0)
@@ -538,7 +543,7 @@ DEPENDENCIES
   combined_time_select (~> 1.0.1)
   country_select
   database_cleaner
-  datejs-rails
+  datejs-rails!
   deep_cloneable (~> 2.0.0)
   delayed_job_active_record
   devise
